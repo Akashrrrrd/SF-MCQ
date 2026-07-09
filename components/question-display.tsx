@@ -18,62 +18,90 @@ export function QuestionDisplay({
   totalQuestions,
   selectedAnswer,
 }: QuestionDisplayProps) {
-  const { selectAnswer, session, goToQuestion } = useExam()
+  const { selectAnswer } = useExam()
 
   return (
-    <div className="space-y-10">
-      {/* Question Number and Title */}
-      <div className="space-y-4">
-        <div className="text-sm font-semibold text-muted-foreground tracking-wide uppercase letter-spacing-1">
-          Question {questionNumber} of {totalQuestions}
+    <div className="space-y-6 sm:space-y-8 lg:space-y-10">
+      {/* Mobile-Optimized Question Header */}
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="text-xs sm:text-sm font-semibold text-muted-foreground tracking-wide uppercase">
+            Question {questionNumber} of {totalQuestions}
+          </div>
+          {/* Question Difficulty Badge */}
+          <div className={`px-2 py-1 rounded-full text-xs font-medium ${
+            question.difficulty === 'hard' 
+              ? 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200' 
+              : 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+          }`}>
+            {question.difficulty}
+          </div>
         </div>
-        <h2 className="text-3xl font-bold text-foreground leading-tight tracking-tight">
-          Question {questionNumber}
-        </h2>
-        <p className="text-base text-foreground leading-relaxed mt-6 font-normal tracking-normal">
-          {question.text}
-        </p>
+        
+        {/* Topic Badge */}
+        <div className="inline-flex items-center px-2 sm:px-3 py-1 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium">
+          {question.topic}
+        </div>
+        
+        {/* Question Text - Mobile Optimized */}
+        <div className="bg-card border border-border rounded-lg p-4 sm:p-6">
+          <p className="text-sm sm:text-base lg:text-lg text-foreground leading-relaxed font-normal">
+            {question.text}
+          </p>
+        </div>
       </div>
 
-      {/* Answer Options */}
-      <div className="space-y-3">
+      {/* Mobile-Friendly Answer Options */}
+      <div className="space-y-2 sm:space-y-3">
         {question.options.map((option, index) => {
           const isSelected = selectedAnswer === index
           return (
             <button
               key={index}
               onClick={() => selectAnswer(question.id, index)}
-              className={`w-full p-5 text-left rounded-md transition-all border-2 ${
+              className={`w-full p-3 sm:p-4 lg:p-5 text-left rounded-lg transition-all duration-200 border-2 active:scale-[0.98] ${
                 isSelected
-                  ? 'border-accent bg-accent/5'
-                  : 'border-muted bg-card hover:border-muted-foreground/40'
+                  ? 'border-primary bg-primary/5 shadow-sm'
+                  : 'border-border bg-card hover:border-primary/40 hover:bg-primary/5'
               }`}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3 sm:gap-4">
+                {/* Option Letter */}
                 <div
-                  className={`flex-shrink-0 w-7 h-7 rounded-sm flex items-center justify-center font-semibold text-sm transition-colors ${
+                  className={`flex-shrink-0 w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center font-semibold text-xs sm:text-sm transition-colors ${
                     isSelected
-                      ? 'bg-accent text-background'
+                      ? 'bg-primary text-primary-foreground'
                       : 'bg-muted text-muted-foreground'
                   }`}
                 >
                   {String.fromCharCode(65 + index)}
                 </div>
-                <div className="flex-1 pt-0.5">
-                  <span className="text-foreground text-sm font-normal tracking-normal">{option}</span>
-                  {isSelected && (
-                    <span className="text-xs text-accent font-medium ml-2">
-                      Your answer
-                    </span>
-                  )}
+                
+                {/* Option Text */}
+                <div className="flex-1 pt-0.5 min-w-0">
+                  <span className="text-foreground text-xs sm:text-sm lg:text-base font-normal leading-relaxed block">
+                    {option}
+                  </span>
                 </div>
+                
+                {/* Selection Indicator */}
                 {isSelected && (
-                  <CheckCircle2 className="flex-shrink-0 w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className="text-xs text-primary font-medium hidden sm:inline">
+                      Selected
+                    </span>
+                    <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                  </div>
                 )}
               </div>
             </button>
           )
         })}
+      </div>
+
+      {/* Mobile Helper Text */}
+      <div className="text-center text-xs sm:text-sm text-muted-foreground">
+        Tap an option to select your answer
       </div>
     </div>
   )

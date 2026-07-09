@@ -4,6 +4,7 @@ import {
   getQuestionsByTopic as getTopicQuestions, 
   getUniqueExamSet, 
   getRandomExamQuestions, 
+  getBalancedExamQuestions,
   getBalancedRandomQuestions as getBalancedQuestions,
   getExamStructureInfo,
   getAllAvailableExamSets,
@@ -26,12 +27,17 @@ export function getExamSet(examSetNumber: number): ExamQuestion[] {
   return getUniqueExamSet(examSetNumber)
 }
 
-// Get random questions from any of the 7 exam sets
+// Get random questions distributed across ALL topics (RECOMMENDED FOR EXAMS)
 export function getRandomQuestions(count: number = 50): ExamQuestion[] {
+  return getBalancedExamQuestions(count)
+}
+
+// Get random questions from a specific exam set (alternative option)
+export function getRandomQuestionsFromSet(count: number = 50): ExamQuestion[] {
   return getRandomExamQuestions(count)
 }
 
-// Get balanced questions across all topics
+// Get balanced questions across all topics (legacy function)
 export function getBalancedRandomQuestions(count: number): ExamQuestion[] {
   return getBalancedQuestions(count)
 }
@@ -42,7 +48,8 @@ export {
   getAllAvailableExamSets, 
   validateExamStructure, 
   getTopicDistribution, 
-  generateQuestionDatabaseSummary 
+  generateQuestionDatabaseSummary,
+  getBalancedExamQuestions
 }
 
 // Utility function to get exam set info (backwards compatibility)

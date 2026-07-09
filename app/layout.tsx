@@ -6,9 +6,18 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Salesforce Exam Platform',
-  description: 'Professional online certification exam',
-  generator: 'v0.app',
+  title: 'Salesforce MCQ Practice Exam',
+  description: 'Professional Salesforce certification practice exam with 350+ questions covering Apex, LWC, Data Cloud, and more',
+  generator: 'Salesforce MCQ Platform',
+  keywords: ['Salesforce', 'MCQ', 'practice exam', 'certification', 'Apex', 'Lightning Web Components', 'Data Cloud'],
+  authors: [{ name: 'Salesforce MCQ Platform' }],
+  creator: 'Salesforce MCQ Platform',
+  publisher: 'Salesforce MCQ Platform',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   icons: {
     icon: [
       {
@@ -26,6 +35,7 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+  manifest: '/manifest.json',
 }
 
 export const viewport: Viewport = {
@@ -36,7 +46,9 @@ export const viewport: Viewport = {
   ],
   width: 'device-width',
   initialScale: 1,
-  userScalable: true,
+  maximumScale: 1,
+  userScalable: false, // Prevent zoom on mobile for better UX
+  viewportFit: 'cover', // Support for devices with notches
 }
 
 export default function RootLayout({

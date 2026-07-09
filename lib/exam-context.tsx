@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useReducer, useCallback, ReactNode } from 'react'
 import { ExamQuestion, ExamSession, ExamResult } from './types'
-import { getRandomExamQuestions } from './questions'
+import { getBalancedExamQuestions } from './questions'
 
 interface ExamContextType {
   questions: ExamQuestion[]
@@ -115,7 +115,7 @@ export function ExamProvider({ children }: { children: ReactNode }) {
   })
 
   const startExam = useCallback(() => {
-    const questions = getRandomExamQuestions(50) // 50 questions from one of 7 unique sets
+    const questions = getBalancedExamQuestions(50) // 50 questions balanced across ALL topics
     dispatch({ type: 'START_EXAM', questions })
   }, [])
 
@@ -136,7 +136,8 @@ export function ExamProvider({ children }: { children: ReactNode }) {
 
     const answers = state.questions.map(question => {
       const selected = state.session!.answers[question.id] ?? null
-      const isCorrect = selected === question.correctAnswer
+      // Only correct if answered AND answer is correct (unanswered = wrong)
+      const isCorrect = selected !== null && selected === question.correctAnswer
       return {
         questionId: question.id,
         selected,
@@ -147,6 +148,10 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     })
 
     const correctAnswers = answers.filter(a => a.isCorrect).length
+    const answeredQuestions = answers.filter(a => a.selected !== null).length
+    const unansweredQuestions = state.questions.length - answeredQuestions
+    
+    // Score calculation: only correct answers count, unanswered = wrong
     const score = Math.round((correctAnswers / state.questions.length) * 100)
 
     const topicBreakdown: Record<string, { correct: number; total: number }> = {
@@ -155,6 +160,7 @@ export function ExamProvider({ children }: { children: ReactNode }) {
       'Data Cloud Harmonization & Identity Engineering': { correct: 0, total: 0 },
       'Salesforce Fundamentals': { correct: 0, total: 0 },
       'Salesforce Automation': { correct: 0, total: 0 },
+      'Apex Development': { correct: 0, total: 0 },
       'Data Modeling': { correct: 0, total: 0 },
       'Process Automation': { correct: 0, total: 0 },
       'Security and Access': { correct: 0, total: 0 },
@@ -190,6 +196,10 @@ export function ExamProvider({ children }: { children: ReactNode }) {
       timeUsed,
       topicBreakdown,
       answers,
+      // Additional stats for better tracking
+      answeredQuestions,
+      unansweredQuestions,
+      wrongAnswers: state.questions.length - correctAnswers // includes both wrong answers and unanswered
     }
 
     dispatch({ type: 'SUBMIT_EXAM', result })

@@ -30,4 +30,8 @@ export interface ExamResult {
     isCorrect: boolean
     question: ExamQuestion
   }>
+  // Additional tracking for answered/unanswered questions
+  answeredQuestions?: number
+  unansweredQuestions?: number
+  wrongAnswers?: number
 }

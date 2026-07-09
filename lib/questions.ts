@@ -4988,6 +4988,66 @@ export function getRandomExamQuestions(count: number = 50): ExamQuestion[] {
   return getUniqueExamSet(randomSet).slice(0, count)
 }
 
+// NEW FUNCTION: Get balanced questions across ALL topics for each exam
+export function getBalancedExamQuestions(count: number = 50): ExamQuestion[] {
+  // Get all available topics from the questions
+  const topicCounts: Record<string, ExamQuestion[]> = {}
+  
+  // Group questions by topic
+  QUESTIONS.forEach(question => {
+    if (!topicCounts[question.topic]) {
+      topicCounts[question.topic] = []
+    }
+    topicCounts[question.topic].push(question)
+  })
+  
+  const availableTopics = Object.keys(topicCounts)
+  const questionsPerTopic = Math.floor(count / availableTopics.length)
+  const remainder = count % availableTopics.length
+  
+  const selectedQuestions: ExamQuestion[] = []
+  
+  // Get questions from each topic
+  availableTopics.forEach((topic, index) => {
+    const topicQuestions = topicCounts[topic]
+    
+    // Shuffle questions for this topic
+    const shuffled = [...topicQuestions]
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+    }
+    
+    // Calculate how many questions to take from this topic
+    const questionsToTake = questionsPerTopic + (index < remainder ? 1 : 0)
+    
+    // Take the calculated number of questions (or all available if less)
+    selectedQuestions.push(...shuffled.slice(0, Math.min(questionsToTake, shuffled.length)))
+  })
+  
+  // Final shuffle of all selected questions
+  for (let i = selectedQuestions.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [selectedQuestions[i], selectedQuestions[j]] = [selectedQuestions[j], selectedQuestions[i]]
+  }
+  
+  // Ensure we return exactly the requested count
+  const result = selectedQuestions.slice(0, count)
+  
+  // If we don't have enough questions, add more randomly from available topics
+  while (result.length < count && selectedQuestions.length > result.length) {
+    const remainingQuestions = QUESTIONS.filter(q => !result.includes(q))
+    if (remainingQuestions.length > 0) {
+      const randomIndex = Math.floor(Math.random() * remainingQuestions.length)
+      result.push(remainingQuestions[randomIndex])
+    } else {
+      break
+    }
+  }
+  
+  return result
+}
+
 // Get questions distributed across all available topics (for balanced exams)
 export function getBalancedRandomQuestions(count: number): ExamQuestion[] {
   const topics = [

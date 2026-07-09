@@ -165,3 +165,103 @@
     @apply bg-background text-foreground;
   }
 }
+/* Mobile-specific optimizations for MCQ exam */
+@layer utilities {
+  /* Safe area padding for mobile devices with notches */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .pl-safe {
+    padding-left: env(safe-area-inset-left);
+  }
+  
+  .pr-safe {
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 768px) {
+  /* Increase tap targets for better mobile usability */
+  button {
+    min-height: 44px; /* Apple's recommended minimum tap target size */
+  }
+  
+  /* Better scrolling on mobile */
+  .scrollable {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Prevent zoom on input focus */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  select,
+  textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Mobile-specific exam interface */
+@media (max-width: 640px) {
+  /* Compact spacing for mobile screens */
+  .mobile-compact {
+    @apply space-y-3;
+  }
+  
+  /* Full-width buttons on mobile */
+  .mobile-full-button {
+    @apply w-full text-center justify-center;
+  }
+}
+
+/* Focus styles for better accessibility */
+@layer components {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  /* Custom scrollbar for better mobile experience */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: theme(colors.muted.DEFAULT) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: theme(colors.muted.DEFAULT);
+    border-radius: 3px;
+  }
+}
+
+/* Animation for better mobile feedback */
+@keyframes mobile-press {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.mobile-press-animation {
+  animation: mobile-press 0.1s ease-out;
+}
+
+/* Dark mode improvements for mobile readability */
+@media (prefers-color-scheme: dark) {
+  /* Higher contrast for better mobile readability in dark mode */
+  :root:not(.light) {
+    --primary: oklch(0.7 0.15 240); /* Brighter blue for better mobile visibility */
+  }
+}
