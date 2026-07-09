@@ -13,9 +13,6 @@ export function ExamLanding() {
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
             Salesforce MCQ Practice
           </h1>
-          <p className="text-sm text-muted-foreground font-medium tracking-wide">
-            50 QUESTIONS • 75 MINUTES
-          </p>
         </div>
 
         {/* Quick Info - Single Horizontal Row */}

@@ -74,7 +74,7 @@ export function ExamPage() {
                     submitExam()
                   }
                 }}
-                className="px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap"
+                className="px-3 sm:px-4 lg:px-6 py-1.5 sm:py-2 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-xs sm:text-sm transition-colors whitespace-nowrap"
               >
                 Finish Test
               </button>

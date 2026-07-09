@@ -50,7 +50,7 @@ export function ExamResults({ result, onReset }: ExamResultsProps) {
             <div className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary">{result.score}%</div>
             <p className="text-xs sm:text-sm text-muted-foreground">Overall Score</p>
             <div className="flex justify-center pt-1 sm:pt-2">
-              <div className="inline-block px-2 sm:px-3 py-1 rounded-full bg-primary/10 text-xs sm:text-sm font-medium text-primary">
+              <div className="inline-block px-2 sm:px-3 py-1 rounded-md bg-primary/10 text-xs sm:text-sm font-medium text-primary">
                 {result.correctAnswers} / {result.totalQuestions} Correct
               </div>
             </div>
@@ -89,19 +89,6 @@ export function ExamResults({ result, onReset }: ExamResultsProps) {
                 }`}
                 style={{ width: `${result.score}%` }}
               />
-            </div>
-            {/* Passing threshold line */}
-            <div className="relative w-full">
-              <div 
-                className="absolute top-0 w-0.5 h-2 bg-border"
-                style={{ left: '60%', transform: 'translateX(-50%)' }}
-              />
-              <div 
-                className="absolute -top-1 text-xs text-muted-foreground"
-                style={{ left: '60%', transform: 'translateX(-50%)' }}
-              >
-                60%
-              </div>
             </div>
           </div>
 
