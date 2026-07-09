@@ -5025,27 +5025,26 @@ export function getBalancedExamQuestions(count: number = 50): ExamQuestion[] {
     selectedQuestions.push(...shuffled.slice(0, Math.min(questionsToTake, shuffled.length)))
   })
   
+  // If we don't have exactly the count requested, add more questions
+  while (selectedQuestions.length < count) {
+    const usedQuestionIds = new Set(selectedQuestions.map(q => q.id))
+    const remainingQuestions = QUESTIONS.filter(q => !usedQuestionIds.has(q.id))
+    
+    if (remainingQuestions.length === 0) break // No more questions available
+    
+    // Randomly pick from remaining questions
+    const randomIndex = Math.floor(Math.random() * remainingQuestions.length)
+    selectedQuestions.push(remainingQuestions[randomIndex])
+  }
+  
   // Final shuffle of all selected questions
   for (let i = selectedQuestions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [selectedQuestions[i], selectedQuestions[j]] = [selectedQuestions[j], selectedQuestions[i]]
   }
   
-  // Ensure we return exactly the requested count
-  const result = selectedQuestions.slice(0, count)
-  
-  // If we don't have enough questions, add more randomly from available topics
-  while (result.length < count && selectedQuestions.length > result.length) {
-    const remainingQuestions = QUESTIONS.filter(q => !result.includes(q))
-    if (remainingQuestions.length > 0) {
-      const randomIndex = Math.floor(Math.random() * remainingQuestions.length)
-      result.push(remainingQuestions[randomIndex])
-    } else {
-      break
-    }
-  }
-  
-  return result
+  // Return exactly the requested count
+  return selectedQuestions.slice(0, count)
 }
 
 // Get questions distributed across all available topics (for balanced exams)
