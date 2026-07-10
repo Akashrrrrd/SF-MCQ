@@ -38,7 +38,7 @@ export function ExamResults({ result, onReset }: ExamResultsProps) {
           </h1>
           <p className="text-lg text-muted-foreground">
             {isPassed 
-              ? `Congratulations! You&apos;ve successfully completed the certification exam.`
+              ? `Congratulations! You have successfully passed the exam.`
               : 'Review your performance and try again to achieve a passing score.'}
           </p>
         </div>
