@@ -18,596 +18,567 @@ const QUESTIONS: ExamQuestion[] = [
   // Salesforce Fundamentals (20 questions)
   {
     id: 'sf-1',
-    text: 'What is the primary function of a Profile in Salesforce?',
+    text: 'What is the primary purpose of Organization-Wide Defaults (OWD) in Salesforce?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'To determine record visibility via the Role Hierarchy',
-      'To control what a user can do with object permissions, field-level security, and tab visibility',
-      'To automate data sharing rules across different departments',
-      'To establish the organization\'s fiscal year boundaries'
+      'To define the baseline level of object record access for the most restricted users',
+      'To control the fields a user can view on a page layout',
+      'To automate the assignment of leads to queues',
+      'To determine the fiscal calendar boundaries of the company'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Profiles define baseline object permissions (Create, Read, Edit, Delete), field-level security, page layout assignments, and which tabs are visible to a user.'
+    explanation: 'Organization-Wide Defaults establish the baseline data visibility level for records a user does not own.'
   },
   {
     id: 'sf-2',
-    text: 'Which type of relationship must be created if the child record\'s access and lifecycle are strictly dependent on the parent record?',
+    text: 'Which feature automatically grants vertical record access to users positioned higher in the hierarchy management chain?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Lookup Relationship',
-      'Many-to-Many Relationship',
-      'Master-Detail Relationship',
-      'Self-Relationship'
+      'Sharing Rules',
+      'Permission Sets',
+      'Role Hierarchy',
+      'Public Groups'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'In a Master-Detail relationship, the master (parent) record controls the behavior, sharing settings, and lifecycle of the detail (child) record. If the master is deleted, the detail records are also deleted.'
+    explanation: 'The Role Hierarchy automatically rolls record access up to managers and executive roles above the record owner.'
   },
   {
     id: 'sf-3',
-    text: 'What does the Organization-Wide Default (OWD) setting "Controlled by Parent" signify for a custom object?',
+    text: 'What Salesforce feature allows you to display completely different picklist values and page layouts on the same object based on business needs?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Access to the object is inherited from the user\'s manager in the Role Hierarchy',
-      'Access to the detail record is determined by the sharing settings of its associated master record',
-      'Only the creator of the parent record can view the child record',
-      'The object relies on Apex Managed Sharing for all access levels'
+      'Validation Rules',
+      'Record Types',
+      'Compact Layouts',
+      'Search Layouts'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: '"Controlled by Parent" is used in Master-Detail relationships or specific standard objects, meaning a user must have access to the parent record to view or edit the child record.'
+    explanation: 'Record Types allow you to offer distinct business processes, picklist selections, and page views on a single object.'
   },
   {
     id: 'sf-4',
-    text: 'What is the maximum number of Master-Detail relationships a single custom object can have?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      '1',
-      '2',
-      '5',
-      'Unlimited'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce imposes a strict platform limit of 2 Master-Detail relationship fields per custom object.'
-  },
-  {
-    id: 'sf-5',
-    text: 'Which Salesforce feature allows you to extend functional permissions to a single user or a small group of users without changing their underlying Profile?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Role Hierarchy',
-      'Permission Sets',
-      'Sharing Rules',
-      'Public Groups'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Permission Sets are used to grant additional permissions and access levels to specific users on top of their baseline Profile settings, adhering to the principle of least privilege.'
-  },
-  {
-    id: 'sf-6',
-    text: 'What is a "Junction Object" in Salesforce data modeling?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'A custom object with two Master-Detail relationships used to link two objects in a many-to-many relationship',
-      'A standard object used to map integrations between Salesforce and external APIs',
-      'An object that routes cases to support queues based on region',
-      'A temporary storage object used by Data Loader during mass updates'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'A junction object is a custom object with two Master-Detail relationships, which effectively links two separate objects together in a many-to-many model (e.g., Job Applications linking Positions and Candidates).'
-  },
-  {
-    id: 'sf-7',
-    text: 'Which report type format allows you to group rows by multiple fields and group columns by fields to create a two-dimensional grid summary?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Tabular Report',
-      'Summary Report',
-      'Matrix Report',
-      'Joined Report'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'Matrix reports allow you to group records by both rows and columns, offering a summarized, grid-like view of complex data relationships.'
-  },
-  {
-    id: 'sf-8',
-    text: 'What is the function of a Roll-Up Summary field?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'It concatenates text strings from multiple child records onto a parent record',
-      'It calculates values from related detail records on a master record, such as COUNT, SUM, MIN, or MAX',
-      'It dynamically displays external data inside a Salesforce page layout',
-      'It maps field fields between standard and custom objects during data migration'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Roll-Up Summary fields can only be created on the master side of a Master-Detail relationship to calculate summaries of numeric, date, or datetime fields on the related detail records.'
-  },
-  {
-    id: 'sf-9',
-    text: 'What does Field-Level Security (FLS) directly control?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Whether a user can delete entire records within an object',
-      'The visibility and editability of specific fields for a given profile, regardless of page layouts',
-      'The maximum characters allowed in a custom text field',
-      'The criteria used to trigger a record sharing rule'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'FLS enforces security at the field layer. Even if a field is present on a page layout, a user cannot view or edit it if their FLS settings restrict it.'
-  },
-  {
-    id: 'sf-10',
-    text: 'When using Salesforce Data Loader, what is the key functional difference between an "Update" and an "Upsert" operation?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Update requires an external ID, while Upsert requires a record ID',
-      'Update modifies existing records; Upsert modifies existing records or inserts new ones if no match is found',
-      'Update changes field security, while Upsert modifies actual record values',
-      'Update bypasses Validation Rules, while Upsert enforces them'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Upsert (Update/Insert) checks for existing records using a Record ID or External ID. If a match is found, it updates it; otherwise, a new record is created. Update only modifies pre-existing records.'
-  },
-  {
-    id: 'sf-11',
-    text: 'What does the "Grant Access Using Hierarchies" checkbox accomplish when configured on a custom object\'s Organization-Wide Defaults?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'It allows users at any level to edit any record in the system',
-      'It automatically grants record access to users vertically higher in the Role Hierarchy than the record owner',
-      'It forces the object to use a Master-Detail data sharing structure',
-      'It automatically copies record access to lateral peers in the same team'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'When enabled (which is mandatory for standard objects and optional for custom objects), users in roles above the record owner in the hierarchy automatically inherit the same level of access to those records.'
-  },
-  {
-    id: 'sf-12',
-    text: 'When configuring Organization-Wide Defaults (OWD) for an object, what is the most restrictive baseline setting available?',
+    text: 'What is the most restrictive baseline access setting available when configuring Organization-Wide Defaults?',
     topic: 'Salesforce Fundamentals',
     options: [
       'Public Read Only',
-      'Controlled by Parent',
+      'Public Read/Write',
       'Private',
-      'Public Read/Write'
+      'Controlled by Parent'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Private is the most restrictive setting. It ensures that only the record owner, and those above them in the role hierarchy (if enabled), can see or interact with the records.'
+    explanation: 'Private is the most restrictive setting, ensuring only the record owner and those inherited via hierarchy can see the data.'
+  },
+  {
+    id: 'sf-5',
+    text: 'Which administrative component directly defines a user\'s baseline functional object permissions (CRUD) and tab visibilities?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Profiles',
+      'Sharing Rules',
+      'Role Hierarchy',
+      'Queues'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Profiles determine baseline functional credentials, defining object-level permissions like Create, Read, Edit, and Delete.'
+  },
+  {
+    id: 'sf-6',
+    text: 'What configuration setting determines the start, end, and layout periods of seasonal forecasts and dashboards in a Salesforce org?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Company Holiday Schedule',
+      'Fiscal Year Settings',
+      'Locale Configuration',
+      'Time Zone Parameters'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Fiscal Year configurations set up the period thresholds used in operational forecasts, reporting, and quotas.'
+  },
+  {
+    id: 'sf-7',
+    text: 'What type of object relationship must be configured if the child record lifecycle depends completely on the parent record?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Lookup Relationship',
+      'Master-Detail Relationship',
+      'Junction Relationship',
+      'Hierarchical Relationship'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'A Master-Detail relationship creates a tight link where the child record access and visibility lifecycle are governed by the parent.'
+  },
+  {
+    id: 'sf-8',
+    text: 'What custom field capability dynamically aggregates numeric, count, or date values from detail records onto a master record?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Formula Field',
+      'Roll-Up Summary Field',
+      'Cross-Object Formula',
+      'Auto-Number Field'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Roll-Up Summary fields calculate aggregate values from related records in a Master-Detail relationship.'
+  },
+  {
+    id: 'sf-9',
+    text: 'Which security tool secures specific object fields globally across layouts, reports, and search arrays?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Organization-Wide Defaults',
+      'Field-Level Security (FLS)',
+      'Sharing Rules',
+      'Validation Rules'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Field-Level Security directly controls whether a user can see or modify a specific field regardless of page layouts.'
+  },
+  {
+    id: 'sf-10',
+    text: 'What Salesforce data modeling structure links two distinct objects together to establish a many-to-many relationship?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Junction Object',
+      'Self-Relationship',
+      'Lookup Object',
+      'External Object'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'A junction object is a custom object with two Master-Detail relationships, cleanly connecting records in a many-to-many layout.'
+  },
+  {
+    id: 'sf-11',
+    text: 'Which tool allows administrators to extend optional object and system permissions to a single user without editing their profile?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Permission Sets',
+      'Role Hierarchy',
+      'Public Groups',
+      'Sharing Rules'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Permission Sets grant incremental permissions to individual users on top of their baseline profile allocations.'
+  },
+  {
+    id: 'sf-12',
+    text: 'What does the Organization-Wide Default setting "Controlled by Parent" signify for a custom child object record?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Access is determined by the role of the user\'s manager',
+      'Access is inherited from the sharing settings of its associated parent record',
+      'The record can only be modified by a system administrator',
+      'The record relies on manual apex sharing triggers for all users'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Controlled by Parent means a user can only view or edit the child record if they have equivalent access to the related parent record.'
   },
   {
     id: 'sf-13',
-    text: 'You have a multi-level Role Hierarchy where a Regional Manager needs to see all their sales team\'s records. How does Salesforce\'s role hierarchy accomplish this without any Sharing Rules?',
+    text: 'An organization needs their support team to view all corporate account details, but only the specific managers assigned to a region should be able to edit them. How should the administrator configure the OWD settings?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Users in higher roles automatically inherit record access of all users positioned below them in the hierarchy',
-      'Manual sharing configurations must be set up for each individual sales rep',
-      'Sharing Rules must be built for every individual level of the hierarchy',
-      'Custom Apex code must be deployed to pass access upward'
+      'Set OWD to Public Read/Write and restrict access using a validation rule',
+      'Set OWD to Public Read Only and create a Sharing Rule to grant Read/Write access to the regional manager group',
+      'Set OWD to Private and build an Apex trigger handler to pass edit rights',
+      'Set OWD to Controlled by Parent and restrict the profiles'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Role Hierarchy automatically opens up vertical access. Users higher up in the hierarchy automatically inherit view and edit permissions for records owned by or shared with users below them.'
+    explanation: 'Setting OWD to Public Read Only gives everyone visibility. A Sharing Rule then opens up Edit access selectively for the managers.'
   },
   {
     id: 'sf-14',
-    text: 'Your organization needs different business processes for Account records based on industry type (Technology vs. Healthcare). What Salesforce feature enables this without creating separate custom objects?',
+    text: 'A company operates two separate divisions: Commercial Sales and Public Sector Support. The two groups track completely different fields on Case records. How can this be handled without custom objects?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Validation Rules tailored to string lookups',
-      'Record Types paired with different Page Layouts and Picklist values',
-      'Field-Level Security profiles',
-      'Custom Report Types filtering out industries'
+      'Create separate Validation Rules for each team',
+      'Configure two separate Page Layouts assigned via Record Types matching each division',
+      'Modify Field-Level Security settings globally to block visibility',
+      'Build custom reports to separate the fields visible to users'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Record Types allow you to offer distinct business workflows, picklist values, and tailored page layouts to different users on the exact same object based on criteria like industry.'
+    explanation: 'Record Types paired with separate Page Layouts allow you to display tailored field configurations for different business processes.'
   },
   {
     id: 'sf-15',
-    text: 'A user requires baseline read-only access to Opportunity records across the company, but needs edit access specifically for Opportunities owned by their direct regional team. How would you configure this combination?',
+    text: 'A sales representative has Read-Only access to Opportunities at the profile level. A criteria-based sharing rule is deployed that shares these records with Read/Write access. What is the representative\'s effective access level?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Set the OWD to Public Read/Write and restrict permissions using a Profile',
-      'Set the OWD to Public Read Only, then create a Criteria-Based Sharing Rule to grant Read/Write access to the regional Public Group',
-      'Create a Permission Set that grants Modify All access globally',
-      'Set the OWD to Private and build an Apex trigger to open up access'
+      'Read/Write access',
+      'Read-Only access',
+      'No Access due to a conflict exception',
+      'Full administrative access'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'By setting the OWD to Public Read Only, everyone can view all records. You can then layer a Sharing Rule on top to grant the necessary Read/Write (Edit) access to a specific group or role.'
+    explanation: 'Object permissions on the Profile act as a firm ceiling. Sharing rules extend record access but cannot override a lack of object-level edit rights.'
   },
   {
     id: 'sf-16',
-    text: 'Your company\'s fiscal year starts in July instead of January. How does configuring this Custom Fiscal Year setting in Salesforce affect forecasting and reporting?',
+    text: 'Universal Containers wants to aggregate the total invoice amount fields from a custom Invoice object onto an Account page layout. The Invoice object is currently linked via a Lookup relationship. What must the administrator do first?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'It has zero operational impact on reporting systems',
-      'It only changes the aesthetic calendar layout on the homepage dashboard',
-      'It shifts and aligns fiscal periods in Collaborative Forecasts, reporting ranges, and quota timelines to start in July',
-      'It requires admins to manually adjust dating scripts on every report quarterly'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'Changing the fiscal year shifts the timeline boundaries across the platform, meaning native dashboards, quotas, forecasts, and temporal filters (e.g., "THIS FISCAL QUARTER") align with the July start date.'
-  },
-  {
-    id: 'sf-17',
-    text: 'Universal Containers wants to prevent sales reps from saving an Opportunity with a discount greater than 30% unless a manager has approved it. Which declarative tool should be used to enforce this rule at the moment of saving?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Validation Rule',
-      'Page Layout mandatory field option',
-      'Formula Field',
-      'Approval Process'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'A Validation Rule evaluates a formula when a record is saved. If the criteria are met (Discount > 0.30 AND Approved == False), it throws an error message and stops the record from saving.'
-  },
-  {
-    id: 'sf-18',
-    text: 'A customer support agent needs to view the "SSN" field on a Case record to verify customers, but sales users should not be able to see or search this field at all. How should the administrator enforce this?',
-    topic: 'Salesforce Fundamentals',
-    options: [
-      'Remove the field from the Sales Page Layout only',
-      'Set Field-Level Security to "Visible" for the Support Profile and uncheck "Visible" for the Sales Profile',
-      'Create a Validation Rule that hides the text if the user is in Sales',
-      'Set the Organization-Wide Default for the Case object to Private'
+      'Write an Apex trigger to sum up the values',
+      'Convert the Lookup relationship field into a Master-Detail relationship field',
+      'Create a cross-object formula field on the Account layout',
+      'Build a validation rule on the Invoice object'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Field-Level Security (FLS) controls field visibility globally across layouts, searches, reports, and APIs. Removing it from a page layout does not prevent exposure via reports or global search, making FLS the secure choice.'
+    explanation: 'Roll-Up Summary fields require a Master-Detail relationship to aggregate child data points natively onto a parent record.'
+  },
+  {
+    id: 'sf-17',
+    text: 'A business requires that when an audit record is deleted, all related compliance logs are removed automatically. What relationship type should be chosen?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Lookup Relationship',
+      'Master-Detail Relationship',
+      'Junction Relationship',
+      'Hierarchical Relationship'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Master-Detail relationships enforce a cascade-delete behavior where deleting the parent record removes all associated child records.'
+  },
+  {
+    id: 'sf-18',
+    text: 'An administrator needs to grant a temporary project manager the ability to delete case records for two weeks without changing the baseline permissions of the general support profile. What is the best approach?',
+    topic: 'Salesforce Fundamentals',
+    options: [
+      'Modify the support profile permissions and revert them in two weeks',
+      'Create a custom Permission Set with delete permissions and assign it to the project manager',
+      'Create a new temporary role hierarchy level specifically for deleting records',
+      'Build a validation rule that conditionally permits deletions based on username'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Permission sets allow temporary or unique permissions to be granted to individual users without changing profile configurations.'
   },
   {
     id: 'sf-19',
-    text: 'An administrator needs to import a list of 45,000 Lead records from a CSV file. The import process must check for duplicate leads using the Email address field. Which tool is best suited for this requirement?',
+    text: 'A user is unable to view a custom field on an Opportunity record page layout despite the administrator confirming the field is placed in the section. What should be checked next?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Data Import Wizard',
-      'Data Loader',
-      'Schema Builder',
-      'Mass Transfer Records'
+      'The Organization-Wide Defaults settings',
+      'Field-Level Security settings on the user\'s Profile',
+      'The custom object validation rule criteria',
+      'The global search layout column allocations'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Data Import Wizard handles up to 50,000 records and features built-in duplicate matching capabilities (by Name, Email, or External ID) for standard objects like Leads and Accounts.'
+    explanation: 'If a field is placed on a layout but hidden from a user, it means their Field-Level Security setting restricts their profile from viewing it.'
   },
   {
     id: 'sf-20',
-    text: 'A company has a custom object called "Expense Report". When an Expense Report is deleted, all related "Expense Line Item" records must be automatically deleted simultaneously. What relationship type should be configured?',
+    text: 'A financial firm changes its corporate quarters to align with an October start date. How can an administrator ensure forecasts and quotas update correctly across the application?',
     topic: 'Salesforce Fundamentals',
     options: [
-      'Lookup Relationship from Expense Report to Expense Line Item',
-      'Lookup Relationship from Expense Line Item to Expense Report with "Clear the value of this field" selected',
-      'Master-Detail Relationship with Expense Report as the Master object',
-      'Many-to-Many Relationship using a junction framework'
+      'Manually adjust every individual report quarterly',
+      'Configure the Custom Fiscal Year settings in the Company Information setup',
+      'Deploy a validation rule to recalculate account dates',
+      'Reassign the role hierarchy levels of the sales managers'
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A Master-Detail relationship establishes a cascade-delete behavior. Since the Line Items are structurally dependent on the parent Expense Report, making the Report the "Master" ensures automatic clean-up of child records upon deletion.'
+    explanation: 'Configuring custom fiscal years adjusts the platform boundaries for forecasts, reporting filters, and quota timelines automatically.'
   },
-
   {
     id: 'auto-1',
-    text: 'A company needs to update 100,000 records daily. Which automation approach is best?',
+    text: 'Which automation tool is specifically designed to handle long-running, multi-step, multi-user approval routing workflows in Salesforce?',
     topic: 'Salesforce Automation',
     options: [
       'Workflow Rules',
       'Process Builder',
-      'Scheduled Batch Apex',
-      'Real-time Flow'
+      'Approval Process',
+      'Validation Rules'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Scheduled Batch Apex is designed for processing large volumes of data asynchronously.'
+    explanation: 'Approval Processes are built to lock records, manage multi-step evaluations, and route actions across users or queues for sign-off.'
   },
   {
     id: 'auto-2',
-    text: 'What happens if a trigger recursively calls itself?',
+    text: 'What happens to a record database transaction if an unhandled exception or error is thrown inside an execution trigger?',
     topic: 'Salesforce Automation',
     options: [
-      'Infinite loop until timeout',
-      'Salesforce prevents recursion after 16 levels',
-      'Only the first trigger executes',
-      'All triggers execute in parallel'
+      'The valid data fields are saved while faulty fields are skipped',
+      'The entire database transaction is completely rolled back and no changes are committed',
+      'The error is ignored and logged in an administrative dashboard',
+      'The record owner profile is automatically suspended'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce has built-in protection against recursive triggers, limiting depth to 16 levels.'
+    explanation: 'Salesforce enforces strict transaction boundaries. An unhandled exception rolls back the whole event to protect data integrity.'
   },
   {
     id: 'auto-3',
-    text: 'A validation rule fails when which condition is met?',
+    text: 'What condition causes a standard Salesforce Validation Rule to throw an error message and block a record save operation?',
     topic: 'Salesforce Automation',
     options: [
-      'When the formula returns TRUE',
-      'When the formula returns FALSE',
-      'When the formula returns NULL',
-      'When the formula has an error'
+      'When the formula evaluates to TRUE',
+      'When the formula evaluates to FALSE',
+      'When the formula returns a NULL value',
+      'When the formula references another object field'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Validation rules prevent record save when the validation formula evaluates to TRUE.'
+    explanation: 'Validation Rules check for invalid states. If the formula expression evaluates to TRUE, it blocks the transaction and presents the error.'
   },
   {
     id: 'auto-4',
-    text: 'What is the primary architectural purpose of utilizing a "Fast Field Updates" (Before-Save) Flow over an "Actions and Related Records" (After-Save) Flow?',
+    text: 'What asynchronous Apex feature is best suited to process or update large volumes of records (up to millions) in independent chunks?',
     topic: 'Salesforce Automation',
     options: [
-      'To execute complex asynchronous integrations with external REST APIs',
-      'To update fields on the triggering record before it is committed to the database, bypassing expensive after-save trigger steps',
-      'To allow the flow to perform cross-object DML updates on unrelated parent objects',
-      'To automatically attach email templates to outbound messages'
+      'Future Methods',
+      'Batch Apex',
+      'Queueable Apex',
+      'Before-Save Flows'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Before-Save Flows (Fast Field Updates) are significantly faster because they modify the record\'s fields in-memory before it hits the database, preventing an additional, costly database update cycle.'
+    explanation: 'Batch Apex chunks large data sets into manageable transactions to stay within platform governor limits.'
   },
   {
     id: 'auto-5',
-    text: 'In an Apex Trigger framework, what is the core benefit of utilizing a design pattern that routes all logic through a single structural Handler class?',
+    text: 'What is the maximum recursive trigger execution level limit enforced by the Salesforce platform to prevent infinite loops?',
     topic: 'Salesforce Automation',
     options: [
-      'It increases the governor limits for SOQL queries inside the current context',
-      'It enforces strict control over the execution order of operations and enhances testability and modularity',
-      'It bypasses Validation Rules entirely during data imports',
-      'It guarantees that the trigger will execute asynchronously inside the thread'
+      '5 levels',
+      '16 levels',
+      '50 levels',
+      '100 levels'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Trigger Handlers remove logic from the trigger definition itself, allowing developers to cleanly control the execution sequence of functions across various trigger contexts (like before insert vs after insert).'
+    explanation: 'Salesforce has built-in loop protection that stops execution and throws an error if a trigger calls itself recursively beyond 16 levels.'
   },
   {
     id: 'auto-6',
-    text: 'Which statement accurately describes the transactional behavior of an Approval Process when a record enters an initial submission step?',
+    text: 'Which Flow type is designed to collect data inputs via guided graphical screens on record layouts?',
     topic: 'Salesforce Automation',
     options: [
-      'The record is permanently locked against changes from all users, including System Administrators',
-      'The record is locked by default to prevent modifications, though configuration can allow administrators or the designated approver to edit it',
-      'The record is automatically cloned, and edits are tracked on a shadow record frame',
-      'The record undergoes a hard database delete if rejected at the final stage'
+      'Record-Triggered Flow',
+      'Screen Flow',
+      'Autolaunched Flow',
+      'Schedule-Triggered Flow'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Approval Processes lock records to maintain data integrity during evaluations. However, settings allow administrators (or administrators plus the current approver) to make updates.'
+    explanation: 'Screen Flows present user interface elements to collect input data and step users through guided visual workflows.'
   },
   {
     id: 'auto-7',
-    text: 'What is the default batch size when an executable instance of Batch Apex runs, and what is its maximum permissible configuration limit?',
+    text: 'What is the default batch chunk size parameter processed during an individual loop execution phase in Batch Apex?',
     topic: 'Salesforce Automation',
     options: [
-      'Default is 1 record, maximum is 100 records',
-      'Default is 200 records, maximum is 2,000 records',
-      'Default is 500 records, maximum is 5,000 records',
-      'Default is 1,000 records, maximum is 10,000 records'
+      '1 record',
+      '200 records',
+      '1,000 records',
+      '2,000 records'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Batch Apex chunks records into scopes. The system default is 200 records per batch transaction, but you can configure a custom size up to a hard ceiling of 2,000 records.'
+    explanation: 'By default, the system groups records into chunks of 200 items per batch transaction when executing a Batch Apex job.'
   },
   {
     id: 'auto-8',
-    text: 'What type of Flow element should be used when an automation needs to dynamically wait for a specific set of event criteria or a duration threshold before resuming execution?',
+    text: 'What declarative tool can be used to automatically route incoming support tickets to specific teams based on country criteria?',
     topic: 'Salesforce Automation',
     options: [
-      'Loop Element',
-      'Assignment Element',
-      'Pause Element',
-      'Collection Filter Element'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'The Pause element (or Orchestrator stages) allows an autolaunched or record-triggered flow to stop and wait for specific data conditions, platform events, or relative time triggers before continuing.'
-  },
-  {
-    id: 'auto-9',
-    text: 'Which capability is unique to Screen Flows compared to Record-Triggered Flows and Autolaunched Flows?',
-    topic: 'Salesforce Automation',
-    options: [
-      'The ability to run complex SOQL queries across standard objects',
-      'The ability to accept direct user inputs and guide them through interactive UI screens',
-      'The ability to run exclusively in a system context bypassing sharing settings',
-      'The capability to execute external HTTP callouts safely'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Screen Flows are the only flow type designed to embed user interface components on lightning pages, utility bars, or digital experiences to collect input from an active user.'
-  },
-  {
-    id: 'auto-10',
-    text: 'What is the programmatic purpose of using the "@InvocableMethod" annotation inside a custom Apex class?',
-    topic: 'Salesforce Automation',
-    options: [
-      'It optimizes database index routing for custom fields',
-      'It exposes an Apex method as a declarative action that can be directly called from Flow Builder',
-      'It marks a method as an active endpoint for external web service integrations',
-      'It forces a method to run in a dedicated test context'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Annotating an Apex method with @InvocableMethod lets declarative administrators find and launch that specialized code block directly inside Flow Builder as an Action.'
-  },
-  {
-    id: 'auto-11',
-    text: 'Which automation tool allows you to build sophisticated multi-user, multi-step business processes that span across different departments, teams, and timelines?',
-    topic: 'Salesforce Automation',
-    options: [
+      'Case Assignment Rules',
       'Validation Rules',
-      'Salesforce Flow Orchestrator',
-      'Workflow Outbound Messages',
-      'Apex Unit Testing Suites'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Flow Orchestrator lets you sequence complex series of flows (orchestrations) involving multiple individuals or queues, tracking steps and stages across long-running business lifecycles.'
-  },
-  {
-    id: 'auto-12',
-    text: 'What occurs during a Salesforce transaction if an unhandled exception is thrown inside an Apex Trigger or a Record-Triggered Flow execution path?',
-    topic: 'Salesforce Automation',
-    options: [
-      'The transaction partially saves valid records and skips faulty records',
-      'The entire database transaction is completely rolled back, and no changes are committed',
-      'The platform ignores the exception and logs an administrative error notice',
-      'The record owner\'s profile is automatically suspended'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce enforces strict transactional boundaries. If an uncaught exception occurs anywhere in the execution chain, the entire database transaction fails, rolling back all pending inserts or updates.'
-  },
-  {
-    id: 'auto-13',
-    text: 'Universal Containers wants to automatically send a text notification via a third-party API whenever an Opportunity is closed won. The external callout must not delay the user interface response. How should this be structured?',
-    topic: 'Salesforce Automation',
-    options: [
-      'Create a validation rule that performs an inline HTTP request',
-      'Use an after-save Record-Triggered Flow that calls an asynchronous Apex action annotated with @future(callout=true)',
-      'Run a synchronous before-insert trigger containing an execution loop',
-      'Configure a Screen Flow that loops continuously checking record fields'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'External integrations (callouts) cannot run synchronously within a standard database transaction. Moving the callout to an asynchronous thread using @future(callout=true) or an Asynchronous Path in Flow prevents UX lag and avoids callout exceptions.'
-  },
-  {
-    id: 'auto-14',
-    text: 'An administrator needs to automatically assign incoming service cases to specific queues based on the customer\'s region and account priority level. If no conditions match, it must route to a default tier-1 queue. What is the most efficient declarative tool for this requirement?',
-    topic: 'Salesforce Automation',
-    options: [
-      'Validation Rules tracking string values',
-      'Case Assignment Rules with multiple ordered rule entries',
-      'A series of formula fields updating lookup IDs',
-      'An outbound messaging queue script'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Case Assignment Rules are designed for this exact scenario. They process records sequentially down an ordered list of criteria entries, routing the Case to a designated Queue or User as soon as a match is verified.'
-  },
-  {
-    id: 'auto-15',
-    text: 'A business requires that when a high-value Opportunity enters the "Negotiation" stage, an approval request must be routed to the Finance Director. If approved, the stage moves to "Closed Won"; if rejected, it drops to "Qualification". How should this workflow be automated?',
-    topic: 'Salesforce Automation',
-    options: [
-      'Build a complex Validation Rule checking user titles',
-      'Configure an Approval Process with specific Final Approval and Final Rejection actions to update the Stage field',
-      'Deploy an Apex Trigger utilizing a hardcoded matrix of user names',
-      'Configure a Fast Field Update Flow containing an infinite loop mechanism'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'An Approval Process natively manages record routing, locking, and multi-stage decisions. Its Final Approval and Final Rejection Action sections can handle the field updates to transition the Opportunity Stage automatically.'
-  },
-  {
-    id: 'auto-16',
-    text: 'Your system is throwing a "System.LimitException: Too many SOQL queries: 101" error when a bulk import of 500 records is executed. The developer traces this error to a database trigger. What is the root cause of this defect?',
-    topic: 'Salesforce Automation',
-    options: [
-      'The import file contains formatting anomalies and corrupt characters',
-      'The database trigger logic contains a SOQL query execution statement placed inside a for-loop',
-      'The organization has run out of allocated cloud storage space',
-      'The data import utility is operating at an incorrect connection speed'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce limits transactions to 100 synchronous SOQL queries. If a trigger executes a query inside a loop iterating over records, it quickly hits this wall. Triggers must be bulkified by querying data outside loops using collections.'
-  },
-  {
-    id: 'auto-17',
-    text: 'A manufacturing firm wants to calculate a rolling 30-day health score for assets. The automation must evaluate 2 million asset history tracking records every Sunday morning at 2:00 AM. Which automation solution satisfies this requirement?',
-    topic: 'Salesforce Automation',
-    options: [
-      'A real-time Record-Triggered Flow running on asset updates',
-      'An Escalation Rule configured to track time milestones',
-      'A Schedulable Apex class that instantiates a Batch Apex job to process records in manageable scopes',
-      'A multi-screen user interactive Flow embedded in a dashboard utility bar'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'Processing millions of records exceeds standard transaction limits. Combining Schedulable Apex (to target the Sunday 2:00 AM window) with Batch Apex (to split the 2 million records into chunks) prevents runtime limit issues.'
-  },
-  {
-    id: 'auto-18',
-    text: 'An executive requests that when a custom "Project" record is marked "Completed," the system must verify if all related "Project Tasks" are marked "Closed." If any task remains open, the Project must throw an explicit error message and block the change. How can this rule be cleanly executed?',
-    topic: 'Salesforce Automation',
-    options: [
-      'Create a roll-up summary field on Project counting open tasks, then build a Validation Rule on Project that triggers an error if Status is "Completed" and the count is greater than zero',
-      'Build a Screen Flow that forces users to manually inspect lists',
-      'Configure an assignment rule that transfers tasks to a different queue',
-      'Set the custom object OWD setting to Public Read/Write'
+      'Escalation Rules',
+      'Outbound Messaging'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'A Roll-Up Summary field dynamically aggregates child metrics. Combining it with a Validation Rule on the parent record allows declarative blocking and displays custom error messages right when a user tries to save the record.'
+    explanation: 'Case Assignment Rules evaluate criteria on incoming cases sequentially to assign records to a user or queue.'
+  },
+  {
+    id: 'auto-9',
+    text: 'What is the primary operational advantage of using a Fast Field Updates (Before-Save) Flow over an Actions and Related Records Flow?',
+    topic: 'Salesforce Automation',
+    options: [
+      'It can update fields on unrelated parent objects',
+      'It is significantly faster because it modifies field values in-memory before the record is written to the database',
+      'It can execute external HTTP callout logic directly',
+      'It can be launched via utility bars on desktop apps'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Before-Save Flows update values in-memory prior to the database write operation, bypassing expensive after-save re-trigger steps.'
+  },
+  {
+    id: 'auto-10',
+    text: 'Which automation tool allows you to build complex multi-user workflows that orchestrate separate stages and flows over long business lifecycles?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Workflow Rules',
+      'Process Builder',
+      'Salesforce Flow Orchestrator',
+      'Validation Rules'
+    ],
+    correctAnswer: 2,
+    difficulty: 'moderate',
+    explanation: 'Flow Orchestrator lets you group individual flows into multi-step stages that cross separate timelines and users.'
+  },
+  {
+    id: 'auto-11',
+    text: 'What annotation is required inside a custom Apex class method to expose it as a selectable action element within Flow Builder?',
+    topic: 'Salesforce Automation',
+    options: [
+      '@AuraEnabled',
+      '@Future',
+      '@InvocableMethod',
+      '@RemoteAction'
+    ],
+    correctAnswer: 2,
+    difficulty: 'moderate',
+    explanation: 'The `@InvocableMethod` annotation makes an Apex method visible as a declarative Action component within the Flow canvas.'
+  },
+  {
+    id: 'auto-12',
+    text: 'What declarative automation feature tracks open cases and automatically alerts managers when an operational SLA milestone window is missed?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Case Assignment Rules',
+      'Escalation Rules',
+      'Validation Rules',
+      'Auto-Response Rules'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Escalation Rules monitor case age thresholds and automatically trigger updates or notification emails if SLAs are missed.'
+  },
+  {
+    id: 'auto-13',
+    text: 'A business requires an automation to update 150,000 old asset tracking log records every night without running into synchronous transaction limits. Which tool should be selected?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Record-Triggered Flow running fast updates',
+      'Scheduled Batch Apex',
+      'An Apex before-update database trigger handler',
+      'A series of workflow rule actions'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Scheduled Batch Apex handles large data volumes asynchronously across separate chunk cycles to respect governor limits.'
+  },
+  {
+    id: 'auto-14',
+    text: 'An administrator needs to prevent sales reps from closing an Opportunity if the discount field is greater than 25 percent unless an approval box is checked. What tool enforces this check at the moment of save?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Validation Rule',
+      'Assignment Rule',
+      'Auto-Response Rule',
+      'Escalation Rule'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Validation Rules check conditions on save. If a criteria evaluating to TRUE is hit (Discount > 0.25 AND Approved == False), the record save is blocked.'
+  },
+  {
+    id: 'auto-15',
+    text: 'A developer receives a "System.LimitException: Too many SOQL queries: 101" error when importing data. The error traces back to a custom trigger containing a query placed inside a for-loop. How can this be fixed?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Ask support to increase the organization query limits',
+      'Bulkify the trigger by moving the SOQL query outside of the loop using collections',
+      'Convert the Apex trigger execution context into a workflow rule',
+      'Split the import text files into smaller batches manually'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Bulkification moves database queries out of loops. Collecting IDs in a Set and running a single query resolves the 100-query limit exception.'
+  },
+  {
+    id: 'auto-16',
+    text: 'Universal Containers wants to lock Opportunity records during a contract review phase to prevent reps from changing amounts, then unlock the record once it is approved by the Finance Director. How should this be structured?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Create a validation rule targeting user profiles',
+      'Configure an Approval Process, which handles record-locking and unlocking automatically',
+      'Build a Record-Triggered Flow with assignment variables',
+      'Deploy a case assignment rule layout'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Approval Processes feature native record-locking capabilities that secure data states during a review lifecycle.'
+  },
+  {
+    id: 'auto-17',
+    text: 'An administrator wants to update a custom text field on a Contact record automatically whenever that record is edited. The update does not rely on any other object data. What is the most efficient choice?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Record-Triggered Flow configured for Fast Field Updates',
+      'Record-Triggered Flow configured for Actions and Related Records',
+      'An asynchronous future method routine',
+      'A multi-step validation rule path'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Fast Field Updates (before-save) are optimized for same-record changes because they modify values in-memory before database commits.'
+  },
+  {
+    id: 'auto-18',
+    text: 'A custom flow loops through a list of 50 tasks to update their statuses. During execution, it crashes with a governor limit error. The administrator finds an Update Records element placed inside the loop canvas path. How should the flow be optimized?',
+    topic: 'Salesforce Automation',
+    options: [
+      'Break the tasks into separate autolaunched flow streams',
+      'Assign updates to a collection variable inside the loop, and place a single Update Records element outside the loop path',
+      'Replace the loop element with a validation rule logic block',
+      'Change the flow execution context to run in system mode'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Placing DML elements (like Update Records) inside loops causes limit errors. Assigning changes to a collection and processing one update outside the loop bulkifies the flow.'
   },
   {
     id: 'auto-19',
-    text: 'A developer needs to execute custom logic that relies on a record\'s auto-generated "Created Date" and ID parameters immediately following its initial insertion. Which trigger execution phase must be utilized?',
+    text: 'A business requires an integration callout to push order updates to an external system whenever a custom Order record status changes. The callout must run asynchronously without blocking the user interface. How should this be built?',
     topic: 'Salesforce Automation',
     options: [
-      'before insert',
-      'after insert',
-      'before update',
-      'after delete'
+      'Call an Apex integration method synchronously from a before-save trigger',
+      'Use a Record-Triggered Flow with an Asynchronous Path to launch the integration action',
+      'Construct a validation rule checking status string parameters',
+      'Configure a case assignment rule queue target'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'System fields like Record ID and Created Date do not exist during the "before insert" phase. They are only generated when written to the database, making them accessible in the "after insert" context.'
+    explanation: 'Asynchronous Paths in record flows execute integration callouts in a separate background thread, preventing user interface lag.'
   },
   {
     id: 'auto-20',
-    text: 'An administrator needs to create an automation that builds a new onboarding checklist (multiple task records) whenever a new Employee record is initialized. What is the recommended declarative approach?',
+    text: 'A custom object log needs to be created automatically whenever a high-value Opportunity is saved. The log requires fields populated from the new Opportunity ID. Which context configuration is required?',
     topic: 'Salesforce Automation',
     options: [
-      'A Validation Rule targeting employee status strings',
-      'An "Actions and Related Records" (After-Save) Record-Triggered Flow utilizing Create Records elements within its canvas',
-      'A custom Formula field outputting hyperlink fields',
-      'An assignment rule targeting HR queues'
+      'A Fast Field Updates (Before-Save) Flow',
+      'An Actions and Related Records (After-Save) Flow',
+      'A validation rule calculating ID text strings',
+      'A case assignment rule mapping custom logs'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To create or update records other than the triggering record itself, you must use an After-Save Record-Triggered Flow (Actions and Related Records), which runs after the initial database save event.'
+    explanation: 'Creating separate related records requires an After-Save Flow (Actions and Related Records) because the triggering record ID must exist in the database first.'
   },
 
   {
     id: 'apex-1',
-    text: 'What is the purpose of the @AuraEnabled annotation in Apex?',
-    topic: 'Apex Development',
-    options: [
-      'Makes method available to Aura and LWC components',
-      'Enables method for API access',
-      'Marks method for testing',
-      'Optimizes method performance'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: '@AuraEnabled makes Apex methods callable from Aura Components and Lightning Web Components.'
-  },
-  {
-    id: 'apex-2',
-    text: 'In a scenario where you need to process 10,000 records, which approach would be most appropriate?',
-    topic: 'Apex Development',
-    options: [
-      'For loop processing each record individually',
-      'Batch Apex',
-      'Synchronous Apex with bulk operations',
-      'Future methods'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Batch Apex is designed for processing large numbers of records asynchronously while respecting governor limits.'
-  },
-  {
-    id: 'apex-3',
     text: 'Which collection type should be used when you need to store unique elements and ensure no duplicate values exist?',
     topic: 'Apex Development',
     options: [
@@ -618,10 +589,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A Set is an unordered collection of elements that cannot contain any duplicate values. It is highly efficient for uniqueness checks.'
+    explanation: 'A Set is an unordered collection of elements that cannot contain any duplicate values.'
   },
   {
-    id: 'apex-4',
+    id: 'apex-2',
     text: 'What does the "with sharing" keyword enforce when applied to an Apex class definition?',
     topic: 'Apex Development',
     options: [
@@ -632,10 +603,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "with sharing" keyword ensures that the platform enforces the current user\'s record-level sharing rules (OWDs, role hierarchy, sharing rules). It does not natively enforce CRUD/FLS permissions.'
+    explanation: 'The "with sharing" keyword ensures that the platform enforces the current user\'s record-level sharing rules (OWDs and sharing configurations).'
   },
   {
-    id: 'apex-5',
+    id: 'apex-3',
     text: 'What is a core operational restriction of utilizing an Apex future method annotated with @future?',
     topic: 'Apex Development',
     options: [
@@ -646,10 +617,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Future methods cannot take sObjects or objects as parameters because the state of the record could change between the method call and its actual asynchronous execution. Passing IDs is the standard best practice.'
+    explanation: 'Future methods cannot take sObjects as parameters because the state of the record could change between the method call and its actual execution.'
   },
   {
-    id: 'apex-6',
+    id: 'apex-4',
     text: 'Which standard interface must an Apex class implement so it can be scheduled to run at designated intervals or times?',
     topic: 'Apex Development',
     options: [
@@ -660,10 +631,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To schedule an Apex class declarative or via System.schedule, the class must implement the Schedulable interface and define its execute method.'
+    explanation: 'To schedule an Apex class, the class must implement the Schedulable interface and define its execute method.'
   },
   {
-    id: 'apex-7',
+    id: 'apex-5',
     text: 'What is the programmatic purpose of utilizing "Database.Stateful" in a Batch Apex class definition?',
     topic: 'Apex Development',
     options: [
@@ -674,24 +645,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'By default, Batch Apex is stateless; instance variables reset for each chunk execution. Implementing Database.Stateful allows you to maintain state (like running totals or counter logs) across all execution blocks.'
+    explanation: 'By default, Batch Apex is stateless. Implementing Database.Stateful allows you to maintain state across all execution blocks.'
   },
   {
-    id: 'apex-8',
-    text: 'Which statement is true regarding the execution behavior of the "Test.startTest()" and "Test.stopTest()" method sequence?',
-    topic: 'Apex Development',
-    options: [
-      'It completely clears all records committed to the database during the test setup',
-      'It provides a fresh set of asynchronous governor limits and forces all pending asynchronous operations to run synchronously when stopTest() is reached',
-      'It automatically generates mock HTTP callout payloads for external testing frames',
-      'It increases the code coverage percentage calculation for the target class'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Test.startTest() gives the code a separate, fresh set of governor limits. When Test.stopTest() is called, the system forces any queued asynchronous jobs (future, batch, queueable) to complete synchronously before proceeding.'
-  },
-  {
-    id: 'apex-9',
+    id: 'apex-6',
     text: 'What is the maximum number of records that a single inline SOSL (Search) statement can return within an Apex execution context?',
     topic: 'Apex Development',
     options: [
@@ -702,10 +659,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The governor limit dictates that an Apex SOSL query can find and return a maximum total of 2,000 records across all searched objects in a single execution step.'
+    explanation: 'The governor limit dictates that an Apex SOSL query can find and return a maximum total of 2,000 records across all searched objects.'
   },
   {
-    id: 'apex-10',
+    id: 'apex-7',
     text: 'What is the primary benefit of using Queueable Apex instead of traditional @future methods?',
     topic: 'Apex Development',
     options: [
@@ -716,10 +673,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Queueable Apex overcomes future method limitations by accepting complex types/sObjects as inputs, returning a specific Job ID for tracking, and allowing you to explicitly chain jobs together sequentially.'
+    explanation: 'Queueable Apex overcomes future method limitations by accepting complex types and sObjects, and allowing you to chain jobs together sequentially.'
   },
   {
-    id: 'apex-11',
+    id: 'apex-8',
     text: 'Which keyword is used to initialize a new instance of an Apex class, array, or collection structure?',
     topic: 'Apex Development',
     options: [
@@ -730,10 +687,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'The "new" keyword allocation instantiates objects, collections (List, Set, Map), and arrays, allocating appropriate memory in the runtime environment.'
+    explanation: 'The "new" keyword allocation instantiates objects, collections (List, Set, Map), and arrays in memory.'
   },
   {
-    id: 'apex-12',
+    id: 'apex-9',
     text: 'What code-level tool should be used inside an Apex class to gracefully handle runtime errors and protect the execution from breaking with an unhandled exception?',
     topic: 'Apex Development',
     options: [
@@ -744,66 +701,178 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A try-catch block isolates code that might cause runtime issues, capturing exceptions cleanly and allowing fallback execution or explicit error logging instead of a fatal crash.'
+    explanation: 'A try-catch block isolates code that might cause runtime issues, capturing exceptions cleanly instead of causing a fatal crash.'
+  },
+  {
+    id: 'apex-10',
+    text: 'During the Salesforce Save Order of Execution, when do standard Validation Rules evaluate relative to Before and After Triggers?',
+    topic: 'Apex Development',
+    options: [
+      'Before "Before Triggers" execute',
+      'After "Before Triggers" but before "After Triggers" execute',
+      'After "After Triggers" execute',
+      'Simultaneously with Assignment Rules'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'In the Save Order of Execution, Salesforce runs validation rules after "before triggers" complete their assignments, but prior to running "after triggers."'
+  },
+  {
+    id: 'apex-11',
+    text: 'What operational capability does an Apex Transaction Finalizer offer when attached to a Queueable Apex job thread?',
+    topic: 'Apex Development',
+    options: [
+      'It increases the maximum synchronous heap size limit to 12MB',
+      'It allows developers to design fallback actions, logging routines, or retry loops that execute automatically when the Queueable job either succeeds or fails',
+      'It bypasses validation rules during mass data loading routines',
+      'It converts standard object lookup fields into master-detail relationships natively'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Transaction Finalizers attach to Queueable jobs via the Finalizer interface, letting you manage exceptions or run recovery routines cleanly when jobs finish.'
+  },
+  {
+    id: 'apex-12',
+    text: 'Inside an Apex Trigger, what is a critical functional limitation when attempting to modify field values directly within the "Trigger.new" collection context?',
+    topic: 'Apex Development',
+    options: [
+      'Trigger.new values cannot be read or mapped in any context',
+      'Field values can only be modified directly in "before" trigger contexts; modifying Trigger.new in an "after" trigger context throws a read-only exception error',
+      'Trigger.new values are completely hidden from low-privilege profiles',
+      'Modifications require an active external integration webhook connection to validate'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'In before triggers, records are still in-memory and can be directly altered. By the time after triggers execute, they are committed to the database schema, making Trigger.new read-only.'
   },
   {
     id: 'apex-13',
-    text: 'A developer needs to write a test class for an Apex trigger that responds to Account modifications. How should the test data be handled to guarantee isolation and compliance with development best practices?',
+    text: 'What is the purpose of utilizing the "Database.setSavepoint()" and "Database.rollback()" method sequence within complex Apex controller operations?',
     topic: 'Apex Development',
     options: [
-      'Query active production records using standard SOQL directly from the database frame',
-      'Utilize a @testSetup method to insert mock test Accounts into the isolated transaction before testing logic',
-      'Hardcode active production Account record IDs inside the test method parameter strings',
-      'Disable validation rules inside the trigger script file before deploying the test package'
+      'To increase synchronous CPU timeout execution limit margins by 10 seconds',
+      'To define a specific logical point in transaction execution, allowing the system to undo database modifications if subsequent validation actions fail',
+      'To export transactional data rows into external cloud backup folders',
+      'To force client components to refresh their view state caches instantly'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Apex test context blocks direct data visibility by default (SeeAllData=false). Using a @testSetup annotated method builds data once per test class execution, isolating dependencies and reducing runtimes.'
+    explanation: 'Savepoints allow transactional rollback management. If an error occurs halfway through a multi-step operation, calling rollback resets the database state to the defined savepoint.'
   },
   {
     id: 'apex-14',
-    text: 'A business requires an automation to query Contact email structures, compare them against a blacklist database external table, and update status fields. This must process up to 300,000 active records. How should this be orchestrated?',
-    topic: 'Salesforce Automation',
+    text: 'When writing code that queries parent-child records, what is the maximum permissible nesting depth for inner subqueries within a single synchronous Apex SOQL statement?',
+    topic: 'Apex Development',
     options: [
-      'Build an inline query loop within an After-Update database execution trigger',
-      'Implement an Apex Class extending Database.Batchable to process records asynchronously in configurable chunks',
-      'Deploy a single fast field update flow containing recursive assignment paths',
-      'Construct a nested query layout within a standard formula calculation block'
+      '1 level of child subquery nesting',
+      '2 levels of child subquery nesting',
+      '5 levels of child subquery nesting',
+      'There is no structural restriction on query child nesting depths'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Processing 300,000 rows synchronously exceeds heap size and query limits. A Batch Apex framework breaks the scope down into manageable pieces (usually 200 items each), respecting platform limits cleanly.'
+    explanation: 'Salesforce standard SOQL limits relationship queries to a single child nesting level (one outer select and one inner parent-to-child subquery).'
   },
   {
     id: 'apex-15',
-    text: 'You receive an exception error stating "System.LimitException: Too many DML statements: 151" during a bulk data load process. How should the code pattern be adjusted to resolve this issue?',
+    text: 'Which keyword is used in Apex to explicitly declare a method variable that cannot be modified once assigned a initial value?',
     topic: 'Apex Development',
     options: [
-      'Ask the customer success manager to permanently increase the DML statement governor threshold limits',
-      'Move the database DML insert/update statement completely outside of the record iteration for-loop by utilizing a collection List to store and execute data at once',
-      'Split the input file into smaller groups of 50 items each before using Data Loader',
-      'Convert the target object relationship tracking pattern from Lookup into Master-Detail'
+      'static',
+      'final',
+      'constant',
+      'immutable'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce restricts an execution window to 150 synchronous DML statements. Executing an insert or update statement inside a loop triggers this error. Moving records into a List and running a single DML statement outside the loop is standard bulkification.'
+    explanation: 'The "final" keyword prevents a variable from being redefined or re-assigned after its initial valuation assignment.'
   },
   {
     id: 'apex-16',
-    text: 'A developer needs to write an Apex controller method that returns data to a custom dropdown component inside a Lightning Web Component. The method only performs data lookups. What is the most optimal way to declare this method?',
+    text: 'What type of SOQL loop optimization should be utilized in Apex to prevent loading massive record sets entirely into memory, avoiding heap size limit crashes?',
     topic: 'Apex Development',
     options: [
-      '@AuraEnabled public static list method()',
-      '@AuraEnabled(cacheable=true) public static List method()',
-      '@InvocableMethod public static list method()',
-      'public static void method()'
+      'Standard list assignment loop',
+      'SOQL For-Loop processing records in batches of 200 items',
+      'While loop using query offsets',
+      'Nested loop iterating over individual string parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Using @AuraEnabled(cacheable=true) caches the returned data on the client side, reducing round-trips to the Salesforce server, boosting component loading performance, and removing DML access within the transaction.'
+    explanation: 'SOQL For-Loops process data efficiently in chunks of 200 records, avoiding heavy memory consumption and heap size limit exceptions.'
   },
   {
     id: 'apex-17',
+    text: 'What clause can be added to a SOQL statement to retrieve archived or soft-deleted records residing in the organization Recycle Bin?',
+    topic: 'Apex Development',
+    options: [
+      'WITH SECURITY_ENFORCED',
+      'ALL ROWS',
+      'FOR UPDATE',
+      'USING SYSTEM_MODE'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The ALL ROWS clause instructs the SOQL engine to include deleted records and archived activities alongside active operational data rows.'
+  },
+  {
+    id: 'apex-18',
+    text: 'Which data definition parameter allows a class method to execute DML modifications using standard system administrative privileges, ignoring user CRUD controls?',
+    topic: 'Apex Development',
+    options: [
+      'with sharing',
+      'without sharing',
+      'inherited sharing',
+      'public sharing'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The "without sharing" parameter forces the class to execute logic in a privileged system mode, ignoring user-level sharing boundaries.'
+  },
+  {
+    id: 'apex-19',
+    text: 'What is the baseline synchronous CPU timeout limit allocation enforced for a single transactional thread in Apex?',
+    topic: 'Apex Development',
+    options: [
+      '5 seconds',
+      '10 seconds',
+      '30 seconds',
+      '60 seconds'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Salesforce limits the maximum synchronous CPU execution usage duration time to exactly 10 seconds per transaction block.'
+  },
+  {
+    id: 'apex-20',
+    text: 'Which sObject method should be used to dynamically check if a custom field is accessible to the running user prior to executing a query call?',
+    topic: 'Apex Development',
+    options: [
+      'Schema.sObjectType.fields.isAccessible()',
+      'UserInfo.getProfilePermissions()',
+      'Object.checkFieldSecurity()',
+      'System.validateFieldVisibility()'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Apex describes tokens provide programmatic field verification methods, like isAccessible(), to validate Field-Level Security flags dynamically.'
+  },
+  {
+    id: 'apex-21',
+    text: 'A developer needs to write an Apex controller method that returns data to a custom dropdown component inside a Lightning Web Component. The method only performs data lookups. What is the most optimal way to declare this method?',
+    topic: 'Apex Development',
+    options: [
+      '@AuraEnabled public static List<Account> getAccounts()',
+      '@AuraEnabled(cacheable=true) public static List<Account> getAccounts()',
+      '@InvocableMethod public static List<Account> getAccounts()',
+      'public static void getAccounts()'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Using @AuraEnabled(cacheable=true) caches the returned data on the client side, reducing round-trips to the Salesforce server, boosting component loading performance.'
+  },
+  {
+    id: 'apex-22',
     text: 'A custom validation routine must verify parent record values before committing child updates. The method handles hundreds of entries at a time. How can the developer fetch parent data efficiently while preventing unnecessary SOQL calls?',
     topic: 'Apex Development',
     options: [
@@ -814,10 +883,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'This pattern collects related IDs into a Set, executes one single SOQL operation outside loops to retrieve parent information, and registers them in a Map for instantaneous indexing during processing loops.'
+    explanation: 'This pattern collects related IDs into a Set, executes one single SOQL operation outside loops to retrieve parent information, and registers them in a Map for instantaneous indexing.'
   },
   {
-    id: 'apex-18',
+    id: 'apex-23',
     text: 'During an asset data transformation, an Apex script needs to safely update matching records based on an external Enterprise Resource Planning (ERP) tracking ID. If no matching row is found, it must insert a new record. What single operational statement should be used?',
     topic: 'Apex Development',
     options: [
@@ -831,7 +900,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The "upsert" DML keyword uses a specified key field or external ID field to determine if a record matches an existing record. It performs an update if matched, or an insert if unmatched.'
   },
   {
-    id: 'apex-19',
+    id: 'apex-24',
     text: 'An integration requires that when an internal custom action fires, an immediate validation request is transmitted to an endpoint. To prevent a "Callout from Trigger" exception, how should the logic be decoupled?',
     topic: 'Apex Development',
     options: [
@@ -845,35 +914,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Salesforce prohibits synchronous HTTP callouts within an active trigger database context. Offloading the work to an asynchronous Queueable class or future execution window breaks the transaction lock and allows the callout to run.'
   },
   {
-    id: 'apex-20',
-    text: 'A developer wants to ensure that a specific block of logic within an Apex Class method can only see and manipulate fields if the running user has appropriate profile or permission set access to them. How should this be handled?',
-    topic: 'Apex Development',
-    options: [
-      'Rely exclusively on the standard "with sharing" class declaration keyword',
-      'Use the WITH USER_MODE clause inside SOQL queries or enforce schema access checks natively via Security.stripInaccessible',
-      'Create separate duplicate objects to split profile permission pathways completely',
-      'Force all data processing transactions to occur inside an asynchronous batch job block'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'While "with sharing" restricts record-level visibility, it does not check object (CRUD) or field-level security (FLS). Incorporating WITH USER_MODE in queries or applying Security.stripInaccessible ensures the system strictly respects user permissions for data access.'
-  },
-  {
-    id: 'apex-21',
-    text: 'During the Salesforce Save Order of Execution, when do standard Validation Rules evaluate relative to Before and After Triggers?',
-    topic: 'Apex Development',
-    options: [
-      'Before "Before Triggers" execute',
-      'After "Before Triggers" but before "After Triggers" execute',
-      'After "After Triggers" execute',
-      'Simultaneously with Assignment Rules'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'In the Save Order of Execution, Salesforce runs system and user-defined validation rules after "before triggers" have completed their field assignments, but prior to committing changes or running "after triggers."'
-  },
-  {
-    id: 'apex-22',
+    id: 'apex-25',
     text: 'A developer needs to prevent a custom trigger from re-running its logic recursively during the same execution thread due to cross-object updates. What code pattern should be used?',
     topic: 'Apex Development',
     options: [
@@ -887,21 +928,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Static variables preserve their state throughout a single transaction lifetime. A public static Boolean flag can be checked and flipped on the first pass to stop the handler logic from processing secondary recursive invocations.'
   },
   {
-    id: 'apex-23',
-    text: 'What operational capability does an Apex Transaction Finalizer offer when attached to a Queueable Apex job thread?',
-    topic: 'Apex Development',
-    options: [
-      'It increases the maximum synchronous heap size limit to 12MB',
-      'It allows developers to design fallback actions, logging routines, or retry loops that execute automatically when the Queueable job either succeeds or fails',
-      'It bypasses validation rules during mass data loading routines',
-      'It converts standard object lookup fields into master-detail relationships natively'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Transaction Finalizers attach to Queueable jobs via the Finalizer interface. They provide an execute method that checks the parent job status, letting you manage exceptions or run recovery routines cleanly.'
-  },
-  {
-    id: 'apex-24',
+    id: 'apex-26',
     text: 'When executing a database DML operation using the "Database.insert(records, false)" method signature, what happens if 5 out of 100 records fail validation?',
     topic: 'Apex Development',
     options: [
@@ -915,21 +942,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Setting the allOrNone parameter to false partial-commits data. Valid rows write to the database, while errors populate Database.SaveResult objects without rolling back the successful rows.'
   },
   {
-    id: 'apex-25',
-    text: 'What occurs to the active database transaction if a developer uses the "addError()" method on an sObject record inside an After-Update trigger context?',
-    topic: 'Apex Development',
-    options: [
-      'The field value is silently wiped, but the transaction completes successfully',
-      'The system marks the specific record with a validation flag, preventing its save event and rolling back the current transaction boundary',
-      'The error is logged in the developer console, but data commits anyway',
-      'The record owner account is automatically suspended from the platform'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Calling addError() on a record in a trigger context stops processing for that row. It flags the save transaction as a failure, stopping database write operations and rolling back pending updates.'
-  },
-  {
-    id: 'apex-26',
+    id: 'apex-27',
     text: 'A business requires an Apex routine that processes high-volume updates. To prevent lock-contention issues when multiple users modify identical parent rows simultaneously, what clause should be appended to the SOQL query statement?',
     topic: 'Apex Development',
     options: [
@@ -939,22 +952,8 @@ const QUESTIONS: ExamQuestion[] = [
       'WITH SECURITY_ENFORCED'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
+    difficulty: 'moderate',
     explanation: 'The FOR UPDATE clause locks the queried records on the database server. This forces other transactions attempting to modify those same rows to wait until the current transaction completes, avoiding race conditions.'
-  },
-  {
-    id: 'apex-27',
-    text: 'Inside an Apex Trigger, what is a critical functional limitation when attempting to modify field values directly within the "Trigger.new" collection context?',
-    topic: 'Apex Development',
-    options: [
-      'Trigger.new values cannot be read or mapped in any context',
-      'Field values can only be modified directly in "before" trigger contexts; modifying Trigger.new in an "after" trigger context throws a read-only exception error',
-      'Trigger.new values are completely hidden from low-privilege profiles',
-      'Modifications require an active external integration webhook connection to validate'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'In before triggers, records are still in-memory and can be directly altered. By the time after triggers execute, the records are written to the database schema, making Trigger.new read-only.'
   },
   {
     id: 'apex-28',
@@ -972,63 +971,35 @@ const QUESTIONS: ExamQuestion[] = [
   },
   {
     id: 'apex-29',
-    text: 'What is the purpose of utilizing the "Database.setSavepoint()" and "Database.rollback()" method sequence within complex Apex controller operations?',
+    text: 'What occurs to the active database transaction if a developer uses the "addError()" method on an sObject record inside an After-Update trigger context?',
     topic: 'Apex Development',
     options: [
-      'To increase synchronous CPU timeout execution limit margins by 10 seconds',
-      'To define a specific logical point in transaction execution, allowing the system to undo database modifications if subsequent validation actions fail',
-      'To export transactional data rows into external cloud backup folders',
-      'To force client components to refresh their view state caches instantly'
+      'The field value is silently wiped, but the transaction completes successfully',
+      'The system marks the specific record with a validation flag, preventing its save event and rolling back the current transaction boundary',
+      'The error is logged in the developer console, but data commits anyway',
+      'The record owner account is automatically suspended from the platform'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Savepoints allow transactional rollback management. If an error occurs halfway through a multi-step operation, calling rollback resets the database state to the defined savepoint, preventing partial data corruption.'
+    difficulty: 'moderate',
+    explanation: 'Calling addError() on a record in a trigger context stops processing for that row. It flags the save transaction as a failure, stopping database write operations and rolling back pending updates.'
   },
   {
     id: 'apex-30',
-    text: 'When writing code that queries parent-child records, what is the maximum permissible nesting depth for inner subqueries within a single synchronous Apex SOQL statement?',
+    text: 'A developer wants to ensure that a specific block of logic within an Apex Class method can only see and manipulate fields if the running user has appropriate profile access to them. How should this be handled?',
     topic: 'Apex Development',
     options: [
-      '1 level of child subquery nesting',
-      '2 levels of child subquery nesting',
-      '5 levels of child subquery nesting',
-      'There is no structural restriction on query child nesting depths'
+      'Rely exclusively on the standard "with sharing" class declaration keyword',
+      'Use the WITH USER_MODE clause inside SOQL queries or enforce schema access checks natively via Security.stripInaccessible',
+      'Create separate duplicate objects to split profile permission pathways completely',
+      'Force all data processing transactions to occur inside an asynchronous batch job block'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce standard SOQL limits relationship queries to a single child nesting level (one outer select and one inner parent-to-child subquery). Deep multi-level child joins are not supported.'
+    explanation: 'Incorporating WITH USER_MODE in queries or applying Security.stripInaccessible ensures the system strictly respects user permissions for data access.'
   },
 
   {
     id: 'lwc-1',
-    text: 'What decorator is used to make a property reactive in Lightning Web Components?',
-    topic: 'Lightning Web Components',
-    options: [
-      '@api',
-      '@track',
-      '@wire',
-      'Properties are automatically reactive'
-    ],
-    correctAnswer: 3,
-    difficulty: 'moderate',
-    explanation: 'In modern LWC, properties are automatically reactive. @track is deprecated and @api is for public properties.'
-  },
-  {
-    id: 'lwc-2',
-    text: 'In a scenario where an LWC needs to communicate with its parent component, what should be used?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Custom Events',
-      'Lightning Message Service',
-      'Shared JavaScript',
-      'Global Variables'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'Custom Events are the standard way for child components to communicate with parent components in the DOM hierarchy.'
-  },
-  {
-    id: 'lwc-3',
     text: 'Which decorator must be used to expose a component\'s property or public method to other components or to make it a public property that can be set in App Builder?',
     topic: 'Lightning Web Components',
     options: [
@@ -1042,7 +1013,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The @api decorator marks a property or method as public, making it part of the component\'s public API so parent components or Lightning App Builder can interact with it.'
   },
   {
-    id: 'lwc-4',
+    id: 'lwc-2',
     text: 'What is the purpose of the @wire decorator in Lightning Web Components?',
     topic: 'Lightning Web Components',
     options: [
@@ -1056,7 +1027,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The @wire decorator provides a declarative way to fetch data and metadata from Salesforce orgs using Lightning Data Service (LDS) or call wire-adapted Apex methods.'
   },
   {
-    id: 'lwc-5',
+    id: 'lwc-3',
     text: 'When a property inside an array or an object changes, what decorator is required in modern LWC to ensure the template tracks deep mutations?',
     topic: 'Lightning Web Components',
     options: [
@@ -1070,7 +1041,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'While primitive variables are automatically reactive in modern LWC, you still need the @track decorator to make the framework deeply monitor and re-render when fields inside an object or items inside an array change.'
   },
   {
-    id: 'lwc-6',
+    id: 'lwc-4',
     text: 'Which standard lifecycle hook in Lightning Web Components fires immediately after a component has been inserted into the Document Object Model (DOM)?',
     topic: 'Lightning Web Components',
     options: [
@@ -1084,7 +1055,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The connectedCallback() lifecycle hook executes when a component is inserted into the DOM. It is equivalent to a regular web component initialization lifecycle step.'
   },
   {
-    id: 'lwc-7',
+    id: 'lwc-5',
     text: 'What is the primary benefit of using Lightning Message Service (LMS) in a Salesforce application framework?',
     topic: 'Lightning Web Components',
     options: [
@@ -1098,7 +1069,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Lightning Message Service provides a secure, message-channel-driven way to communicate across separate DOM boundaries, binding LWC, Aura, and Visualforce together.'
   },
   {
-    id: 'lwc-8',
+    id: 'lwc-6',
     text: 'Which directive should be utilized in an LWC HTML template to iterate over a collection list and render elements efficiently?',
     topic: 'Lightning Web Components',
     options: [
@@ -1112,7 +1083,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The "for:each" directive (combined with the nested template looping mechanism and a unique key attribute) is the standard LWC tool for looping through an array of items.'
   },
   {
-    id: 'lwc-9',
+    id: 'lwc-7',
     text: 'What is a critical execution rule regarding the "constructor()" lifecycle hook in a custom Lightning Web Component class?',
     topic: 'Lightning Web Components',
     options: [
@@ -1126,7 +1097,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Because LWC extends LightningElement, the constructor() hook must immediately call super() to register the native element frame before executing any custom assignment tasks.'
   },
   {
-    id: 'lwc-10',
+    id: 'lwc-8',
     text: 'Which directive should an administrator or developer use to conditionally render an HTML block in an LWC template based on a boolean value?',
     topic: 'Lightning Web Components',
     options: [
@@ -1140,7 +1111,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Modern Lightning Web Components use the "lwc:if", "lwc:elseif", and "lwc:else" directives to handle conditional DOM rendering efficiently.'
   },
   {
-    id: 'lwc-11',
+    id: 'lwc-9',
     text: 'What does Shadow DOM styling encapsulation accomplish in a Lightning Web Component ecosystem?',
     topic: 'Lightning Web Components',
     options: [
@@ -1154,7 +1125,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'Shadow DOM creates a distinct boundary for CSS, keeping styles localized to the specific component framework so they don\'t unexpectedly conflict with other sections of the viewport page.'
   },
   {
-    id: 'lwc-12',
+    id: 'lwc-10',
     text: 'How do you correctly import a custom Apex method named "getAccounts" from an Apex class named "AccountController" into a Lightning Web Component script?',
     topic: 'Lightning Web Components',
     options: [
@@ -1168,7 +1139,147 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'LWC uses ES6 module import syntax combined with the "@salesforce/apex" scoping syntax to make server-side class methods accessible within the client-side JavaScript engine.'
   },
   {
+    id: 'lwc-11',
+    text: 'Which decorator is used in LWC to make properties available for Flow input and output parameters?',
+    topic: 'Lightning Web Components',
+    options: [
+      '@api',
+      '@track',
+      '@flow',
+      '@wire'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'The @api decorator makes public properties available contextually, allowing Flow interview states to pass data into or read variables out of the component.'
+  },
+  {
+    id: 'lwc-12',
+    text: 'What value must be included in the `<targets>` block of an LWC metadata configuration XML file to expose that component for selection inside a Flow canvas layout?',
+    topic: 'Lightning Web Components',
+    options: [
+      'lightning__FlowScreen',
+      'lightning__AppPage',
+      'lightning__RecordPage',
+      'lightning__HomePage'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Specifying the `lightning__FlowScreen` target tag enables administrators to place the custom LWC onto visual Screen Flow panels.'
+  },
+  {
     id: 'lwc-13',
+    text: 'Which Lightning Data Service wire adapter function is utilized to declaratively fetch record track field metrics inside the JavaScript framework?',
+    topic: 'Lightning Web Components',
+    options: [
+      'createRecord',
+      'getRecord',
+      'updateRecord',
+      'deleteRecord'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The getRecord UI API wire adapter reads database record fields and layout properties cleanly without writing custom backend controllers.'
+  },
+  {
+    id: 'lwc-14',
+    text: 'What operational advantage does utilizing the Lightning Data Service wire service offer over standard Apex controller calls?',
+    topic: 'Lightning Web Components',
+    options: [
+      'It bypasses validation rules entirely during data entry loops',
+      'It leverages automatic shared browser-side data caching and record synchronization properties across separate components',
+      'It allows UI scripts to execute direct SOQL calls asynchronously',
+      'It handles single sign-on authentication keys automatically'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Lightning Data Service manages data tracking centrally, using client-side caching to speed up loads and sync data changes across separate on-screen layouts.'
+  },
+  {
+    id: 'lwc-15',
+    text: 'What baseline execution paradigm drives the compilation and compilation layout architecture of the modern LWC framework framework?',
+    topic: 'Lightning Web Components',
+    options: [
+      'Core W3C Web Components standard parameters',
+      'Aura custom event container elements',
+      'Visualforce markup controller rendering rules',
+      'Server-side PHP processing loops'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Lightning Web Components are built over native Web Components standards, running lightweight code directly in browser engines.'
+  },
+  {
+    id: 'lwc-16',
+    text: 'Which library is commonly used to create interactive, vector-based charts and dashboard layouts within custom LWC UI containers?',
+    topic: 'Lightning Web Components',
+    options: [
+      'CanvasJS',
+      'D3.js',
+      'ChartJS',
+      'Plotly'
+    ],
+    correctAnswer: 2,
+    difficulty: 'moderate',
+    explanation: 'ChartJS is a popular lightweight scripting framework often packed as a Static Resource to run responsive dashboard visualizations inside LWCs.'
+  },
+  {
+    id: 'lwc-17',
+    text: 'What decorator is used to make a property reactive in modern Lightning Web Components when tracking basic primitive mutations?',
+    topic: 'Lightning Web Components',
+    options: [
+      '@api',
+      '@track',
+      '@wire',
+      'Properties are automatically reactive'
+    ],
+    correctAnswer: 3,
+    difficulty: 'moderate',
+    explanation: 'In modern LWC iterations, all public and private component properties are automatically reactive. The template re-renders whenever a primitive value changes.'
+  },
+  {
+    id: 'lwc-18',
+    text: 'In a scenario where an LWC needs to communicate data upwards to its immediate parent DOM container layout, what mechanism should be deployed?',
+    topic: 'Lightning Web Components',
+    options: [
+      'Custom Events',
+      'Lightning Message Service',
+      'Shared JavaScript Modules',
+      'Global Variables'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Custom Events allow child components to pass event signals and data payloads up the DOM tree to be handled by parent elements.'
+  },
+  {
+    id: 'lwc-19',
+    text: 'Which lifecycle hook in Lightning Web Components is invoked automatically when a component is completely unmounted and removed from the DOM?',
+    topic: 'Lightning Web Components',
+    options: [
+      'disconnectedCallback()',
+      'errorCallback()',
+      'renderedCallback()',
+      'constructor()'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'The `disconnectedCallback()` hook executes when an element leaves the page layout, making it the ideal spot to clear timers or unsubscribe from message channels.'
+  },
+  {
+    id: 'lwc-20',
+    text: 'What is the purpose of the `errorCallback()` lifecycle hook within an LWC component structure?',
+    topic: 'Lightning Web Components',
+    options: [
+      'To log data transmission mistakes straight into external databases',
+      'To capture unhandled runtime errors occurring within child components, acting as an error boundary layout',
+      'To intercept validation rule formula blocks during record save steps',
+      'To automatically reload the browser viewport when network failures occur'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The `errorCallback()` hook works like an error boundary, catching exceptions thrown by nested child components so you can display a clean fallback UI instead of crashing the page.'
+  },
+  {
+    id: 'lwc-21',
     text: 'A user opens a page containing an LWC that loads a detailed summary chart. The chart crashes during initialization because the code tries to access a chart container element before it is loaded. Where should the initialization logic be safely relocated?',
     topic: 'Lightning Web Components',
     options: [
@@ -1179,10 +1290,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'You cannot access elements in the template during constructor() or connectedCallback() because the component has not finished rendering. Element tracking or third-party chart setups must happen in renderedCallback() when the DOM is fully loaded.'
+    explanation: 'You cannot access elements in the template during constructor() or connectedCallback() because the component has not finished rendering. Element tracking or third-party chart setups must happen in renderedCallback().'
   },
   {
-    id: 'lwc-14',
+    id: 'lwc-22',
     text: 'A developer needs to build an input form component that alerts a parent dashboard component whenever a field value changes. How should the developer construct and pass this information up the component hierarchy?',
     topic: 'Lightning Web Components',
     options: [
@@ -1196,21 +1307,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The standard communication pattern for child-to-parent data passing in web architectures is to fire a CustomEvent. The event parameters accept a "detail" property block where you can safely embed custom state values.'
   },
   {
-    id: 'lwc-15',
-    text: 'You have a component displaying tabular financial stats that fetches database updates using a wired Apex adapter. Users state that updates aren\'t displaying when records are modified. How can the component be forced to refresh its wired data cache?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Execute a window.location.reload() instruction on every transaction event',
-      'Import the "refreshApex" function from the lwc module and invoke it using the complete provisioned object wrapper returned by the wire',
-      'Re-instantiate the @api decorator strings on the component',
-      'Toggle the lwc:if template directive flags continuously within the template scope'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Wired properties automatically use a cache framework. To manually wipe that cache and force a server-side data fetch without refreshing the entire browser tab, you pass the wire variable directly into the refreshApex() function.'
-  },
-  {
-    id: 'lwc-16',
+    id: 'lwc-23',
     text: 'A business requires a custom LWC layout to be exposed and selectable inside the Lightning App Builder so administrators can place it onto Account record pages. What configuration change must be added to the component\'s metadata xml file?',
     topic: 'Lightning Web Components',
     options: [
@@ -1224,63 +1321,7 @@ const QUESTIONS: ExamQuestion[] = [
     explanation: 'The component\'s custom metadata file (.js-meta.xml) controls placement visibility. Setting <isExposed> to true makes it visible to the system, while the target declarations define exactly where it can be selected inside the App Builder canvas.'
   },
   {
-    id: 'lwc-17',
-    text: 'An LWC application displays a list of searchable product lines. The developer observes extreme lag because a server-side Apex query executes on every single character keystroke. What is the standard design pattern used to optimize this performance concern?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Switch the data retrieval loop from an asynchronous thread into a synchronous background worker frame',
-      'Implement a debounce timer in JavaScript to delay the server call until the user has stopped typing for a brief period (e.g., 300ms)',
-      'Convert the text parameter from a standard string field into an array structure',
-      'Replace the HTML template for-each layout engine with a hardcoded matrix block'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Debouncing delays function calls. By utilizing a setTimeout mechanism on the keystroke handler, you cancel and reset the execution window with each keypress, firing the database request only when typing halts.'
-  },
-  {
-    id: 'lwc-18',
-    text: 'A nested child LWC needs to receive a contextual Record Id parameter directly from its parent view container page layout slot. How must the parameter property be declared inside the child component class?',
-    topic: 'Lightning Web Components',
-    options: [
-      'public String recordId;',
-      '@api recordId;',
-      '@track recordId;',
-      '@wire recordId;'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'To allow properties to be driven downwards into a component by a parent or a Lightning Page context container, the variable must be prefixed with the public @api decorator annotation.'
-  },
-  {
-    id: 'lwc-19',
-    text: 'A developer wants to load an external third-party charting library like Chart.js from a Static Resource into a Lightning Web Component. Which approach is required to comply with security frameworks?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Inject standard script tags pointing directly to external Content Delivery Network (CDN) links within the HTML page',
-      'Use platformResourceLoader to import the static resource script, then initialize the library inside a Promise resolution block within connectedCallback() or renderedCallback()',
-      'Convert the third-party library code into a custom Apex class utility framework',
-      'Bypass Lightning Web Security (LWS) settings inside the organization configuration dashboard'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce security rules block external scripts. Scripts must be uploaded into a Static Resource bundle and loaded safely using "loadScript" from the platformResourceLoader module, typically inside an initialized Promise chain.'
-  },
-  {
-    id: 'lwc-20',
-    text: 'A parent LWC contains several identical child item layouts. The parent needs to cleanly execute an "uncheckAll" reset function defined inside all children simultaneously. How can the parent target and invoke this behavior?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Query the children elements using this.template.querySelectorAll() and call the method directly on each element, ensuring the child method is annotated with @api',
-      'Publish a global platform notification via custom Apex messaging routes',
-      'Modify local @track state arrays to re-render the entire viewport layout frame',
-      'Dispatch a standard custom event that bubbles upwards out of the template'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'A parent component can select child elements using DOM methods like querySelectorAll(). It can then call a method directly on those child references as long as the child method is marked public using the @api decorator.'
-  },
-  {
-    id: 'lwc-21',
+    id: 'lwc-24',
     text: 'When a parent component passes a primitive value to a child component property marked with the @api decorator, what occurs if the child component attempts to mutate that property directly in its JavaScript controller?',
     topic: 'Lightning Web Components',
     options: [
@@ -1290,11 +1331,11 @@ const QUESTIONS: ExamQuestion[] = [
       'The mutation is accepted silently but field-level security blocks any subsequent database updates'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Properties marked with @api represent the component\'s public API and enforce a one-way data flow from parent to child. The child cannot mutate its own public properties directly; it must dispatch an event to request the parent to change the value.'
+    difficulty: 'moderate',
+    explanation: 'Properties marked with @api represent the component\'s public API and enforce a one-way data flow from parent to child. The child cannot mutate its own public properties directly.'
   },
   {
-    id: 'lwc-22',
+    id: 'lwc-25',
     text: 'A developer needs to dynamically search for and alter a specific HTML DOM container inside an LWC template frame using selector query string lookups. What method should be invoked within the component controller class?',
     topic: 'Lightning Web Components',
     options: [
@@ -1305,10 +1346,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To maintain shadow DOM styling encapsulation boundaries, developers must use `this.template.querySelector()` or `this.template.querySelectorAll()` to inspect and interact with elements rendered inside the component template.'
+    explanation: 'To maintain shadow DOM styling encapsulation boundaries, developers must use `this.template.querySelector()` or `this.template.querySelectorAll()` to inspect elements rendered inside the component.'
   },
   {
-    id: 'lwc-23',
+    id: 'lwc-26',
     text: 'What is the correct execution order of lifecycle hooks when a nested LWC component tree initializes and mounts onto a page layout?',
     topic: 'Lightning Web Components',
     options: [
@@ -1318,11 +1359,11 @@ const QUESTIONS: ExamQuestion[] = [
       'Parent constructor -> Child constructor -> Parent connectedCallback -> Child connectedCallback -> Parent renderedCallback -> Child renderedCallback'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'The creation phase flows downward from parent to child (constructor and connectedCallback), while the rendering phase flows upward from child to parent (renderedCallback) once the child DOM trees are fully initialized and appended.'
+    difficulty: 'moderate',
+    explanation: 'The creation phase flows downward from parent to child (constructor and connectedCallback), while the rendering phase flows upward from child to parent (renderedCallback) once the child DOM trees are fully initialized.'
   },
   {
-    id: 'lwc-24',
+    id: 'lwc-27',
     text: 'A developer creates a service component (a shared JavaScript module without an HTML template). How should this module be structured so its utility functions can be reused across other independent LWCs?',
     topic: 'Lightning Web Components',
     options: [
@@ -1333,10 +1374,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'LWC supports standard ECMAScript modules. A component without an HTML file can export constants, utility methods, or classes using standard `export` syntax, allowing other components to bring them in using standard `import` statements.'
+    explanation: 'A component without an HTML file can export constants, utility methods, or classes using standard `export` syntax, allowing other components to bring them in using standard `import` statements.'
   },
   {
-    id: 'lwc-25',
+    id: 'lwc-28',
     text: 'When utilizing the Lightning Data Service "wire" service to query database fields, what parameters are returned within the provisioned object block that captures the asynchronous data payload stream?',
     topic: 'Lightning Web Components',
     options: [
@@ -1347,38 +1388,10 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A wired property or function receives an object parameter containing two primary fields: `data` (holding the successfully resolved record payload metadata) and `error` (holding exception or permission details if the call fails).'
+    explanation: 'A wired property or function receives an object parameter containing two primary fields: `data` (holding the successfully resolved record payload metadata) and `error` (holding exception or permission details).'
   },
   {
-    id: 'lwc-26',
-    text: 'You have a component displaying tabular operational data that uses a wired Apex adapter. If an inline transaction updates record fields, how can the component force its stale client-side cache to refresh immediately from the server?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Call the JavaScript method window.location.reload() inside the update statement block',
-      'Import the refreshApex function from the @salesforce/apex module and pass the complete provisioned object property into it',
-      'Toggle the public @api tracking variables continuously inside the controller class',
-      'Re-execute the constructor lifecycle chain manually'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Wired Apex methods cache their results automatically to optimize UI rendering speeds. To force a data refresh and clear that cache without a full page refresh, you must invoke the `refreshApex()` utility function, passing the complete object returned by the wire.'
-  },
-  {
-    id: 'lwc-27',
-    text: 'To comply with Lightning Web Security (LWS) frameworks, what standard practice must a developer follow when attempting to load a third-party charting library like Chart.js from a Static Resource into an LWC component canvas?',
-    topic: 'Lightning Web Components',
-    options: [
-      'Inject regular script tag references pointing directly to public CDN links inside the HTML page',
-      'Import loadScript and loadStyle from the lightning/platformResourceLoader module, and initialize the script via a resolved Promise chain inside renderedCallback()',
-      'Convert the entire third-party library source into a custom Apex class utility framework',
-      'Deactivate the organization-wide Content Security Policy configuration settings'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'LWS blocks direct injections of external script URLs. Third-party files must be uploaded as static resources, then loaded safely using the `loadScript` and `loadStyle` methods from `lightning/platformResourceLoader` within a Promise structure.'
-  },
-  {
-    id: 'lwc-28',
+    id: 'lwc-29',
     text: 'When configuring custom component communication, what behavior happens if a developer sets bubbles: true and composed: true inside an instantiated CustomEvent constructor parameters mapping?',
     topic: 'Lightning Web Components',
     options: [
@@ -1388,22 +1401,8 @@ const QUESTIONS: ExamQuestion[] = [
       'The event forces validation rules to run on parent fields before re-rendering views'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Setting `bubbles: true` lets the event bubble up the DOM tree. Setting `composed: true` allows that event to cross the shadow DOM boundary, making it visible to parent layouts outside the internal component scope.'
-  },
-  {
-    id: 'lwc-29',
-    text: 'What standard element directive should be used in modern LWC templates to conditionally hide or render an HTML block layout based on the evaluation outcome of a JS property checkbox state?',
-    topic: 'Lightning Web Components',
-    options: [
-      'if:true',
-      'lwc:if',
-      'rendered',
-      'v-if'
-    ],
-    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Modern Lightning Web Components use the `lwc:if`, `lwc:elseif`, and `lwc:else` directives to handle conditional rendering logic efficiently within HTML templates.'
+    explanation: 'Setting `bubbles: true` lets the event bubble up the DOM tree. Setting `composed: true` allows that event to cross the shadow DOM boundary, making it visible to parent layouts outside the internal component scope.'
   },
   {
     id: 'lwc-30',
@@ -1417,2302 +1416,2288 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Debouncing groups multiple sequential events together. By delaying the execution of an action (like a server-side query) until a user stops typing for a specific period (e.g., 300ms), it minimizes resource strain and smooths performance.'
+    explanation: 'Debouncing groups multiple sequential events together. By delaying the execution of an action until a user stops typing for a brief period (e.g., 300ms), it minimizes server load and improves performance.'
   },
 
   {
     id: 'data-1',
-    text: 'What is the maximum number of characters allowed in a Long Text Area field?',
+    text: 'What type of relationship should be created if you need to loosely link two objects together without affecting record ownership or security frameworks?',
     topic: 'Data Modeling',
     options: [
-      '255',
-      '1,000',
-      '32,000',
-      '131,072'
+      'Master-Detail Relationship',
+      'Lookup Relationship',
+      'Junction Relationship',
+      'Hierarchical Relationship'
     ],
-    correctAnswer: 3,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Long Text Area fields can store up to 131,072 characters.'
+    explanation: 'A Lookup relationship links two objects loosely. The child records maintain independent ownership, security models, and sharing boundaries separate from the parent.'
   },
   {
     id: 'data-2',
-    text: 'A company needs to prevent duplicate accounts based on website domain. What should be implemented?',
+    text: 'What is a core limitation of a Master-Detail relationship regarding the record ownership field on the child object?',
     topic: 'Data Modeling',
     options: [
-      'Validation Rule',
-      'Duplicate Rule with Matching Rule',
-      'Workflow Rule',
-      'Trigger'
+      'The child record owner field is automatically set to a system queue',
+      'The child object does not have an independent Owner field; ownership is automatically inherited from the parent master record',
+      'The child record owner can only be changed via Apex code blocks',
+      'The owner field becomes a global encrypted text string field'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Duplicate Rules combined with Matching Rules can prevent duplicates based on custom criteria like website domain.'
+    explanation: 'In a Master-Detail relationship, the child record inherits its security, sharing rules, and ownership entirely from its parent master record.'
   },
   {
     id: 'data-3',
-    text: 'What is a key structural difference between a Lookup relationship and a Master-Detail relationship?',
+    text: 'What is the maximum number of Master-Detail relationship fields that can be created on a single custom object?',
     topic: 'Data Modeling',
     options: [
-      'A lookup relationship field is always mandatory on a page layout, whereas master-detail is always optional',
-      'Deleting a master record automatically deletes its related detail records, whereas deleting a lookup parent does not delete the child by default',
-      'Lookup relationships allow roll-up summary fields to be created on the parent object, whereas master-detail relationships do not',
-      'An object can have up to 40 master-detail relationships but only 2 lookup relationships'
+      '1',
+      '2',
+      '5',
+      '10'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Master-Detail relationships enforce tight coupling: deleting the master record deletes all children. In a Lookup relationship, deleting the parent simply clears the lookup field value by default.'
+    explanation: 'Salesforce limits each custom object to a maximum of two Master-Detail relationship fields.'
   },
   {
     id: 'data-4',
-    text: 'What type of field should be created to store a calculated value based on fields in a child object within a Master-Detail relationship?',
+    text: 'Which custom field type allows an object to store alphanumeric strings received from an outside database and use them to index rows during API upsert operations?',
     topic: 'Data Modeling',
     options: [
+      'Auto-Number Field',
       'Formula Field',
-      'Roll-Up Summary Field',
-      'Cross-Object Formula Field',
-      'Text Area (Rich) Field'
+      'External ID Text Field',
+      'Roll-Up Summary Field'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Roll-Up Summary fields are declarative tools used on the Master side of a Master-Detail relationship to calculate values (SUM, COUNT, MIN, MAX) from related detail records.'
+    explanation: 'An External ID field holds unique identifiers from external systems, enabling direct record matching and reference syncing during data updates.'
   },
   {
     id: 'data-5',
-    text: 'What is the purpose of an External ID field in Salesforce?',
+    text: 'What is a Hierarchical Relationship in Salesforce primarily used for?',
     topic: 'Data Modeling',
     options: [
-      'To allow external systems to bypass Salesforce login credentials completely',
-      'To uniquely reference an identification record or key coming from an outside system, speeding up upsert operations via data utilities',
-      'To flag an object as visible to external unauthenticated site visitors',
-      'To hold the IP addresses of servers communicating with the Salesforce API layer'
+      'To link an account record to multiple child asset records',
+      'To establish a special lookup link strictly between User records, such as defining a manager chain',
+      'To create many-to-many configurations on custom objects',
+      'To map data model tables inside Salesforce Data Cloud structures'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'An External ID contains unique record identifiers from an external database (like an ERP system). This allows Data Loader or integrations to match and upsert records without querying Salesforce IDs first.'
+    explanation: 'A Hierarchical relationship is a specialized lookup option restricted exclusively to the User object, commonly used to build organizational reporting chains.'
   },
   {
     id: 'data-6',
-    text: 'Which field types can be designated as an External ID in Salesforce?',
+    text: 'What property setting must be enabled on a Lookup field definition if you want to block users from saving a child record without picking a parent record?',
     topic: 'Data Modeling',
     options: [
-      'Text, Number, Email, or Auto-Number',
-      'Checkbox, Picklist, or URL',
-      'Long Text Area, Date, and Currency',
-      'Master-Detail or Lookup relationship fields'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'Only custom fields of type Text, Number, Email, or Auto-Number can be flagged as an External ID field during configuration.'
-  },
-  {
-    id: 'data-7',
-    text: 'What data model adjustment occurs when a Master-Detail relationship is converted into a Lookup relationship?',
-    topic: 'Data Modeling',
-    options: [
-      'All pre-existing roll-up summary fields on the parent object are automatically converted into standard formula fields',
-      'All existing roll-up summary fields on the parent object are permanently deleted',
-      'The child records are immediately detached and transferred to a default system queue',
-      'The conversion is blocked until all records are manually deleted from the database'
+      'Unique field constraint checkbox',
+      'Required checkbox',
+      'External ID declaration flag',
+      'Case-sensitive evaluation rule'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Because Roll-Up Summary fields strictly require a Master-Detail relationship to calculate metrics, converting the relationship to a Lookup will instantly drop support for those summary fields, forcing their deletion.'
+    explanation: 'Marking a lookup field as Required ensures that a valid parent relationship must be chosen before a child record can be saved.'
+  },
+  {
+    id: 'data-7',
+    text: 'What data modeling structure is formed when an administrator builds a custom object containing two separate Master-Detail relationships pointing to distinct parent objects?',
+    topic: 'Data Modeling',
+    options: [
+      'Self-Relationship object',
+      'Junction Object',
+      'Lookup Object node',
+      'External Data mapping'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'A junction object connects two objects in a many-to-many relationship using a pair of Master-Detail fields.'
   },
   {
     id: 'data-8',
-    text: 'What does a "Self-Relationship" represent in Salesforce data modeling?',
+    text: 'What happens to related custom child records in a standard Lookup relationship if the associated parent record is deleted and the field is configured to "Clear the value of this field"?',
     topic: 'Data Modeling',
     options: [
-      'A lookup relationship from an object to itself, allowing records to be linked hierarchically',
-      'A validation rule checking if a user is editing their own employee file',
-      'A master-detail relationship between two distinct custom objects sharing the same owner',
-      'A formula field referencing another formula field inside the same layout page'
+      'The child records are permanently deleted via cascade delete logic',
+      'The child records remain intact, and the lookup field value becomes blank',
+      'The child records are automatically reassigned to the system administrator',
+      'The transaction throws a fatal database runtime exception'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A self-relationship is a standard lookup pointing back to the same object structure. A classic example is the Account object\'s standard "Parent Account" field, which points to another Account record.'
+    explanation: 'Unlike Master-Detail dependencies, a standard lookup can clear its field reference upon parent deletion, leaving the child record otherwise unaffected.'
   },
   {
     id: 'data-9',
-    text: 'What is the maximum number of custom fields you can create on a standard or custom object in a Salesforce Enterprise Edition organization?',
+    text: 'Which function type cannot be calculated natively inside an administrative Roll-Up Summary field declaration?',
+    topic: 'Data Modeling',
+    options: [
+      'SUM',
+      'MIN / MAX',
+      'AVERAGE',
+      'COUNT'
+    ],
+    correctAnswer: 2,
+    difficulty: 'moderate',
+    explanation: 'Roll-Up Summary fields natively support COUNT, SUM, MIN, and MAX, but do not provide an AVERAGE calculation option.'
+  },
+  {
+    id: 'data-10',
+    text: 'What is the maximum number of custom fields permitted on a standard object layout in an Enterprise Edition Salesforce organization?',
     topic: 'Data Modeling',
     options: [
       '100',
       '500',
       '800',
-      '2,000'
+      'unlimited'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Enterprise Edition allows up to 500 custom fields per object. Unlimited/Performance editions extend this cap to 800 custom fields.'
-  },
-  {
-    id: 'data-10',
-    text: 'What feature should be used to change a standard picklist field\'s values across different segments of users based on their functional business needs?',
-    topic: 'Data Modeling',
-    options: [
-      'Validation Rules tracking profile strings',
-      'Record Types with customized Picklist allocations',
-      'Field-Level Security settings',
-      'Page Layout section properties'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Record Types let you map specific picklist values to different records under the same object framework, tailoring select options to business processes without creating new fields.'
+    explanation: 'Salesforce Enterprise Edition limits custom field creations to a baseline ceiling of 500 custom fields per object.'
   },
   {
     id: 'data-11',
-    text: 'What happens to field historical data tracking records if a tracked custom field is deleted from an object?',
+    text: 'Which relationship classification allows an object to have a lookup link that references records belonging to its own identical object type?',
     topic: 'Data Modeling',
     options: [
-      'The historical logs are kept permanently and moved to a system archive bucket',
-      'The historical data tracking entries for that specific field are automatically deleted along with the field',
-      'The field deletion is permanently blocked until historical logging is deactivated',
-      'The system transfers the historical values into the description field of the object'
+      'Master-Detail Relationship',
+      'Self-Relationship',
+      'Junction Relationship',
+      'External Relationship'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Deleting a custom field removes both the field definition and its associated data, including any historical logs tracked in the object\'s History table.'
+    explanation: 'A self-relationship is a lookup to the same object type, such as linking an Account record to a parent Account record.'
   },
   {
     id: 'data-12',
-    text: 'What is a "Big Object" in the Salesforce platform architecture?',
+    text: 'What does the field attribute "Unique" enforce when selected during custom Text field construction?',
     topic: 'Data Modeling',
     options: [
-      'A standard object that contains more than 100 custom lookup fields',
-      'An object architecture designed to securely store and manage massive volumes of data (billions of records) with consistent performance tracking limits',
-      'A custom canvas layout designed for tablet screens',
-      'A temporary database frame used to compress metadata files during migration deployments'
+      'It forces the field to contain uppercase characters only',
+      'It prevents duplicate data values across separate records for that specific field',
+      'It automatically encrypts the string inside database tables',
+      'It requires the field to be populated on page layouts'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Big Objects provide consistent sub-second scaling capabilities to manage massive data footprints (millions or billions of rows) inside Salesforce for historical storage or auditing.'
+    explanation: 'The Unique attribute blocks users from saving a value if that exact character string already exists in that field on another record.'
   },
   {
     id: 'data-13',
-    text: 'Universal Containers wants to track physical company assets and their maintenance logs. Each asset must track multiple maintenance items, and if an asset is retired and deleted, its logs are no longer needed. How should this schema be established?',
+    text: 'An administrator needs to create a data model where multiple project tasks can be associated with a master project record. If a project is deleted, all tasks must be deleted automatically. What field relationship fits this requirement?',
     topic: 'Data Modeling',
     options: [
-      'Create a Lookup relationship on Maintenance Item pointing to the Asset object',
-      'Create a Master-Detail relationship field on Maintenance Item with the Asset designated as the Master object',
-      'Construct a junction object using two lookup fields to tie assets to maintenance queues',
-      'Map both data sets into a singular rich text area field on the Account record layout'
+      'Lookup Relationship from Task to Project',
+      'Master-Detail Relationship from Task to Project',
+      'Junction Object connecting both elements',
+      'Hierarchical field definition mapped via profiles'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Since the maintenance logs are completely dependent on the Asset and should be automatically cleared out when the parent Asset is deleted, a Master-Detail relationship is the correct architecture.'
+    explanation: 'Master-Detail relationships enforce structural cascade deletion, automatically removing child records when their parent is deleted.'
   },
   {
     id: 'data-14',
-    text: 'A consulting company needs to model a system where Projects can have multiple Consultants assigned to them, and Consultants can work on multiple Projects simultaneously. What relational structure should the administrator build?',
+    text: 'A university tracks student enrollments across various courses. A student can enroll in multiple courses, and a single course contains many students. How should the administrator design the data model?',
     topic: 'Data Modeling',
     options: [
-      'A Direct lookup field on the Consultant object pointing to the Project object',
-      'A custom junction object containing two separate Master-Detail relationship fields pointing to Project and Consultant respectively',
-      'A self-relationship lookup configuration on the Project layout framework',
-      'A roll-up summary calculation linking both objects directly'
+      'Create a Lookup field on the Student object pointing to the Course object',
+      'Create a custom Enrollment object acting as a Junction Object with Master-Detail relationships to both Student and Course',
+      'Build a Hierarchical relationship linking the User records',
+      'Deploy an external text ID attribute onto the page layouts'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce handles many-to-many relationships by creating a "junction object." This object sits in the middle, leveraging two Master-Detail fields to connect the records on both sides.'
+    explanation: 'A many-to-many data pattern requires a junction object to link two parent records together via separate Master-Detail fields.'
   },
   {
     id: 'data-15',
-    text: 'An administrator needs to create a formula field on the Contact object that displays the "Region" value from the parent Account object. What technique should be utilized?',
+    text: 'A company needs to sync invoice data from an external billing tool. They want to ensure they can update matching records using the external database key during weekly data loads. What custom field setting must be applied?',
     topic: 'Data Modeling',
     options: [
-      'Construct a text validation routine evaluating contact mailing codes',
-      'Create a formula field using cross-object notation (e.g., Account.Region__c) to pull the value downstream from the parent record',
-      'Build a roll-up summary field configured to merge textual field rows',
-      'Deploy an Apex trigger to execute an explicit SOQL statement on each layout click'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Cross-object formulas reference merge fields from a parent or master object, pulling data down onto the child layout declarations smoothly without custom code.'
-  },
-  {
-    id: 'data-16',
-    text: 'A business requires that any Account record marked as a "Prospect" must contain a value inside the "Prospect Rating" picklist field before it can be saved. How should this requirement be enforced?',
-    topic: 'Data Modeling',
-    options: [
-      'Mark the field as universally required inside the custom field setting checkbox parameters',
-      'Create a validation rule with a formula checking: ISPICKVAL(Type, "Prospect") && ISBLANK(TEXT(Prospect_Rating__c))',
-      'Remove the field from the standard layout profiles entirely',
-      'Convert the Prospect Rating field from a picklist type into a master-detail relationship'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Universally requiring the field would force it across all account types. Using a conditional validation rule blocks saving only when the criteria evaluate to TRUE (Type is Prospect and Rating is empty).'
-  },
-  {
-    id: 'data-17',
-    text: 'A business needs to establish a field tracking the precise global coordinate location of their cellular tower hardware items. The data will be used to plot towers on maps. What custom field type should be created?',
-    topic: 'Data Modeling',
-    options: [
-      'External ID Text Field',
-      'Geolocation Field',
-      'Lookup Field to Map Object',
-      'Formula field calculating numeric values'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The Geolocation field type allows you to capture latitude and longitude values, enabling distance calculations and mapping functions natively within Salesforce.'
-  },
-  {
-    id: 'data-18',
-    text: 'An organization needs to delete a custom field that has become redundant. However, the system blocks the deletion. What could be the primary cause preventing the administrator from deleting the field?',
-    topic: 'Data Modeling',
-    options: [
-      'The field is currently referenced in an active validation rule, formula field, or Apex class code definition',
-      'The field contains more than 10,000 active record values in production',
-      'The field is set to visible across more than three user profiles',
-      'The field is placed inside a collapsed layout page section banner'
+      'Create a text field flagged as an External ID and marked as Unique',
+      'Build an auto-number field tracking serial progressions',
+      'Deploy a roll-up summary field totaling tracking lines',
+      'Configure a validation formula tracking field characters'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Salesforce protects platform dependencies. If a field is explicitly tied to an active component like a formula, validation rule, flow, or Apex class, it cannot be deleted until those references are removed.'
+    explanation: 'External ID attributes store unique external identifiers, allowing seamless matching and loading during integration tasks.'
+  },
+  {
+    id: 'data-16',
+    text: 'An administrator tries to convert an existing Lookup relationship field into a Master-Detail relationship field but the platform blocks the operation with an error. What is the most likely cause?',
+    topic: 'Data Modeling',
+    options: [
+      'The parent object already has one lookup relationship field configured',
+      'The object contains existing records with blank or null values in the lookup field',
+      'The user profile lacks permission sets to modify custom tables',
+      'The validation rules are active on the target layout components'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'You can only convert a lookup into a master-detail relationship if all existing records have data populated in that lookup field.'
+  },
+  {
+    id: 'data-17',
+    text: 'A business demands a dashboard widget displaying the maximum discount percentage found among a set of related line item records on an Opportunity page layout. How should this be handled declartively?',
+    topic: 'Data Modeling',
+    options: [
+      'Create a standard cross-object formula field tracking values',
+      'Create a Roll-Up Summary field on the Opportunity object using the MAX function on the line item discount field',
+      'Deploy an Apex batch class to sweep columns every night',
+      'Build a validation rule to capture the number value on save'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The MAX operation in a Roll-Up Summary field identifies the highest numeric value among related master-detail child records.'
+  },
+  {
+    id: 'data-18',
+    text: 'A finance manager needs to audit record changes. They want to ensure a custom text field can track duplicate employee identification values across sandboxes but block duplicates in production. What attribute addresses this?',
+    topic: 'Data Modeling',
+    options: [
+      'Enforce the Required checkbox property parameters',
+      'Mark the field as Unique during setup to prevent matching values',
+      'Use an auto-number format string structure',
+      'Set the Field-Level Security to Read Only'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Unique setting prevents duplicate entries across records, throwing a validation exception if a match is found.'
   },
   {
     id: 'data-19',
-    text: 'You have a custom object tracking Client Reviews. The OWD sharing for this object must be Private. Management wants to display the total count of all reviews directly on the Account page layout. How should this data structure be managed?',
+    text: 'An executive wants to build a nested relationship chain where a region links to a territory, which links to a district, which links to an office. What data modeling constraint must the administrator watch out for?',
     topic: 'Data Modeling',
     options: [
-      'Create a Lookup relationship on Client Review to Account, and use a standard formula field on Account to count the logs',
-      'Create a Master-Detail relationship field on Client Review pointing to Account as the Master, then build a Roll-Up Summary field on Account tracking the total record count',
-      'Build a junction object framework utilizing workflow outbound signals',
-      'Change the Account OWD configuration settings to Controlled by Parent'
+      'Master-Detail custom relationships cannot exceed a nesting depth of 3 levels',
+      'Lookup fields are blocked from referencing standard object models',
+      'Validation rules can only parse 1 level of parent tracking data',
+      'Profiles restrict nested relationships to three tiers'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Roll-Up Summary fields provide an efficient way to display item counts natively. However, they require a Master-Detail relationship. Because Account is the parent, it can host the roll-up field.'
+    explanation: 'Salesforce restricts custom master-detail hierarchies to a maximum nesting depth of 3 consecutive sub-levels.'
   },
   {
     id: 'data-20',
-    text: 'An administrator needs to bulk load 3 million records into a custom log object without triggering validation rules or workflows, while minimizing the total time the load takes. Which mechanism configuration matches this task?',
+    text: 'A developer needs to build a reporting structure mapping corporate management chains where employees link directly to their supervisor within the User object. What relationship type should be chosen?',
     topic: 'Data Modeling',
     options: [
-      'Import data via Data Import Wizard in blocks of 50,000 records sequentially',
-      'Utilize Salesforce Data Loader using the Bulk API protocol with the concurrency mode set to Parallel, after manually deactivating automation rules',
-      'Deploy synchronous Apex triggers containing inline insert loops',
-      'Convert the custom log object into an external data source structure via Salesforce Connect'
+      'Master-Detail Relationship',
+      'Hierarchical Relationship',
+      'Junction Relationship',
+      'External Data Link'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Bulk API is optimized for millions of records. Running in parallel speeds up data loading, and temporarily deactivating downstream automations protects performance limits and reduces processing overhead.'
+    explanation: 'Hierarchical relationships are specialized lookups reserved for the User object to construct structural reporting paths.'
   },
 
   {
     id: 'process-1',
-    text: 'What is the recommended tool for complex business processes with multiple decision points?',
+    text: 'Which element is used within Flow Builder to dynamically separate execution branches based on variable values or record conditions?',
+    topic: 'Process Automation',
+    options: [
+      'Assignment Element',
+      'Decision Element',
+      'Loop Element',
+      'Update Records Element'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Decision element acts like an if-then block, routing the flow execution path down different branches based on your defined criteria.'
+  },
+  {
+    id: 'process-2',
+    text: 'What is the purpose of the Assignment Element inside an Autolaunched Flow structure?',
+    topic: 'Process Automation',
+    options: [
+      'To commit record modifications to the database tables immediately',
+      'To set or change the values of variables, collections, or record fields within the flow memory',
+      'To send email alerts using predefined messaging templates',
+      'To check user profiles for field-level security compliance'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Assignment element changes variable values in the flow\'s internal memory before they are processed or written to the database.'
+  },
+  {
+    id: 'process-3',
+    text: 'What type of Flow should be selected if an action must execute automatically at a specific hour every day for a matching list of records?',
+    topic: 'Process Automation',
+    options: [
+      'Record-Triggered Flow',
+      'Schedule-Triggered Flow',
+      'Screen Flow',
+      'Platform Event-Triggered Flow'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Schedule-Triggered Flows run asynchronously at specified intervals (daily, weekly, or once) for a target group of records.'
+  },
+  {
+    id: 'process-4',
+    text: 'What does a Subflow element allow a developer to accomplish within Flow Builder?',
+    topic: 'Process Automation',
+    options: [
+      'To launch an Apex trigger handler path inside system mode',
+      'To call and execute another independent, autolaunched flow from within the active flow canvas',
+      'To bypass validation rules during data creation tasks',
+      'To automatically convert screens into mobile layouts'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Subflow element lets you reuse automation by calling one autolaunched flow from within another.'
+  },
+  {
+    id: 'process-5',
+    text: 'Which status parameter must be applied to a newly completed Flow design before users can experience its automation logic in production?',
+    topic: 'Process Automation',
+    options: [
+      'Saved',
+      'Activated',
+      'Validated',
+      'Published'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'A flow version must be explicitly Activated before its automation path goes live in the system.'
+  },
+  {
+    id: 'process-6',
+    text: 'What capability does a Scheduled Path offer within a Record-Triggered Flow configuration layout?',
+    topic: 'Process Automation',
+    options: [
+      'It schedules an immediate system layout metadata index update',
+      'It delays specific actions to run at a relative time offset after a record event occurs (e.g., 5 days after close date)',
+      'It forces all database transactions to run in synchronous user mode',
+      'It checks profile password metrics on login events'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Scheduled Paths allow you to separate and delay time-sensitive actions relative to record dates or execution events.'
+  },
+  {
+    id: 'process-7',
+    text: 'Which tool is the modern recommended standard for creating point-and-click record-triggered automations in Salesforce?',
     topic: 'Process Automation',
     options: [
       'Workflow Rules',
       'Process Builder',
       'Flow Builder',
-      'Approval Process'
+      'Aura Handlers'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Flow Builder is the most powerful and flexible tool for complex business processes with multiple decision points and actions.'
-  },
-  {
-    id: 'process-2',
-    text: 'Which Flow element is utilized to loop through a collection of records and perform actions on each individual item?',
-    topic: 'Process Automation',
-    options: [
-      'Collection Filter',
-      'Loop',
-      'Decision',
-      'Assignment'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The Loop element in Flow Builder allows you to iterate through a collection variable record-by-record to execute actions or populate variables.'
-  },
-  {
-    id: 'process-3',
-    text: 'What is the primary function of an Outbound Message action in Salesforce automation?',
-    topic: 'Process Automation',
-    options: [
-      'To send a standard email alert to external stakeholders from the system',
-      'To securely transmit a structured XML notification message to a designated external endpoint listener application',
-      'To log a call activity record on an active Account timeline slot',
-      'To post a dynamic message thread onto a chatter group feed layout'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Outbound Messaging sends an API-compatible XML message payload to a specified endpoint URL, allowing declarative integrations to notify external systems when database events fire.'
-  },
-  {
-    id: 'process-4',
-    text: 'Which feature in a Record-Triggered Flow should be configured when you need to schedule an action to fire 48 hours after a record is modified?',
-    topic: 'Process Automation',
-    options: [
-      'Asynchronous Path',
-      'Scheduled Path',
-      'Fast Field Updates',
-      'Pause Element'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Scheduled Paths allow developers to execute specific flow steps at a relative time threshold based on a date/time field value on the triggering record.'
-  },
-  {
-    id: 'process-5',
-    text: 'What occurs when a Record-Triggered Flow executes an "Actions and Related Records" path versus a "Fast Field Updates" path?',
-    topic: 'Process Automation',
-    options: [
-      'Fast Field Updates runs asynchronously, while Actions and Related Records runs synchronously',
-      'Fast Field Updates runs before the record is saved to the database; Actions and Related Records runs after the record is saved to the database',
-      'Fast Field Updates can modify unrelated objects, whereas Actions and Related Records can only update the triggering row',
-      'Fast Field Updates ignores all validation rule formulas, while Actions and Related Records honors them'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Fast Field Updates (Before-Save) modifies record fields before database write operations. Actions and Related Records (After-Save) executes afterward, which is necessary if you need access to system fields or need to update related records.'
-  },
-  {
-    id: 'process-6',
-    text: 'What is the purpose of a "Collection Filter" element in Flow Builder?',
-    topic: 'Process Automation',
-    options: [
-      'To restrict the total fields queried by a Get Records step',
-      'To narrow down a collection variable to only the records that meet specified criteria without running another database query',
-      'To delete unwanted files from a user layout',
-      'To export dashboard statistics into separate CSV formats'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Collection Filters evaluate an existing list of records in memory, pulling out matching records into a subset list without consuming expensive SOQL query limits.'
-  },
-  {
-    id: 'process-7',
-    text: 'What tool allows developers to visually debug a Flow by stepping through its execution path and viewing real-time data states?',
-    topic: 'Process Automation',
-    options: [
-      'Apex Test Execution Engine',
-      'Flow Debugger',
-      'Developer Console Log Framework',
-      'Schema Builder Inspector'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The native Flow Debugger lets you enter input variables, run the automation, trace path lines visually, and evaluate variable transformations at each step.'
+    explanation: 'Flow Builder has replaced legacy tools like Workflow Rules and Process Builder as the primary tool for declarative automation.'
   },
   {
     id: 'process-8',
-    text: 'Which declarative capability allows an administrator to define specific milestones and transition entry criteria for a record traveling through stages?',
+    text: 'What target variable is automatically generated in a Record-Triggered Flow to store the field values of the record that launched the event?',
     topic: 'Process Automation',
     options: [
-      'Approval Process',
-      'Path',
-      'Assignment Rules',
-      'Escalation Rules'
+      'Global.RecordID',
+      '$Record',
+      'Trigger.new',
+      'CurrentRecord'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Path allows you to map out step-by-step progress bars on record pages (like Lead status or Opportunity stages), complete with key fields and guidance tips for users.'
+    explanation: 'The `$Record` global variable houses the structural data fields of the specific record that triggered the flow event.'
   },
   {
     id: 'process-9',
-    text: 'What does an Escalation Rule manage inside the Salesforce Service Cloud framework?',
+    text: 'What does a Loop Element accomplish when processing a collection variable inside Flow Builder?',
     topic: 'Process Automation',
     options: [
-      'It moves Leads to sales pipelines when cold responses are captured',
-      'It automatically reassigns open Case records or notifies managers if a Case remains unresolved after a specific time duration',
-      'It increments account balance metrics when projects are locked',
-      'It forces validation rules to run on historical data loads'
+      'It creates an infinite trigger sequence until limits clear',
+      'It steps through each individual item in a collection array one by one to execute actions on them',
+      'It deletes duplicate fields from page layout structures',
+      'It converts standard picklists into tracking formulas'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Escalation Rules look for age thresholds on Case records, automatically updating fields or executing notification chains if operational SLA milestones are missed.'
+    explanation: 'A Loop element iterates through a collection, assigning each item to a loop variable to let you perform repetitive actions per record.'
   },
   {
     id: 'process-10',
-    text: 'What type of resource variable must be configured in a Flow to hold multiple values of the exact same data type simultaneously?',
+    text: 'Which Flow Builder element writes data changes to the Salesforce database using specific filter conditions?',
     topic: 'Process Automation',
     options: [
-      'Formula Resource',
-      'Collection Variable',
-      'Global Constant',
-      'Text Template'
+      'Assignment Element',
+      'Update Records Element',
+      'Get Records Element',
+      'Create Records Element'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Collection Variables are arrays or sets that store multiple values or object records of a single data type, allowing bulk data handling within a flow.'
+    explanation: 'The Update Records element modifies matching database rows using field mappings or values stored in a record variable.'
   },
   {
     id: 'process-11',
-    text: 'Which standard automation tool is required to dynamically lock a record from user modifications during a multi-manager sign-off phase?',
+    text: 'What does a "Collection Filter" element do inside Flow Builder?',
     topic: 'Process Automation',
     options: [
-      'Record-Triggered Flow running fast updates',
-      'Approval Process',
-      'Validation Rules containing regex arrays',
-      'Case Assignment Framework'
+      'It exports data sheets directly into CSV attachments',
+      'It screens a collection variable using a condition to produce a smaller collection containing only the matching records',
+      'It locks out profiles from viewing specific fields',
+      'It checks if a validation rule has been bypassed'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Approval Processes have a native record-locking mechanism that secures records during reviews, preventing users from making edits until the evaluation is complete.'
+    explanation: 'The Collection Filter evaluates an array of records in memory, outputting a filtered subset without needing a costly loop.'
   },
   {
     id: 'process-12',
-    text: 'What behavior happens to active scheduled actions in a Flow\'s queue if the master record is deleted before the timeline execution date arrives?',
+    text: 'What event status characterizes an Autolaunched Flow compared to a Screen Flow layout?',
     topic: 'Process Automation',
     options: [
-      'The action executes anyway and recreates a blank parent row frame',
-      'The scheduled actions are automatically removed from the interview queue',
-      'The transaction halts and throws an administrative exception alert',
-      'The system moves the action to a default system error dashboard'
+      'It requires a custom button click to launch every time',
+      'It runs entirely in the background without a user interface or interactive screens',
+      'It requires an active external integration webhook connection to start',
+      'It only runs inside sandbox test org setups'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce tracks active wait steps via the Time-Based Workflow queue or Flow Interviews. Deleting the parent record cleans up the workspace by clearing its pending actions.'
+    explanation: 'Autolaunched flows run programmatically in the background without requiring user interaction or displaying screens.'
   },
   {
     id: 'process-13',
-    text: 'A business requires that when a support representative closes a Case with a status of "Defect," a follow-up task must be assigned to the product team. If the case is reopened later, that task must be marked canceled. How should this scenario be built?',
+    text: 'An administrator needs to build a wizard that guides call center agents through collection tasks, updating separate objects based on agent entries. What tool should be deployed?',
     topic: 'Process Automation',
     options: [
-      'Build separate workflow rules utilizing outbound XML scripts',
-      'Create a Record-Triggered Flow on the Case object that uses Decision elements to check status and creates or updates the related Task records accordingly',
-      'Configure a custom formula validation constraint across objects',
-      'Deploy an Escalation Rule containing multiple execution steps'
+      'Record-Triggered Flow running fast updates',
+      'Screen Flow placed on the console record page layout',
+      'An asynchronous future method trigger handler',
+      'A multi-stage approval process layout'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Record-Triggered Flows easily handle branches and cross-object actions. They can check database field states, create new tasks, or find and update existing records depending on the paths taken.'
+    explanation: 'Screen Flows capture inputs through guided on-screen forms, making them ideal for walking agents through multi-step tasks.'
   },
   {
     id: 'process-14',
-    text: 'An administrator needs to create an automation that deletes all temporary internal logs related to an Account record whenever that Account is marked "Inactive." Which automation tool handles record deletion declartively?',
+    text: 'A company wants to send a follow-up email alert to a customer exactly 7 days after their service case is closed. How should this be structured inside Flow Builder?',
     topic: 'Process Automation',
     options: [
-      'Approval Processes utilizing final actions',
-      'Flow Builder (Record-Triggered Flow)',
-      'Validation Rules checking record states',
-      'Case Assignment Logic'
+      'Use an Autolaunched Flow triggered by a validation formula',
+      'Add a Scheduled Path to a Record-Triggered Flow, set to run 7 days after the case close date',
+      'Deploy a standard Approval Process with time locks',
+      'Schedule a daily Data Loader export routine'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Flow Builder can declaratively delete records from the database using the Delete Records element. Legacy tools like Workflow Rules and Process Builder cannot execute deletions.'
+    explanation: 'Scheduled paths allow you to defer specific actions (like sending emails) to run at a relative time offset from record events.'
   },
   {
     id: 'process-15',
-    text: 'Universal Containers wants to route global discount agreements. If an adjustment is under 15%, the system routes to a regional manager. If it is 15% or greater, it also requires approval from a VP. How should this process be designed?',
+    text: 'A developer needs a flow to query contact records matching an account country code. If no records are found, it should redirect down an alternate processing track. What element configuration handles this branching?',
     topic: 'Process Automation',
     options: [
-      'Create two completely separate Approval Processes and tie them to cross-object formulas',
-      'Configure a single Approval Process with multiple conditional Approval Steps that check the discount percentage thresholds',
-      'Deploy an Apex Trigger utilizing recursive transaction maps',
-      'Build a Screen Flow containing multiple hardcoded approval layouts'
+      'An Assignment element updating string states',
+      'A Get Records element followed by a Decision element that checks if the record collection is null',
+      'A Loop element configured to iterate over profile metrics',
+      'A validation rule checking character patterns'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A single Approval Process can support multiple steps arranged sequentially. Each step can have its own entry criteria, allowing low-level approvals to pass quickly while escalating higher discounts.'
+    explanation: 'Pairing a Get Records element with a Decision element lets you check if data was found and branch your flow logic accordingly.'
   },
   {
     id: 'process-16',
-    text: 'A financial institution needs a process to guide call center operators through a series of mandatory validation scripts while collecting data. The screen fields must change based on the customer\'s answers. What automation type is required?',
+    text: 'A business process demands that whenever an asset status becomes "Expired," an internal record log must update. The flow works, but team members notice heavy screen delay on save. Investigation reveals an Update Records element inside a loop. How should this be fixed?',
     topic: 'Process Automation',
     options: [
-      'Autolaunched Flow running asynchronously',
-      'Screen Flow containing conditional field visibility components',
-      'Before-Save Record-Triggered Flow',
-      'Validation Rules checking profile settings'
+      'Convert the loop logic into an external trigger class handler',
+      'Move the Update Records element outside the Loop path, using an Assignment element inside the loop to add records to a collection variable',
+      'Deploy a validation rule to overwrite field columns directly',
+      'Switch the flow configuration to run as a screen layout'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Screen Flows capture inputs through a guided interface. You can configure individual screen components to hide or show dynamically depending on answers provided on earlier screens.'
+    explanation: 'Moving DML elements outside of loops prevents you from hitting governor limits and eliminates transactional screen lag.'
   },
   {
     id: 'process-17',
-    text: 'A developer observes that a flow is throwing a "Mixed DML Operation" exception. The logs point to a step that creates a custom Account record and then modifies a User record in the same transaction. How can the administrator fix this structural defect?',
+    text: 'An operations manager wants to reuse a complex tax calculation flow across four separate parent automations without duplicating elements. What pattern addresses this request?',
     topic: 'Process Automation',
     options: [
-      'Turn off validation rules on both objects before running the process',
-      'Separate the operations by modifying the User record within an Asynchronous Path or moving it into a distinct transaction',
-      'Convert the Account object data model into a Master-Detail child layout',
-      'Change the execution user profile to standard System Administrator access'
+      'Replicate the calculation elements inside every individual flow wrapper',
+      'Build the calculation as an independent Autolaunched Flow, and call it as a Subflow within the other four automations',
+      'Create a cross-object formula field tracking tax values',
+      'Configure an approval process matrix matching the variables'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A Mixed DML exception occurs when you try to modify a setup object (like User or Group) and a non-setup object (like Account) in the same transaction. Using an Asynchronous Path breaks the transaction block.'
+    explanation: 'The Subflow element lets you build a centralized, modular flow that can be invoked across multiple parent automations.'
   },
   {
     id: 'process-18',
-    text: 'A business wants to automatically calculate an invoice line item total field when a record is modified. The line item total field is used in validation rules on the same object. Which flow type optimizes this execution order?',
+    text: 'A developer builds a record flow that crashes with a "MIXED_DML_OPERATION" error. Debug logs show the flow is trying to update a standard Position record and a User record within the same transaction. How should this be resolved?',
     topic: 'Process Automation',
     options: [
-      'An After-Save Record-Triggered Flow utilizing update actions',
-      'A Fast Field Updates (Before-Save) Record-Triggered Flow setting the field value inline via assignment',
-      'An Autolaunched Flow triggered from an external system interface',
-      'An Approval Process final actions update assignment'
+      'Deactivate the validation rules across both objects',
+      'Separate the operations by updating the setup object (User) on a Scheduled Path or within an Asynchronous transaction boundary',
+      'Combine the field variables using a shared junction layout object',
+      'Enforce profile session high-assurance boundaries on the user'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Before-Save Flows run before validation rules. If you calculate and assign the value during a Fast Field Update, the validation rules will evaluate the correct, updated data when they run.'
+    explanation: 'Salesforce prevents mixing setup objects (like User) and non-setup objects (like custom records) in the same transaction. Splitting the updates across a scheduled path resolves the error.'
   },
   {
     id: 'process-19',
-    text: 'An administrator needs to bulk update the "Region" field on 15,000 live Opportunity records based on the Owner\'s profile location. When testing this in Flow Builder via a loop element that updates the database inside the loop, the flow crashes. How should the flow loop be optimized?',
+    text: 'A business requires that when an opportunity is submitted for a discount check, its stage changes to "In Review" and the record locks down against profile updates. What automation tool handles this behavior out of the box?',
     topic: 'Process Automation',
     options: [
-      'Increase the maximum execution timeout limits inside the sandbox',
-      'Use an Assignment element inside the loop to accumulate data changes into a Collection Variable, then place a single Update Records element completely outside the loop path',
-      'Split the 15,000 data rows into independent text groups before loading',
-      'Replace the custom assignment variables with global formulas'
+      'An Escalation Rule queue manager',
+      'An active Approval Process with designated Initial Submission Actions',
+      'A Fast Field Updates before-save flow layout',
+      'A custom validation rule check mapping dates'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Placing DML operations (Get, Create, Update, Delete elements) inside a loop creates governor limit exceptions. The correct pattern assigns changes to a collection variable within the loop, then pushes one update block outside the loop.'
+    explanation: 'Approval Processes handle these scenarios natively, using initial submission actions to update fields and lock records during review.'
   },
   {
     id: 'process-20',
-    text: 'Your customer wants a notification banner displayed on screen to remind reps to offer a discount if an Account has been open for 10 years. The criteria is complex. What automation engine calculates and renders this message dynamically?',
+    text: 'An administrator needs to verify why a newly active Record-Triggered Flow is failing to update an account description during testing. What tool should be used to trace field states step-by-step?',
     topic: 'Process Automation',
     options: [
-      'Escalation Rule engine checking age filters',
-      'Einstein Recommendation Builder or In-App Guidance paired with Flow',
-      'Workflow rules triggering outbound messages',
-      'Case Assignment configuration entries'
+      'Data Loader extraction summaries',
+      'The native "Debug" button workspace inside Flow Builder to inspect input and output variables',
+      'A schema builder canvas layout check',
+      'An outbound messaging event log sheet'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'In-App Guidance and custom lightning component logic can evaluate record characteristics to present dynamic banners, notifications, or screen walkthroughs right inside the user interface.'
+    explanation: 'The Flow Builder Debug tool lets you trace flow paths step-by-step, showing variable states and element execution outcomes.'
   },
 
   {
     id: 'security-1',
-    text: 'What is the most restrictive access level that can be set in Organization-Wide Defaults?',
+    text: 'Which feature allows an administrator to restrict a user\'s login access to specific hours of the day based on their job requirements?',
     topic: 'Security and Access',
     options: [
-      'Public Read Only',
-      'Public Read/Write',
-      'Private',
-      'No Access'
+      'Login IP Ranges',
+      'Login Hours',
+      'Session Timeout Settings',
+      'Two-Factor Authentication Policies'
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Private is the most restrictive OWD setting, allowing access only to record owners and users above them in the role hierarchy.'
+    explanation: 'Login Hours are configured at the Profile level to strictly restrict the times when users can log in to the Salesforce organization.'
   },
   {
     id: 'security-2',
-    text: 'What does Permission Set Groups allow an administrator to accomplish?',
+    text: 'What security feature allows restricting API or user logins to a specific corporate network, denying access from anywhere else?',
     topic: 'Security and Access',
     options: [
-      'Group multiple users together into a single structural role hierarchy level',
-      'Combine multiple individual permission sets into a single reusable group profile for easier user assignment',
-      'Create custom sharing rule conditions based on public group names',
-      'Bypass multifactor authentication validation for specific user sets'
+      'Login IP Ranges configured on the Profile',
+      'Trusted IP Ranges configured under Network Access',
+      'Session Security High Assurance settings',
+      'Permission Set Group Muting rules'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Permission Set Groups bundle multiple permission sets together. This allows administrators to assign functional, persona-based bundles to users instead of managing separate standalone permission sets.'
+    explanation: 'Login IP Ranges on the Profile completely deny login attempts from IP addresses outside the defined range, whereas Network Access Trusted IP Ranges simply bypass identity verification challenges for users.'
   },
   {
     id: 'security-3',
-    text: 'Which Salesforce security feature can be configured to completely block a user from logging into the platform if they are outside of the corporate office network?',
+    text: 'What administrative feature allows creating a group of permissions that can be assigned to multiple users, while utilizing a specific rule to disable or mute certain permissions within that bundle?',
     topic: 'Security and Access',
     options: [
-      'Two-Factor Authentication settings',
-      'Profile-based Login IP Ranges',
-      'Organization-Wide Trusted IP Ranges',
-      'Session Security Levels'
+      'Custom Profiles',
+      'Permission Set Groups with a Muting Permission Set',
+      'Sharing Sets for High-Volume Users',
+      'Delegated Administration Groups'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Login IP Ranges defined at the Profile level strictly enforce boundaries. If a user attempts to log in from an unlisted IP address, the platform denies access completely, regardless of activation codes.'
+    explanation: 'Permission Set Groups bundle multiple permission sets together, and a Muting Permission Set within that group dynamically turns off specific permissions for group members.'
   },
   {
     id: 'security-4',
-    text: 'If a user has "Read" permission for an object at the Profile layer, but a Sharing Rule grants them "Read/Write" access to a specific record, what is their effective access level for that record?',
+    text: 'What type of security setting allows an administrator to define a minimum password length and force historical password tracking limits globally?',
     topic: 'Security and Access',
     options: [
-      'Read/Write access',
-      'Read-Only access',
-      'No Access because of an access conflict exception',
-      'Full "Modify All" access'
+      'Session Settings',
+      'Password Policies',
+      'Identity Provider Settings',
+      'High Assurance Level Rules'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Object permissions on the Profile or Permission Set act as a hard baseline ceiling. Sharing rules can only extend record-level visibility, not override a lack of object-level editing rights.'
+    explanation: 'Password Policies control the organization-wide or profile-specific rules for password complexity, length, expirations, and reuse history.'
   },
   {
     id: 'security-5',
-    text: 'What is the function of the "View All Data" administrative permission when assigned to a user profile?',
+    text: 'Which sharing mechanism can grant access to records automatically based on values in specific fields, such as record type or picklist status, rather than record ownership?',
     topic: 'Security and Access',
     options: [
-      'It allows the user to see all configuration setup menus inside the organization',
-      'It grants the user read access to all records across all objects in the org, completely bypassing sharing settings and OWD restrictions',
-      'It converts all objects into Public Read Only format globally',
-      'It automatically exposes all confidential fields tracked under field history logs'
+      'Owner-Based Sharing Rules',
+      'Criteria-Based Sharing Rules',
+      'Manual Sharing Entries',
+      'Role Hierarchy Roll-ups'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "View All Data" (VAD) and "Modify All Data" (MAD) global permissions act as super-user overrides, granting universal record access regardless of OWD, sharing rules, or role hierarchies.'
+    explanation: 'Criteria-Based Sharing Rules open up record access automatically by evaluating field values on the record, completely independent of who owns the item.'
   },
   {
     id: 'security-6',
-    text: 'What occurs if an organization deactivates a user who currently owns active records across the platform?',
+    text: 'What does a Restriction Rule accomplish when deployed on an object in Salesforce?',
     topic: 'Security and Access',
     options: [
-      'The records are automatically transferred to the system administrator user account',
-      'The records are kept in the database with the inactive user remaining as the record owner, though access can be adjusted downstream',
-      'The records are hidden and moved into the system recycle bin framework',
-      'The system blocks the user deactivation until all record ownership properties are cleared'
+      'It expands record access to match external user licenses',
+      'It configures field-level security constraints across page layouts',
+      'It acts as a filter that restricts a user\'s existing record access to a specified subset of records based on criteria',
+      'It completely deactivates a user profile during off-business hours'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Deactivating users does not alter record data or ownership properties. The inactive user remains the owner, preserving historical accuracy while preventing them from logging back in.'
+    explanation: 'Restriction Rules let you narrow down record access for certain users, allowing them to see only the records that meet specified criteria, even if OWDs or sharing rules would normally grant broader access.'
   },
   {
     id: 'security-7',
-    text: 'Which sharing mechanism can an end-user utilize to manually extend read access of a single record they own to an individual peer colleague?',
+    text: 'Which feature allows users to manually share a record with another user or public group using the record detail interface?',
     topic: 'Security and Access',
     options: [
-      'Criteria-Based Sharing Rule',
-      'Manual Sharing via the "Share" action button on the record page',
-      'Apex Managed Sharing maps',
-      'Role Hierarchy adjustment configurations'
+      'Manual Sharing',
+      'Sharing Sets',
+      'Account Teams',
+      'Opportunity Teams'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Manual sharing allows record owners or administrators to selectively share a single record with specific users, roles, or public groups using the native Share action button.'
+    explanation: 'Manual Sharing allows the record owner or administrators to share specific record access with individual users or groups on an ad-hoc basis.'
   },
   {
     id: 'security-8',
-    text: 'What does the "High Assurance" session security level manage when configured under Session Settings?',
+    text: 'What is the purpose of configuring "Session Security Levels" in Salesforce security management?',
     topic: 'Security and Access',
     options: [
-      'It increases data encryption processing speeds across cloud instances',
-      'It forces a multi-factor authentication (MFA) verification challenge when accessing specific high-risk tools like Connected Apps or Reports',
-      'It disables external API access during high-volume server traffic intervals',
-      'It restricts record exports to a maximum threshold of 100 rows'
+      'To restrict the maximum duration of background Batch Apex execution loops',
+      'To classify login sessions as Standard or High Assurance, allowing verification prompts when accessing sensitive tools like reports or connected apps',
+      'To encrypt text fields globally across standard objects',
+      'To automate the distribution of custom permission sets'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'High Assurance levels define actions that require an extra layer of validation. For example, you can block or require MFA challenges when users try to view specific objects, manage data, or access connected applications.'
+    explanation: 'Session Security Levels let you classify connections (Standard vs. High Assurance) so you can require extra verification, like Multi-Factor Authentication (MFA), before users access sensitive resources.'
   },
   {
     id: 'security-9',
-    text: 'What field validation mechanism can be enabled to mask sensitive plain text fields like social security numbers from unprivileged users while maintaining system tracking properties?',
+    text: 'Which sharing feature allows multiple users to collaborate on a single large Account record, granting explicit individual roles and edit permissions to team members?',
     topic: 'Security and Access',
     options: [
-      'Long Text Area field mapping configurations',
-      'Encrypted Custom Fields (Deterministic or Probabilistic frameworks via Shield Platform Encryption)',
-      'Formula fields tracking text strings',
-      'Case Assignment routing rule matrices'
+      'Sharing Sets',
+      'Restriction Rules',
+      'Account Teams',
+      'Muting Permissions'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Shield Platform Encryption allows you to natively encrypt and mask sensitive data at rest, ensuring that unauthorized views see only masked strings while authorized users access raw inputs.'
+    explanation: 'Account Teams provide a collaborative structure where a group of users can be granted specialized access roles and permissions for a specific account record.'
   },
   {
     id: 'security-10',
-    text: 'When defining a dynamic Sharing Rule, what are the two core types of rule evaluations available?',
+    text: 'Which declarative capability ensures that an administrator can completely control read and edit permissions for an individual field without changing layout assignments?',
     topic: 'Security and Access',
     options: [
-      'Profile-Based and Role-Based',
-      'Owner-Based and Criteria-Based',
-      'Field-Based and Formula-Based',
-      'Manual-Based and Trigger-Based'
+      'Organization-Wide Defaults',
+      'Field-Level Security (FLS)',
+      'Sharing Rules',
+      'Validation Rules'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Sharing Rules are either Owner-Based (sharing records owned by a specific role or group) or Criteria-Based (sharing records that match a specific field condition, regardless of who owns them).'
+    explanation: 'Field-Level Security isolates access parameters directly on the field metadata, governing field visibility across all layouts, views, and reports.'
   },
   {
     id: 'security-11',
-    text: 'What is the purpose of configuring "Login Hours" restrictions within a user Profile setup?',
+    text: 'What is the baseline function of the "View All Data" administrative system permission when enabled on a profile?',
     topic: 'Security and Access',
     options: [
-      'To track the total payroll working hours log entries for contract employees',
-      'To define strict time ranges outside of which users assigned to that profile are completely locked out from logging in',
-      'To calculate average system performance tracking analytics hourly',
-      'To automatically sign out inactive users from active chat rooms'
+      'It displays metadata schemas inside the tool builder canvas',
+      'It grants the user Read access to all records across the entire organization, overriding any restrictive OWD or sharing settings',
+      'It allows the user to export dashboard graphics into local sheet assets',
+      'It turns off validation rule requirements during bulk data imports'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Login Hours set hard scheduling parameters on profiles. If a user tries to access the system outside these hours, their request is denied. If they are logged in when the window closes, their session is terminated.'
+    explanation: 'The "View All Data" system permission acts as a global administrative override, granting read access to all records in the org regardless of standard sharing rules.'
   },
   {
     id: 'security-12',
-    text: 'What security risk does utilizing the "without sharing" keyword inside an Apex class introduce if not handled carefully?',
+    text: 'What occurs when a user attempts to log in from a new, unrecognized device if their profile does not have any Login IP Ranges configured but the org has Network Access rules?',
     topic: 'Security and Access',
     options: [
-      'It slows down processing performance times by duplicating tracking matrices',
-      'It executes the database transactions in system mode, completely ignoring the current user\'s record-level sharing rules and OWD restrictions',
-      'It permanently disables field history tracking logs across custom objects',
-      'It blocks standard Lightning Web Components from invoking controller methods'
+      'The login attempt is completely blocked without further options',
+      'The system prompts the user for identity verification (such as a verification code) before granting access',
+      'The user is automatically reassigned to a temporary low-privilege profile',
+      'The validation rules throw a fatal access error notification'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "without sharing" keyword tells the Apex runtime to ignore record-level sharing rules, executing logic in a privileged system mode. This must be managed carefully to avoid accidental data exposure.'
+    explanation: 'When Login IP Ranges are not defined on the Profile, logging in from a new device triggers an identity verification challenge unless the device IP falls within the org\'s Network Access Trusted IP list.'
   },
   {
     id: 'security-13',
-    text: 'An administrator sets up a custom object tracking Performance Reviews with an OWD of Private. A manager needs to view their direct reports\' reviews, but the system denies access. What is the most likely reason for this access block?',
+    text: 'An administrator needs to ensure that call center reps can only log into Salesforce from the physical corporate office network. If they attempt to log in from home, access must be blocked. How should this be configured?',
     topic: 'Security and Access',
     options: [
-      'The object does not contain a master-detail relationship field pointing to accounts',
-      'The "Grant Access Using Hierarchies" option was unchecked in the Organization-Wide Defaults settings for that specific custom object',
-      'The manager does not have a Permission Set Group handling text formula fields',
-      'The records are locked under an active assignment rule queue'
+      'Add the office network IP addresses to the Trusted IP Ranges under Network Access settings',
+      'Configure the corporate office IP address range inside the Login IP Ranges on the call center rep Profile',
+      'Deploy a validation rule checking user location parameters',
+      'Create a criteria-based sharing rule targeting the IP parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Standard objects mandate role hierarchy access. Custom objects let you turn this off by unchecking "Grant Access Using Hierarchies" under OWD settings. Unchecking it blocks vertical inheritance lines.'
+    explanation: 'Defining Login IP Ranges directly on a Profile strictly enforces location constraints, completely blocking login requests that originate outside those networks.'
   },
   {
     id: 'security-14',
-    text: 'A business requires that the custom field "Commission Rate" on an Opportunity record should only be visible and editable by members of the Finance team, while standard sales users can see it but not edit it. How should this be implemented?',
+    text: 'A company wants its team members to use a comprehensive Sales bundle containing account, contact, and lead permissions. However, a specific user must be blocked from deleting leads. How should this be handled efficiently?',
     topic: 'Security and Access',
     options: [
-      'Create two separate opportunity page layouts and change field positions',
-      'Configure Field-Level Security (FLS) to grant "Visible" and "Read-Only" to the Sales Profile, while granting full "Visible" and editing rights to the Finance Profile',
-      'Build a validation rule that locks the text fields if a user attempts modifications',
-      'Set the Organization-Wide Defaults for the entire Opportunity structure to Private'
+      'Create a completely new profile manually replicating the whole sales structure',
+      'Assign the sales Permission Set Group to the user, but include a Muting Permission Set within that group that disables Lead Delete access',
+      'Configure a validation rule that checks the username string on deletion events',
+      'Change the lead object Organization-Wide Defaults configuration to Private'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Field-Level Security (FLS) is the correct layer for field access. Restricting edit rights at the FLS layer secures the field globally—across page layouts, reports, list views, and APIs.'
+    explanation: 'Muting permission sets within a Permission Set Group allow you to neatly turn off specific permissions for individual users without decoupling the shared permission set bundle.'
   },
   {
     id: 'security-15',
-    text: 'Your company has an OWD of Private for the Account object. A new collaborative team requires cross-department access to view specific accounts matching a project identifier code. Team members are spread across various roles. How should access be granted?',
+    text: 'A financial firm establishes a policy where support reps should only view sensitive contract files if the contract status is marked as "Public." If it is marked as "Internal," the records must be completely hidden from them, regardless of standard sharing rules. What tool satisfies this request?',
     topic: 'Security and Access',
     options: [
-      'Set the Account OWD globally to Public Read/Write',
-      'Add the target users into a custom Public Group, then create a Criteria-Based Sharing Rule matching the project identifier to grant Read access to that Public Group',
-      'Build an Apex trigger that modifies the users profile access flags synchronously',
-      'Create a complex validation rule that clears out string structures'
+      'An owner-based sharing rule entry',
+      'A Restriction Rule applied to the Contract object targeting the support rep profile',
+      'A custom validation rule checking field length characters',
+      'A roll-up summary field calculation'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'When users span different branches of a role hierarchy, grouping them into a Public Group and applying a Criteria-Based Sharing Rule is the cleanest declarative way to grant shared record access.'
+    explanation: 'Restriction Rules allow you to layer a strict filtering condition over existing sharing rules, narrowing access down to records that match specific criteria.'
   },
   {
     id: 'security-16',
-    text: 'A sales rep leaves the company unexpectedly. The administrator needs to immediately revoke their system access, but the user is currently tied to multiple active asynchronous background jobs and routing queues, preventing immediate deactivation. What should the administrator do?',
+    text: 'A sales rep attempts to use the manual sharing option to pass record access to a peer, but the "Share" button is completely missing from the record page layout. What should the administrator check first?',
     topic: 'Security and Access',
     options: [
-      'Delete the user account from the system immediately',
-      'Click the "Freeze" button on the user record to block system access instantly, then resolve the administrative dependencies afterward',
-      'Change the user password to a random string and wait for the jobs to finish',
-      'Assign the user to a blank role hierarchy level'
+      'The global session timeout duration limits configuration',
+      'Whether the object Organization-Wide Default (OWD) is set to Public Read/Write',
+      'The validation rule criteria assigned to the page view',
+      'The field-level security constraints applied to lookup columns'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "Freeze" action stops a user from logging in or using resources instantly. This is helpful when administrative dependencies prevent immediate deactivation, giving you time to clean up assignments.'
+    explanation: 'If the OWD for an object is set to Public Read/Write, everyone already has full access to all records, making manual sharing redundant and hiding the manual sharing options.'
   },
   {
     id: 'security-17',
-    text: 'An auditor needs to verify why a specific user was able to view a confidential record when the OWD sharing configuration is set to Private. What native administrative tool should the administrator use to troubleshoot this specific record access trace?',
+    text: 'An employee leaves the company unexpectedly at 5:00 PM. The administrator needs to guarantee the user cannot log in or access data immediately, but their records cannot be transferred to a new owner yet. What action should be taken?',
     topic: 'Security and Access',
     options: [
-      'Run a full system code coverage test report',
-      'Click the "Sharing Hierarchy" action button on the specific record page to view exactly which rules granted access to the user',
-      'Inspect the organization\'s Trusted IP Ranges matrix lists',
-      'Check the user profile\'s Login History tracking logs'
+      'Delete the user record from the production database tables completely',
+      'Freeze the user account record immediately using the User detail workspace',
+      'Change the user\'s role hierarchy level to the lowest entry point',
+      'Deploy a validation rule to block their specific email text string'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "Sharing Hierarchy" tool provides a breakdown of record permissions. It shows who has access to a specific record and points to the mechanism (OWD, Role Hierarchy, Sharing Rules, or Manual Shares) that opened access.'
+    explanation: 'Freezing a user account stops all login capabilities immediately. This is ideal when you cannot deactivate a user right away because they are referenced in active hierarchies, workflows, or fields.'
   },
   {
     id: 'security-18',
-    text: 'A company wants to introduce a security policy where all internal staff must complete a Time-Based One-Time Password verification step when logging in from home networks. Which declarative tool establishes this operational rule?',
+    text: 'A compliance auditor needs to export report data but complains that they cannot see a custom "Social Security Number" field on Account views, despite having full record sharing access. What security layer is blocking them?',
     topic: 'Security and Access',
     options: [
-      'Validation Rules targeting network paths',
-      'Identity Verification patterns combined with Session Security Level policies and Profile Multi-Factor Authentication requirements',
-      'Data Loader upsert parameter checklists',
-      'Case Assignment rule criteria entries'
+      'Organization-Wide Defaults parameters',
+      'Field-Level Security (FLS) settings on their Profile or Permission Sets',
+      'Role Hierarchy positioning rules',
+      'A custom validation rule check on save events'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Enforcing multi-factor authentication (MFA) or specifying high-assurance session rules at login provides a declarative way to secure user entry points based on location or profile requirements.'
+    explanation: 'Field-Level Security controls whether a field is visible to a user. If FLS is turned off for their profile or permission sets, the field will be completely hidden across layouts, views, and reports.'
   },
   {
     id: 'security-19',
-    text: 'A customer support team lead needs to delete Case records when duplicates are identified. Currently, they can only view and edit cases. How should the administrator grant the delete permission to this single user without modifying the support team profile?',
+    text: 'An administrator needs to grant three human resource specialists access to modify specific employee case details, but these cases must remain completely hidden from all other members of the corporate organization. How should this be designed?',
     topic: 'Security and Access',
     options: [
-      'Create a new custom profile specifically for that team lead',
-      'Create a Permission Set that grants the "Delete" permission on the Case object, and assign this Permission Set directly to the team lead',
-      'Build an Apex Trigger that executes a hard delete bypass routine',
-      'Change the Case object OWD configuration to Controlled by Parent'
+      'Set OWD to Public Read Only and create a custom validation rule',
+      'Set the Case OWD to Private, and build a Criteria-Based Sharing Rule to share these records with a Public Group containing the three specialists',
+      'Modify the standard corporate profile sharing rules globally',
+      'Deploy a junction object to map permissions using lookups'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Permission sets let you grant additional access levels to individual users on top of their baseline profile. This avoids profile proliferation and keeps user management modular.'
+    explanation: 'Setting the OWD to Private secures the records by default. A criteria-based sharing rule can then selectively open up access to the targeted public group.'
   },
   {
     id: 'security-20',
-    text: 'A developer creates a Lightning Web Component controller that queries specific accounting metrics. To ensure that the query strictly respects the running user\'s Object and Field-Level Security permissions, what clause should be added to the SOQL statement?',
+    text: 'A user reports that they are suddenly prompted to complete a multi-factor authentication challenge every time they click to download a financial dashboard report, but general navigation functions work normally. What security feature is driving this behavior?',
     topic: 'Security and Access',
     options: [
-      'FOR UPDATE',
-      'WITH USER_MODE',
-      'WITH SECURITY_ENFORCED',
-      'USING PROFILE_MODE'
+      'Login Hours violation rules',
+      'Session Security Level set to High Assurance for report actions inside Session Settings or Transaction Security policies',
+      'An owner-based sharing rule restriction',
+      'A validation rule enforcing text constraints'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The WITH USER_MODE clause enforces Object-level permissions (CRUD), Field-Level Security (FLS), and record sharing constraints directly within the database engine execution layer.'
+    explanation: 'Enforcing a High Assurance session level for specific features (like exporting reports) requires users to pass a step-up verification challenge before they can complete that action.'
   },
 
   {
     id: 'ui-1',
-    text: 'What is the maximum number of components that can be added to a Lightning App Builder page?',
+    text: 'Which Salesforce UI feature allows an administrator to declartively hide or reveal individual fields and sections on a record page layout right inside Lightning App Builder based on record criteria?',
     topic: 'User Interface',
     options: [
-      '50',
-      '100',
-      '200',
-      'No specific limit'
+      'Standard Page Layouts',
+      'Dynamic Forms',
+      'In-App Guidance templates',
+      'Compact Layouts'
     ],
-    correctAnswer: 3,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'While there is no hard limit on components per page, performance considerations should guide the number of components used.'
+    explanation: 'Dynamic Forms replace rigid page layouts by turning fields and sections into individual components inside Lightning App Builder, allowing you to set conditional visibility rules for them.'
   },
   {
     id: 'ui-2',
-    text: 'Which feature allows an administrator to show or hide a component on a Lightning Record Page based on a field value or the user\'s profile?',
+    text: 'What is the purpose of a Compact Layout configuration in the Salesforce user interface framework?',
     topic: 'User Interface',
     options: [
-      'Validation Rules',
-      'Dynamic Component Visibility',
-      'Field-Level Security',
-      'Page Layout Assignment'
+      'To compress file attachment storage limits on server instances',
+      'To define the specific fields that appear in the highlight panel at the top of a record page layout in the Lightning Experience interface',
+      'To compress long text strings inside custom validation messages',
+      'To minimize the navigation options visible on mobile screens'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Dynamic Component Visibility rules can be added to standard or custom components in Lightning App Builder to conditionally display them based on record values, user fields, or permissions.'
+    explanation: 'Compact Layouts control the key fields that display in a record\'s highlights panel, mobile app headers, and lookups.'
   },
   {
     id: 'ui-3',
-    text: 'What is the primary benefit of upgrading a standard page layout to Dynamic Forms in Salesforce?',
+    text: 'Which tool allows administrators to create floating or docked walkthrough banners to onboard new users directly inside the application interface?',
     topic: 'User Interface',
     options: [
-      'It allows fields to automatically save every time a user types a character',
-      'It migrates fields and sections into individual components inside the Lightning App Builder, enabling section-level visibility rules',
-      'It converts standard object data tables into custom chart visualizations',
-      'It forces fields to bypass validation formulas'
+      'App Builder Canvas',
+      'In-App Guidance',
+      'Dynamic Actions manager',
+      'Quick Actions panel'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Dynamic Forms breaks standard record details into flexible fields and sections components, allowing admins to arrange and dynamically hide/show them straight from the Lightning App Builder canvas.'
+    explanation: 'In-App Guidance lets you add custom prompts and walkthroughs to train, onboard, or alert users right inside the app.'
   },
   {
     id: 'ui-4',
-    text: 'What UI configuration allows an administrator to define which fields appear when a user hovers over a record lookup link?',
+    text: 'What feature allows an administrator to conditionally display specific action buttons (like Edit or Clone) inside a component based on record fields or user permissions?',
     topic: 'User Interface',
     options: [
-      'Search Layouts',
-      'Compact Layouts',
-      'Mini Page Layouts',
-      'ListView Properties'
+      'Compact Actions Layout',
+      'Dynamic Actions',
+      'Page Layout Action Overrides',
+      'Validation Button Rules'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Compact Layouts control the primary highlights panel fields on a record page and dictate the key fields shown in hover previews when rolling over lookup links.'
+    explanation: 'Dynamic Actions let you configure action button visibility rules directly within Lightning App Builder, replacing standard page layout action assignments.'
   },
   {
     id: 'ui-5',
-    text: 'Which Lightning App Builder page type should be created to provide a standalone dashboard interface for users that is independent of any single object record?',
+    text: 'Which workspace element defines the columns that display when a user runs a global search lookup query for a specific object?',
+    topic: 'User Interface',
+    options: [
+      'Compact Layouts',
+      'Search Layouts',
+      'Dynamic Forms sections',
+      'Related Lists allocations'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Search Layouts control the field columns that display in search results, lookup dialogs, and auto-complete lists.'
+  },
+  {
+    id: 'ui-6',
+    text: 'What type of Quick Action can be configured to let users create a completely unrelated record, such as building a new Lead from a utility bar utility widget?',
+    topic: 'User Interface',
+    options: [
+      'Object-Specific Quick Action',
+      'Global Quick Action',
+      'Dynamic Component Action',
+      'Custom Web Link Action'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Global Quick Actions can be launched from anywhere (like the global actions menu or utility bars) to create records or log details without needing a relationship to the active page record.'
+  },
+  {
+    id: 'ui-7',
+    text: 'Which UI component contains the navigation tabs, branding colors, and specific utilities made available to a functional group of users inside Lightning Experience?',
+    topic: 'User Interface',
+    options: [
+      'Page Layout',
+      'Lightning App',
+      'Dynamic Form canvas',
+      'Search Layout panel'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'A Lightning App bundles a navigation menu, branding elements, utility tools, and assigned tabs into a tailored workspace for specific user profiles.'
+  },
+  {
+    id: 'ui-8',
+    text: 'What does an Object-Specific Quick Action require that a Global Quick Action does not?',
+    topic: 'User Interface',
+    options: [
+      'An active custom Apex class controller parameter',
+      'A structural relationship to a specific target parent object, automatically populating a relationship link when launched from that record page',
+      'A high assurance session token validation sweep',
+      'A validation rule formula tracking character limits'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Object-Specific Quick Actions run within the context of a particular object, allowing the system to automatically populate relationship links on newly created child records.'
+  },
+  {
+    id: 'ui-9',
+    text: 'Which layout configuration controls the fields, columns, and sorting order of related child records visible at the bottom of a parent record view?',
+    topic: 'User Interface',
+    options: [
+      'Compact Layouts',
+      'Related Lists inside Page Layouts or Dynamic Related List components',
+      'Global Actions panels',
+      'Search Layout parameters'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Related Lists manage the child record tables surfaced on a parent record layout, defining visible columns, filters, and button selections.'
+  },
+  {
+    id: 'ui-10',
+    text: 'What type of Lightning page configuration is designed to act as a custom landing homepage or central navigation dashboard for users?',
     topic: 'User Interface',
     options: [
       'Record Page',
       'Home Page',
       'App Page',
-      'Embedded Page'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'An App Page is a custom landing layout independent of record shapes, ideal for building operational home bases, custom tracking frameworks, or centralized hubs.'
-  },
-  {
-    id: 'ui-6',
-    text: 'What custom field capability allows an administrator to dynamically show rich text content, dynamic colors, or image banners on a record page using HTML expressions?',
-    topic: 'User Interface',
-    options: [
-      'Text Area (Rich) Field',
-      'Formula Field using the IMAGE or HTML markup functions',
-      'URL Field with parameter tracking strings',
-      'Long Text Area Field'
+      'Utility Page'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Formula fields can leverage the IMAGE function or inline style references to evaluate conditions and render status icons, custom meters, or banners directly on the viewport.'
-  },
-  {
-    id: 'ui-7',
-    text: 'What does a "Search Layout" configuration control inside a Salesforce application?',
-    topic: 'User Interface',
-    options: [
-      'The fields displayed as columns in global search results, lookup dialog boxes, and list view filters',
-      'The maximum string length allowed when typing search characters',
-      'The custom indexes utilized by background search algorithms',
-      'The design patterns shown during mobile login challenges'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'Search Layouts let you choose which fields users see when searching for records globally or pulling up matching records inside lookup search dialogs.'
-  },
-  {
-    id: 'ui-8',
-    text: 'Which standard utility bar component can be added to an app configuration to allow users to consistently view and run workflows from a minimized sticky panel at the bottom of the screen?',
-    topic: 'User Interface',
-    options: [
-      'Recent Items Component',
-      'Flow Component',
-      'List View Component',
-      'Rich Text Component'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Adding a Flow component to the Utility Bar makes automated wizards or questionnaires easily accessible across the entire application interface, floating independently of main workspace modifications.'
-  },
-  {
-    id: 'ui-9',
-    text: 'What configuration should be modified to completely add, remove, or reorder the tabs displayed along the top main navigation bar of a custom Lightning Application?',
-    topic: 'User Interface',
-    options: [
-      'Profile Object Permissions',
-      'App Manager settings for that specific Lightning App',
-      'User Personal Profile Preferences',
-      'Organization Setup OWD Matrix'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'App Manager is the administrative command center to customize look, branding, utility setups, navigation options, and profile assignments for individual Lightning Apps.'
-  },
-  {
-    id: 'ui-10',
-    text: 'What layout template options are available when initializing a brand new Lightning Record Page within the App Builder canvas?',
-    topic: 'User Interface',
-    options: [
-      'Only Full Screen canvas modes',
-      'Various region split layouts such as Header and Right Sidebar, 3 Columns, or 1 Header with Main Region and Collapsible Panel',
-      'Only a strict single-column scrolling orientation',
-      'Custom HTML frames uploaded from static resources'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Lightning App Builder provides out-of-the-box structural frameworks (templates) that arrange components into columns, responsive splits, or stacked regions.'
+    explanation: 'A Home Page layout is a specialized landing page template you can assign to profiles to give users a personalized dashboard view when they log in.'
   },
   {
     id: 'ui-11',
-    text: 'What type of list view option can an administrator build to let individual users edit multiple fields across multiple rows simultaneously from a single summary screen?',
+    text: 'What is the purpose of the Salesforce Lightning Design System (SLDS) framework?',
     topic: 'User Interface',
     options: [
-      'Joined List views',
-      'Standard List View with Inline Editing enabled',
-      'Matrix List reports',
-      'Data Loader extraction panels'
+      'To optimize server-side database indices',
+      'To provide a set of design guidelines, CSS components, and blueprints to build custom UIs that look and behave exactly like native Salesforce applications',
+      'To automate change set deployments across sandboxes',
+      'To build multi-stage approval workflow trees'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'When inline editing is enabled in user setups and shared filters match a single Record Type, users can click and edit fields directly inside cells without clicking into individual records.'
+    explanation: 'SLDS provides a library of CSS styles, icons, design patterns, and layouts to ensure custom components match the look and feel of native Salesforce user experiences.'
   },
   {
     id: 'ui-12',
-    text: 'What is the purpose of the "In-App Guidance" tool inside Salesforce user interface management?',
+    text: 'Which tool allows an administrator to declaratively arrange components on a page, select templates, and adjust page visibility rules for mobile and desktop views?',
     topic: 'User Interface',
     options: [
-      'To validate custom code formulas during package migrations',
-      'To build custom walkthroughs, floating prompts, or instructional alerts that onboard users directly on specific page elements',
-      'To stream third-party external chat applications into utility frames',
-      'To track the total user clicks recorded on standard buttons globally'
+      'Schema Builder',
+      'Lightning App Builder',
+      'Developer Console Layout',
+      'Component Library Explorer'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'In-App Guidance gives administrators a declarative way to place prompts, pointers, and user tours throughout the UI to drive feature adoption and train users in context.'
+    explanation: 'Lightning App Builder is the declarative drag-and-drop workspace used to build custom Record, Home, and App pages for Lightning Experience.'
   },
   {
     id: 'ui-13',
-    text: 'A business requires that when an Opportunity is in the "Closed Won" stage, its fields must appear in a specific highlighted workspace component at the very top of the page. How can an administrator execute this requirement seamlessly?',
+    text: 'An administrator needs to modify the Opportunity page layout so that the "Deal Amount" and "Close Date" fields are prominently highlighted at the very top of the desktop view and visible inside mobile search windows. What should be updated?',
     topic: 'User Interface',
     options: [
-      'Create separate page layouts and reassign them via workflow tasks',
-      'Add the fields into a Compact Layout and configure a Highlights Panel component with a Dynamic Component Visibility rule based on the Stage field',
-      'Deploy an Apex trigger to manually shift screen positions on save',
-      'Convert the Opportunity details structure into a Master-Detail child framework'
+      'The global Search Layout configuration',
+      'The custom Compact Layout assigned to the Opportunity object',
+      'The validation rule warning messages parameters',
+      'The related list column sorting metrics'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Combining Compact Layouts (which fuel the Highlights Panel component) with Dynamic Component Visibility based on criteria (Stage = Closed Won) lets you dynamically control what appears at the top of the viewport.'
+    explanation: 'Compact Layouts control the key fields that display in the highlights panel at the top of records and in mobile app headers.'
   },
   {
     id: 'ui-14',
-    text: 'Your users state that the global search utility is returning too many unrelated records and cluttering summaries. They want a specific custom object, "Warranty Log," to be highly searchable with distinct filtering columns. How should this be structured?',
+    text: 'A company wants to display a sensitive "Credit Limit Validation" section on the Account record view, but only if the account is marked as an "Active Enterprise" type. They want to avoid building multiple profiles or page layouts. How should this be built?',
     topic: 'User Interface',
     options: [
-      'Write a validation rule checking global search string formats',
-      'Navigate to the Search Layout configuration for the Warranty Log object and tailor the results filters and columns visible fields',
-      'Convert the Warranty Log object data visibility setting to Private OWD',
-      'Re-instantiate the LWC cache settings using public @api variables'
+      'Create a validation rule that throws an error message on click events',
+      'Upgrade the Account page layout to utilize Dynamic Forms, and apply a conditional visibility rule to that section based on the Account Type field',
+      'Modify field-level security constraints on the corporate profile sheets',
+      'Build a global quick action to lock down layouts dynamically'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Search Layouts for custom objects dictate exactly which fields appear as searchable reference columns, enabling cleaner indexing and parsing during global search queries.'
+    explanation: 'Dynamic Forms let you set conditional visibility rules directly on fields or sections in Lightning App Builder, eliminating the need for multiple page layouts.'
   },
   {
     id: 'ui-15',
-    text: 'An administrator needs to deploy an onboarding checklist on the Employee object. The component should only be visible to HR managers, while normal employees viewing their own profiles should not see it. How should this be handled?',
+    text: 'Compliance guidelines dictate that when users search for contacts, they must be able to see the contact\'s department and office extension directly in the search results grid. What should the administrator modify?',
     topic: 'User Interface',
     options: [
-      'Hide the component using field-level security constraints',
-      'Set a Component Visibility filter in Lightning App Builder matching the User Profile Name or a custom permission to "Human Resources Manager"',
-      'Build separate custom objects to split employee types completely',
-      'Inject an external javascript script into the profile layout settings'
+      'The Contact object Compact Layout definition',
+      'The Contact object Search Layout for the target user profile',
+      'The Dynamic Actions panel visibility rules',
+      'The related list item configurations'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Lightning App Builder visibility filters can reference User properties like profile names, roles, or custom permissions, allowing you to hide specific components from select audiences on shared pages.'
+    explanation: 'Search Layouts let you customize the field columns that display when users search for records globally or within lookups.'
   },
   {
     id: 'ui-16',
-    text: 'Sales reps need a quick way to log new follow-up meetings from an Account page without navigating away or scrolling down to the activity timeline. What interface element should the administrator construct?',
+    text: 'A support rep wants to log a brand new service request case quickly from a customer\'s account detail page without scrolling down to the related list section or navigating away. What should the administrator deploy to the highlights panel?',
     topic: 'User Interface',
     options: [
-      'A custom validation rule pointing to date inputs',
-      'A Quick Action of type "Create a Record" or "Log a Call" added to the Salesforce Mobile and Lightning Experience Actions panel',
-      'An external outbound message script',
-      'A roll-up summary field counting active meetings'
+      'A Global Quick Action utility',
+      'An Object-Specific Quick Action configured to create a Case record, added to the Account page actions',
+      'A validation rule mapping case text strings',
+      'An In-App Guidance walkthrough prompt'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Quick Actions expose micro-tasks (like creating a record or updating fields) as accessible header buttons, rendering pop-up forms that accelerate data entry.'
+    explanation: 'Object-Specific Quick Actions can be added to record pages to quickly create related child records with automatically populated relationship lookups.'
   },
   {
     id: 'ui-17',
-    text: 'A customer-facing dashboard requires a highly customized map overlay that pins location data and runs specialized client-side route tracking animations. What UI tool must be deployed to satisfy this requirement?',
+    text: 'An operations manager notices that the sales team is entering inconsistent data because they are missing a new corporate policy. The manager wants an onboarding box to pop up on the opportunity homepage to walk reps through the rules. What is the best approach?',
     topic: 'User Interface',
     options: [
-      'Dynamic Forms tab formatting',
-      'A Custom Lightning Web Component (LWC) added to the canvas via Lightning App Builder',
-      'Standard formula fields utilizing basic character charts',
-      'A compact highlight panel mapping lookup files'
+      'Create a validation rule that blocks record saves with generic messages',
+      'Configure a custom prompt or multi-step walkthrough using In-App Guidance in Setup',
+      'Build a separate Lightning App assigned exclusively to sales profiles',
+      'Add a new compact layout highlight block'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'When out-of-the-box layouts fall short, developers can write a Lightning Web Component to run specialized client-side scripts, animations, or mapping libraries, then expose it to the App Builder.'
+    explanation: 'In-App Guidance is the perfect tool to deliver contextual training and pop-up policy reminders directly to users while they work.'
   },
   {
     id: 'ui-18',
-    text: 'Reps state that when managing Opportunities on their mobile app devices, the screen requires extensive vertical scrolling to find key fields like Amount and Close Date. How can the mobile experience be streamlined natively?',
+    text: 'An administrator wants to clean up record pages by hiding the "Submit for Review" button from the page header unless an opportunity\'s stage is set to "Negotiation." How should this be handled declartively?',
     topic: 'User Interface',
     options: [
-      'Disable the desktop lightning app configuration menus completely',
-      'Optimize the object\'s Compact Layout to position up to ten critical fields at the top of the mobile record header interface',
-      'Configure an apex trigger loop to split field inputs onto separate record types',
-      'Set the OWD sharing configuration to Controlled by Parent'
+      'Write a validation rule that restricts button access globally',
+      'Enable Dynamic Actions for the component in Lightning App Builder, and set a visibility rule on the button based on the Stage field',
+      'Modify object-level CRUD permissions on the profile configurations',
+      'Reconfigure search layouts to exclude the action button item'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The mobile app prioritizes Compact Layouts to render record card headers. Configuring these fields keeps vital metrics front and center on smaller viewports.'
+    explanation: 'Dynamic Actions let you conditionally hide or show action buttons on your record pages by defining visibility filters right inside Lightning App Builder.'
   },
   {
     id: 'ui-19',
-    text: 'A business wants an automated path tracker displayed on active Project records. When a project moves to the "Review" stage, a custom text block must appear containing guidance notes detailing compliance checklists. How should this be configured?',
+    text: 'A service organization wants a specialized, standalone dashboard page inside Salesforce where agents can view global support metrics. This page should not be tied to any single customer record. What type of Lightning page should be built?',
     topic: 'User Interface',
     options: [
-      'Build an outbound message step updating a long text field',
-      'Configure a Path for the Project object stage field, and populate the "Guidance for Success" text editor section for the Review stage step',
-      'Deploy an validation rule to block record changes completely',
-      'Wrap text files inside an invocable method annotation class'
+      'Record Page template layout',
+      'App Page created via Lightning App Builder and added to the app navigation menu',
+      'Home Page layout assignment override',
+      'Dynamic Related List view configuration'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Path component natively features a "Guidance for Success" section for each stage step. Admins can populate this with text, rich bullet points, or links to guide users through milestones.'
+    explanation: 'An App Page is a versatile standalone template used to build custom dashboards, landing pages, or tools that integrate directly into the navigation bar.'
   },
   {
     id: 'ui-20',
-    text: 'You have upgraded a page to Dynamic Forms and arranged fields across multiple tabs. Users complain that a specific field section takes too long to load because it calculates asset history values. How can the administrator mitigate this UX lag?',
+    text: 'A developer needs to design a custom data entry table that looks and behaves exactly like native Salesforce record grids. Where can they find the approved blueprints and styling elements to implement this?',
     topic: 'User Interface',
     options: [
-      'Increase the storage allocations on production instances',
-      'Place the heavy field section inside an independent tab component and set the tab\'s loading behavior to lazy load or conditionally render it using visibility constraints',
-      'Run a data loader task to wipe historical values weekly',
-      'Change the field configuration type from a formula into an external ID auto-number'
+      'The custom validation rules formula library',
+      'The Salesforce Lightning Design System (SLDS) component blueprints documentation',
+      'The Lightning Data Service caching configuration settings',
+      'The App Builder canvas templates drop-down menu'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Breaking layouts into structural tabs helps performance. Fields inside hidden tabs are not parsed immediately upon page layout load, reducing initial load times and smoothing the user experience.'
+    explanation: 'SLDS provides the official HTML and CSS blueprints, components, and design guidelines needed to build custom user interfaces that perfectly match the native Salesforce experience.'
   },
 
   {
     id: 'reports-1',
-    text: 'What type of report should be used to compare data from Accounts and Opportunities?',
+    text: 'What determines the baseline set of records and fields available when building a new report in Salesforce?',
     topic: 'Reports and Dashboards',
     options: [
-      'Tabular Report',
-      'Summary Report',
-      'Matrix Report',
-      'Joined Report'
+      'Report Type',
+      'Dashboard Filter',
+      'Bucket Field',
+      'Summary Formula'
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Joined Reports allow data from multiple report types (like Accounts and Opportunities) to be displayed in a single report.'
+    explanation: 'A Report Type acts as a blueprint or template that defines which records and fields are available in a report based on the relationships between objects.'
   },
   {
     id: 'reports-2',
-    text: 'What is the maximum number of fields or groupings that can be added to a Matrix report in Salesforce?',
+    text: 'Which report format should be selected if you need to group rows of data by a specific field, such as grouping opportunities by their Stage?',
     topic: 'Reports and Dashboards',
     options: [
-      '2 row groupings and 2 column groupings',
-      '3 row groupings and 2 column groupings',
-      '4 row groupings and 4 column groupings',
-      'Unlimited groupings'
+      'Tabular Report',
+      'Summary Report',
+      'Matrix Report',
+      'Joined Report'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce Matrix reports allow a maximum of 3 row groupings and 2 column groupings to organize data in a grid format.'
+    explanation: 'Summary reports allow you to group rows of data, support subtotals, and create charts, which is ideal for organizing records by specific attributes.'
   },
   {
     id: 'reports-3',
-    text: 'What does a Custom Report Type primarily define inside Salesforce analytics configuration?',
+    text: 'What report format allows grouping data rows by both rows and columns simultaneously, resembling a spreadsheet grid view?',
     topic: 'Reports and Dashboards',
     options: [
-      'The look and feel of the chart components on a dashboard page layout',
-      'The specific combination of objects and their relational links (e.g., Object A with or without Object B) available for report generation',
-      'The schedule intervals for sending email reports to executive leadership teams',
-      'The encryption settings applied to fields exported via CSV formatting utilities'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Custom Report Types establish a template schema defining the set of objects, relationships, and fields that users can select when creating a new report.'
-  },
-  {
-    id: 'reports-4',
-    text: 'Which dashboard component should be selected when you need to display a single, critical numeric metric like total pipeline revenue directly on a dashboard?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'Bar Chart Component',
-      'Metric Component (Number)',
-      'Gauge Component',
-      'Lightning Table Component'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'A Metric component displays a single prominent value, making it ideal for highlighting key performance indicators (KPIs) like total sales or closed cases.'
-  },
-  {
-    id: 'reports-5',
-    text: 'What is the absolute maximum number of dashboard components that can be added to a single Salesforce dashboard canvas?',
-    topic: 'Reports and Dashboards',
-    options: [
-      '10',
-      '20',
-      '50',
-      'No specific component ceiling'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce imposes a strict platform limit allowing a maximum of 20 dashboard components on a single dashboard page layout.'
-  },
-  {
-    id: 'reports-6',
-    text: 'What does the "Dashboard Filter" capability accomplish when configured on a master dashboard page layout?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'It restricts unauthorized profiles from viewing specific metrics component tiles',
-      'It allows users to dynamically scope down data across all dashboard components simultaneously using picklist values like Region or Industry',
-      'It modifies validation formulas inside underlying custom objects automatically',
-      'It exports the component data into segmented sub-folders on a local device'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Dashboard filters let users drill down into the visuals by applying a single filter criteria across multiple components on the fly without editing the underlying reports.'
-  },
-  {
-    id: 'reports-7',
-    text: 'What happens when an administrator sets up a "Dynamic Dashboard" inside a shared report folder architecture?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'The dashboard charts automatically animate in real-time on a constant streaming cycle',
-      'The dashboard displays data to each viewing user based on their own security settings and record-level sharing permissions',
-      'The dashboard automatically copies its chart data to all external enterprise integrations',
-      'The dashboard allows users to alter data records straight from component views'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Dynamic Dashboards show data based on the running user\'s permissions, ensuring that individual salespeople or managers only see the records they are authorized to view.'
-  },
-  {
-    id: 'reports-8',
-    text: 'What custom field calculation utility can be built directly inside an individual report to perform mathematical operations on summary fields across rows?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'Cross-Object Formula Field',
-      'Custom Summary Formula Field',
-      'Roll-Up Summary Field',
-      'Apex Automation Handler Routine'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Custom Summary Formulas let you calculate additional metrics in a report on grouped rows (like calculating margins or percentage of totals) without adding fields to the actual object.'
-  },
-  {
-    id: 'reports-9',
-    text: 'Where are Report and Dashboard structural visibility permissions and sharing controls managed inside Salesforce analytics?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'Directly on the individual report or dashboard chart asset definition properties',
-      'At the Folder level where the specific reports and dashboards are securely organized and stored',
-      'Inside the general Organization-Wide Defaults security configuration matrix',
-      'Natively within the master layout assignment manager tabs'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Access to reports and dashboards is determined by folder permissions. You share, restrict, or grant access (View, Edit, Manage) to public groups, roles, or users via folders.'
-  },
-  {
-    id: 'reports-10',
-    text: 'What is the programmatic function of a "Bucket Field" inside a Salesforce report layout view?',
-    topic: 'Reports and Dashboards',
-    options: [
-      'To hold temporary deleted records before permanent purge routines execute',
-      'To categorize multiple discrete record field values into defined conceptual groups on the fly without creating a custom field',
-      'To map field integrations between separate enterprise data tables',
-      'To compress long text strings to improve parsing speeds'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Bucketing allows you to group related field values together in a report. For example, you can group individual states into custom "East," "West," and "Central" categories without modifying the underlying data model.'
-  },
-  {
-    id: 'reports-11',
-    text: 'Which report format is the default structure and provides a simple, flat table view of records similar to a standard spreadsheet canvas?',
-    topic: 'Reports and Dashboards',
-    options: [
+      'Tabular Report',
       'Summary Report',
       'Matrix Report',
-      'Tabular Report',
       'Joined Report'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Tabular reports are simple list views of data columns and rows without any groupings or mathematical summary intersections.'
+    explanation: 'Matrix reports summarize data across two grids, grouping fields vertically by row and horizontally by column simultaneously.'
+  },
+  {
+    id: 'reports-4',
+    text: 'What report format allows creating separate blocks of data to display views of different object types side-by-side in a single uniform report layout?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'Summary Report',
+      'Matrix Report',
+      'Joined Report',
+      'Tabular Report'
+    ],
+    correctAnswer: 3,
+    difficulty: 'moderate',
+    explanation: 'Joined reports let you bundle separate blocks of data together, with each block acting as a sub-report that can draw from different report types.'
+  },
+  {
+    id: 'reports-5',
+    text: 'What is the function of a Bucket Field configuration when evaluating report rows?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'To schedule automated background data exports',
+      'To categorize multiple separate field values into defined group buckets on the fly without creating a custom field',
+      'To calculate complex mathematical averages across rows',
+      'To restrict low-privilege profiles from exporting reports'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Bucketing lets you group diverse field values into a defined set of categories right within the report builder, avoiding the need for new custom picklists or formula fields.'
+  },
+  {
+    id: 'reports-6',
+    text: 'What does a "Dynamic Dashboard" accomplish within the Salesforce user interface framework?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'It updates its graphics in real-time every 5 seconds automatically',
+      'It displays data tailored to the specific logged-in user who is viewing the dashboard, rather than running under a fixed running user profile',
+      'It automatically exports data tables into local CSV formats',
+      'It bypasses sharing settings to show all corporate records to everyone'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Dynamic Dashboards alter their data visibility based on the viewing user, applying their personal record-level sharing and security settings.'
+  },
+  {
+    id: 'reports-7',
+    text: 'Which reporting feature allows you to evaluate data rows mathematically to calculate unique summaries, such as measuring a win rate percentage directly on groups?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'Bucket Fields',
+      'Custom Summary Formulas',
+      'Dashboard Filters',
+      'Cross Filters'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Custom Summary Formulas allow you to write mathematical expressions using summary metrics to evaluate grouped rows within summary or matrix layouts.'
+  },
+  {
+    id: 'reports-8',
+    text: 'What capability does a "Cross Filter" provide when refining the scope of a report?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'It combines multiple separate report types into a single grid layout',
+      'It filters a parent object based on whether it has or does not have related child records (e.g., Accounts with Opportunities)',
+      'It toggles picklist visibility configurations on page layouts',
+      'It calculates multi-currency conversion variations'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Cross Filters filter the primary report records by checking for the presence or absence of related child items.'
+  },
+  {
+    id: 'reports-9',
+    text: 'Where must an administrator save a report or dashboard to ensure other specific team members can run and view it?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'A Public or Shared Folder with appropriate access permissions assigned',
+      'My Personal Reports folder',
+      'The global scratch org metadata bundle',
+      'A custom metadata type layout slot'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Records placed inside "My Personal Reports" are strictly hidden from everyone else. Sharing a report requires placing it in a public or shared folder with folder-level access granted.'
+  },
+  {
+    id: 'reports-10',
+    text: 'What is the maximum number of groupings allowed when configuring a standard Summary Report layout?',
+    topic: 'Reports and Dashboards',
+    options: [
+      '1 grouping',
+      '3 groupings',
+      '5 groupings',
+      'unlimited groupings'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Salesforce limits reports to a maximum total of 3 levels of nested row or column groupings.'
+  },
+  {
+    id: 'reports-11',
+    text: 'What occurs when an administrator edits a "Standard Report Type" configuration field array?',
+    topic: 'Reports and Dashboards',
+    options: [
+      'The custom fields are permanently locked from further modification',
+      'Standard Report Types cannot be edited or modified; administrators must create a Custom Report Type to tailor available fields',
+      'The system triggers an automatic code coverage compliance check',
+      'The report automatically updates its layout template into a matrix format'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Standard report types are fixed blueprints generated automatically by the platform. Customizing field availability requires creating a Custom Report Type.'
   },
   {
     id: 'reports-12',
-    text: 'What is the limit for the maximum number of filter conditions that can be added to a single report inside Salesforce Analytics?',
+    text: 'Which feature allows users to filter all components on a dashboard simultaneously based on a shared attribute, such as a selected Region?',
     topic: 'Reports and Dashboards',
     options: [
-      '5',
-      '10',
-      '20',
-      '50'
+      'Dashboard Filters',
+      'Bucket Fields',
+      'Custom Summary Formulas',
+      'Cross Filters'
     ],
-    correctAnswer: 2,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Salesforce limits report configurations to a maximum of 20 field filter conditions to maintain query performance.'
+    explanation: 'Dashboard Filters let users interactively refine the data across all dashboard widgets at once using shared field parameters.'
   },
   {
     id: 'reports-13',
-    text: 'Universal Containers needs an executive pipeline dashboard. The CEO wants to look at a single chart that shows overall company closed sales against an active static target goal line. Which dashboard component design is required?',
+    text: 'A business manager wants to view a list of Accounts that do not have any active Cases logged against them. A standard report type only shows accounts with cases. How should the administrator design this?',
     topic: 'Reports and Dashboards',
     options: [
-      'A flat tabular data matrix grid component',
-      'A Gauge or Bar Component with defined conditional target value thresholds configured inside the component settings',
-      'A multi-series line graph tracking historical data layers',
-      'An embedded custom LWC component pulling raw string arrays'
+      'Build a Matrix report using a custom summary formula',
+      'Create an Accounts report and add a Cross Filter configured as "Accounts without Cases"',
+      'Create a Joined report using separate picklist groups',
+      'Deploy a validation rule checking case identifiers'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Gauge and Bar charts let you plot an aggregated numeric value along a scale marked with target ranges, making it easy to track performance against a goal.'
+    explanation: 'Cross filters allow you to isolate records by checking for the absence of related child entries, solving this scenario natively without extra code.'
   },
   {
     id: 'reports-14',
-    text: 'A VP of Sales wants to receive a weekly summary report via email every Monday morning showing their team\'s open cases. How should an administrator configure this automated delivery mechanism?',
+    text: 'An executive wants a sales dashboard to display individual metrics to team leads, but they must be prevented from seeing each other\'s pipeline results. The manager wants to avoid creating multiple dashboards. What should be built?',
     topic: 'Reports and Dashboards',
     options: [
-      'Write a scheduled batch Apex script to generate and transmit PDF attachments',
-      'Open the target report, click the "Subscribe" button, define the Monday morning scheduling frequency, and select the VP as a recipient',
-      'Build a record-triggered flow containing outbound message components',
-      'Configure an escalation rule entry to send text file summaries'
+      'Configure a Joined report with private folders',
+      'Set up a Dynamic Dashboard with the running user configured as "The dashboard viewer"',
+      'Write a validation rule restricting user access parameters',
+      'Deploy an owner-based sharing rule on dashboard items'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The "Subscribe" feature in Salesforce reports handles automated data delivery. Users or admins can schedule regular email distribution to individuals, roles, or public groups.'
+    explanation: 'Dynamic Dashboards resolve this by calculating widget visualizations contextually based on the logged-in user\'s sharing access levels.'
   },
   {
     id: 'reports-15',
-    text: 'Your management team wants to view a dashboard tracking marketing conversion ratios. However, users complain that chart figures look outdated. They have to click "Refresh" on every individual element. How can this behavior be streamlined?',
+    text: 'A marketing coordinator needs to classify lead records into "Small," "Medium," or "Large" groups based on their Employee Count field values within a report, without creating any custom admin fields. What feature addresses this?',
     topic: 'Reports and Dashboards',
     options: [
-      'Increase local hard drive caching allowances on browser setups',
-      'Click the general "Refresh" button located at the top header area of the dashboard page canvas to refresh all components simultaneously',
-      'Set the underlying custom object OWD setting to Public Read/Write',
-      'Re-architect the reports into a combined matrix layout scheme'
+      'Add a Bucket Field to the report, defining the number thresholds for each category',
+      'Write a Custom Summary Formula field inside the object columns',
+      'Deploy a dashboard filter targeting text characters',
+      'Create a cross-object formula on the Lead object'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Refreshing a dashboard via the main header "Refresh" button pulls fresh data for all 20 component blocks at once, updating the metrics across the entire page layout.'
+    explanation: 'Bucket fields allow users to group numeric ranges or picklists into customized report categories on the fly.'
   },
   {
     id: 'reports-16',
-    text: 'An analyst needs to build a report showing all Accounts that do not have any active Opportunities associated with them. A standard "Accounts with Opportunities" report type hides these records. How should this be handled?',
+    text: 'A finance manager needs a monthly report that calculates the average commission paid out, grouped by product family, but also requires a row subtotal calculating the percentage difference between groups. What tool path handles this?',
     topic: 'Reports and Dashboards',
     options: [
-      'Deploy an validation rule to block accounts without opportunities from saving',
-      'Create a Custom Report Type with an object relationship definition specifying that Account records may or may not have related Opportunity records, then use a cross-filter on the report set to "without Opportunities"',
-      'Write an Apex trigger loop to map account names into text array groups',
-      'Set the Opportunity OWD sharing defaults configuration to Private'
+      'Configure a Tabular report using cross-object logic',
+      'Create a Summary Report by product family and add a Custom Summary Formula evaluating the metrics at the group level',
+      'Deploy a validation rule checking financial numbers',
+      'Export the logs via Data Loader to evaluate fields manually'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Cross-filters let you filter a report based on related objects (e.g., Accounts without Opportunities). Using a "with or without" relationship definition ensures parent records aren\'t filtered out.'
+    explanation: 'Custom Summary Formulas excel at evaluating group-level mathematical relationships over summary columns.'
   },
   {
     id: 'reports-17',
-    text: 'A regional manager requests a dashboard component displaying total sales numbers. The manager must see overall regional metrics, but when individual sales reps look at the exact same dashboard tile, they should only see their own private closed opportunities. How should this dashboard be provisioned?',
+    text: 'A user reports that they cannot create a report linking a custom Asset object with its parent Account record because the asset fields do not show up in the report builder selection menu. What should the administrator check first?',
     topic: 'Reports and Dashboards',
     options: [
-      'Build 50 completely separate duplicate dashboards for each user account profile',
-      'Configure the dashboard as a Dynamic Dashboard by setting the option "View Dashboard As" to the "The viewing user"',
-      'Create a validation rule checking user title strings before loading layouts',
-      'Convert the Opportunity details tracking fields into roll-up summary components'
+      'The custom object validation rule configurations',
+      'Whether the "Allow Reports" checkbox is enabled on the Asset custom object definition settings',
+      'The global compact layout allocation parameters',
+      'The role hierarchy level of the user profile'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Setting a dashboard to run as the viewing user makes it dynamic. The data dynamically shifts according to each user\'s access rights, preventing data exposure while keeping dashboards consolidated.'
+    explanation: 'Custom objects are completely hidden from the report builder framework until the "Allow Reports" setting is enabled on the object metadata setup.'
   },
   {
     id: 'reports-18',
-    text: 'A business requires a report summarizing Case records grouped by priority levels. Under each priority grouping, the report must show the calculated average age of the cases. What report format must be utilized?',
+    text: 'An administrator updates folder sharing permissions to give a sales team lead "View" access to a report folder. The lead reports they still cannot move or delete reports inside that folder. How should this be resolved?',
     topic: 'Reports and Dashboards',
     options: [
-      'Tabular Report',
-      'Summary Report with row groupings and a summarized average applied to the Age field column',
-      'Joined Report splitting tracking blocks',
-      'Matrix Report with nested column mappings'
+      'Modify field-level security constraints on the profile',
+      'Upgrade the folder sharing access for the sales team lead from "View" to "Manage"',
+      'Write a validation rule restricting folder file moves',
+      'Reassign the user role hierarchy level higher'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Summary reports let you group records by specific fields (like Priority) and calculate summary metrics (like SUM, AVERAGE, MIN, MAX) on numeric columns within those groups.'
+    explanation: 'The "Manage" folder permission level is required to organize, rename, delete, or modify report layouts within shared spaces.'
   },
   {
     id: 'reports-19',
-    text: 'An administrator is building a report on a high-volume object but receives a timeout error before the data renders. The report has multiple complex text string filters. How should the report query be optimized?',
+    text: 'A regional manager requests a single weekly printout containing open leads, closed-won deals, and active service cases grouped by account owner. What reporting layout meets this requirement efficiently?',
     topic: 'Reports and Dashboards',
     options: [
-      'Increase the storage allocation properties on the production org environment',
-      'Narrow down the date filters (e.g., from "All Time" to "Current Fiscal Quarter") and utilize indexed fields like Record ID, Owner, or External ID instead of open text filters',
-      'Convert the report structure from a summary layout into a matrix frame layout',
-      'Run a data loader task to purge historical entries permanently'
+      'A series of three separate Tabular reports placed in separate zip files',
+      'A Joined Report containing three blocks configured with their respective report types, grouped by a common Account Owner field',
+      'A Matrix report running custom summary formulas client-side',
+      'An outbound messaging rule exporting XML streams daily'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Standard filters over broad time ranges strain query engines. Tightening date ranges and filtering on indexed fields lets the engine process data faster and avoids timeout errors.'
+    explanation: 'Joined reports allow you to combine multiple distinct sub-reports side-by-side as long as they share a common grouping field.'
   },
   {
     id: 'reports-20',
-    text: 'A financial manager wants a column in an Opportunity report that displays the win-loss conversion ratio as a calculated percentage (Won Opportunities divided by Total Opportunities). This metric must only exist inside this particular report layout. How should this be built?',
+    text: 'A user wants to place a report chart component onto their desktop Home Page view. When they look for the chart, it does not appear in the selection panel. What layout structure must the report maintain?',
     topic: 'Reports and Dashboards',
     options: [
-      'Universally add a custom formula field on the global Opportunity object',
-      'Add a Custom Summary Formula field directly inside the report builder, set the output to percent, and define the formula expression using summary metrics',
-      'Configure a case assignment rule mapping percentage calculations',
-      'Deploy an asynchronous batch job to overwrite a text field daily'
+      'The report must be formatted as a Tabular report with zero filters',
+      'The report must be a Summary or Matrix report and contain an active chart component saved within a shared folder',
+      'The report must rely exclusively on cross-object lookup formulas',
+      'The report must be managed inside a private user folder structure'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Custom Summary Formulas are local to individual reports. They allow you to calculate custom ratios or percentages on grouped values without adding extra fields to your schema.'
+    explanation: 'To display a report chart on homepages or dashboards, the source report must be a grouped summary or matrix report that includes a saved chart component.'
   },
 
   {
     id: 'integration-1',
-    text: 'What is the recommended approach for real-time integration between Salesforce and external systems?',
+    text: 'Which architectural framework uses REST API integrations as its core communication pattern?',
     topic: 'Integration',
     options: [
-      'Batch data synchronization',
-      'REST API with webhook notifications',
-      'Email-to-Case',
-      'Data Loader'
+      'Lightweight JSON payload transmission over standard HTTP protocols',
+      'Strict XML schemas verified by WSDL file definitions exclusively',
+      'Direct client-side database table socket linking operations',
+      'Outbound messaging engines emitting binary attachments'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'REST API combined with webhooks or platform events enables real-time, bidirectional integration between systems.'
+    explanation: 'REST APIs are lightweight, stateless services that primarily pass JSON or XML payloads over standard HTTP methods.'
   },
   {
     id: 'integration-2',
-    text: 'What Salesforce feature allows you to declaratively connect to external databases and view that data in Salesforce as standard custom object records without copying it into the org?',
+    text: 'What does a WSDL (Web Services Description Language) file accomplish within a SOAP API integration context?',
     topic: 'Integration',
     options: [
-      'Data Import Wizard',
-      'Salesforce Connect (External Objects)',
-      'Outbound Messaging',
-      'Apex REST Callouts'
+      'It tracks background error metrics inside debug panels',
+      'It acts as an XML contract defining the exact methods, parameters, and structural constraints available in the SOAP service',
+      'It compresses long text strings prior to data load routines',
+      'It configures user single sign-on security access profiles'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce Connect maps external data tables to External Objects in Salesforce (e.g., suffixed with __x), reading the data in real-time via OData protocols without consuming data storage.'
+    explanation: 'A WSDL file is an XML document that outlines the strict contract and structural constraints for SOAP web service communications.'
   },
   {
     id: 'integration-3',
-    text: 'Which API is optimized for loading or exporting massive data volumes (greater than 50,000 records) asynchronously by leveraging chunked parallel processing?',
+    text: 'Which feature allows an administrator to securely manage login credentials and authentication endpoints for external callouts without hardcoding keys in Apex?',
+    topic: 'Integration',
+    options: [
+      'Remote Site Settings',
+      'Named Credentials',
+      'Custom Metadata Types',
+      'Validation Rules'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Named Credentials specify the callout endpoint URL and authentication parameters centrally, keeping secure access keys out of your code.'
+  },
+  {
+    id: 'integration-4',
+    text: 'What API type should be selected when you need to upload or modify large volumes of records (over 50,000) asynchronously?',
     topic: 'Integration',
     options: [
       'REST API',
       'SOAP API',
-      'Bulk API',
+      'Bulk API 2.0',
       'Streaming API'
     ],
     correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'The Bulk API is designed for high-volume transactions, processing datasets with millions of records in parallel batches to respect standard platform governor limits.'
-  },
-  {
-    id: 'integration-4',
-    text: 'What type of integration component should be defined to send secure, near-real-time push notifications or event messages from Salesforce to external subscribers using a publish-subscribe model?',
-    topic: 'Integration',
-    options: [
-      'Platform Events',
-      'Outbound Messaging XML',
-      'Email Alerts',
-      'Custom Formula Fields'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'Platform Events are built on a pub/sub event bus architecture, allowing developers to broadcast secure, custom payloads that external listener applications can subscribe to asynchronously.'
+    explanation: 'Bulk API 2.0 is optimized for processing high-volume datasets efficiently by chunking data loads in the background.'
   },
   {
     id: 'integration-5',
-    text: 'Which standard protocol does Salesforce utilize natively to handle single sign-on (SSO) authentication when acting as an Identity Provider (IdP)?',
+    text: 'What Salesforce integration feature broadcasts near-real-time event messages using a publisher-subscriber model based on the Pub/Sub API?',
     topic: 'Integration',
     options: [
-      'SAML 2.0',
-      'OData 4.0',
-      'REST / JSON',
-      'SOAP / XML'
+      'Outbound Messaging',
+      'Platform Events',
+      'External Services',
+      'Named Credentials'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Security Assertion Markup Language (SAML 2.0) is the primary open-standard protocol used by Salesforce to securely exchange authentication tokens between identity systems for SSO.'
+    explanation: 'Platform Events use a message-bus framework to broadcast real-time events, decoupling publishers and subscribers.'
   },
   {
     id: 'integration-6',
-    text: 'What is the purpose of configuring a "Named Credential" in a Salesforce organization?',
+    text: 'What configuration is required under "Remote Site Settings" before an Apex class can successfully execute an HTTP callout?',
     topic: 'Integration',
     options: [
-      'To define specific password complexity criteria rules for high-privilege users',
-      'To specify the callout endpoint URL and authentication parameters in a single definition, avoiding hardcoded credentials in Apex code',
-      'To assign custom system titles to third-party enterprise users',
-      'To track the total API login attempts recorded on active endpoints daily'
+      'The external system\'s user profile credentials must be imported',
+      'The target external endpoint URL domain must be whitelisted',
+      'A WSDL file schema validation sweep must be executed',
+      'The object OWD settings must be switched to public status'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Named Credentials handle callout management by separating endpoint routing and security protocols (like OAuth tokens) from Apex code, simplifying updates and boosting security.'
+    explanation: 'Remote Site Settings whitelist destination URLs, preventing malicious or unauthorized code-driven data exports.'
   },
   {
     id: 'integration-7',
-    text: 'What mechanism can be implemented to securely permit a custom browser-based JavaScript application running on an external domain to make API requests directly to your Salesforce org?',
+    text: 'Which HTTP method should be used in a custom REST API class to create a new record in Salesforce?',
     topic: 'Integration',
     options: [
-      'Cross-Origin Resource Sharing (CORS) Whitelisting',
-      'Remote Site Settings',
-      'Connected App Configuration Profiles',
-      'Validation Rules checking network strings'
+      '@HTTPGet',
+      '@HTTPPost',
+      '@HTTPPut',
+      '@HTTPDelete'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'CORS whitelisting allows web browsers to bypass standard same-origin security policies, letting code hosted on approved external domains safely call Salesforce REST endpoints.'
+    explanation: 'The `@HTTPPost` annotation maps incoming HTTP POST requests to an Apex method, typically used to add new database rows.'
   },
   {
     id: 'integration-8',
-    text: 'What tool should an administrator configure to register and manage a third-party application (like a mobile client or an external ERP integration) trying to connect via OAuth 2.0 protocols?',
+    text: 'What type of authentication standard is commonly used to authorize secure server-to-server API connections in Salesforce integrations without exposing user passwords?',
     topic: 'Integration',
     options: [
-      'Remote Site Settings',
-      'Connected App',
-      'Custom Metadata Types',
-      'Permission Set Groups'
+      'Basic Auth text keys',
+      'OAuth 2.0 framework',
+      'SAML assertion parameters',
+      'LDAP directory verification'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Connected Apps use OAuth to integrate external applications with Salesforce APIs. They allow administrators to monitor client signatures, set token expiration limits, and manage profile access.'
+    explanation: 'OAuth 2.0 is the standard token-based framework used across Salesforce APIs to handle app authorization securely.'
   },
   {
     id: 'integration-9',
-    text: 'What is a critical functional constraint regarding the deployment of a "Remote Site Setting" in Salesforce integration management?',
+    text: 'What does the Salesforce Streaming API use to push near-real-time record modifications to client user interfaces?',
     topic: 'Integration',
     options: [
-      'It handles all security handshakes and encryption parameters automatically',
-      'It authorizes outbound Apex or flow callouts to a specified external web address, but does not manage authentication details',
-      'It blocks internal users from accessing external links inside browser tabs',
-      'It enforces record-level sharing constraints on integration profiles'
+      'Continuous HTTP short-polling requests',
+      'Bayeux protocol and CometD streaming connections for push events',
+      'Asynchronous batch apex trigger sweeps every hour',
+      'WSDL validation files parsing tracking matrices'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Remote Site Settings act as a basic security perimeter. They authorize the application to route network traffic to an outside domain URL, but do not manage credentials or protocol keys.'
+    explanation: 'The Streaming API uses CometD and long-polling mechanisms to push immediate event alerts to client listeners.'
   },
   {
     id: 'integration-10',
-    text: 'Which API should a developer leverage to receive immediate push updates when records are updated, using a streaming architecture that relies on Pub/Sub protocols?',
+    text: 'Which tool allows administrators to declartively convert an external OpenAPI JSON schema into a reusable action inside Flow Builder without writing Apex code?',
     topic: 'Integration',
     options: [
-      'Bulk API 2.0',
-      'Pub/Sub API (Change Data Capture)',
-      'SOAP API',
-      'Metadata API'
+      'Named Credentials manager',
+      'External Services',
+      'Change Data Capture',
+      'Data Loader CLI'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Pub/Sub API and Change Data Capture (CDC) broadcast record updates instantly to subscribers over an event bus, reducing the need for continuous polling or custom apex triggers.'
+    explanation: 'External Services consume OpenAPI specifications to expose outside API methods as declarative Flow components.'
   },
   {
     id: 'integration-11',
-    text: 'What occurs when an integration client hits the organization\'s rolling 24-hour total API request governor limit allocation?',
+    text: 'What is the purpose of enabling Change Data Capture (CDC) on a Salesforce sObject layout?',
     topic: 'Integration',
     options: [
-      'The platform automatically drops transactional data data tables',
-      'The system blocks any subsequent inbound API request attempts, throwing an error code until the rolling limit window resets',
-      'The system automatically assigns standard admin rights to the integration user account',
-      'The platform routes all pending payloads to a temporary queue'
+      'To encrypt personal field data fields at rest',
+      'To automatically broadcast event messages whenever a record is created, updated, or deleted',
+      'To prevent recursive execution errors inside triggers',
+      'To run nightly data backups automatically'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Exceeding API request limits blocks incoming traffic with an explicit error code until the rolling 24-hour usage window falls back beneath the allocation ceiling.'
+    explanation: 'Change Data Capture publishes real-time change events for data changes, letting external systems stay in sync.'
   },
   {
     id: 'integration-12',
-    text: 'Which file format is most commonly used to structure payload data transmitted via Salesforce native REST API integrations?',
+    text: 'What standard error code is returned by an HTTP response if the authorization credentials passed inside an integration request are missing or incorrect?',
     topic: 'Integration',
     options: [
-      'XML text lines',
-      'JSON object strings',
-      'CSV table blocks',
-      'YML layout configurations'
+      '400 Bad Request',
+      '401 Unauthorized',
+      '404 Not Found',
+      '500 Internal Server Error'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'While the REST API accepts both XML and JSON, JavaScript Object Notation (JSON) is the industry standard format due to its lightweight footprint and clean parsing properties.'
+    explanation: 'The `401 Unauthorized` response status code indicates the call out request has failed authentication validations.'
   },
   {
     id: 'integration-13',
-    text: 'A business requires an integration that pushes shipping numbers to an external fulfillment platform whenever an Order is marked "Shipped." The external API requires an explicit JWT token authentication signature. How should the developer organize this safely?',
+    text: 'A developer needs to write an Apex class that retrieves order metrics from an external inventory database via an HTTP GET request. They want to ensure endpoint updates do not break their code. What tool path should be implemented?',
     topic: 'Integration',
     options: [
-      'Write an Apex trigger containing hardcoded credential string variables',
-      'Configure an after-save flow that invokes an Apex method targeting a Named Credential defined with JWT Token Exchange configurations',
-      'Build a validation rule checking order status text',
-      'Set the Order object OWD setting to Public Read/Write'
+      'Hardcode the full URL string inside the trigger logic loops',
+      'Configure a Named Credential specifying the target endpoint URL, and reference the credential path in the Apex callout',
+      'Generate a SOAP WSDL contract layout file',
+      'Write a validation rule checking URL characters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Combining an After-Save flow (to detect status changes) with an Apex callout to a Named Credential securely routes token handshakes (like JWT) without exposing secret keys in code blocks.'
+    explanation: 'Using Named Credentials simplifies callout maintenance by centralizing endpoint URLs and authentication details outside of Apex.'
   },
   {
     id: 'integration-14',
-    text: 'An administrator needs to establish a real-time integration where a product catalogue hosted on an internal corporate database is visible inside a Salesforce custom component without consuming any platform data storage space. What solution matches this requirement?',
+    text: 'An administrator needs to ingest a weekly roster file containing 450,000 employee update lines from an external system. They need to avoid hitting API limit errors during the transfer. What API should they use?',
     topic: 'Integration',
     options: [
-      'Run Data Loader routines every 5 minutes in background windows',
-      'Configure Salesforce Connect to pull the tables into External Objects using an OData connection link',
-      'Build validation rules tracking product SKU character layouts',
-      'Deploy an asynchronous batch job routing XML text files'
+      'REST API using parallel endpoints',
+      'SOAP API using WSDL mapping matrices',
+      'Bulk API 2.0 configured inside an asynchronous data stream',
+      'Streaming API monitoring active push loops'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Salesforce Connect allows real-time external data access via standard layout blocks, fetching details on demand without duplicating data tables into the org.'
+    explanation: 'Bulk API 2.0 is designed for high-volume transactions, processing massive data sets efficiently in the background.'
   },
   {
     id: 'integration-15',
-    text: 'A developer needs to write a custom REST web service in Apex that external systems can call to create new accounts. How should the developer define the class and method signatures to expose this endpoint?',
+    text: 'A company needs their internal ERP tool to receive an immediate tracking notification whenever a new account is added to Salesforce. The notification must contain specific structured variables. What tool is best suited for this?',
     topic: 'Integration',
     options: [
-      'Mark the class with @RestResource(urlMapping=\'/v1/Accounts/*\') and annotate the method with @HttpPost',
-      'Annotate the method with @InvocableMethod and make it public static void',
-      'Implement the Database.Batchable interface on a global class definition',
-      'Define the class as without sharing and add a standard page layout reference'
+      'A custom validation rule checking account columns',
+      'Define a custom Platform Event, and configure a Record-Triggered Flow to publish the event when an account is created',
+      'An outbound batch apex job scheduled nightly',
+      'Deploy a cross-object formula tracking account strings'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The @RestResource annotation defines a custom REST endpoint URL mapping. Annotating the method with @HttpPost tells the system to execute that block when an HTTP POST request hits the endpoint.'
+    explanation: 'Platform Events handle these scenarios by broadcasting structured event payloads in near-real-time across enterprise channels.'
   },
   {
     id: 'integration-16',
-    text: 'Your third-party warehouse management platform needs to regularly pull update details from Salesforce. The external engineering team wants a formal WSDL (Web Services Description Language) file to build their connection wrappers. Which API matches this architectural design?',
+    text: 'A developer builds an integration that suddenly throws a "System.CalloutException: Unauthorized endpoint" error during sandbox testing. What configuration fix should the administrator check first?',
     topic: 'Integration',
     options: [
-      'REST API',
-      'SOAP API',
-      'Bulk API',
-      'Streaming API'
+      'The organization profile password complexity settings',
+      'Whether the endpoint URL domain is whitelisted in Remote Site Settings or Named Credentials',
+      'The active validation rule configurations on the triggering record',
+      'The object-level sharing defaults parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The SOAP API is built on a formal XML framework and relies on WSDL documents (Enterprise or Partner variants) to define explicit data schemas and programmatic endpoint contracts.'
+    explanation: 'Salesforce blocks HTTP callouts to arbitrary domains unless they are explicitly whitelisted in Remote Site Settings or Named Credentials.'
   },
   {
     id: 'integration-17',
-    text: 'An enterprise application publishes thousands of inventory transactions per second into Salesforce via a custom platform event integration. The consumer process is throwing "Concurrent Request" limit exceptions. How can this volume be handled safely?',
+    text: 'An integration team needs to expose an Apex method to an external system so it can receive text parameters and update an asset record. The external system uses a lightweight REST architecture. How should the Apex method be annotated?',
     topic: 'Integration',
     options: [
-      'Disable validation rules across inventory custom tables completely',
-      'Set the Platform Event\'s Publish Behavior option to "Publish After Commit" or leverage the asynchronous event bus batch mechanisms to ingest events cleanly',
-      'Convert the Platform Event into a standard lookup relation formula',
-      'Change the execution integration user profile to standard System Administrator'
+      '@InvocableMethod public static void updateAsset()',
+      '@RestResource(urlMapping=\'/updateAsset/*\') and @HttpPost on the method definition',
+      '@AuraEnabled(cacheable=true) public static string updateAsset()',
+      'public class updateAsset extends Database.Batchable'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Publish After Commit queues event transmission until the database transaction succeeds. Decoupling high-volume streams through asynchronous handling prevents resource locks and concurrent processing exceptions.'
+    explanation: 'The `@RestResource` annotation paired with `@HttpPost` exposes custom Apex logic as a callable REST web service endpoint.'
   },
   {
     id: 'integration-18',
-    text: 'A developer is writing a test class for an Apex integration controller that makes a callout to an external weather service. The test fails with a runtime exception. What is the root cause of this failure?',
+    text: 'A business process demands that whenever an opportunity is updated in Salesforce, an external legacy tool must receive a structured XML message containing record values. What declarative feature handles this requirement?',
     topic: 'Integration',
     options: [
-      'The test environment cannot connect to the live external API domain because live HTTP callouts are prohibited inside test transactions',
-      'The developer did not run Data Loader prior to deploying test classes',
-      'The custom object OWD configuration settings are set to Private',
-      'The verification formulas contain string character formatting errors'
+      'Workflow Action Outbound Messaging',
+      'External Services canvas mapping',
+      'Bulk API text data transfers',
+      'Validation rule error formulas'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Salesforce prevents real outbound network requests during test execution to ensure reliability. Developers must simulate responses by creating a mock class that implements the HttpCalloutMock interface.'
+    explanation: 'Outbound Messaging automatically transmits structured XML record notifications over secure endpoints asynchronously.'
   },
   {
     id: 'integration-19',
-    text: 'You have built an outbound integration that tracks account billing revisions. The destination system requires an immediate response acknowledgement, but occasionally stays down for maintenance. How can you ensure messages are retried up to 24 hours without throwing fatal exceptions?',
+    text: 'An architectural team wants to build a flow that checks shipping prices from a vendor API mid-process. The vendor provides a standard OpenAPI JSON file describing their endpoints. How can this be built without writing code?',
     topic: 'Integration',
     options: [
-      'Deploy synchronous triggers containing infinite check loops',
-      'Utilize Workflow Outbound Messaging, which features a built-in retry mechanism that automatically resends unacknowledged payloads for up to 24 hours',
-      'Configure a validation rule to block account saves if lines are unresponsive',
-      'Convert the target fields from text lines into roll-up values'
+      'Write a validation rule checking vendor strings',
+      'Create an External Service by uploading the vendor\'s OpenAPI schema, and invoke the generated action directly inside the flow',
+      'Deploy a continuous streaming API listener thread',
+      'Reassign the user profile access layers higher'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Declarative Outbound Messaging includes built-in queue tracking. If an endpoint is offline or fails to return a 200 OK response, Salesforce automatically retries delivery periodically for 24 hours before dropping the message.'
+    explanation: 'External Services consume OpenAPI files to turn external REST actions into declarative, drag-and-drop elements within Flow Builder.'
   },
   {
     id: 'integration-20',
-    text: 'An architecture team wants to minimize security risks by blocking third-party applications from using authorization paths that require storing raw Salesforce username and password strings inside outside configurations. Which OAuth 2.0 flow should they implement?',
+    text: 'A developer notice that an integration payload containing special characters fails validation checks. They want to strip out formatting variations during mapping tasks. What utility should be added to the code?',
     topic: 'Integration',
     options: [
-      'Resource Owner Password Credentials Grant Flow',
-      'Web Server Flow or JWT Bearer Flow',
-      'Inline Validation Rule Parameter Flow',
-      'Data Import Wizard Mapping Protocol'
+      'A series of cross-object lookup formulas',
+      'JSON parsing methods like JSON.deserialize or standard string replacement functions inside the Apex integration controller',
+      'A validation rule checking character string constraints',
+      'A change data capture stream monitoring changes'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Web Server Flow (Authorization Code) and JWT Bearer Flow use authorization tokens, certificates, or callback handshakes, keeping raw user credentials secure and out of third-party environments.'
+    explanation: 'Using the native `JSON` parsing class methods in Apex allows developers to clean, format, and structure incoming payloads safely.'
   },
 
   {
     id: 'test-1',
-    text: 'What is the minimum test coverage required to deploy Apex code to production?',
+    text: 'What is the absolute minimum line coverage percentage required by Salesforce for all custom Apex code before it can be successfully deployed to production?',
     topic: 'Apex Testing',
     options: [
-      '50%',
-      '65%',
-      '75%',
-      '100%'
+      '50 percent',
+      '75 percent',
+      '90 percent',
+      '100 percent'
     ],
-    correctAnswer: 2,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Minimum 75% test coverage is required for each Apex class and trigger to deploy to production.'
+    explanation: 'Salesforce requires an overall average code coverage of at least 75 percent across all Apex classes and triggers during production deployment validation.'
   },
   {
     id: 'test-2',
-    text: 'What is the function of the @testSetup annotation inside an Apex test class definition?',
+    text: 'Which annotation should be applied to an Apex method to indicate it is used to generate reusable test records for all test cases inside the class?',
     topic: 'Apex Testing',
     options: [
-      'It increases governor execution limits by 50% across all individual tests',
-      'It defines a method that creates test data once per class execution, rolling back its state before each individual test method runs',
-      'It exports testing logs directly to an external enterprise server bucket',
-      'It forces the test class to see all live organization records synchronously'
+      '@isTest',
+      '@testSetup',
+      '@Future',
+      '@AuraEnabled'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Methods annotated with @testSetup initialize mock records once for the entire class. This data state is automatically restored between tests, reducing redundant data creation and shortening execution runtimes.'
+    explanation: 'Methods annotated with `@testSetup` run first before any individual test executions, creating data that rolls back automatically between test runs.'
   },
   {
     id: 'test-3',
-    text: 'Which statement accurately describes data visibility constraints within standard Salesforce Apex testing execution contexts?',
+    text: 'What code statement should be used inside an Apex unit test to confirm that an expected variable value matches the actual execution outcome?',
     topic: 'Apex Testing',
     options: [
-      'Test methods can see all production record details by default',
-      'Test methods are completely isolated from organization records (SeeAllData=false) by default, requiring mock data initialization',
-      'Test methods can only access records owned by the system administrator profile',
-      'Test methods require active external API endpoints to generate test sets'
+      'System.assert(true)',
+      'Assert.areEqual(expected, actual)',
+      'System.debug(actual)',
+      'Database.rollback()'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'By default, Apex test classes operate in isolation with SeeAllData set to false. This prevents tests from relying on or modifying live production data, ensuring consistent test results across different environments.'
+    explanation: 'The modern `Assert.areEqual()` method checks whether the expected and actual parameters match, throwing a test failure if they deviate.'
   },
   {
     id: 'test-4',
-    text: 'What is the primary programmatic purpose of utilizing the System.assert() or Assert.areEqual() methods within an Apex unit test class?',
+    text: 'What programmatic block isolates code execution inside a unit test to provide a separate, clean set of governor limits specifically for that section?',
     topic: 'Apex Testing',
     options: [
-      'To increase the absolute lines of code coverage calculations for deployment packages',
-      'To verify that the code logic produces the expected business outcomes and behavior under specific data states',
-      'To bypass validation rule formula constraints during data inserts',
-      'To automatically fix structural syntax compiler anomalies inside handlers'
+      'try-catch-finally blocks',
+      'Test.startTest() and Test.stopTest()',
+      'System.runAs() wrapper hooks',
+      'Database.setSavepoint()'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Code coverage simply verifies that a line was executed. Assertion methods like Assert.areEqual() perform the actual testing work by comparing the runtime results against your expected results to confirm accurate behavior.'
+    explanation: 'The `Test.startTest()` and `Test.stopTest()` sequence resets asynchronous boundaries and governor limits for code enclosed within the block.'
   },
   {
     id: 'test-5',
-    text: 'Which interface implementation is required to simulate successful web service interaction data without making live outbound callouts inside a test method transaction?',
+    text: 'Which method enables a developer to run Apex test execution steps under the security context of a specific active user profile?',
     topic: 'Apex Testing',
     options: [
-      'Database.Batchable',
-      'HttpCalloutMock',
-      'Schedulable',
-      'WebServiceMock'
+      'Test.setMock()',
+      'System.runAs()',
+      'UserInfo.getUserId()',
+      'Test.setCurrentPage()'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Because real HTTP callouts are blocked during test execution, developers must build a separate test class that implements the HttpCalloutMock interface to provide a simulated, structured HTTP response payload.'
+    explanation: '`System.runAs()` lets you execute test blocks as a specified User record, enforcing their specific sharing rules and record visibility.'
   },
   {
     id: 'test-6',
-    text: 'What occurs to any mock records inserted or modified inside an Apex test method when the execution block reaches its final closing bracket?',
+    text: 'What occurs by default to any real operational record data created within an active Apex unit test method context?',
     topic: 'Apex Testing',
     options: [
-      'The records are permanently saved to production database storage tables',
-      'The test transaction is automatically rolled back, leaving zero data footprint changes inside the database',
-      'The records are moved to a global temporary system archive folder',
-      'The system transfers record ownership to a default administrative group'
+      'It is saved permanently into the production database tables',
+      'It is automatically isolated and rolled back at the completion of the test method execution',
+      'It triggers real workflow and assignment notifications out to users',
+      'It causes an immediate deployment compilation crash exception'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce manages testing transactions within an isolated framework. Any DML operations executed during tests are automatically rolled back when the test run ends, keeping your data clean.'
+    explanation: 'Apex test execution features automatic rollback behavior, isolating data creation in a transient buffer that discards all changes upon completion.'
   },
   {
     id: 'test-7',
-    text: 'Which execution method sequence provides a completely separate, fresh set of platform governor limits to validate asynchronous operations inside a test block?',
+    text: 'What interface must be implemented within an Apex utility class to simulate mock HTTP response callouts during integration tests?',
     topic: 'Apex Testing',
     options: [
-      'Database.setSavepoint() and Database.rollback()',
-      'Test.startTest() and Test.stopTest()',
-      'System.runAs() and UserInfo.getUserId()',
-      'try{} and catch{}'
+      'WebServiceMock',
+      'HttpCalloutMock',
+      'Schedulable',
+      'Queueable'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Test.startTest() marks the beginning of the actual code validation path and provides a separate set of governor limits. Calling Test.stopTest() then forces any queued asynchronous tasks to finish running synchronously.'
+    explanation: 'The `HttpCalloutMock` interface allows a test class to return custom HTTP responses without attempting an live connection over network domains.'
   },
   {
     id: 'test-8',
-    text: 'What does the standard testing method System.runAs() enable a developer to accomplish when designing security assertions?',
+    text: 'What parameter flag must be explicitly set on the `@isTest` class declaration if a test method absolutely requires reading existing data records straight from the live organization tables?',
     topic: 'Apex Testing',
     options: [
-      'It grants the execution thread global modify all data administrative powers',
-      'It executes the nested code block within the operational security footprint and sharing permissions of a specific user record',
-      'It speeds up testing execution times by skipping database update validations',
-      'It maps field values between standard and custom layout fields dynamically'
+      '@isTest(SeeAllData=true)',
+      '@isTest(cacheable=true)',
+      '@isTest(UserMode=true)',
+      '@isTest(Isolated=false)'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'System.runAs() executes code as a specified user, making it the ideal tool to test and verify record sharing rules, OWD parameters, and field visibility behavior across different user profiles.'
+    explanation: 'Setting `SeeAllData=true` grants a test class visibility into the org\'s live operational records, though using isolated mock setups remains the best practice.'
   },
   {
     id: 'test-9',
-    text: 'What is the limit for the maximum number of times Test.startTest() can be called within a single individual Apex test method block?',
+    text: 'Which standard object records can be accessed within an Apex unit test class by default without requiring a special data visibility attribute override?',
     topic: 'Apex Testing',
     options: [
-      '1',
-      '2',
-      '5',
-      'Unlimited times per execution block'
+      'Account and Contact records',
+      'User, Profile, Organization, and RecordType records',
+      'Custom object historical log items',
+      'Opportunity and Lead entries'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Test.startTest() can only be called once within any single test method. Calling it multiple times throws a fatal runtime error.'
+    explanation: 'Salesforce permits access to structural metadata records (like Profile, User, and RecordType) globally within unit tests without setting `SeeAllData=true`.'
   },
   {
     id: 'test-10',
-    text: 'Which annotation allows public or private variables and methods within an Apex class to remain hidden from normal code blocks but accessible to test classes?',
+    text: 'What happens if a developer places code lines after the "Test.stopTest()" declaration within an Apex test method layout?',
     topic: 'Apex Testing',
     options: [
-      '@AuraEnabled',
-      '@TestVisible',
-      '@InvocableMethod',
-      '@ReadOnly'
+      'The code lines are skipped entirely during execution parameters',
+      'The execution returns to the baseline transactional limits that were active before Test.startTest() was called',
+      'The system throws a deployment validation exception crash',
+      'All pending asynchronous operations are immediately aborted'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The @TestVisible annotation allows a test class to inspect private or protected class members, helper methods, or variables without exposing them to other non-test application components.'
+    explanation: '`Test.stopTest()` forces all queued asynchronous actions (like future or queueable jobs) to collect and execute immediately before returning to the original limit boundaries.'
   },
   {
     id: 'test-11',
-    text: 'Which system class property can be referenced in regular code to dynamically check if the execution path is running inside a unit test context?',
+    text: 'Which annotation parameter can be appended to a test class definition string to execute tests sequentially rather than concurrently, avoiding database locking exceptions?',
     topic: 'Apex Testing',
     options: [
-      'UserInfo.isTest()',
-      'Test.isRunningTest()',
-      'System.checkContext()',
-      'Apex.getTestState()'
+      '@isTest(Parallel=false)',
+      '@isTest(isParallel=false)',
+      'isTest(Sequential=true)',
+      '@isTest(LockRecords=true)'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Test.isRunningTest() returns a boolean value indicating whether the current transaction path is running under a test execution frame, useful for conditional routing or mocking complex integrations.'
+    explanation: 'The `@isTest(Parallel=false)` annotation forces tests inside that class to execute sequentially, which is useful for avoiding database lock contention.'
   },
   {
     id: 'test-12',
-    text: 'When preparing to deploy code packages to production, what is a strict requirement regarding the execution outcomes of all test classes?',
+    text: 'What programmatic utility method should be used within a test class to verify if an asynchronous batch job has successfully placed rows into the queue?',
     topic: 'Apex Testing',
     options: [
-      'At least 75% of the test classes must execute successfully without failures',
-      'Every single unit test across the entire organization must execute with a 100% success rate; any single error cancels deployment',
-      'Test failures are acceptable as long as total lines of coverage hit 90%',
-      'Only tests modified within the past 30 days are required to pass'
+      'System.checkQueueStatus()',
+      'AsyncApexJob database query checks',
+      'Test.getBatchLimit()',
+      'System.assert(AsyncBatch)'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Hitting code coverage targets is only half the battle. Every single unit test in the deployment scope must pass successfully. A single test failure will cancel the deployment.'
+    explanation: 'Querying the standard `AsyncApexJob` table programmatically reveals the state, processing phases, and errors of async tasks like Batch or Queueable jobs.'
   },
   {
     id: 'test-13',
-    text: 'A developer writes a custom account mapping trigger, but deployment fails because of a "System.DmlException: FIELD_CUSTOM_VALIDATION_EXCEPTION" during a global test suite run. How should the developer fix this testing error?',
+    text: 'A developer writes a custom account utility trigger but notices their production deployment package fails code validation blocks due to a 60 percent line count coverage flag. How should this be resolved?',
     topic: 'Apex Testing',
     options: [
-      'Deactivate the organization\'s custom validation rules permanently across production',
-      'Modify the mock data generation logic within the test setup to populate fields with values that comply with the active validation rules',
-      'Hardcode active production record identifiers into the SOQL query strings',
-      'Convert the test class declaration from "with sharing" into "without sharing"'
+      'Modify field-level security constraints to expose columns',
+      'Write comprehensive unit test classes that mock business paths, expanding overall test execution metrics to pass the 75 percent ceiling',
+      'Deactivate the validation rules across the environment during deployment updates',
+      'Re-execute the package deployment using the Data Import Wizard utility'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Test data runs through the same validation rules and triggers as production data. If a test fails due to validation errors, update your mock data generator to provide valid inputs.'
+    explanation: 'Adding unit tests that execute your custom trigger methods across different data scenarios pushes line coverage metrics past the mandatory 75% deployment threshold.'
   },
   {
     id: 'test-14',
-    text: 'A business requires that when a user flags a custom asset record as "Critical," an email notification is routed to their manager. The developer builds an automated handler. How should they verify the handler logic securely inside a test?',
+    text: 'An administrator needs to guarantee that ten separate test methods inside a class can utilize the same 50 mock products without duplicating record generation blocks inside each method. What optimization should be implemented?',
     topic: 'Apex Testing',
     options: [
-      'Configure the test to check the active company inbox to inspect incoming email headers',
-      'Use Test.startTest() and Test.stopTest() around the update action, then query the corporate messaging tables or assert against system limits via Limits.getEmailInvocations()',
-      'Hardcode manager login coordinates directly inside validation formulas',
-      'Verify the logic by checking the user profile configuration screens'
+      'Annotate a single data construction method with the `@testSetup` directive within the class framework',
+      'Set the `@isTest(SeeAllData=true)` parameter attribute string globally',
+      'Deploy an external integration callout script to fetch records dynamically',
+      'Construct a validation formula tracking serial parameters'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Since tests cannot send real outbound emails, you use Test.stopTest() to complete the transaction, then verify execution by checking Limits.getEmailInvocations() or querying related activity logs.'
+    explanation: 'A `@testSetup` method runs once per class execution to cache a foundational test dataset, reducing redundant record generation lines and accelerating test runtime.'
   },
   {
     id: 'test-15',
-    text: 'You have a custom Batch Apex class designed to process thousands of financial rows asynchronously. When writing the companion test class, the execution fails due to governor limits. How should the test logic be optimized?',
+    text: 'A business process requires a validation check evaluating commission payout math inside a controller logic class. The test runs, but the developer wants to confirm the outcome explicitly. What code statement completes this audit step?',
     topic: 'Apex Testing',
     options: [
-      'Increase the maximum synchronous SOQL query limits inside system setups',
-      'Insert a small sample set of test records (e.g., 10-20), execute Database.executeBatch() between Test.startTest() and Test.stopTest(), and assert results immediately after stopTest()',
-      'Split the unit test file into distinct separate lines for each field component',
-      'Set the sObject organization-wide sharing defaults configuration to Public Read/Write'
+      'System.debug(commissionValue)',
+      'Assert.areEqual(expectedPayout, calculatedPayout, \'Math mismatch detected\')',
+      'Database.setSavepoint() parameters',
+      'Test.startTest() blocks'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Testing high-volume batch jobs requires checking only a single batch chunk (e.g., fewer than 200 records). Test.stopTest() forces that asynchronous chunk to execute synchronously, allowing you to run assertions right after.'
+    explanation: 'Assert calls compare expected and actual values, serving as the formal programmatic verification step in a standard unit test layout.'
   },
   {
     id: 'test-16',
-    text: 'A developer needs to verify that an Apex trigger successfully blocks users from deleting an active Project record if it has open tasks. How should the developer validate this negative testing case scenario?',
+    text: 'An integration class executes an external invoice lookup. During unit testing, the class throws a fatal "System.TypeException: Callouts are not allowed from test methods" exception. How should the developer modify their test class?',
     topic: 'Apex Testing',
     options: [
-      'Verify that deleting the record throws an unhandled server exception crash page layout',
-      'Wrap the delete DML operation inside a try-catch block, execute the deletion, and assert that a DMLException is caught and contains the expected error message',
-      'Delete the parent account record instead to check cascade behaviors',
-      'Disable the deletion permission on standard profiles during data loading operations'
+      'Enable the `SeeAllData=true` parameter attribute flag on the test class definition string',
+      'Create a separate class implementing `HttpCalloutMock`, and register it using `Test.setMock()` within the test execution path',
+      'Wrap the callout method loop in a traditional try-catch framework',
+      'Deactivate Remote Site Settings domains in setup parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Negative testing verifies that your code blocks invalid actions. Catching the expected DMLException inside a try-catch block and asserting against the error message confirms the validation logic is working as intended.'
+    explanation: 'Registering an `HttpCalloutMock` implementation via `Test.setMock()` intercepts network callouts, instructing the framework to return static test responses instead of attempting an external connection.'
   },
   {
     id: 'test-17',
-    text: 'Your deployment package contains a class that calculates product margins based on a custom pricing lookup field. The unit test passes in the sandbox but fails in the production deployment window because a specific row is missing. What is the cause?',
+    text: 'A developer needs to verify that an account automation trigger behaves correctly when a low-privilege support user attempts to edit fields. What framework tool isolates this profile check?',
     topic: 'Apex Testing',
     options: [
-      'The target pricing record exists inside the sandbox database but does not exist in production, confirming that the test class relies on hardcoded data visibility instead of mock data creation',
-      'The sandbox environment has higher execution performance limits than production instances',
-      'The validation rules were not fully checked inside the metadata parameters',
-      'The pricing field type was converted from an external ID into a formula variable'
+      'Test.startTest() execution limits reset',
+      'System.runAs() wrapper block enclosing the target update statement',
+      'Profile configuration layout field adjustments',
+      'Validation rule text mapping checks'
     ],
-    correctAnswer: 0,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Relying on hardcoded IDs or assuming records exist in an environment causes test failures during deployment. Creating all necessary dependencies within a @testSetup method ensures your tests are fully self-contained.'
+    explanation: '`System.runAs()` lets you execute code blocks under a specific User record\'s security context, which is perfect for testing profile permissions and sharing boundaries.'
   },
   {
     id: 'test-18',
-    text: 'A team leader wants to enforce strict testing boundaries by validating that a newly modified support routing trigger does not run into record access issues when run by lower-level helpdesk agents. How should the test be structured?',
+    text: 'A test method needs to verify that a Queueable job completes its database modifications correctly. The developer notices that assertions run before the job executes. How should the processing boundaries be managed?',
     topic: 'Apex Testing',
     options: [
-      'Change the system administrator account profile parameters to match agent titles',
-      'Generate a mock User record assigned to a Support Agent role and profile, and place the test DML transactions inside a System.runAs(mockUser) block',
-      'Deploy the trigger code with the "without sharing" controller keyword string',
-      'Run Data Loader to reassign record ownership profiles inside production tables'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'System.runAs() runs code within the security context of a specific user. This lets you confirm that low-privilege roles or profiles can interact with your automation without hitting unexpected read/write errors.'
-  },
-  {
-    id: 'test-19',
-    text: 'An administrator notices that running a full organization test suite takes over three hours, which slows down deployment windows. Upon inspection, they see many test classes are querying and creating identical core data tables repeatedly. What optimization pattern reduces this friction?',
-    topic: 'Apex Testing',
-    options: [
-      'Set the SeeAllData parameter to true across all test classes globally',
-      'Centralize mock data generation logic into a single reusable Test Data Factory utility class, and leverage @testSetup methods to share records across class tests',
-      'Deactivate the trigger logic blocks prior to commencing deployment tasks',
-      'Convert all custom lookup relationship components into text inputs'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'A Test Data Factory is a centralized utility class that generates test data. Using it alongside @testSetup methods streamlines data creation, reduces code duplication, and speeds up test suite execution times.'
-  },
-  {
-    id: 'test-20',
-    text: 'A developer needs to test an integration that relies on custom settings or custom metadata types defining timeout ranges. How should this configuration data be accessed or handled inside a unit test class layout?',
-    topic: 'Apex Testing',
-    options: [
-      'Custom metadata types are visible to test methods by default (unlike standard data tables), allowing direct queries without requiring special annotations or setup configurations',
-      'The test will crash because custom metadata types are hidden from test classes completely',
-      'The developer must run an asynchronous batch job to import metadata files',
-      'The configuration settings must be hardcoded into text arrays inside test classes'
+      'Place the Queueable invocation callout within a `Test.startTest()` and `Test.stopTest()` block sequence',
+      'Add a static variable flag checking execution iterations',
+      'Convert the Queueable job definition back into a synchronous future routine',
+      'Set the organization-wide defaults configuration to Public Read Only'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Unlike standard sObjects, Custom Metadata Types and Custom Settings represent setup data. They are visible to all test contexts by default without needing SeeAllData=true, making it easy to test configuration routing.'
+    explanation: 'Enclosing asynchronous calls within `Test.startTest()` and `Test.stopTest()` blocks forces the engine to run all queued jobs before moving past the stop endpoint.'
+  },
+  {
+    id: 'test-19',
+    text: 'During a data load validation test, an Apex script needs to confirm that a trigger throws a custom validation exception when missing essential parameters. How should the assertion check be captured?',
+    topic: 'Apex Testing',
+    options: [
+      'Wrap the DML statement in a try block, and use a catch block to intercept the DmlException and assert its error message content',
+      'Use a validation formula checking record length variables',
+      'Export the error logging variables into external metadata spaces',
+      'Configure a case assignment rule mapping percentage rules'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Wrapping the failing action in a try-catch block lets you catch the expected exception safely, allowing you to assert that the error occurred and check its message content.'
+  },
+  {
+    id: 'test-20',
+    text: 'A developer notices that their test classes frequently fail because they conflict over shared custom setting values when running concurrently. What setting can prevent this interaction issue?',
+    topic: 'Apex Testing',
+    options: [
+      'Change object sharing defaults to Private fields',
+      'Add the `@isTest(Parallel=false)` annotation attribute modifier onto the class header string',
+      'Deploy the data parameters using standard Data Import Wizard tasks',
+      'Configure a transaction finalizer routine mapping text arrays'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Applying `@isTest(Parallel=false)` forces tests inside the class to run sequentially, which prevents concurrent data row conflicts.'
   },
 
   {
     id: 'org-1',
-    text: 'What is the recommended approach for deploying changes from sandbox to production?',
+    text: 'Which Salesforce command-line tool is the primary engine used to drive source-driven development, execute package retrievals, and automate scripting tasks?',
     topic: 'Org Development',
     options: [
-      'Change Sets',
-      'ANT Migration Tool',
-      'Salesforce CLI with SFDX',
-      'All of the above'
+      'Salesforce CLI (sf command architecture)',
+      'Data Loader Terminal interface',
+      'Workbench Metadata Toolset',
+      'Ant Migration tool framework'
     ],
-    correctAnswer: 3,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'All tools are valid deployment options, with SFDX being the modern recommended approach for DevOps.'
+    explanation: 'The Salesforce CLI is the official command-line interface used to manage metadata deployments, run tests, and orchestrate source-driven development.'
   },
   {
     id: 'org-2',
-    text: 'Which sandbox type is an exact replica of a production organization, including all configuration, metadata, and full transactional record data?',
+    text: 'What is a Scratch Org within the modern Salesforce development lifecycle framework?',
     topic: 'Org Development',
     options: [
-      'Developer Sandbox',
-      'Developer Pro Sandbox',
-      'Partial Copy Sandbox',
-      'Full Sandbox'
+      'A full copy sandbox used to store production file attachments',
+      'A highly configurable, temporary, and empty Salesforce environment used primarily for source-driven development and automated testing tracking lines',
+      'A local database engine running entirely within browser storage cache allocations',
+      'An encrypted backup archive copy of organization metadata bundles'
     ],
-    correctAnswer: 3,
+    correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'A Full Sandbox copies the entire production environment—including all metadata, custom configurations, and full production database records—making it ideal for performance and staging tests.'
+    explanation: 'Scratch orgs are short-lived, empty environments that developers spin up programmatically to test isolated feature code branches.'
   },
   {
     id: 'org-3',
-    text: 'What is the primary function of the Salesforce Metadata API in application lifecycle management?',
+    text: 'Which deployment environment type copies all metadata configuration settings but includes zero operational database record tables by default?',
     topic: 'Org Development',
     options: [
-      'To export transactional data records into external analytics formats daily',
-      'To manage, retrieve, deploy, and alter organization configurations and customizations as structured XML files',
-      'To automatically enforce validation rules across custom objects',
-      'To handle secure single sign-on handshakes between user directories'
+      'Full Sandbox',
+      'Developer Sandbox / Developer Pro Sandbox',
+      'Partial Copy Sandbox',
+      'Production Environment Instance'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Metadata API lets you manage your org customizations as XML configuration files. It powers deployment engines like the Salesforce CLI, DevOps Center, and Change Sets.'
+    explanation: 'Developer and Developer Pro sandboxes copy production configuration metadata completely, but leave out transactional record data tables.'
   },
   {
     id: 'org-4',
-    text: 'What is the minimum standard refresh interval requirement for a Partial Copy Sandbox environment?',
+    text: 'What type of deployment framework tracks system configurations as text-based XML layout files organized inside source control repositories?',
     topic: 'Org Development',
     options: [
-      '1 day',
-      '5 days',
-      '14 days',
-      '29 days'
+      'Data Loader CSV files matrices',
+      'Metadata API package bundles (Source Format)',
+      'Schema Builder canvas mapping structures',
+      'Validation Rule character logic expressions'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Partial Copy Sandboxes have a minimum refresh interval ceiling of 5 days, whereas Full Sandboxes require a 29-day waiting period between resets.'
+    explanation: 'The Metadata API represents Salesforce components as structured XML files, making it easy to store configurations in source control tools like Git.'
   },
   {
     id: 'org-5',
-    text: 'When using Change Sets to deploy changes from a source sandbox to a target org, what must be explicitly configured in the target organization before the deployment can occur?',
-    topic: 'Org Development',
-    options: [
-      'A Deployment Connection authorizing inbound changes from the source sandbox',
-      'A validation rule checking the developer profile credentials',
-      'An automated Apex script to wipe test data tables',
-      'A global metadata index refresh via Schema Builder'
-    ],
-    correctAnswer: 0,
-    difficulty: 'moderate',
-    explanation: 'To secure environments, the target org must explicitly authorize an inbound deployment stream by establishing an active Deployment Connection pointing to the source sandbox.'
-  },
-  {
-    id: 'org-6',
-    text: 'What is the core structural difference between Package Development (Source-Driven) and Org-Driven Development models?',
-    topic: 'Org Development',
-    options: [
-      'Package development relies strictly on the Data Import Wizard utility',
-      'Package development treats source control (Git) as the source of truth and organizes changes into modular packages; Org-driven model treats the org as the source of truth',
-      'Package development disables Apex testing code coverage calculations during release steps',
-      'Org-driven development forces all sharing rules to operate under Public Read/Write settings'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Source-driven package development isolates code into discrete, version-controlled bundles using repositories, moving away from tracking loose changes directly inside a shared sandbox instance.'
-  },
-  {
-    id: 'org-7',
-    text: 'What tool provides a point-and-click graphical interface to track, manage, and deploy development changes across environments using a centralized repository like GitHub without writing CLI commands?',
-    topic: 'Org Development',
-    options: [
-      'Data Loader Dashboard',
-      'Salesforce DevOps Center',
-      'Developer Console Log Frame',
-      'ANT Migration Command Console'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Salesforce DevOps Center replaces legacy change sets with an intuitive, UI-driven release management pipeline that manages sandbox tracking and Git branches under the hood.'
-  },
-  {
-    id: 'org-8',
-    text: 'What capability does a "Scratch Org" offer within modern Salesforce application development pipelines?',
-    topic: 'Org Development',
-    options: [
-      'An environment that retains record data permanently for audit logs',
-      'A temporary, blank Salesforce environment that can be spun up quickly via the CLI to develop and test specific source features isolated from other code',
-      'A custom layout designed for sketching application designs visually',
-      'A training playground populated with pre-loaded case assignments'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Scratch orgs are short-lived, highly configurable testing spaces used in source-driven development. They allow developers to quickly validate independent feature branches from scratch.'
-  },
-  {
-    id: 'org-9',
-    text: 'What does a "Validated" change set status verify inside a target organization deployment queue?',
-    topic: 'Org Development',
-    options: [
-      'The changes have been successfully written and saved to the live production database',
-      'The package component configurations are syntactically sound and all required unit tests pass successfully, but changes are not yet committed',
-      'The source sandbox data records match the target environment tables exactly',
-      'The deployment connection has timed out'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Running a validation deployment performs a dry run. It checks package dependencies and runs test classes to confirm the build will succeed when you launch the actual quick deploy step.'
-  },
-  {
-    id: 'org-10',
-    text: 'What type of sandbox environment is optimized for quality assurance testing and includes a customized subset of production data driven by a Sandbox Template?',
+    text: 'Which sandbox type copies all production configuration metadata alongside a defined slice of record tables using a specialized storage filter map?',
     topic: 'Org Development',
     options: [
       'Developer Sandbox',
-      'Developer Pro Sandbox',
       'Partial Copy Sandbox',
-      'Scratch Org Frame'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'Partial Copy Sandboxes replicate metadata and use a defined Sandbox Template to pull a sampling of production records (up to 5GB), giving you a realistic test environment without the size of a Full Sandbox.'
-  },
-  {
-    id: 'org-11',
-    text: 'Which Salesforce command line tool allows you to interact with your orgs, manage metadata, run tests, and script automated DevOps continuous integration pipelines?',
-    topic: 'Org Development',
-    options: [
-      'Salesforce Workbench UI',
-      'Salesforce CLI (sf commands)',
-      'Data Loader Utility Console',
-      'Schema Builder Canvas'
+      'Scratch Org instance',
+      'Developer Pro Sandbox'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Salesforce CLI is the cornerstone of modern automation. It lets you run terminal scripts to authorize environments, retrieve source files, execute tests, and run deployment workflows.'
+    explanation: 'Partial Copy sandboxes include production configuration metadata along with a sample of record data defined by a sandbox template.'
   },
   {
-    id: 'org-12',
-    text: 'What is a "Managed Package" within the Salesforce environment architecture?',
+    id: 'org-6',
+    text: 'What tool allows administrators to select, bundle, and track metadata changes directly inside the Setup interface to move configurations between sandboxes?',
     topic: 'Org Development',
     options: [
-      'A loose set of editable components shared between internal developers',
-      'A sealed application bundle deployed by AppExchange partners whose source code is hidden to protect intellectual property and allows for seamless upgrades',
-      'An assignment rule queue monitored by system administrators',
-      'A validation rule checking record locking statuses'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Managed packages are used by ISVs to distribute applications on the AppExchange. They use a unique namespace, hide underlying code to protect intellectual property, and support pushed upgrades.'
-  },
-  {
-    id: 'org-13',
-    text: 'A developer needs to deploy a newly modified Apex trigger along with an associated custom field. During deployment to production, the validation fails with a code coverage error. Total global coverage in production is 82%. What is the cause of this error?',
-    topic: 'Org Development',
-    options: [
-      'The target organization is out of cloud file storage space',
-      'The new Apex trigger itself has 0% individual test coverage, violating the requirement that every single trigger must have at least some code coverage',
-      'The custom field was not set to visible across profiles',
-      'The developer did not run Data Loader prior to triggering the change set push'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'While the total organization average coverage must sit above 75%, Salesforce also enforces a strict requirement that every individual trigger must execute at least one line of coverage via a test class.'
-  },
-  {
-    id: 'org-14',
-    text: 'Your company requires a staging environment to perform full end-to-end integration tests with a third-party billing platform. The test relies on having real, large-scale historical account data records. Which environment should you allocate?',
-    topic: 'Org Development',
-    options: [
-      'Developer Pro Sandbox environment',
-      'A series of fresh Scratch Orgs configured daily',
-      'Full Sandbox environment',
-      'Partial Copy Sandbox without a template configuration'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'Since the staging process demands comprehensive data volume and exact record parity to simulate live transactions, a Full Sandbox is the necessary choice.'
-  },
-  {
-    id: 'org-15',
-    text: 'A business is preparing for a major production release on a weekend. The administrator wants to reduce deployment downtime by running tests and verifying the deployment package days in advance. What release strategy should be applied?',
-    topic: 'Org Development',
-    options: [
-      'Run Data Loader to overwrite metadata lines in real time',
-      'Execute a "Validate-Only" deployment to production mid-week, then use "Quick Deploy" on the weekend to commit the pre-verified changes within minutes',
-      'Change the production OWD configuration settings to Public Read/Write',
-      'Deactivate the organization profiles during configuration changes'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Validating your deployment ahead of time runs tests and checks dependencies in advance. If successful, you can use Quick Deploy to push the changes to production within a 4-day window without re-running tests.'
-  },
-  {
-    id: 'org-16',
-    text: 'An administrator attempts to add a new custom field to an outbound change set, but discovers that a critical dependent validation rule was left out of the component list. What must the administrator do to fix this omission?',
-    topic: 'Org Development',
-    options: [
-      'Click the "Edit" button inside the uploaded change set queue to append the validation rule directly',
-      'Clone the change set, add the missing validation rule component to the new bundle, and upload it as a new version',
-      'Manually type the XML formula parameters inside the target org setup menus',
-      'Refresh the target deployment connection matrices instantly'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Once a Change Set is uploaded, it becomes immutable and cannot be modified. To fix missing dependencies, you must clone the change set, add the missing items, and upload the new version.'
-  },
-  {
-    id: 'org-17',
-    text: 'A development team wants to set up a continuous integration pipeline that automatically validates and deploys metadata updates to a sandbox whenever a code branch is merged into their main branch on GitHub. What approach is recommended?',
-    topic: 'Org Development',
-    options: [
-      'Schedule Data Import Wizard routines hourly',
-      'Build a CI/CD pipeline using a tool like GitHub Actions, Jenkins, or GitLab CI integrated with the Salesforce CLI',
-      'Manually export components using change sets on every merge event',
-      'Configure escalation rules to track repository updates'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Automating builds with CI/CD tools paired with the Salesforce CLI allows teams to run automated test suites and deploy metadata seamlessly with every code merge.'
-  },
-  {
-    id: 'org-18',
-    text: 'You have completed testing an updated business flow inside a standard Developer sandbox environment. You notice that your custom components are missing sample customer data for user validation. What is the standard behavior explaining this?',
-    topic: 'Org Development',
-    options: [
-      'Developer sandboxes only copy metadata configuration and are completely isolated from production transactional records by design',
-      'The sandbox database has encountered a storage file corruption failure',
-      'The validation rules blocked record visibility settings',
-      'The developer did not run an update command within the command line utility'
+      'Change Sets',
+      'Data Loader',
+      'DevOps Center tracking channels',
+      'Schema Builder'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Developer and Developer Pro sandboxes are metadata-only environments. They do not bring over production data records, so you must create or load mock records for testing.'
+    explanation: 'Change Sets offer a declarative, point-and-click way to migrate configuration changes between connected sandbox environments.'
+  },
+  {
+    id: 'org-7',
+    text: 'What does a source-control branch represent within a standard Git-based dev lifecycle environment?',
+    topic: 'Org Development',
+    options: [
+      'A scheduled background batch job execution loop path',
+      'An isolated, parallel timeline workspace used to develop feature code changes without affecting the primary source trunk',
+      'A group of profiles permitted to modify object sharing tables',
+      'A compressed layout archive matching validation formulas'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Branches create an isolated space in source control systems where developers can work on new features without impacting the main codebase timeline.'
+  },
+  {
+    id: 'org-8',
+    text: 'What must be true about the connection pathway before a Change Set can successfully move configurations between two sandboxes?',
+    topic: 'Org Development',
+    options: [
+      'Both organizations must share identical user profile usernames',
+      'A formal Deployment Connection relationship must be established and authorized between the source and target organizations in Setup',
+      'The organization-wide default setting must be set to Public Read/Write',
+      'Validation rules must be deactivated across both platforms'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Change Sets require an authorized Deployment Connection between environment instances before metadata can travel between them.'
+  },
+  {
+    id: 'org-9',
+    text: 'Which framework tool provides a visual interface to manage development tasks, track changes in Git repositories, and deploy metadata using clicks rather than command strings?',
+    topic: 'Org Development',
+    options: [
+      'Salesforce DevOps Center',
+      'Change Sets manager panel',
+      'Data Import Wizard workbench',
+      'Ant Migration engine canvas'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Salesforce DevOps Center delivers a collaborative visual interface that simplifies metadata tracking and deployments through modern source control pipelines.'
+  },
+  {
+    id: 'org-10',
+    text: 'What baseline configuration file defines the components, objects, and packages included in a standard Metadata API deployment package?',
+    topic: 'Org Development',
+    options: [
+      'sfdx-project.json',
+      'package.xml',
+      'config.properties',
+      'manifest.txt'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The `package.xml` manifest file specifies the exact metadata types and component names to include in a deployment or retrieval bundle.'
+  },
+  {
+    id: 'org-11',
+    text: 'What is a critical advantage of using a Full Sandbox compared to a Partial Copy Sandbox?',
+    topic: 'Org Development',
+    options: [
+      'Full sandboxes execute asynchronous batch actions 5 times faster',
+      'Full sandboxes duplicate production metadata and all record data tables exactly, making them ideal for staging and performance testing',
+      'Full sandboxes do not require validation rule checks during code updates',
+      'Full sandboxes can be refreshed every 5 days automatically'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Full sandboxes capture a complete snapshot of both production metadata and record data tables, making them perfect environments for load testing and final deployment checks.'
+  },
+  {
+    id: 'org-12',
+    text: 'Which command parameter is used in the Salesforce CLI toolset to validate a metadata package deployment without actually committing changes to the target database?',
+    topic: 'Org Development',
+    options: [
+      '--checkonly',
+      '--validate',
+      '--dryrun',
+      '--testlevel'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'The `--checkonly` flag validates the deployment package and runs tests without committing metadata modifications to the environment database.'
+  },
+  {
+    id: 'org-13',
+    text: 'A developer needs to quickly test an isolated fix for a custom LWC layout without impacting shared sandbox configurations or colliding with team code lines. What environment type should they spin up?',
+    topic: 'Org Development',
+    options: [
+      'A Full Sandbox environment instance',
+      'A temporary Scratch Org generated programmatically via the Salesforce CLI',
+      'A Partial Copy Sandbox configuration template',
+      'A new staging production instance block'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Scratch orgs provide isolated, short-lived environments that let developers build and test code variations independently.'
+  },
+  {
+    id: 'org-14',
+    text: 'An administrator attempts to use an outbound Change Set to deploy a new custom field from their sandbox to production, but the deployment fails because a dependent validation rule is missing from the bundle. How should this be resolved?',
+    topic: 'Org Development',
+    options: [
+      'Deactivate the target validation rules inside the sandbox layout parameters',
+      'Clone the outbound Change Set, add the missing validation rule component, and upload the updated version to production',
+      'Delete the custom field record rows out of production tables',
+      'Reassign the user deployment connections to a high assurance profile'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Because uploaded Change Sets cannot be edited, you must clone the bundle, add the missing dependencies, and re-upload the new package.'
+  },
+  {
+    id: 'org-15',
+    text: 'A large enterprise development team notices frequent code collisions when merging feature tracks into their main branch. They want to switch to a visual tool that automates Git branch updates natively. What tool addresses this?',
+    topic: 'Org Development',
+    options: [
+      'Data Loader terminal scripting loops',
+      'Salesforce DevOps Center connected to their repository pipeline',
+      'Standard Change Sets layout tracking blocks',
+      'Apex unit test runner panels'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Salesforce DevOps Center automates Git tracking behind a declarative visual interface, reducing merge conflicts across engineering tracks.'
+  },
+  {
+    id: 'org-16',
+    text: 'An engineering team wants to run performance testing on an integration callout class using production data volume scales, but they must keep customer files hidden from test accounts. What environment setup meets this requirement?',
+    topic: 'Org Development',
+    options: [
+      'A Developer Pro Sandbox using manually entered values',
+      'A Full Sandbox combined with data masking tools to secure sensitive fields while maintaining production scale data volumes',
+      'A programmatically generated Scratch Org',
+      'A standard production staging patch session'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Full sandboxes deliver the data scale needed for performance testing, while data masking tools keep real personal data secure.'
+  },
+  {
+    id: 'org-17',
+    text: 'A release manager wants to automate their sandbox deployment pipeline so that pushing changes to a specific Git branch kicks off an automated verification test suite. What capability should they integrate?',
+    topic: 'Org Development',
+    options: [
+      'Continuous Integration / Continuous Deployment (CI/CD) pipelines utilizing the Salesforce CLI',
+      'Change Sets configuration loops scheduled via Setup',
+      'A series of cross-object formula tracking fields',
+      'Data Loader extraction parameters parsing CSV lines'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'CI/CD pipelines paired with the Salesforce CLI automate validation testing and deployments based on code branch updates.'
+  },
+  {
+    id: 'org-18',
+    text: 'A developer needs to pull down a local text copy of a custom profile definition to fix an XML error. Which tool parameter provides this extraction capability?',
+    topic: 'Org Development',
+    options: [
+      'Data Import Wizard file parsing tasks',
+      'Salesforce CLI project source retrieval command (sf project retrieve start)',
+      'Schema Builder canvas mapping updates',
+      'Outbound messaging event notification scripts'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'CLI retrieval commands download live environment configurations into local, text-based XML files for local editing and tracking.'
   },
   {
     id: 'org-19',
-    text: 'During a release window, an administrator receives a deployment conflict error stating that a field type cannot be modified because it is currently referenced by an active Apex class handler. How should this release hurdle be resolved?',
+    text: 'An administrator needs to test an updated set of high-volume flow automations against a consistent sample of 10,000 real account files without incurring the long refresh delays of a full sandbox. What sandbox choice fits best?',
     topic: 'Org Development',
     options: [
-      'Force the metadata override using data loader utilities parallel commands',
-      'Coordinate the deployment by updating the Apex class logic to decouple the field reference first, or include the updated Apex class alongside the field modifications in the same deployment package',
-      'Convert the custom object OWD setting to Private temporarily',
-      'Delete the active user accounts tracking metadata changes'
+      'Developer Sandbox running manual data key inputs',
+      'Partial Copy Sandbox initialized with a tailored sandbox data template',
+      'Scratch Org generated with empty database spaces',
+      'Production workspace testing session during off-business hours'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce blocks changes that break existing code dependencies. Bundling both the updated Apex class and the field changes into a single deployment lets the compiler validate and accept the interdependent updates together.'
+    explanation: 'Partial Copy sandboxes populate a structured sample of real record data, striking a balance between data scale and quick refresh times.'
   },
   {
     id: 'org-20',
-    text: 'A consulting company wants to manage environment configurations securely by storing variables like external endpoint URLs outside of code blocks, while allowing values to vary between sandboxes and production automatically. What feature should be used?',
+    text: 'During a production change package validation, the deployment fails because it cannot find a new custom object reference that was built inside the source sandbox. What should the release team verify first?',
     topic: 'Org Development',
     options: [
-      'Hardcoded string constants inside test classes',
-      'Custom Metadata Types or Custom Settings populated with environment-specific values within each respective org instance',
-      'Validation rules tracking network domains',
-      'Case Assignment rule entries routing endpoints'
+      'The field-level security ceiling parameters on target users',
+      'Whether the parent custom object metadata element was included in the deployment bundle along with the field attributes',
+      'The global session timeout settings profile parameters',
+      'The custom validation rule character math limits'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Custom Metadata and Custom Settings abstract configuration out of code. This lets you point to sandbox endpoints in development orgs and production endpoints in production, without changing code lines during a release.'
+    explanation: 'Metadata deployments fail if components reference dependent objects or attributes that are missing from the deployment bundle.'
   },
 
   {
     id: 'omni-1',
-    text: 'What is the primary operational advantage of utilizing an OmniStudio Integration Procedure over an individual DataRaptor when fetching multi-source data for a front-end component?',
+    text: 'Which OmniStudio component provides a guided, multi-step user interface to step users through complex business processes?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Integration Procedures run client-side to improve browser UI rendering speeds',
-      'Integration Procedures can chain multiple DataRaptors, handle conditional logic, call external REST APIs, and trim payloads server-side in a single server call',
-      'Integration Procedures bypass the Einstein Trust Layer security protocols completely',
-      'Integration Procedures are required to convert standard objects into Big Objects'
+      'OmniScript',
+      'DataRaptor',
+      'Integration Procedure',
+      'FlexCard'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Integration Procedures are server-side processes that execute multiple actions (like data transformations, conditional checks, and external API calls) in a single round-trip, minimizing data payload sizes and maximizing performance.'
+    explanation: 'OmniScripts deliver high-performance, guided interactive pathways to walk users through step-by-step business workflows.'
   },
   {
     id: 'omni-2',
-    text: 'Which OmniStudio Data Tool should be selected when an administrator needs to take an incoming JSON payload from an external web portal and insert or update matching record fields natively in Salesforce?',
+    text: 'What type of OmniStudio tool is best suited to display a condensed summary of key contextual record metrics at a glance using a modular visual canvas?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'DataRaptor Extract',
       'DataRaptor Turbo Extract',
-      'DataRaptor Load',
-      'DataRaptor Transform'
-    ],
-    correctAnswer: 2,
-    difficulty: 'moderate',
-    explanation: 'A DataRaptor Load (also called DataRaptor Turbo Load or Interface) accepts external JSON structures, translates them to matching sObject structures, and performs DML write operations to the database.'
-  },
-  {
-    id: 'omni-3',
-    text: 'What is the function of an OmniScript component inside the Salesforce Industries (Vlocity) framework architecture?',
-    topic: 'OmniStudio Development Tools',
-    options: [
-      'To execute automated batch data transformations on massive background logs every Sunday night',
-      'To provide a guided, interactive customer-facing path or wizard that collects user inputs and adapts steps based on conditional branching logic',
-      'To act as a low-level Apex trigger handler pattern for standard account objects',
-      'To host third-party JavaScript tracking libraries within isolated desktop apps'
+      'FlexCard',
+      'Integration Procedure block',
+      'OmniScript Step'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'OmniScripts are declarative, guided user experiences that step individuals through complex business transactions or screen scripts with embedded validation and dynamic field visibility rules.'
+    explanation: 'FlexCards build the foundational block UI elements that display summaries, contextual links, and actions on a single card layout.'
   },
   {
-    id: 'omni-4',
-    text: 'Which declarative OmniStudio tool should be selected when you need to quickly query and retrieve specific fields from a single Salesforce object without complex parent-child relational mappings?',
+    id: 'omni-3',
+    text: 'Which OmniStudio data service should be used to retrieve data exclusively from a single Salesforce sObject type quickly with optimal performance?',
     topic: 'OmniStudio Development Tools',
     options: [
       'DataRaptor Extract',
@@ -3722,953 +3707,967 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'DataRaptor Turbo Extract is specifically optimized for single-object queries. It offers faster performance thresholds than standard DataRaptor Extracts because it limits structural joins and returns flat JSON responses.'
+    explanation: 'DataRaptor Turbo Extract is specifically optimized to read and pull fields from a single source object frame without nested object relationship overhead.'
+  },
+  {
+    id: 'omni-4',
+    text: 'What type of DataRaptor must be configured to take client data or an incoming JSON payload and write it back into Salesforce object fields?',
+    topic: 'OmniStudio Development Tools',
+    options: [
+      'DataRaptor Extract',
+      'DataRaptor Load',
+      'DataRaptor Transform',
+      'DataRaptor Turbo Extract'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'DataRaptor Loads (also called Turbo or standard interface loads) map incoming data structures into Salesforce records during DML update operations.'
   },
   {
     id: 'omni-5',
-    text: 'What is the purpose of utilizing a DataRaptor Transform inside an Integration Procedure execution flow?',
+    text: 'What OmniStudio component is designed to run completely on the server side to bundle multiple data actions, cache queries, and process complex APIs in a single transaction path?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'To commit new records to Salesforce database tables asynchronously',
-      'To restructure, rename, or reformat internal JSON structures (such as changing an external API response payload to fit an OmniScript expected input mapping)',
-      'To compress file sizes during data loader exports',
-      'To execute calculation matrices within the Business Rule Engine'
+      'OmniScript Designer canvas',
+      'Integration Procedure',
+      'FlexCard Action Manager',
+      'DataRaptor Transform'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'DataRaptor Transform maps and alters data shapes without interacting with the database. It converts JSON strings to alternative JSON structural layouts, XML arrays, or PDF document fields.'
+    explanation: 'Integration Procedures orchestrate server-side data actions asynchronously or synchronously, improving rendering speeds by limiting client network round-trips.'
   },
   {
     id: 'omni-6',
-    text: 'What is an OmniStudio FlexCard primary functional role within the Customer 360 interface design system?',
+    text: 'What type of DataRaptor changes data structure from one format to another, such as converting a complex nested JSON structure into an XML format, without hitting the database?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'To calculate complex financial risk percentages based on continuous formula logic loops',
-      'To display contextual industry-specific metrics and data summaries at a glance, allowing users to trigger quick actions or processes straight from the layout block',
-      'To manage the distribution connection configurations inside change sets',
-      'To run apex test suites across managed packages automatically'
+      'DataRaptor Extract',
+      'DataRaptor Turbo Extract',
+      'DataRaptor Transform',
+      'DataRaptor Load'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'FlexCards summarize data properties from multiple sources into context-rich blocks. They provide contextual highlights, drop-down filters, menu parameters, and actions to launch secondary scripts.'
+    explanation: 'DataRaptor Transforms manipulate and map data structures completely in memory without performing database read or write calls.'
   },
   {
     id: 'omni-7',
-    text: 'In OmniStudio OmniScript configuration, what does the "Seed Data JSON" property accomplish during step initialization?',
+    text: 'What does a "Reusable OmniScript" configuration allow a developer to accomplish?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'It clears out all active session tracking variables to protect device data',
-      'It pre-populates element parameters or default field inputs within the user interface before the customer starts entering information',
-      'It enforces validation rules directly on custom object lookup fields',
-      'It uploads binary static resource attachments into storage spaces'
+      'It automatically exports data records into local sheet archives',
+      'It allows embedding an active OmniScript structure inside multiple parent OmniScripts to reuse steps across processes',
+      'It completely removes code coverage check requirements',
+      'It bypasses validation rules natively'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Seed Data passes structural key-value mappings down into the OmniScript context immediately at launch, allowing the user experience layer to display default entries or dynamic context metrics.'
+    explanation: 'Flagging an OmniScript as reusable permits it to be nested inside other scripts as a standard element step, cutting down on redundant development.'
   },
   {
     id: 'omni-8',
-    text: 'What engine within the OmniStudio layer should an architect deploy to evaluate complex policy rules, price formulas, or discount tables via a tabular matrix framework?',
+    text: 'Which element should be placed in an Integration Procedure structure to temporarily store data in cache clusters, reducing server load?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'DataRaptor Load Engine',
-      'Business Rule Engine (BRE) with Expression Sets and Lookup Matrices',
-      'FlexCard Action Manager',
-      'Integration Procedure Custom REST Handlers'
+      'Cache Block',
+      'Conditional Block',
+      'DataRaptor Post Action',
+      'Response Action'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'The Business Rule Engine (BRE) utilizes Expression Sets to arrange computational steps or lookup matrices, executing policy checking, credit scores, or rating calculations cleanly outside code.'
+    explanation: 'Cache Blocks in Integration Procedures store transient session data in the platform\'s cache layer to cut down on redundant database hits.'
   },
   {
     id: 'omni-9',
-    text: 'What behavior occurs when the "Cache Block" element is activated inside an OmniStudio Integration Procedure definition?',
+    text: 'What type of element inside an OmniScript template is explicitly used to group input fields into a single visual page layout layout window?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'It forces the browser client window to lock down until transactions resolve completely',
-      'It temporarily stores the execution responses of nested actions in a session or organizational cache layer, avoiding redundant database lookups or external API calls',
-      'It disables validation formulas across custom tables automatically',
-      'It copies metadata definitions into scratch org configurations'
+      'Step Element',
+      'Block Element',
+      'Action Element',
+      'Formula Element'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Cache Blocks reduce server load by saving transaction outputs in the platform cache framework, allowing subsequent requests matching identical parameters to retrieve data instantly.'
+    explanation: 'A Step element represents a discrete user page or canvas screen layout within an interactive guided wizard workflow.'
   },
   {
     id: 'omni-10',
-    text: 'Which standard action type can be dragged onto an OmniStudio FlexCard canvas layout to allow a user to navigate directly to a specific Salesforce record page layout view?',
+    text: 'Which standard utility option allows a developer to examine the input JSON, output data states, and exact performance durations of OmniStudio components step-by-step?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Integration Procedure Action',
-      'Navigate Action',
-      'OmniScript Action',
-      'Event Action'
+      'OmniStudio OmniOut terminal',
+      'OmniStudio Debug Workbench / Data Navigator',
+      'Developer Console Log viewer',
+      'Data Loader extraction summaries'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Navigate Action type lets FlexCard components link dynamically to standard page objects, external URLs, app layouts, or specific record detail views using page references.'
+    explanation: 'The built-in Debug utility allows designers to inspect active JSON states and step through execution phases during testing.'
   },
   {
     id: 'omni-11',
-    text: 'What occurs when an OmniScript execution encounters an "Action Block" designated as "Asynchronous" within its step sequencing framework?',
+    text: 'What visual layout standard framework drives the out-of-the-box UI generation patterns of modern OmniScripts and FlexCards?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'The step sequence pauses and blocks user interface navigation indefinitely until a webhook returns parameters',
-      'The OmniScript fires the server request in a parallel thread, allowing the user to proceed with screen interactions while data processes in the background',
-      'The browser completely refreshes the parent window frame layout stack',
-      'The system automatically converts lookups into master-detail fields'
+      'Lightning Web Components (LWC)',
+      'Aura custom templates',
+      'Legacy Visualforce tags',
+      'Server-side PHP processing loops'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Asynchronous actions execute independently from the active UI frame, preventing interface freezing or blocking behavior while fetching metrics or saving data blocks.'
+    explanation: 'Modern OmniStudio components compile natively into highly efficient standard Lightning Web Components.'
   },
   {
     id: 'omni-12',
-    text: 'What structure is used by OmniStudio components to pass parameters, inputs, and track variable states across consecutive configuration steps?',
+    text: 'What does the Industry Common Layer (ICL) provide within the Salesforce Public Sector Solutions (PSS) framework?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Apex Class Variable Matrix Arrays',
-      'JSON (JavaScript Object Notation) Key-Value Data Trees',
-      'Standard CSV Flat Table Buffers',
-      'XML Document Structuring Paths'
+      'A baseline server infrastructure to manage database locks',
+      'Standardized data models, custom objects, and workflows tailored to regulatory business processes out of the box',
+      'An automated code deployment pipeline framework',
+      'An encrypted password mapping manager tool'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'OmniStudio runs entirely on JSON contracts. OmniScripts, FlexCards, DataRaptors, and Integration Procedures all read data from and output transformations into a shared JSON data block.'
+    explanation: 'The Industry Common Layer delivers baseline pre-configured industry data objects and capabilities, ensuring vertical compliance out of the box.'
   },
   {
     id: 'omni-13',
-    text: 'Universal Containers needs an customer self-service portal layout. When a user changes their state picklist choice on a dynamic screen, the city dropdown must instantly update with matching values from a lookup matrix without reloading the step. How should this be structured?',
+    text: 'A business requires an interface that lets customer support agents pull data fields from three different objects (Account, Case, and Asset) simultaneously in a single transaction. Which tool should be used?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Deploy synchronous triggers tracking state text modifications',
-      'Configure an OmniScript with conditional visibility rules or an dependent lookup configuration powered by a quick DataRaptor transform call',
-      'Build a validation rule that checks string formats on every click',
-      'Set the standard profile settings to High Assurance levels'
+      'DataRaptor Turbo Extract configured with joins',
+      'A standard DataRaptor Extract configured with appropriate object relationship links',
+      'A series of workflow rules running outbound messages',
+      'A validation rule formula checking string attributes'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'OmniScripts natively process on-change properties. When fields link to lookup configurations or execute quick background data requests, they alter step UI properties instantly without screen lag.'
+    explanation: 'Standard DataRaptor Extracts support multi-object paths, letting you crawl up and down relationship links to gather diverse field tables in a single operation.'
   },
   {
     id: 'omni-14',
-    text: 'An insurance agent needs to view a summary of a client Policy details from an external mainframe along with standard Salesforce Account information in a single uniform layout card block. How should this information be orchestrated efficiently?',
+    text: 'An administrator needs to quickly update an account layout to show a customer\'s recent loyalty point balance along with a dynamic action link to launch an upgrade process. What should they build?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Run Data Loader routines every 60 seconds to import mainframe entries into staging objects',
-      'Create an OmniStudio FlexCard that pulls its data payload from an Integration Procedure, which combines a Salesforce DataRaptor query and an HTTP REST action in one call',
-      'Build a series of validation rules checking policy character structures',
-      'Convert the Account layout views to Private organization-wide defaults'
+      'An Apex batch job checking variables nightly',
+      'A custom FlexCard built via the OmniStudio designer canvas and dragged onto the record layout',
+      'A series of cross-object formula columns',
+      'A case assignment rule queue target definition'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'FlexCards excel at multi-source presentation. Using an Integration Procedure as its data source allows server-side aggregation of cloud records and external API responses into a clean, flat JSON block.'
+    explanation: 'FlexCards excel at pulling contextual data, highlighting metrics, and providing action buttons within a single visual container.'
   },
   {
     id: 'omni-15',
-    text: 'A developer observes that a newly deployed OmniScript is displaying blank response outputs when executing a data extraction block in a production environment. The sandbox configuration worked perfectly. What is the most likely cause of this issue?',
+    text: 'A developer needs to design a custom wizard that collects financial data from a client across five separate screens, applying custom tax calculation logic mid-process. What is the best tool approach?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'The production cloud storage system has run out of index allocation properties',
-      'The DataRaptor or Integration Procedure component names specified in the OmniScript layout do not match the production deployment component keys exactly, or permissions are missing',
-      'The validation rules were not fully checked inside sandbox scripts',
-      'The profile session security limits were set to low parameters'
+      'Deploy an Apex after-save trigger class',
+      'Create an OmniScript featuring Step components and an embedded Integration Procedure call',
+      'Build a validation rule tracking number characters',
+      'Export the logs via Data Loader sheets'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'OmniStudio callouts reference component names dynamically via text string keys. Missing components, typos in name fields, or restricted user access settings on the data layer can block execution in new environments.'
+    explanation: 'OmniScripts manage multi-screen input wizards smoothly, while calling an Integration Procedure handles the backend calculations seamlessly.'
   },
   {
     id: 'omni-16',
-    text: 'A utility firm wants to build a business flow where clients can input meter measurements. Before saving, the system must check the consumption value against an active calculation matrix rule to catch variance anomalies. What tool path satisfies this request?',
+    text: 'An operational manager notice that an active OmniScript takes up to 8 seconds to load record metrics because it executes three separate database queries over the client network. How should this be optimized?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'A series of complex validation rules containing regex formatting text strings',
-      'An OmniScript that calls an Integration Procedure, which routes the input value through a Business Rule Engine (BRE) Expression Set and returns the calculation parameters',
-      'A lookup formula field mapping data tables across objects',
-      'An outbound message integration sending raw XML strings'
+      'Replicate the fields manually across standard pages',
+      'Wrap the three queries inside a single Integration Procedure to handle the data fetching server-side in a single round-trip',
+      'Convert the OmniScript step elements into validation formulas',
+      'Change the object OWD settings to Public Read/Write'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'This pattern links the guided interface layer (OmniScript) to logic engines via an Integration Procedure, leveraging Expression Sets to calculate adjustments and flags cleanly outside Apex.'
+    explanation: 'Moving multiple data actions off the client and into an Integration Procedure consolidates queries into a single server-side step, cutting down on lag.'
   },
   {
     id: 'omni-17',
-    text: 'An administrator needs to modify an OmniStudio FlexCard so that it displays an extra column highlighting special service warnings only if an account is flagged as "High Risk." How should this conditional styling be handled natively?',
+    text: 'During a public portal implementation, a developer notice that external applications send client data via a deeply nested JSON payload that does not match Salesforce schema structures. What should be built to ingest this data?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Write a validation rule that hides field entries across profiles',
-      'Configure the State or individual Element layout properties inside the FlexCard designer canvas to apply conditional visibility or specific CSS classes based on data path values',
-      'Deploy an apex class script to modify the component metadata variables dynamically',
-      'Change the object sharing settings from Private to Controlled by Parent'
+      'A standard validation formula mapping array strings',
+      'A DataRaptor Transform to flatten and restructure the JSON variables in memory before saving',
+      'A junction object connecting lookup properties manually',
+      'An outbound message script broadcasting XML fields'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'FlexCards feature native conditional element settings. You can hide fields, show alert banners, or change text colors based on state rules matching JSON record parameters.'
+    explanation: 'DataRaptor Transforms manipulate data maps, converting mismatched JSON keys into clean structures that match target database schemas.'
   },
   {
     id: 'omni-18',
-    text: 'A consulting company wants to minimize performance overhead by ensuring that when an OmniScript queries database contacts, it passes only the specific parent AccountId parameter instead of loading all database accounts. What property fields manage this filter routing?',
+    text: 'A developer needs an OmniScript to update a contact record, but the save event fails because the input phone format is wrong. They want to check data validity before the database write step. What element path handles this check?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Validation Rule formulas tracking ID string formats',
-      'The Input Parameters path properties on the DataRaptor or Integration Procedure Action block within the OmniScript designer canvas',
-      'Global constants variables hardcoded inside custom metadata profiles',
-      'Case Assignment routing rule definitions'
+      'A Formula or Messaging Element placed inside the Step definition canvas to run checks on the fly',
+      'A custom validation rule checking layout background pixels',
+      'A change data capture stream checking modifications',
+      'An integration credential endpoint whitelisting parameter'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'To filter data requests contextually, you define Input Parameters on the action block (e.g., passing `ContextId` as the filter value key), restricting the downstream query scope.'
+    explanation: 'Formula and Messaging elements let you run validation checks right within the OmniScript interface, blocking users from moving forward if their entries fail criteria.'
   },
   {
     id: 'omni-19',
-    text: 'You have generated a complex data extraction structure using multiple nested relational joins inside an OmniStudio DataRaptor Extract. Users mention performance lag. How can this query be optimized inside OmniStudio?',
+    text: 'Universal Containers wants to reuse an address validation step across three separate application wizards without copying individual layout items. How should this be designed?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Convert all relationship lookups into text character inputs',
-      'Simplify the structure by breaking data requirements down, shifting simple queries to DataRaptor Turbo Extracts, or leveraging cache configurations inside an Integration Procedure wrapper',
-      'Build a validation rule to clear out old rows on save cycles',
-      'Change the object organization-wide sharing defaults configuration to Public Read/Write'
+      'Duplicate the address fields across all three wizard setups',
+      'Build the validation block as an independent, Reusable OmniScript and nest it inside the parent scripts',
+      'Create a cross-object lookup formula field on the parent table',
+      'Configure a case assignment rule queue mapping variables'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Complex, deep extractions can increase server processing metrics. Shifting simple single-object queries to Turbo Extracts and putting slow operations inside cached Integration Procedures improves loading performance.'
+    explanation: 'Building a standalone, reusable OmniScript lets you plug the same step bundle across multiple parent layouts, streamlining maintenance.'
   },
   {
     id: 'omni-20',
-    text: 'An architectural team wants to export a set of completed OmniStudio configurations (OmniScripts, FlexCards, DataRaptors) from a development sandbox to a source control repository as individual deployable items. What framework mechanism handles this migration?',
+    text: 'A developer notice that a FlexCard is rendering completely blank on a contact record layout page despite data existing in the record fields. What should they check first using the debugger toolset?',
     topic: 'OmniStudio Development Tools',
     options: [
-      'Data Loader extraction parameters parsing CSV lines',
-      'Salesforce CLI paired with the OmniStudio Migration Tool (vlocity CLI) or DevOps Center tracking Salesforce metadata standards',
-      'Standard change sets processing formula rules directly',
-      'Workflow outbound messaging engines broadcasting data formats'
+      'The organization profile password complexity settings',
+      'The FlexCard Data Source configuration parameters and the structural layout of the source JSON payload',
+      'The active validation rule configurations on the contact record',
+      'The object-level sharing defaults parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Modern OmniStudio elements integrate cleanly with Salesforce metadata standards. Using the Salesforce CLI or specialized extraction tools captures configurations as structured files for source control.'
+    explanation: 'FlexCards require their data source configuration paths to map accurately to incoming JSON keys, or the UI layout fields will fail to bind and display data.'
   },
 
   {
     id: 'ai-1',
-    text: 'What is the primary architectural purpose of the Einstein Trust Layer within the Agentforce ecosystem?',
+    text: 'What is the main purpose of the Einstein Trust Layer within the Salesforce AI framework architecture?',
     topic: 'Agentforce & AI',
     options: [
-      'To increase the processing speed of generation queries by 50%',
-      'To securely manage data privacy by masking sensitive fields, preventing toxicity, and blocking external LLMs from retaining enterprise data',
-      'To write automated Apex test classes for custom metadata packages',
-      'To replace traditional multi-factor authentication routing systems'
+      'To increase the maximum CPU timeout limit metrics for Apex classes',
+      'To protect data privacy and compliance by masking sensitive fields, enforcing zero data retention, and screening for toxicity before payloads reach LLMs',
+      'To automate change set deployments across sandboxes',
+      'To verify single sign-on authentication handshake keys'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Einstein Trust Layer handles safety and compliance by intercepting prompts to apply data masking, toxicity scoring, and strict zero-data-retention parameters when communicating with external LLMs.'
+    explanation: 'The Einstein Trust Layer serves as a security gateway, scrubbing sensitive information, logging safety details, and preventing third-party LLMs from retaining corporate data.'
   },
   {
     id: 'ai-2',
-    text: 'What is the function of a "Topic" when configuring a custom AI agent in Agentforce?',
+    text: 'What is a "Prompt Template" inside the Prompt Builder workspace workspace canvas?',
     topic: 'Agentforce & AI',
     options: [
-      'To determine the color theme applied to screen layout containers',
-      'To define a specific domain of conversation or functional scope, containing a group of related actions and instructions for the agent to follow',
-      'To log background exception metrics inside developer consoles',
-      'To compress long text parameters prior to data ingestion cycles'
+      'A library of custom CSS stylesheets to skin digital websites',
+      'A reusable, text-based template configuration that structures instructions and safely merges live Salesforce record context to ground LLM queries',
+      'An asynchronous apex job tracking system logs nightly',
+      'A validation rule formula checking character parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Topics organize an agent\'s capabilities. Each topic defines a boundary of expertise (e.g., "Billing Queries") and holds the specific instructions and actions needed to handle that area.'
+    explanation: 'Prompt Templates allow administrators to design structured instruction forms that securely fetch live CRM field values to give LLMs relevant context.'
   },
   {
     id: 'ai-3',
-    text: 'Which Salesforce tool allows administrators to declaratively build, test, and manage custom AI prompts using merge fields from standard records before deploying them into business workflows?',
+    text: 'What component of Agentforce handles AI-powered responses during customer interactions?',
     topic: 'Agentforce & AI',
     options: [
-      'Schema Builder Canvas',
-      'Salesforce Prompt Builder',
-      'Model Playground Explorer',
-      'Data Import Wizard'
+      'Service Replies',
+      'OmniScript',
+      'FlexCards',
+      'DataRaptors'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Prompt Builder provides a declarative workspace to create custom prompt templates, safely embedding live record merge fields, flows, or tokens within the instruction context.'
+    explanation: 'Service Replies analyze incoming customer chat text against grounding articles to draft real-time service resolutions automatically.'
   },
   {
     id: 'ai-4',
-    text: 'What does the reasoning engine (Planner) do inside an Agentforce agent during a user conversation?',
+    text: 'What is Agentforce in Salesforce primarily designed for?',
     topic: 'Agentforce & AI',
     options: [
-      'It converts standard object validation errors into custom text strings',
-      'It dynamically analyzes user intent, evaluates active topics, determines which actions are needed, and sequences execution steps to reach a goal',
-      'It hardcodes an absolute sequence of step interactions that cannot be altered',
-      'It forces all database transactions to run in system mode'
+      'Enhancing customer support with AI-driven service agents',
+      'Managing backend databases',
+      'Automating code deployments',
+      'Creating custom reports'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Unlike rigid chatbots, Agentforce uses an autonomous reasoning engine to evaluate user input, select appropriate topics or actions dynamically, and build an execution plan on the fly.'
+    explanation: 'Agentforce provides autonomous AI agents that handle service inquiries, answer questions, and execute workflows without manual human sorting.'
   },
   {
     id: 'ai-5',
-    text: 'How can an administrator expose an active business flow or custom database routine as a callable "Action" that an Agentforce agent can execute autonomously?',
+    text: 'In Agentforce configuration, what is a "Topic"?',
     topic: 'Agentforce & AI',
     options: [
-      'By converting the target flow into a standard validation rule formula',
-      'By registering the Autolaunched Flow, Apex Class, or prompt template as an active Action within the agent topic configuration canvas',
-      'By changing the sObject organization-wide sharing defaults to Public Read Only',
-      'By adding custom CSS variables inside an LWC metadata definition file'
+      'A category tracking dashboard chart graphics layouts',
+      'A classification grouping that outlines a specific functional domain or job responsibility an autonomous agent is authorized to handle',
+      'A validation rule error message text attribute string',
+      'A metadata package compilation unit for change sets'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Agents interact with systems through actions. Registering declarative tools like Autolaunched Flows or Apex classes as actions lets the reasoning engine run them when a user request requires it.'
+    explanation: 'Topics classify tasks for autonomous agents, defining distinct areas of responsibility (like billing help or booking orders) so they route inquiries correctly.'
   },
   {
     id: 'ai-6',
-    text: 'What represents a core functional difference between a traditional rule-based Chatbot and an autonomous AI agent in Agentforce?',
+    text: 'What represents the process of "Grounding" within a generative AI prompt configuration framework?',
     topic: 'Agentforce & AI',
     options: [
-      'Traditional chatbots use Apex code, while autonomous agents only use XML files',
-      'Traditional chatbots follow rigid, pre-defined decision trees; autonomous agents use natural language processing and a reasoning engine to dynamically choose their execution path',
-      'Traditional chatbots require separate data cloud storage systems to function',
-      'Autonomous agents are restricted to running inside standard mobile layouts only'
+      'Encrypting data cells before transmission loops complete',
+      'Providing an LLM with specific, secure corporate context data (like active records or knowledge articles) to ensure responses are accurate and relevant',
+      'Suspending a user profile due to login hours security violations',
+      'Converting text values into geolocation decimal attributes'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Traditional bots fail if a user deviates from a hardcoded menu path. Agentforce agents process open conversation inputs flexibly, using reasoning logic to understand intent and select relevant actions.'
+    explanation: 'Grounding feeds real-time CRM data context to an LLM, reducing hallucinations and making sure responses are accurate and practical.'
   },
   {
     id: 'ai-7',
-    text: 'What occurs during the "De-masking" phase within the Einstein Trust Layer processing lifecycle framework?',
+    text: 'What does the "Zero Data Retention" policy guarantee inside the Einstein Trust Layer framework?',
     topic: 'Agentforce & AI',
     options: [
-      'The platform permanently deletes the source customer record from production',
-      'The system safely replaces the temporary data mask placeholders with the original real values right before presenting the generated response to the user',
-      'The engine displays raw password data strings inside global search layouts',
-      'The validation rules run an asynchronous audit cycle over user permissions'
+      'The local browser cache memory is wiped automatically every 5 minutes',
+      'External LLM vendors are legally and technically prevented from storing or using Salesforce prompt data to train their models',
+      'The scratch org metadata values are deleted upon package commit actions',
+      'The organization data loader records are skipped during weekly exports'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To keep data secure, the Trust Layer substitutes real details with secure tokens before sending prompts to external LLMs. When the response returns, the layer swaps the real values back in for the user view.'
+    explanation: 'Zero Data Retention ensures that prompt text sent to external LLMs is processed in memory and discarded immediately, never saved by external vendors.'
   },
   {
     id: 'ai-8',
-    text: 'Which prompt template type should be configured inside Prompt Builder when you want an AI agent to generate a personalized email response based on a specific Case record?',
+    text: 'Which feature allows an administrator to audit prompt performance, check token usage metrics, and review LLM responses inside Salesforce?',
     topic: 'Agentforce & AI',
     options: [
-      'Field Generation Template',
-      'Sales Email Template / Flex Template',
-      'Object Overview Template',
-      'Record-Triggered Flow Template'
+      'Einstein Audit Trail / Prompt History logs',
+      'Data Loader extraction summaries sheets',
+      'Schema Builder connection canvas logs',
+      'Outbound messaging event notifications data'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Sales Email or Flex prompt templates allow you to define structured instructions specifically aimed at drafting messaging text, pulling dynamic context directly from associated records.'
+    explanation: 'The Einstein Audit Trail logs prompt activity, showing administrators exactly what data went out, what came back, and how masking was applied.'
   },
   {
     id: 'ai-9',
-    text: 'What capability does the "Model Playground" offer an administrator or developer working with generative AI features?',
+    text: 'What type of Agentforce action allows an autonomous agent to invoke standard flows or custom Apex methods to complete tasks dynamically?',
     topic: 'Agentforce & AI',
     options: [
-      'An interface to visually design standard multi-object lookup relationship paths',
-      'A centralized environment to test, compare, and fine-tune different foundational LLMs (like OpenAI, Anthropic, or Google Gemini) using custom prompt variables',
-      'A data loading utility designed to extract big object entries',
-      'A tool to schedule batch trigger handlers to run every Sunday afternoon'
+      'Agent Actions (Invocable Actions mapped to Topics)',
+      'Validation Button Rules parameter scripts',
+      'Compact Layout highlight block links',
+      'Search Layout column allocation entries'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Model Playground provides an administrative workspace to directly interact with configured LLM providers, making it easy to test responses, view metrics, and choose the best model for your use case.'
+    explanation: 'Agent Actions give autonomous agents functional tools, allowing them to launch flows, run Apex, or execute API steps to solve customer requests.'
   },
   {
     id: 'ai-10',
-    text: 'What is the purpose of adding specific "User Instructions" directly onto an Agentforce agent configuration block?',
+    text: 'In Agentforce, what component handles the reasoning step, determining what topic fits an incoming request and planning the sequence of actions needed?',
     topic: 'Agentforce & AI',
     options: [
-      'To manage the password complexity requirements applied to profile setups',
-      'To define the personality, tone, behavior boundaries, and core operational guardrails that the agent must maintain across all conversations',
-      'To write standard help text displayed inside hover panels on layouts',
-      'To route case assignments to default system helpdesk queues'
+      'Autonomous Reasoning Planner engine',
+      'DataRaptor Transform module link',
+      'OmniScript step branching element',
+      'Workflow rule execution sequence tracker'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'User Instructions act as system prompts that dictate how an agent behaves. They guide tone (e.g., "Be professional and clear") and enforce boundaries (e.g., "Do not discuss internal pricing formulas").'
+    explanation: 'The Autonomous Reasoning Planner serves as the agent\'s brain, analyzing user intents to match them to topics and map out the right actions.'
   },
   {
     id: 'ai-11',
-    text: 'Which standard parameter determines the level of creative variance or predictability an LLM displays when evaluating a prompt template?',
+    text: 'What does the "Data Masking" feature inside the Einstein Trust Layer accomplish during prompt generation tasks?',
     topic: 'Agentforce & AI',
     options: [
-      'Token Max Count',
-      'Temperature',
-      'Frequency Penalty',
-      'Top P Compression'
+      'It completely removes lookups from dashboard tracking tables',
+      'It automatically replaces sensitive personal information (PII, like SSNs or emails) with anonymous tokens before sending the text to the LLM',
+      'It converts formula fields into global encrypted characters at rest',
+      'It locks profile access layers during bulk ingestion steps'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Temperature controls response randomness. Lower values keep outputs deterministic and focused, which is ideal for business workflows, while higher values allow for more creative variance.'
+    explanation: 'Data Masking identifies and protects private details (like credit cards or phone numbers) by swapping them out with safe placeholders before data leaves the org.'
   },
   {
     id: 'ai-12',
-    text: 'What does the "Grounding" process accomplish when compiling a prompt template inside Salesforce AI architectures?',
+    text: 'What is the main goal of prompt engineering when integrating with Agentforce?',
     topic: 'Agentforce & AI',
     options: [
-      'It restricts the code from executing outside of sandbox test environments',
-      'It injects relevant, real-time enterprise data (from standard records or Data Cloud) directly into the prompt context, preventing the model from hallucinating',
-      'It runs an optimization script to clean up duplicate picklist fields',
-      'It switches the execution mode from user context to privileged system context'
+      'To optimize AI responses for accuracy and relevance',
+      'To create user interface layouts',
+      'To automate Apex triggers',
+      'To enhance report formatting'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Grounding adds factual business data to a prompt. Giving the LLM explicit record data alongside your instructions ensures its response is accurate and specific to your organization.'
+    explanation: 'Prompt engineering focuses on tuning instructions and grounding context to guide LLMs into producing reliable, brand-aligned answers.'
   },
   {
     id: 'ai-13',
-    text: 'Universal Containers wants their Agentforce Service Agent to resolve client returns. The agent must verify shipping dates in an external system before issuing a voucher. How should this external system integration step be handled?',
+    text: 'A customer support team wants their AI assistant to generate tailored summary notes automatically whenever an internal case is closed. The summary must reference specific case metrics. What should the administrator set up?',
     topic: 'Agentforce & AI',
     options: [
-      'Write a validation rule checking shipping status character codes',
-      'Create an external API action using an External Service or Apex callout, and assign it to the corresponding Return Verification Topic on the agent canvas',
-      'Deploy an asynchronous batch apex job to sync verification files daily',
-      'Change the custom object sharing parameters to Controlled by Parent'
+      'A matrix report layout with summary columns',
+      'A Field Generation Prompt Template inside Prompt Builder, grounded with the active Case record context',
+      'An Apex asynchronous batch job loop checking columns',
+      'A custom validation rule checking text string lengths'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To access external data during a chat, wrap your API callout in an External Service action or Apex method. Adding this action to a topic lets the agent execute the call dynamically to verify dates.'
+    explanation: 'Field Generation templates let you combine instruction notes and field context to automatically draft summaries right onto record text areas.'
   },
   {
     id: 'ai-14',
-    text: 'A business observes that their custom AI agent occasionally attempts to handle product refund questions using general service instructions, leading to mixed answers. How should the administrator correct this execution routing?',
+    text: 'An enterprise wants to use generative AI to write draft email updates, but compliance guidelines require blocking any generation that contains profane or offensive language. What layer handles this?',
     topic: 'Agentforce & AI',
     options: [
-      'Set the baseline object OWD configurations to Private status',
-      'Refine the Topic Classification descriptions and specific User Instructions to clearly define when the Refund Topic should capture the conversation versus general topics',
-      'Build a validation rule to block users from entering the word refund',
-      'Convert all related tracking fields into roll-up summary components'
+      'Standard cross-object validation rules checks',
+      'The built-in Toxicity Detection scanners inside the Einstein Trust Layer',
+      'A change sets metadata deployment constraint filter',
+      'Profile session high-assurance parameters configurations'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The planner relies on topic descriptions to route conversations. Providing clear, precise descriptions of what each topic covers helps the agent accurately match user intent to the right path.'
+    explanation: 'Toxicity Detection monitors both incoming prompts and outgoing LLM text, automatically blocking responses that cross hate speech or profanity thresholds.'
   },
   {
     id: 'ai-15',
-    text: 'A developer needs to dynamically augment a prompt layout with fields from multiple child asset records that match specific status strings. Standard merge fields fall short. What tool should be integrated into Prompt Builder?',
-    topic: 'Prompt Engineering',
+    text: 'A developer needs an autonomous agent to check shipping logs from an external warehouse database during customer conversations. How should they give the agent this capability?',
+    topic: 'Agentforce & AI',
     options: [
-      'A cross-object formula field tracking layout items',
-      'An Autolaunched Flow or Apex class designed to collect child metrics, returning a clean text string to ground the prompt template',
-      'A case assignment rule mapping percentage tables',
-      'A lightning message service channel routing payloads client-side'
+      'Hardcode target ID structural metrics into a validation rule',
+      'Build an Invocable Apex method or an Autolaunched Flow that calls the external API, and assign it as an Agent Action under the relevant topic',
+      'Configure a data loader query script loop running hourly',
+      'Change the object OWD settings configuration to Public Read Only'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'When standard record merge fields cannot handle advanced logic, you can call an Autolaunched Flow or Apex method within the prompt template to gather and format complex data arrays.'
+    explanation: 'Exposing capabilities as Invocable Actions allows autonomous agents to run complex logic or integrations dynamically mid-chat.'
   },
   {
     id: 'ai-16',
-    text: 'During user testing, an Agentforce agent surfaces an administrative notice stating that it cannot complete an assignment because a custom flow failed. How should the administrator investigate this background processing error?',
+    text: 'An administrator notices that an autonomous agent is trying to handle billing questions using an unrelated technical support playbook, causing bad answers. What setting needs optimization?',
     topic: 'Agentforce & AI',
     options: [
-      'Inspect the network trusted IP ranges list configurations',
-      'Open the native Agentforce Testing Center / Agent Debugger tool or standard platform Debug Logs to trace the exact input JSON and execution path failures',
-      'Deactivate the organization profiles before repeating tests',
-      'Check the browser cookie visibility limits within the user workspace'
+      'The profile session timeout length thresholds parameters',
+      'The agent\'s Topic classification criteria, instructions, and assigned actions to help the planner distinguish intents',
+      'The validation rule criteria formulas tracking field columns',
+      'The global search layout column sorting assignments'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'The Agentforce Testing Center and system Debug Logs allow you to trace agent behavior step-by-step, showing user inputs, matched topics, and any errors thrown by underlying actions.'
+    explanation: 'Refining the boundaries, definitions, and keywords of your topics helps the planner engine correctly identify the user\'s true intent.'
   },
   {
     id: 'ai-17',
-    text: 'A company wants to prevent generative AI tools from exposing unverified internal product roadmap details during customer chats. How can this guardrail be enforced effectively within Prompt Builder or Agentforce?',
-    topic: 'Prompt Engineering',
+    text: 'A business wants their service reps to click a single on-screen action button to instantly generate a complete discount request email summary referencing Account fields. What should the administrator build?',
+    topic: 'Agentforce & AI',
     options: [
-      'Delete the product catalogue records from production database tables',
-      'Explicitly state what data fields are restricted or excluded within the prompt template system instructions, and ensure associated KB articles are not indexed in agent search tools',
-      'Configure an validation rule to block search loops completely',
-      'Switch the user profile session security levels to high assurance'
+      'A global quick action invoking standard CSV tables templates',
+      'An Sales Email Prompt Template inside Prompt Builder, exposed as a custom action button on the record viewport page layout',
+      'A cross-object lookup formula text block asset template',
+      'An In-App Guidance walkthrough layout banner component'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Clear system instructions (e.g., "Never disclose unannounced product timelines") combined with managing which knowledge bases the agent can search sets reliable boundaries for generative responses.'
+    explanation: 'Sales Email templates provide a declarative way to let reps generate highly contextual email drafts directly within the activity feed using one click.'
   },
   {
     id: 'ai-18',
-    text: 'A financial services firm requires all AI-generated email responses to be reviewed by a human manager before transmission to clients. Which configuration satisfies this requirement safely?',
+    text: 'A compliance officer needs to confirm that customer text messages processed by Einstein Copilot are not leaked to external AI vendors for training purposes. What feature validates this protocol?',
     topic: 'Agentforce & AI',
     options: [
-      'Run a background batch job to scrape outlook message channels hourly',
-      'Incorporate the prompt template inside an internal screen flow layout or review workspace component, requiring an agent validation click before firing the email action',
-      'Set the custom object OWD default parameters to Private',
-      'Build a validation rule that throws a fatal error on save events'
+      'The OWD sharing settings rules database status',
+      'The Zero Data Retention policy architecture within the Einstein Trust Layer gateway contract',
+      'An active validation rule checking username tracking tags',
+      'A change data capture stream log sheet metric parameters'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'To enforce a human-in-the-loop review, embed your prompt generation within a user action or Screen Flow, giving team members a chance to review and edit text before hitting send.'
+    explanation: 'The Zero Data Retention policy legally and technically prevents external model providers from storing or training on data sent via the trust layer.'
   },
   {
     id: 'ai-19',
-    text: 'You have written a prompt template that returns excellent results when tested against simple text fields, but fails with a validation error when a related record is blank. How should the prompt engineer optimize the template?',
-    topic: 'Prompt Engineering',
+    text: 'An administrator notice that a prompt template grounding an opportunity overview is returning blank sections for some users. They confirm the fields hold data. What security setting should be checked?',
+    topic: 'Agentforce & AI',
     options: [
-      'Universally mandate that all lookup fields contain mandatory values across the platform',
-      'Incorporate conditional logic expressions inside the prompt template (such as using Flow wrappers or conditional tokens) to handle missing values gracefully',
-      'Convert the target fields from text lines into roll-up summary values',
-      'Disable the validation rules across the environment during text deployment'
+      'The organization global password complexity policies',
+      'Field-Level Security (FLS) settings on the viewing user\'s profile, as prompts strictly respect standard user data permissions',
+      'The custom validation rule activation toggle switches',
+      'The scratch org deployment package manifest items'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Using conditional checks or wrapper flows inside your template ensures the prompt generator accounts for missing record data without throwing errors or creating awkward gaps in instructions.'
+    explanation: 'Einstein prompts follow standard platform security rules. If a user\'s profile restricts access to a field, that field data is automatically excluded from their generated prompts.'
   },
   {
     id: 'ai-20',
-    text: 'An operations team wants to track how often an Agentforce agent successfully resolves questions using an active "Order Tracking" topic vs. escalating them to live agents. Which tool displays these execution analytics?',
+    text: 'A company wants to add an autonomous agent to their website to help visitors schedule appointments. They want to test how the agent plans out tasks before pushing it live. What tool workspace should they use?',
     topic: 'Agentforce & AI',
     options: [
-      'Data Loader extraction parameters parsing CSV entries',
-      'The native Agentforce Analytics dashboards and conversation transcript metric reports',
-      'A series of workflow outbound messaging engines logging string files',
-      'An apex unit test execution summary graph'
+      'The Data Loader command line monitoring console',
+      'The Agentforce Analytics dashboard metrics terminal layout',
+      'The Agentforce Session Tester / Preview Console in Setup, checking the step-by-step reasoning logs generated by the planner',
+      'The schema builder canvas mapping layout connector views'
     ],
-    correctAnswer: 1,
+    correctAnswer: 2,
     difficulty: 'moderate',
-    explanation: 'Agentforce includes native analytics and transcript reporting that track agent usage, topic engagement, action success rates, and escalation triggers.'
+    explanation: 'The built-in Agent Preview console lets you converse with your agent and view the behind-the-scenes reasoning paths chosen by the planner engine.'
   },
 
   {
     id: 'dc-1',
-    text: 'What is the primary architectural purpose of a Data Lakehouse architecture within Salesforce Data Cloud?',
+    text: 'What is the primary function of Salesforce Data Cloud?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'To replace standard relational sObject storage structures for transactional day-to-day CRM modifications',
-      'To separate compute from storage, allowing zero-copy data virtualization and high-scale processing over both structured and unstructured data pools',
-      'To write automated Apex controller test classes for standard deployment metadata packages',
-      'To convert standard picklist values into encrypted fields automatically at rest'
+      'To build custom user interface page layouts using modern CSS blueprints',
+      'To unify high-volume customer data from disparate external sources into a single real-time data engine',
+      'To automate multi-user administrative approval workflows natively',
+      'To manage metadata deployments across multiple sandbox test orgs'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce Data Cloud operates on a cloud-scale data lakehouse architecture. It decouples high-volume analytical compute from storage frames, enabling multi-source processing and zero-copy virtualization without duplicating operational data.'
+    explanation: 'Salesforce Data Cloud ingests, harmonizes, and unifies vast quantities of operational customer data from many sources into a single, comprehensive timeline.'
   },
   {
     id: 'dc-2',
-    text: 'Which step in the Data Cloud processing pipeline maps raw ingested files to a standard, unified data model skeleton like the Customer 360 Data Model?',
+    text: 'What is the purpose of data modeling in Salesforce Data Cloud?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'Data Ingestion via Data Streams',
-      'Data Harmonization (Data Mapping to Data Model Objects)',
-      'Identity Resolution ruleset compilation',
-      'Calculated Insights execution profiling'
+      'Defining and organizing relationships between data entities',
+      'Automating email workflows',
+      'Creating Lightning Components',
+      'Managing Apex transactions'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'Data Harmonization maps fields from Data Source Objects (DSOs) to Data Model Objects (DMOs) within a standardized blueprint (like Individual or Contact Point Email), creating a consistent schema across systems.'
+    explanation: 'Data modeling is the core harmonization step that structures relationships between ingested source objects and standardized data model definitions.'
   },
   {
     id: 'dc-3',
-    text: 'What is the core difference between a Data Source Object (DSO) and a Data Model Object (DMO) in Salesforce Data Cloud?',
+    text: 'What structural element represents data in its raw, ingested format from an external connection before mapping occurs?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'DSOs handle streaming data while DMOs can only ingest flat batch CSV files',
-      'A DSO represents the raw incoming data table schema exactly as it is ingested; a DMO represents the standardized, harmonized target schema model',
-      'DSOs are stored inside standard Salesforce org storage allocations while DMOs exist inside Big Objects',
-      'DSOs ignore validation rule formulas while DMOs strictly enforce them on every transaction'
+      'Data Source Object (DSO)',
+      'Data Model Object (DMO)',
+      'Calculated Insight Object',
+      'Junction Object Entity'
     ],
-    correctAnswer: 1,
+    correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'When a data stream is initialized, it builds a DSO to reflect the source schema exactly. That DSO is then harmonized and mapped to a standard or custom DMO layout to enable unified processing.'
+    explanation: 'Data Source Objects (DSOs) store the direct, unmodified data feeds imported into Data Cloud from connected systems.'
   },
   {
     id: 'dc-4',
-    text: 'What does an "Identity Resolution" ruleset calculate and produce inside a Data Cloud environment?',
+    text: 'What structural component represents the standardized target schema that data gets mapped to after ingestion to ensure consistency across the data lake?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'An encrypted session token used to validate single sign-on handshakes across corporate servers',
-      'A Unified Profile or "Golden Record" by blending duplicate records from separate data streams based on match and reconciliation rules',
-      'An automated case assignment routing matrix for regional support queues',
-      'A calculated formula field summary mapping cross-object lookup strings'
+      'Data Source Object (DSO)',
+      'Data Model Object (DMO)',
+      'External Metadata Bundle',
+      'Custom Setting Matrix'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Identity Resolution analyzes separate profiles (e.g., a lead from Marketing Cloud and a contact from core CRM) using match criteria like email or phone, blending them into a single Unified Profile.'
+    explanation: 'Data Model Objects (DMOs) provide the unified, standard data structures (like Individual or Contact Point) used to harmonize different data streams.'
   },
   {
     id: 'dc-5',
-    text: 'What represents a primary operational difference between a Calculated Insight and a Streaming Insight in Data Cloud?',
+    text: 'Which feature in Data Cloud uses specific matching logic to combine multiple disparate source records into a single Golden Record profile?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'Calculated Insights use Apex language arrays while Streaming Insights use custom metadata styles',
-      'Calculated Insights process historical records in batch blocks at scheduled intervals; Streaming Insights evaluate real-time data windows continuously as events pass through',
-      'Calculated Insights cannot handle multi-object relationship parameters',
-      'Streaming Insights are restricted to running inside mobile app layouts exclusively'
+      'Calculated Insights engine',
+      'Identity Resolution Ruleset',
+      'Zero-Copy Federation connection',
+      'Segmentation Canvas tool'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Calculated Insights process historical datasets asynchronously using batch routines. Streaming Insights evaluate immediate event parameters using continuous time-window analysis to trigger near-instant actions.'
+    explanation: 'Identity Resolution evaluates match rules across sources to reconcile multiple duplicate profile records into a single unified customer profile.'
   },
   {
     id: 'dc-6',
-    text: 'Which feature allows an administrator to define a specific subset of unified individuals based on behavioral filters or demographic attributes, making them available for activation campaigns?',
+    text: 'What type of identity match rule allows linking profiles based on structural variations like common nicknames or typographical errors?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'Data Ingestion Connectors',
-      'Data Segmentation',
-      'Data Transformations (Batch)',
-      'Schema Builder Canvas mapping'
+      'Exact Match rule',
+      'Fuzzy Match rule',
+      'Streaming Insight rule',
+      'Junction Match rule'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Data Segmentation uses a drag-and-drop canvas to query and group harmonized profiles into target sub-audiences based on attributes or metrics (e.g., "High spenders in Europe").'
+    explanation: 'Fuzzy Match logic uses matching algorithms to catch character variations, like linking abbreviation anomalies or loose string patterns.'
   },
   {
     id: 'dc-7',
-    text: 'What occurs during the "Data Activation" phase within a standard Salesforce Data Cloud lifecycle workflow?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'The engine permanently locks down record fields to protect data privacy',
-      'A finalized segment or data payload is published and pushed to an external endpoint or platform channel (like Marketing Cloud or an external webhook)',
-      'The platform converts lookup values into master-detail fields natively',
-      'The validation rules execute a synchronous system authorization sweep'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Activation takes your segmented audience lists and transmits them to action channels (like marketing platforms, ad networks, core CRM flows, or external webhooks) to launch tailored interactions.'
-  },
-  {
-    id: 'dc-8',
-    text: 'What mechanism can be implemented to read data from an external storage hub like Amazon S3 or Google BigQuery into Data Cloud without executing any actual data copy or data load transactions?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Data Loader extraction parameters',
-      'Zero-Copy Data Federation (Data Shares and Federated Queries)',
-      'Standard Change Sets metadata processing',
-      'Workflow Outbound Messaging XML pushes'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Zero-Copy federation securely reads external storage files in place. Data Cloud queries the remote data cloud warehouse directly on demand, removing data duplication overhead.'
-  },
-  {
-    id: 'dc-9',
-    text: 'What does a "Reconciliation Rule" manage inside a Data Cloud Identity Resolution layout configuration?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'The total character length thresholds allowed when validating email structures',
-      'The selection criteria (like Most Recent, Source Priority, or Last Updated) used to pick the single best value for a field when building a unified profile',
-      'The execution runtime windows applied to asynchronous background batch queries',
-      'The user profiles permitted to export dashboard charts into CSV sheets'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'When multiple source records combine into one unified view, values may differ (e.g., separate phone numbers). Reconciliation rules dictate which source wins based on rules like priority or recency.'
-  },
-  {
-    id: 'dc-10',
-    text: 'Which standard language framework is utilized to construct advanced custom Calculated Insights or write multi-join queries inside the Data Cloud canvas interface?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Apex Scripting Code',
-      'SQL (Structured Query Language)',
-      'SOSL Search Syntax',
-      'JavaScript ES6 Objects'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Calculated Insights can be built visually or via a standard SQL editor, allowing data analysts to apply groupings, joins, and aggregates over high-volume data model objects.'
-  },
-  {
-    id: 'dc-11',
-    text: 'What type of field mapping classification must be added to a custom entity to ensure Data Cloud accurately groups streaming event actions by time parameters?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'External ID Text Field',
-      'Event Time Field (DateTime type designated as an active timestamp marker)',
-      'Formula field outputting numeric text',
-      'Junction reference object lookup'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Streaming or event data types require a designated Event Time field. This timestamp allows Data Cloud to accurately track event order, maintain temporal history, and run windowed analytics.'
-  },
-  {
-    id: 'dc-12',
-    text: 'What is a "Data Space" within the administration and setup architecture of Salesforce Data Cloud?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'A data loading utility designed to compress big object arrays',
-      'A logical partition within a single Data Cloud instance that segregates data streams, data models, and segments by brand, region, or department for governance',
-      'A temporary database buffer framework used to test validation formulas',
-      'A dedicated storage pool for local file archives'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Data Spaces isolate data profiles. This allows a global enterprise to partition its data lakehouse assets into distinct secure zones (e.g., by brand or region) under a single tenant.'
-  },
-  {
-    id: 'dc-13',
-    text: 'Universal Containers wants to ingest customer interaction logs from an external web portal API directly into Data Cloud every 15 minutes. Which ingestion tool provides the most appropriate architectural connection point?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Standard Data Import Wizard runs',
-      'Ingestion API or Webhook Connector configured to target a specific Streaming Data Stream',
-      'A series of workflow outbound message scripts',
-      'An after-save record flow running sync variables'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The Ingestion API and Webhook Connectors stream high-frequency telemetry, interaction logs, or application events directly into Data Cloud schemas in near real time.'
-  },
-  {
-    id: 'dc-14',
-    text: 'An enterprise analyst observes that a segment counting active loyalty members is returning lower figures than corporate records specify. The match rules check for identical phone inputs. What optimization should be applied to the Identity Resolution rules?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Set the baseline object configurations to Private sharing status',
-      'Incorporate normalization steps on the phone source attributes (such as stripping formatting or applying country code parameters) prior to execution matching evaluation steps',
-      'Build a validation rule to block profiles with empty fields from saving',
-      'Convert all associated phone records into roll-up fields'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Raw phone formatting discrepancies (e.g., `(555) 123-4567` vs `5551234567`) cause matching checks to fail. Applying normalization rules standardizes the data strings to fix resolution metrics.'
-  },
-  {
-    id: 'dc-15',
-    text: 'A business requires an immediate alert to fire in core Salesforce CRM when a unified customer\'s real-time digital engagement score drops below a specific metric. How should this downstream action be triggered from Data Cloud?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Run a data loader query process every 5 minutes in background layouts',
-      'Configure a Data Action based on a Streaming Insight or Segment update to publish a Platform Event directly into the core CRM org, triggering a flow handler',
-      'Build validation rules tracking string variables client-side',
-      'Deploy a cross-object formula field mapping database matrices'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Data Actions connect analytical insights to core CRM workflows. When an aggregate threshold shifts, the Data Action broadcasts a Platform Event to launch standard record flows.'
-  },
-  {
-    id: 'dc-16',
-    text: 'An administrator needs to ingest transactional records from their core Salesforce CRM org into Data Cloud. They want to ensure that any custom field updates are synced automatically without manual adjustments. What connection type must be established?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'SOAP API WSDL file extraction routines',
-      'The native Salesforce CRM Connector Bundle, creating specialized Data Streams for the target sObjects',
-      'An Apex batch controller loop containing hardcoded maps',
-      'A compact highlight panel script routing text arrays'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The native Salesforce CRM connector manages ingestion out of the box, linking object schemas directly to Data Cloud data streams with built-in refresh behaviors.'
-  },
-  {
-    id: 'dc-17',
-    text: 'A data engineer needs to map an incoming field tracking "Product Stock Code" to the standard Customer 360 data model. However, the exact standard field attribute does not exist in the default schema layout. What is the recommended practice?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Bypass data mapping and leave the attribute detached completely',
-      'Extend the standard Data Model Object (DMO) schema by creating a custom field attribute on that standard object layout inside the Data Cloud builder canvas',
-      'Deploy a custom Apex class controller to overwrite field values on tracking rows',
-      'Change the data space settings from partitioned status to public visibility'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'If the standard Customer 360 data model lacks a specific field attribute, you can declartively add custom attributes to existing DMO nodes to accommodate unique parameters.'
-  },
-  {
-    id: 'dc-18',
-    text: 'Your organization needs to run multi-million row analytics evaluating historical customer lifetime value (LTV). The calculation involves complex financial variables across multiple tables. What tool path optimizes this processing?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'A series of validation formulas matching regex expressions',
-      'A SQL-based Calculated Insight that aggregates metrics over the Individual and SalesOrder DMOs, running on an automated batch scheduling cycle',
-      'An inline apex trigger loop executing SOQL calls synchronously',
-      'An outbound message integration mapping data fields'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Calculated Insights are designed for high-scale batch operations over millions of rows. They handle large analytics jobs efficiently, saving calculated metrics right onto profile records.'
-  },
-  {
-    id: 'dc-19',
-    text: 'You have generated a new Data Stream pulling from a cloud file storage folder. Upon ingestion, you notice that multi-select picklist data fields look garbled and cause formatting failures. How should the ingestion data transform be optimized?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Universally restrict text fields to single-character values across source databases',
-      'Incorporate a Data Transform block using formula functions (like SPLIT or REPLACE) to re-parse the incoming text array layout into separate clean attributes during ingestion',
-      'Convert the target object fields into roll-up metrics within core CRM layout designs',
-      'Turn off all identity resolution rules across the environment'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Data Cloud ingestion supports transformation functions. Adding formula steps to data streams lets you clean strings and format multi-value tokens before writing to the database.'
-  },
-  {
-    id: 'dc-20',
-    text: 'An architecture team wants to package a verified Data Cloud schema layout, including its customized data model objects and mapping metadata, to deploy it from a staging sandbox into production. What framework tool handles this task?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Data Loader extraction parameters processing text cells',
-      'Data Cloud Packaging combined with modern Salesforce Metadata API structures or DevOps Center release pipelines',
-      'Standard formula field calculations processing values locally',
-      'Workflow outbound messaging engines broadcasting data records'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Data Cloud supports packaging capabilities. This enables teams to capture data streams, data spaces, mappings, and insight schemas as deployable metadata for standard DevOps lifecycles.'
-  },
-  {
-    id: 'dc-21',
-    text: 'When configuring an Identity Resolution Ruleset in Salesforce Data Cloud, what is the core operational difference between an Exact Match rule and a Fuzzy Match rule configuration?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Exact Match requires alphanumeric strings to match identical characters, while Fuzzy Match evaluates variations such as common nicknames, abbreviations, or typographical errors',
-      'Exact Match operates on streaming data tracks, while Fuzzy Match can only parse historical batch CSV files',
-      'Exact Match forces record field values to undergo Platform Encryption steps automatically',
-      'Exact Match can only evaluate single-character string fields'
-    ],
-    correctAnswer: 0,
-    difficulty: 'hard',
-    explanation: 'Exact Match requires absolute character-for-character parity between fields to flag a relationship match. Fuzzy Match leverages matching algorithms to identify structural variants (e.g., matching "Rob" to "Robert" or catching loose spacing shifts).'
-  },
-  {
-    id: 'dc-22',
-    text: 'What type of structural relationship setting must be established in the Data Cloud mapping canvas when linking a custom Data Source Object (DSO) field array to a standard Data Model Object (DMO)?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Master-Detail Relationship mapping',
-      'Data Mapping (establishing structural routing connections between DSO source attributes and target DMO schemas)',
-      'Junction Object configuration references',
-      'Cross-Object Formula calculations'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'Data Mapping is the functional step that maps attributes from ingested Data Source Objects (DSOs) to standardized Data Model Objects (DMOs) to align data patterns inside the core cloud lakehouse.'
-  },
-  {
-    id: 'dc-23',
-    text: 'In Data Cloud profile engineering, what specific record output is generated as a centralized reference key when multiple customer profiles resolve successfully into a single consolidated Golden Record profile?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Unified Individual ID (Unified Record Token)',
-      'External ID Text String field',
-      'Apex Transaction savepoint pointer',
-      'Secure Session high-assurance cookie'
-    ],
-    correctAnswer: 0,
-    difficulty: 'hard',
-    explanation: 'When Identity Resolution match criteria are satisfied, the system groups corresponding source records together, assigning a unique Unified Individual ID that represents the core customer profile wrapper.'
-  },
-  {
-    id: 'dc-24',
-    text: 'Which reconciliation rule type should be selected when you want a unified profile field to always display the most current value available across all integrated data stream inputs?',
+    text: 'What type of profile reconciliation rule should be configured if you want a specific attribute to always use values from your primary CRM database over marketing systems?',
     topic: 'Salesforce Data Cloud',
     options: [
       'Source Priority strategy',
       'Last Updated / Most Recent strategy',
-      'Alphabetical character sort algorithm',
-      'Dynamic lookup matrix matching'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'The Last Updated reconciliation rule evaluates the transaction dates of incoming streams, mapping the newest chronological data into the unified profile attribute field.'
-  },
-  {
-    id: 'dc-25',
-    text: 'What occurs when an analyst runs a Calculated Insight that features nested SQL grouping functions over high-volume Data Model Objects?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'The computation locks internal CRM database objects, preventing users from saving standard lead items',
-      'The processing aggregates metric values (such as recalculating customer lifetime value scores) across multi-million row datasets asynchronously on a scheduled batch path',
-      'The engine throws an immediate mixed DML trigger exception crash warning',
-      'The system automatically converts text inputs into geolocation coordinates'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Calculated Insights use batch processing threads to evaluate complex SQL functions over multi-million row DMO scopes, calculating values like lifetime value or engagement scores outside your runtime limits.'
-  },
-  {
-    id: 'dc-26',
-    text: 'When configuring Data Cloud ingestion pipelines, what parameter must be mapped on every incoming data stream record to support temporal calculations and streaming window analytics?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Organization-Wide Default baseline flag',
-      'Event Time Field (active date-time timestamp attribute)',
-      'Formula validation string rule parameter',
-      'Big Object lookup reference index array'
-    ],
-    correctAnswer: 1,
-    difficulty: 'moderate',
-    explanation: 'An Event Time field is an essential requirement for event data streams. It allows Data Cloud to accurately track event sequence, manage temporal metrics, and execute timeline streaming insights.'
-  },
-  {
-    id: 'dc-27',
-    text: 'What represents a critical structural benefit of partitioning an enterprise data model profile across distinct Data Spaces within a single Salesforce Data Cloud instance?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'It increases synchronous CPU processing timeframes by 20 seconds globally',
-      'It provides secure data segregation, partitioning data streams, models, segments, and activations to support different global brands or business units under one roof',
-      'It removes code coverage calculation checks during package deployments',
-      'It bypasses validation rule logic restrictions across connected core CRM systems'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Data Spaces isolate data profiles. This allows a global enterprise to partition its data lakehouse assets into distinct secure zones (e.g., by brand or region) under a single tenant.'
-  },
-  {
-    id: 'dc-28',
-    text: 'A business requires an integration that reads asset inventory tables directly out of a Google BigQuery cluster into Data Cloud. The operation must not duplicate files or consume cloud storage allocations. What capability should be deployed?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Data Loader batch append operations parsing CSV fields',
-      'Zero-Copy Data Federation (Data Shares / Federated Data Queries)',
-      'Standard Inbound Change Sets migration bundles',
-      'Workflow Outbound Messaging routing XML script patterns'
-    ],
-    correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Zero-Copy federation securely reads external storage files in place. Data Cloud queries the remote data cloud warehouse directly on demand, removing data duplication overhead.'
-  },
-  {
-    id: 'dc-29',
-    text: 'Which declarative interface element allows a marketer to visually isolate a target group of unified individuals who have both clicked an online promotion and live within specific postal codes?',
-    topic: 'Salesforce Data Cloud',
-    options: [
-      'Data Cloud Segmentation Canvas',
-      'Schema Builder connection tool',
-      'Calculated Insights SQL layout terminal',
-      'App Manager menu configuration profile'
+      'Alphabetical character sort rule',
+      'Dynamic query execution sweep'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'The Segmentation Canvas provides an intuitive point-and-click layout where users can combine behavioral event filters and demographic DMO characteristics to create targeted sub-audiences.'
+    explanation: 'Source Priority tells Identity Resolution which source system to trust first when selecting values for a unified profile attribute field.'
+  },
+  {
+    id: 'dc-8',
+    text: 'What unique, system-generated identifier is assigned to represent a consolidated customer profile wrapper once Identity Resolution combines records?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'External ID Text string',
+      'Unified Individual ID',
+      'Apex Savepoint identifier',
+      'High Assurance session key'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Unified Individual ID is the core anchor key created by the resolution engine to group a unified profile\'s underlying records together.'
+  },
+  {
+    id: 'dc-9',
+    text: 'Which Data Cloud feature runs batch SQL queries over massive datasets to compute complex aggregations like Customer Lifetime Value?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Streaming Insights',
+      'Calculated Insights',
+      'Data Spaces segmentation',
+      'Zero-Copy Federation shares'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Calculated Insights use batch processing to compute high-volume transactional metrics, storing the results as reusable attributes on the profile.'
+  },
+  {
+    id: 'dc-10',
+    text: 'What is the purpose of configuring "Data Spaces" within a Data Cloud architecture environment?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'To increase the synchronous processing CPU limits globally',
+      'To isolate and partition data streams, profiles, and segments to support different global brands or business units within one org',
+      'To bypass validation rules during data imports',
+      'To automatically encrypt text fields at rest'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Data Spaces partition your data lake workspace into separate secure zones, letting different teams or brands work independently under one tenant.'
+  },
+  {
+    id: 'dc-11',
+    text: 'Which tool allows users to declaratively isolate a target group of unified profiles using point-and-click demographic filters?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Schema Builder canvas',
+      'Segmentation Canvas',
+      'Calculated Insights terminal',
+      'App Manager workspace'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Segmentation Canvas provides a visual interface where users can drag and drop criteria to isolate a clean target audience.'
+  },
+  {
+    id: 'dc-12',
+    text: 'What capability does a Streaming Insight offer compared to a standard Calculated Insight?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'It processes files exclusively via CSV data loaders',
+      'It evaluates event streams in near-real-time to trigger immediate automated actions or alerts',
+      'It requires custom Apex triggers to calculate data',
+      'It wipes historical records automatically'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Streaming Insights process event data in near-real-time as it arrives, letting you detect changes and trigger quick responses.'
+  },
+  {
+    id: 'dc-13',
+    text: 'What baseline configuration parameter must be assigned to every incoming record stream in Data Cloud to enable time-window analysis and chronological calculations?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Organization-Wide Default baseline flag',
+      'Event Time Field (date-time timestamp attribute)',
+      'Formula validation string parameter',
+      'Lookup relationship index field'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'An Event Time field is a strict prerequisite for stream ingestion, allowing Data Cloud to track event order and calculate timeline metrics accurately.'
+  },
+  {
+    id: 'dc-14',
+    text: 'What type of cloud connectivity strategy enables reading external warehouse data directly on demand without copying files or using Salesforce data storage?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Data Loader batch ingestion',
+      'Zero-Copy Data Federation',
+      'Change Sets deployment manifest',
+      'Outbound messaging XML configuration'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Zero-Copy Data Federation allows Data Cloud to query external data warehouses (like Snowflake or BigQuery) directly in place without duplication.'
+  },
+  {
+    id: 'dc-15',
+    text: 'What functional tool is used to bundle Data Cloud mappings, data streams, and configurations together so they can be deployed across sandboxes using the Metadata API?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Data Cloud Packaging',
+      'Data Import Wizard',
+      'Calculated Insights SQL terminal',
+      'App Builder page manager'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Data Cloud Packaging lets you capture data models, stream configurations, and relationships as standard deployable metadata components.'
+  },
+  {
+    id: 'dc-16',
+    text: 'What structural grouping pattern describes a target data category that represents real-world entities like phone numbers or email addresses in the standard data model?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Contact Point DMOs',
+      'Calculated Insight attributes',
+      'Raw DSO fields',
+      'Junction fields matrix'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Contact Point objects (like Contact Point Phone or Email) are standard DMO definitions designed to store and normalize channels of customer communication.'
+  },
+  {
+    id: 'dc-17',
+    text: 'What kind of rule inside Identity Resolution dictates that two profiles should only merge if alphanumeric values match character-for-character with absolute parity?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Exact Match rule',
+      'Fuzzy Match rule',
+      'Reconciliation Priority rule',
+      'SQL Aggregate rule'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Exact Match rules check for strict character parity, requiring text values to match identically before flagging a profile link.'
+  },
+  {
+    id: 'dc-18',
+    text: 'Which state must be configured on a newly built Segmentation layout before it can actively evaluate profiles and export audiences to target platforms?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Saved',
+      'Activated / Published',
+      'Indexed',
+      'Archived'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'A segment must be activated and published to run its filter query and deliver target profile lists to activation endpoints.'
+  },
+  {
+    id: 'dc-19',
+    text: 'What processing method does Data Cloud use to continually pull real-time web interaction logs via SDKs into the data lake engine?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Streaming Ingestion API',
+      'Scheduled Batch CSV uploads',
+      'Apex future method controllers',
+      'Outbound manual workflows'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'The Ingestion API surfaces secure streaming endpoints to continually capture real-time behavior logs from apps or websites.'
+  },
+  {
+    id: 'dc-20',
+    text: 'What standard language syntax is utilized by analysts to construct and refine advanced multi-level aggregations inside Calculated Insights?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Apex',
+      'SQL',
+      'JSON',
+      'SOQL'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Calculated Insights rely on standard ANSI SQL syntax rules to perform high-volume batch aggregations over Data Model Objects.'
+  },
+  {
+    id: 'dc-21',
+    text: 'A business needs to query warehouse records residing in a Google BigQuery cluster directly from Data Cloud without duplicating files or using extra platform storage. What feature addresses this?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Data Loader batch ingestion routines',
+      'Zero-Copy Data Federation (Data Shares)',
+      'Change Sets metadata deployment bundles',
+      'Outbound messaging XML engine configurations'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Zero-Copy federation lets Data Cloud securely read external database warehouses in place on demand, skipping the data duplication overhead.'
+  },
+  {
+    id: 'dc-22',
+    text: 'A database administrator imports an external ecommerce transaction stream into Data Cloud, but notices the values do not align with core contact records. What mapping step should they verify?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'The configuration linking the Data Source Object (DSO) attributes to the target Data Model Object (DMO) schemas',
+      'The object validation rule formulas active in CRM',
+      'The custom metadata type layout selections',
+      'The client component cache refresh variables'
+    ],
+    correctAnswer: 0,
+    difficulty: 'moderate',
+    explanation: 'Mapping the raw DSO attributes accurately to standardized DMO schemas is essential to align data streams inside the core cloud engine.'
+  },
+  {
+    id: 'dc-23',
+    text: 'An enterprise wants to match loyalty profiles with support records. They find that different systems capture variations like "Dave" and "David." What identity resolution setup should they implement?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'An Exact Match rule on the First Name attribute string',
+      'A Fuzzy Match rule on the First Name attribute string combined with an Exact Match on Email',
+      'A calculated insight tracking text character codes',
+      'A validation rule blocking loose string inputs'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Combining Fuzzy Match logic for names with Exact Match rules for unique identifiers like email handles structural name variations smoothly.'
+  },
+  {
+    id: 'dc-24',
+    text: 'A company operates separate European and Asian retail branches under a single tenant. European users must be strictly blocked from viewing Asian market profile segments. How should the data lakehouse be partitioned?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Modify standard profile sharing rule settings globally',
+      'Configure two distinct Data Spaces to segregate streams and segments securely by region',
+      'Create a validation rule checking regional text parameters',
+      'Deploy separate junction objects to link data files'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Data Spaces segregate streams and profiles into secure, isolated zones, keeping regional datasets separated within a single org.'
+  },
+  {
+    id: 'dc-25',
+    text: 'A marketing team wants to track how value tiers change over time by recalculating historical loyalty trends every hour across millions of purchase rows. What tool fits this requirement?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'A formula field processing text rows',
+      'A Calculated Insight using batch SQL schedules to compute high-volume operational metrics',
+      'An Apex before-update database trigger handler',
+      'A screen flow calculating input values'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Calculated Insights use batch SQL processing to evaluate millions of data rows, making them ideal for high-volume metric trends.'
+  },
+  {
+    id: 'dc-26',
+    text: 'An analyst wants to isolate high-value customers who have spent over 500 dollars online and abandoned a shopping cart within the last 48 hours. What tool workspace should they use?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'The Data Cloud Ingestion wizard terminal',
+      'The Data Cloud Segmentation Canvas to visually combine behavioral events and profile filters',
+      'The schema builder layout connector workspace',
+      'The outbound workflow alert action manager'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'The Segmentation Canvas lets you combine profile criteria and behavioral events into targeted audiences using point-and-click filters.'
+  },
+  {
+    id: 'dc-27',
+    text: 'During a rule update, a data engineer notices that a profile attribute field is pulling wrong, stale values from an old lead source. They want to ensure active CRM fields take priority. What should they modify?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'The object validation rule exception string settings',
+      'The Source Priority settings inside the Identity Resolution Ruleset configuration',
+      'The global data space layout permissions rules',
+      'The calculated insights SQL grouping code rules'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Adjusting Source Priority lets you choose which system to trust first when resolving competing values for a unified field.'
+  },
+  {
+    id: 'dc-28',
+    text: 'A release manager needs to migrate a complex setup containing three data streams and five calculated insight maps from a staging sandbox into production. How should this be handled?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Manually enter the setups across production workspaces line-by-line',
+      'Use Data Cloud Packaging to bundle the stream mappings and insights into a standard metadata package for deployment via the Metadata API',
+      'Export the setups into CSV files using Data Loader templates',
+      'Deploy a custom LWC module to recreate data mappings programmatically'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Data Cloud Packaging lets you bundle streams, insights, and mappings into metadata packages for clean, trackable deployment.'
+  },
+  {
+    id: 'dc-29',
+    text: 'A data engineer notice that streaming data inputs are dropping values because event timestamps arriving from mobile channels are entirely omitted. Which layout fix must be applied to the pipeline?',
+    topic: 'Salesforce Data Cloud',
+    options: [
+      'Deactivate validation rules on core CRM tables',
+      'Configure the Event Time Field parameter correctly on the stream ingestion source definition to align dates',
+      'Deploy an Apex stateful batch class chunk array',
+      'Convert the target DMO relationships into Master-Detail dependencies'
+    ],
+    correctAnswer: 1,
+    difficulty: 'moderate',
+    explanation: 'Data Cloud streams require a valid Event Time field configuration to accurately align incoming transactions chronologically.'
   },
   {
     id: 'dc-30',
-    text: 'An architecture team wants to extract a finalized set of harmonized Data Model Objects and their associated data stream mapping settings from a staging sandbox into a production environment. What framework pattern handles this task?',
+    text: 'A company wants an real-time automation to fire an alert the exact second a user abandons a digital form layout. Calculated insights take hours to run. What tool should be added to the topology?',
     topic: 'Salesforce Data Cloud',
     options: [
-      'Run Data Import Wizard tasks sequentially using multiple profile accounts',
-      'Utilize Data Cloud Packaging features to capture configurations as deployable metadata packages compatible with the Salesforce Metadata API',
-      'Hardcode target text attributes into an internal utility class array',
-      'Deploy custom lightning web component modules to route fields manually'
+      'A scheduled path Record-Triggered Flow running nightly',
+      'A Streaming Insight configured to monitor event data window transitions in near-real-time',
+      'A DataRaptor Transform processing batch XML lists',
+      'An owner-based sharing rule override entry matrix'
     ],
     correctAnswer: 1,
-    difficulty: 'hard',
-    explanation: 'Data Cloud features native packaging support, allowing administrators to bundle custom mappings, streams, and data model extensions into standard metadata containers for version control and deployment.'
+    difficulty: 'moderate',
+    explanation: 'Streaming Insights process event streams instantly as they roll in, making them the correct choice to detect immediate real-time behaviors and trigger fast responses.'
   },
 
   {
     id: 'exp-1',
     text: 'What is the primary architectural purpose of a Custom URL Provider when configuring an Experience Cloud site infrastructure?',
-    topic: 'Experience Cloud Basics',
+    topic: 'Experience Cloud',
     options: [
-      'To increase the asset rendering performance profiles of local browser setups by 50%',
+      'To increase the asset rendering performance profiles of local browser setups by 50 percent',
       'To associate a branded, company-owned domain name with an Experience Cloud site while managing path routing securely',
       'To write automated Apex test classes for standard deployment metadata packages',
       'To replace traditional multi-factor authentication protocols completely'
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Custom URL configuration links vanity or company-owned domain domains (e.g., support.company.com) to Salesforce Experience Cloud sites, handling the secure routing of paths without displaying standard default force.com strings.'
+    explanation: 'Custom URL configurations link vanity or company-owned domains (like support.company.com) to Experience Cloud sites, handling path routing securely.'
   },
   {
     id: 'exp-2',
     text: 'Which standard Experience Cloud tool provides point-and-click layout editing, branding, page creation, and individual component placement capabilities for modern LWR sites?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'Salesforce App Manager Console',
       'Experience Builder',
@@ -4677,12 +4676,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Experience Builder is the central declarative workspace used to customize site pages, structure navigation choices, update themes, adjust styles, and drop visual components onto the page grid canvas.'
+    explanation: 'Experience Builder is the central declarative workspace used to customize site pages, themes, styles, and drop components onto layout grids.'
   },
   {
     id: 'exp-3',
     text: 'What is the function of an "Audience" definition when managing page components or navigation menus inside Experience Builder?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'To calculate average transaction processing speeds across active digital sites',
       'To dynamically control the visibility of pages or individual components based on criteria like user profile, location, record fields, or permissions',
@@ -4691,12 +4690,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Audiences drive personalization. Administrators can configure targeting criteria (such as account type or location) to tailor layouts, hiding or displaying components dynamically according to who is logged into the community.'
+    explanation: 'Audiences drive personalization, letting you tailor layouts by hiding or displaying components based on who is logged into the community.'
   },
   {
     id: 'exp-4',
     text: 'What is a core architectural difference between the Lightning Web Runtime (LWR) template framework and legacy Aura-based templates in Experience Cloud?',
-    topic: 'Creating a Build Your Own LWR',
+    topic: 'Experience Cloud',
     options: [
       'LWR templates require standard change sets to process data fields directly',
       'LWR is built for extreme performance, loading fewer core JavaScript resources and utilizing strict web standards to deliver faster page load speeds',
@@ -4705,12 +4704,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'LWR (Lightning Web Runtime) is Salesforce\'s high-performance framework. It strips away legacy Aura container overhead, loading fast and complying with native web components standards to improve page indexing and responsiveness.'
+    explanation: 'LWR strips away legacy container overhead, loading fast and complying with native web component standards to optimize responsiveness.'
   },
   {
     id: 'exp-5',
     text: 'Which Experience Cloud feature allows you to organize, categorize, and declare structured editorial articles or files, making them easily searchable and viewable by category groupings on a community site?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'Case Assignment Rule Entries',
       'Digital Experiences CMS (Content Management System) combined with Content Collections',
@@ -4719,12 +4718,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce CMS lets you draft, organize, and version digital assets (like blogs or banners), grouping them into Collections that can be surfaced declaratively on specific community site slots.'
+    explanation: 'Salesforce CMS lets you draft, organize, and version digital assets (like blogs or banners), grouping them into collections that surface on community pages.'
   },
   {
     id: 'exp-6',
     text: 'What represents a primary security enforcement difference between an internal standard Salesforce user Profile and a Customer Community Plus user Profile?',
-    topic: 'Security and Authentication',
+    topic: 'Experience Cloud',
     options: [
       'Customer Community Plus profiles are blocked from executing basic SOQL lookup queries',
       'Customer Community Plus profiles leverage external user licenses and specialized sharing sets or sharing rules to access records without exposing corporate employee roles',
@@ -4733,12 +4732,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Customer Community Plus licenses allow external contacts to act as authenticated site users. They utilize an external-facing security layer that handles record visibility via Sharing Sets or standard sharing rules without muddying internal hierarchies.'
+    explanation: 'Customer Community Plus licenses use an external-facing security layer that handles visibility via Sharing Sets or standard sharing rules without impacting internal hierarchies.'
   },
   {
     id: 'exp-7',
     text: 'What occurs when an administrator activates the "Self-Registration" feature under the Login & Registration settings panel of an Experience Cloud site?',
-    topic: 'Security and Authentication',
+    topic: 'Experience Cloud',
     options: [
       'The system immediately suspends administrative profiles to prevent unauthorized logins',
       'Visitors can fill out an on-screen form to automatically create a baseline Contact and User record in Salesforce, granting instant authenticated access to the community',
@@ -4747,12 +4746,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Self-Registration provides a guided sign-up interface. When a visitor submits their details, a handler script initializes corresponding Contact and User records matching a assigned community profile.'
+    explanation: 'Self-Registration provides a guided sign-up interface, launching a handler script to generate corresponding Contact and User records automatically.'
   },
   {
     id: 'exp-8',
     text: 'Which standard Experience Cloud license configuration should be selected to allow corporate partners to securely manage business pipelines, update Opportunity records, and register sales Leads?',
-    topic: 'Creating a Partner Community Site',
+    topic: 'Experience Cloud',
     options: [
       'Customer Community License',
       'Partner Community License',
@@ -4761,12 +4760,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Partner Community licenses grant advanced external CRM visibility, making standard revenue sObjects (like Leads, Opportunities, and Deals) accessible to distributors, brokers, or partners.'
+    explanation: 'Partner Community licenses grant advanced external CRM visibility, making standard revenue sObjects (like Leads and Opportunities) accessible to partners.'
   },
   {
     id: 'exp-9',
     text: 'What capability does a "Sharing Set" offer an administrator configuring visibility for baseline Customer Community license users?',
-    topic: 'Security and Authentication',
+    topic: 'Experience Cloud',
     options: [
       'An option to compress data volumes prior to metadata deployments',
       'A mechanism to grant record access by matching a field on the user\'s Contact or Account record to a field on the target record (e.g., matching AccountId)',
@@ -4775,12 +4774,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'High-volume Customer Community users do not utilize standard sharing rules or the role hierarchy. Instead, Sharing Sets map access natively by validating account or contact ID intersections across records.'
+    explanation: 'High-volume Customer Community users do not utilize standard sharing rules. Instead, Sharing Sets map access by validating account or contact ID intersections across records.'
   },
   {
     id: 'exp-10',
     text: 'What is the purpose of configuring "Reputation Levels" within a public-facing Experience Cloud community forum?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'To manage password expiration rules applied to profile definitions',
       'To drive customer engagement and track user participation by awarding points and level badges automatically when users post comments or answer questions',
@@ -4789,12 +4788,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Reputation tracking drives community gamification. Points accumulate based on user activity (like writing replies or receiving likes), translating to visible rank levels that build community trust.'
+    explanation: 'Reputation tracking drives community gamification, accumulating points based on activity to award trust badges and levels.'
   },
   {
     id: 'exp-11',
     text: 'Which declarative capability must be used to establish structural multi-language options on an Experience Cloud site so visitors can toggle the interface layout between English and Spanish?',
-    topic: 'Experience Cloud Basics',
+    topic: 'Experience Cloud',
     options: [
       'Apex Language Trigger Handler mapping',
       'Experience Builder Language Settings panel combined with translated text variables',
@@ -4803,12 +4802,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Experience Builder features native translation support. Adding target languages lets creators switch builder views to input alternative text strings or export properties for localization packages.'
+    explanation: 'Experience Builder features native translation support, letting creators input alternative text strings or export packages for localization.'
   },
   {
     id: 'exp-12',
     text: 'What does the "Publish" action button accomplish inside the Experience Builder workspace canvas?',
-    topic: 'Experience Cloud Basics',
+    topic: 'Experience Cloud',
     options: [
       'It backs up the active sandbox metadata to a source control repository branch',
       'It takes all staged design updates, theme variations, and component modifications and pushes them live to the public-facing production site server',
@@ -4817,12 +4816,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Edits in Experience Builder stay in a safe preview sandbox state until you click Publish, which compiles and deploys the adjustments live to active visitors.'
+    explanation: 'Edits in Experience Builder stay in a safe preview sandbox state until you click Publish, which compiles and deploys the updates live to active visitors.'
   },
   {
     id: 'exp-13',
     text: 'Universal Containers wants to embed a real-time tracking dashboard containing custom layout tables and complex UI animation frameworks inside their new LWR partner community site. What component path matches this request?',
-    topic: 'Creating a Build Your Own LWR',
+    topic: 'Experience Cloud',
     options: [
       'Write a series of standard cross-object validation rules matching text lines',
       'Develop a custom Lightning Web Component (LWC) that complies with LWR architecture guidelines and drag it onto the page layout slot inside Experience Builder',
@@ -4831,12 +4830,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'LWR sites accept custom Lightning Web Components seamlessly. This allows developers to build tailored UI experiences, responsive charts, or custom logic frames, then expose them to Experience Builder.'
+    explanation: 'LWR sites accept custom LWCs seamlessly, allowing developers to build tailored UI experiences and expose them declaratively in Experience Builder.'
   },
   {
     id: 'exp-14',
     text: 'A business observes that when unauthenticated visitors land on their public knowledge base page, standard article detail components show a "Record Not Found" error statement. How should the administrator correct this access block?',
-    topic: 'Security and Authentication',
+    topic: 'Experience Cloud',
     options: [
       'Set the core CRM account organization-wide sharing defaults to Public Read/Write status',
       'Verify that the Guest User Profile associated with the Experience Cloud site has appropriate Object Read permissions and that the corresponding data files are marked for public visibility',
@@ -4845,12 +4844,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Unauthenticated site visitors view pages via a hidden Guest User Profile. If objects are missing permissions or structural sharing criteria on that profile, public components will render blank errors.'
+    explanation: 'Unauthenticated site visitors view pages via a Guest User Profile. Object permissions must be opened on this profile to surface data to the public.'
   },
   {
     id: 'exp-15',
     text: 'A developer needs to build an interactive order form page for an Experience Cloud portal. The form should safely handle complex multi-step data entry loops and pass confirmation details to downstream tables declartively. What tool should be integrated into the page canvas?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'A formula field processing text codes',
       'An active Screen Flow dropped directly onto the Experience Builder page canvas via the standard Flow component',
@@ -4859,12 +4858,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Screen Flows embed cleanly inside Experience Cloud pages. This provides a declarative way to collect user data, execute conditional branching screens, and save records without writing code.'
+    explanation: 'Screen Flows embed cleanly inside Experience Cloud pages, providing a declarative way to collect multi-step data entries without writing code.'
   },
   {
     id: 'exp-16',
     text: 'During testing of a new portal deployment, a user captures an administrative alert stating that navigation links are unresponsive. Upon inspection, the link maps to a newly created page that hasn\'t been deployed. How should the administrator fix this link failure?',
-    topic: 'Experience Cloud Basics',
+    topic: 'Experience Cloud',
     options: [
       'Deactivate the site profiles before performing deployment changes',
       'Ensure the newly created target page visibility settings are configured correctly and click "Publish" inside Experience Builder to push page parameters live',
@@ -4873,12 +4872,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'New community pages or structural layout switches remain completely hidden from active users until a formal Publish step updates the live site directory framework.'
+    explanation: 'New community pages or structural layout switches remain hidden from active users until a formal Publish step updates the live site directory framework.'
   },
   {
     id: 'exp-17',
     text: 'A company wants to introduce a security policy where all community portal members must complete a reCAPTCHA step during the self-registration process to block bot traffic. Where should this configuration be managed?',
-    topic: 'Security and Authentication',
+    topic: 'Experience Cloud',
     options: [
       'Inside the data loader upsert parameter checklist',
       'Under the Security settings within the Experience Cloud Administration workspace, enabling reCAPTCHA options for registration routes',
@@ -4887,12 +4886,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce Experience Cloud provides built-in reCAPTCHA integrations under the Administration workspace settings, securing registration and login paths against automated abuse.'
+    explanation: 'Salesforce Experience Cloud provides built-in reCAPTCHA integrations under the Administration workspace settings to secure registration paths.'
   },
   {
     id: 'exp-18',
     text: 'A financial portal requires different navigation menu blocks to display depending on the user\'s Tier status (Gold partners vs Silver partners). Which tool path executes this structural adjustment cleanly?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'Build a background script to sweep corporate database records hourly',
       'Create personalized Navigation Menus inside the Experience Builder, and use Audience Targeting rules to map them to corresponding partner tiers',
@@ -4901,12 +4900,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Experience Builder allows you to construct multiple navigation menu records. You can then apply Audience criteria to dynamically swap these menus based on user variables like tier or role.'
+    explanation: 'Experience Builder allows you to construct multiple navigation menus, applying Audience criteria to swap them dynamically based on user tier variables.'
   },
   {
     id: 'exp-19',
     text: 'You have written a custom CSS theme modification that displays perfectly inside the preview window of Experience Builder, but looks completely broken when viewed by an active site visitor. How should the developer optimize the layout deployment?',
-    topic: 'Creating a Build Your Own LWR',
+    topic: 'Experience Cloud',
     options: [
       'Universally restrict styling files to small monochrome images',
       'Verify that Lightning Web Security (LWS) or Content Security Policy (CSP) configurations aren\'t blocking external style sheet URLs, and confirm the site has been successfully published',
@@ -4915,12 +4914,12 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Strict Content Security Policy (CSP) security rules block scripts or CSS files coming from unauthorized outside domains. Whitelisting the secure domain targets in the site settings resolves rendering issues.'
+    explanation: 'Strict Content Security Policy (CSP) rules block scripts or CSS files coming from unauthorized outside domains until they are whitelisted in site settings.'
   },
   {
     id: 'exp-20',
     text: 'An operations team wants to monitor community traffic engagement patterns, such as identifying the most viewed articles or active discussion forums. Which tool displays these specific analytics dashboards?',
-    topic: 'Creating a Customer Community Site',
+    topic: 'Experience Cloud',
     options: [
       'Data Loader logs extracting CSV file tables',
       'The Experience Cloud Dashboards package installed via AppExchange into the Experience Management / Administration workspace',
@@ -4929,7 +4928,7 @@ const QUESTIONS: ExamQuestion[] = [
     ],
     correctAnswer: 1,
     difficulty: 'moderate',
-    explanation: 'Salesforce provides pre-built Experience Cloud Dashboards packages. Installing them lets administrators monitor page engagement, track active members, and inspect portal health directly from the community workspace.'
+    explanation: 'The Salesforce pre-built Experience Cloud Dashboards package tracks site health, page views, and user engagement parameters directly in the community workspace.'
   }
 
 ]
@@ -4992,7 +4991,7 @@ export function getRandomExamQuestions(count: number = 50): ExamQuestion[] {
 export function getBalancedExamQuestions(count: number = 50): ExamQuestion[] {
   // Get all available topics from the questions
   const topicCounts: Record<string, ExamQuestion[]> = {}
-  
+
   // Group questions by topic
   QUESTIONS.forEach(question => {
     if (!topicCounts[question.topic]) {
@@ -5000,49 +4999,49 @@ export function getBalancedExamQuestions(count: number = 50): ExamQuestion[] {
     }
     topicCounts[question.topic].push(question)
   })
-  
+
   const availableTopics = Object.keys(topicCounts)
   const questionsPerTopic = Math.floor(count / availableTopics.length)
   const remainder = count % availableTopics.length
-  
+
   const selectedQuestions: ExamQuestion[] = []
-  
+
   // Get questions from each topic
   availableTopics.forEach((topic, index) => {
     const topicQuestions = topicCounts[topic]
-    
+
     // Shuffle questions for this topic
     const shuffled = [...topicQuestions]
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
     }
-    
+
     // Calculate how many questions to take from this topic
     const questionsToTake = questionsPerTopic + (index < remainder ? 1 : 0)
-    
+
     // Take the calculated number of questions (or all available if less)
     selectedQuestions.push(...shuffled.slice(0, Math.min(questionsToTake, shuffled.length)))
   })
-  
+
   // If we don't have exactly the count requested, add more questions
   while (selectedQuestions.length < count) {
     const usedQuestionIds = new Set(selectedQuestions.map(q => q.id))
     const remainingQuestions = QUESTIONS.filter(q => !usedQuestionIds.has(q.id))
-    
+
     if (remainingQuestions.length === 0) break // No more questions available
-    
+
     // Randomly pick from remaining questions
     const randomIndex = Math.floor(Math.random() * remainingQuestions.length)
     selectedQuestions.push(remainingQuestions[randomIndex])
   }
-  
+
   // Final shuffle of all selected questions
   for (let i = selectedQuestions.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [selectedQuestions[i], selectedQuestions[j]] = [selectedQuestions[j], selectedQuestions[i]]
   }
-  
+
   // Return exactly the requested count
   return selectedQuestions.slice(0, count)
 }
