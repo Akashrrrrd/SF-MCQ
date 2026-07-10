@@ -83,9 +83,9 @@ export function ExamPage() {
         </div>
       </div>
 
-      {/* Main Content - Mobile Optimized */}
-      <main className="flex-1 overflow-y-auto pb-safe">
-        <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 lg:py-12">
+      {/* Main Content - Compact Layout */}
+      <main className="flex-1 flex flex-col">
+        <div className="max-w-4xl mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-6 flex-1">
           <QuestionDisplay
             question={currentQuestion}
             questionNumber={session.currentQuestionIndex + 1}
@@ -94,29 +94,29 @@ export function ExamPage() {
             onTimeUp={handleTimeUp}
           />
         </div>
-      </main>
 
-      {/* Mobile-Friendly Bottom Navigation */}
-      <div className="bg-background border-t border-border p-3 sm:p-6 lg:p-8 pb-safe">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
-          <button
-            onClick={handleBack}
-            disabled={session.currentQuestionIndex === 0}
-            className="flex-1 sm:flex-none px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 rounded-md text-foreground hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm border border-border bg-background"
-          >
-            ← Back
-          </button>
-          
-          {!isLastQuestion && (
+        {/* Navigation Buttons - Moved Up */}
+        <div className="bg-background border-t border-border p-3 sm:p-4">
+          <div className="max-w-4xl mx-auto flex items-center justify-between gap-3 sm:gap-4">
             <button
-              onClick={handleNext}
-              className="flex-1 sm:flex-none px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm transition-colors"
+              onClick={handleBack}
+              disabled={session.currentQuestionIndex === 0}
+              className="flex-1 sm:flex-none px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 rounded-md text-foreground hover:text-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium text-sm border border-border bg-background"
             >
-              Next →
+              ← Back
             </button>
-          )}
+            
+            {!isLastQuestion && (
+              <button
+                onClick={handleNext}
+                className="flex-1 sm:flex-none px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-sm transition-colors"
+              >
+                Next →
+              </button>
+            )}
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   )
 }
