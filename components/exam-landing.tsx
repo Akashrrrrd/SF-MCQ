@@ -6,7 +6,7 @@ export function ExamLanding() {
   const { startExam } = useExam()
 
   return (
-    <div className="min-h-screen bg-background flex flex-col justify-start items-center p-4 pt-8 sm:pt-12">
+    <div className="min-h-screen bg-background flex items-center justify-center p-4 sm:p-6">
       <div className="w-full max-w-lg sm:max-w-2xl space-y-6 sm:space-y-8">
         {/* Header - Clean and Professional */}
         <div className="text-center space-y-4 sm:space-y-6">
