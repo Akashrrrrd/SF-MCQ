@@ -4900,16 +4900,17 @@ const QUESTIONS: ExamQuestion[] = [
   },
   {
     id: 'dumps-350',
-    text: 'We have fully cataloged and processed all questions from all three source documents (**CPQ-1.pdf**, **CPQ-2.pdf**, and **CPQ-3.pdf**), covering the complete Salesforce CPQ and Vlocity Platform Developer scope across **350 total unique questions**! How would you like to proceed with your project next?',
-    topic: 'Project Summary',
+    text: 'In Vlocity Integration Procedures, which element is used to execute a DataRaptor Load action to write data back to Salesforce database objects?',
+    topic: 'Vlocity Platform',
     options: [
-      'Export or format questions into another specific structure or file layout',
-      'Review specific topics or dive deeper into explanations',
-      'Wrap up the practice dataset generation'
+      'DataRaptor Post Action',
+      'DataRaptor Extract Action',
+      'HTTP Action',
+      'Remote Action'
     ],
     correctAnswer: 0,
     difficulty: 'moderate',
-    explanation: 'This final item summarizes our complete coverage of all three provided document sets.'
+    explanation: 'DataRaptor Post Actions are used within Integration Procedures to invoke DataRaptor Loads that insert or update Salesforce records.'
   }
 
 ]
