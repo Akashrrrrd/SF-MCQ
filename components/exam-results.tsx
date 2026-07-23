@@ -1,7 +1,7 @@
 'use client'
 
 import { ExamResult } from '@/lib/types'
-import { CheckCircle2, XCircle, BarChart3, Clock } from 'lucide-react'
+import { CheckCircle2, XCircle } from 'lucide-react'
 
 interface ExamResultsProps {
   result: ExamResult
@@ -9,9 +9,6 @@ interface ExamResultsProps {
 }
 
 export function ExamResults({ result, onReset }: ExamResultsProps) {
-  const passingScore = 30; // Need 30 out of 50 to pass
-  const totalQuestions = 50;
-  
   const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60)
     const secs = seconds % 60
@@ -102,91 +99,97 @@ export function ExamResults({ result, onReset }: ExamResultsProps) {
           )}
         </div>
 
-        {/* Topic Breakdown */}
-        <div className="bg-card border border-border rounded-lg p-6 space-y-4">
-          <h2 className="text-lg font-semibold text-foreground">Topic Performance</h2>
-          <div className="space-y-4">
-            {Object.entries(result.topicBreakdown)
-              .filter(([topic, stats]) => stats.total > 0) // Only show topics with questions
-              .map(([topic, stats]) => {
-              const percentage = Math.round((stats.correct / stats.total) * 100)
-              return (
-                <div key={topic} className="space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="font-medium text-foreground">{topic}</span>
-                    <span className="text-sm text-muted-foreground">
-                      {stats.correct}/{stats.total}
-                    </span>
-                  </div>
-                  <div className="w-full h-2 bg-muted rounded-full overflow-hidden">
-                    <div
-                      className={`h-full transition-all duration-500 ${
-                        percentage >= 70 ? 'bg-green-500' : 'bg-amber-500'
-                      }`}
-                      style={{ width: `${percentage}%` }}
-                    />
-                  </div>
-                  <div className="text-xs text-muted-foreground text-right">{percentage}%</div>
-                </div>
-              )
-            })}
-          </div>
-        </div>
 
-        {/* Detailed Review Section */}
+
+        {/* Detailed Review Section - All Questions with Complete Details */}
         <div className="bg-card border border-border rounded-lg p-4 sm:p-6 space-y-4">
-          <h2 className="text-base sm:text-lg font-semibold text-foreground">Question Review</h2>
-          <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-base sm:text-lg font-semibold text-foreground">Question Review - All 50 Questions</h2>
+          <div className="space-y-6">
             {result.answers.map((answer, index) => {
               const question = answer.question
+              const isUnanswered = answer.selected === null
               return (
-                <div key={answer.questionId} className="border-b border-border last:border-b-0 pb-4 last:pb-0">
-                  <div className="space-y-3">
-                    {/* Question Header */}
-                    <div className="space-y-2 sm:space-y-0 sm:flex sm:items-start sm:justify-between sm:gap-4">
-                      <h3 className="font-medium text-foreground text-sm sm:text-base leading-relaxed">
-                        Question {index + 1}: {question.text}
-                      </h3>
-                      <div className={`flex-shrink-0 px-2 py-1 rounded text-xs font-medium w-fit ${
-                        answer.isCorrect 
-                          ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
-                          : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
-                      }`}>
-                        {answer.isCorrect ? 'Correct' : 'Incorrect'}
-                      </div>
+                <div key={answer.questionId} className="border-b border-border last:border-b-0 pb-6 last:pb-0">
+                  {/* Question Number and Status */}
+                  <div className="flex items-start justify-between gap-4 mb-3">
+                    <span className="font-semibold text-foreground text-sm">Q{index + 1}</span>
+                    <div className={`px-3 py-1 rounded text-xs font-medium ${
+                      answer.isCorrect 
+                        ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' 
+                        : 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                    }`}>
+                      {answer.isCorrect ? '✓ Correct' : isUnanswered ? '✗ Unanswered' : '✗ Wrong'}
                     </div>
-                    
-                    {/* Answer Details */}
-                    <div className="space-y-2 text-xs sm:text-sm">
-                      <div className="bg-muted/30 rounded-md p-2 sm:p-3">
-                        <span className="font-medium text-muted-foreground block sm:inline">Your Answer: </span>
-                        <span className={`block sm:inline mt-1 sm:mt-0 ${answer.isCorrect ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                          {answer.selected !== null 
-                            ? `${String.fromCharCode(65 + answer.selected)}) ${question.options[answer.selected]}`
-                            : 'No answer selected'
-                          }
-                        </span>
-                      </div>
-                      {!answer.isCorrect && (
-                        <div className="bg-muted/30 rounded-md p-2 sm:p-3">
-                          <span className="font-medium text-muted-foreground block sm:inline">Correct Answer: </span>
-                          <span className="text-green-600 dark:text-green-400 block sm:inline mt-1 sm:mt-0">
-                            {String.fromCharCode(65 + answer.correct)}) {question.options[answer.correct]}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* Explanation */}
-                    {question.explanation && (
-                      <div className="bg-muted/30 border border-muted rounded-md p-3 mt-2">
-                        <p className="text-xs sm:text-sm text-foreground leading-relaxed">
-                          <span className="font-medium text-muted-foreground">Explanation: </span>
-                          {question.explanation}
-                        </p>
-                      </div>
-                    )}
                   </div>
+
+                  {/* Question Text */}
+                  <div className="mb-4 pb-4 border-b border-border/30">
+                    <p className="text-sm sm:text-base text-foreground leading-relaxed">
+                      {question.text}
+                    </p>
+                  </div>
+
+                  {/* All Options */}
+                  <div className="mb-4 space-y-2">
+                    <p className="text-xs font-medium text-muted-foreground mb-3">Options:</p>
+                    {question.options.map((option, optIndex) => (
+                      <div
+                        key={optIndex}
+                        className={`p-2 rounded text-xs sm:text-sm ${
+                          optIndex === answer.selected
+                            ? 'bg-red-100/50 dark:bg-red-900/20 border border-red-300 dark:border-red-700'
+                            : optIndex === answer.correct
+                            ? 'bg-green-100/50 dark:bg-green-900/20 border border-green-300 dark:border-green-700'
+                            : 'bg-muted/20'
+                        }`}
+                      >
+                        <span className="font-medium">{String.fromCharCode(65 + optIndex)})</span> {option}
+                        {optIndex === answer.selected && answer.selected !== answer.correct && (
+                          <span className="ml-2 text-red-600 dark:text-red-400 font-medium">(Your Answer)</span>
+                        )}
+                        {optIndex === answer.correct && (
+                          <span className="ml-2 text-green-600 dark:text-green-400 font-medium">(Correct Answer)</span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Your Answer Summary */}
+                  <div className="mb-4 p-3 bg-muted/20 rounded">
+                    <p className="text-xs font-medium text-muted-foreground mb-2">Your Answer:</p>
+                    <p className={`text-sm ${
+                      answer.isCorrect 
+                        ? 'text-green-600 dark:text-green-400' 
+                        : isUnanswered
+                        ? 'text-red-600 dark:text-red-400 font-medium'
+                        : 'text-red-600 dark:text-red-400'
+                    }`}>
+                      {answer.selected !== null 
+                        ? `${String.fromCharCode(65 + answer.selected)}) ${question.options[answer.selected]}`
+                        : '(Not Answered - Counted as Wrong)'
+                      }
+                    </p>
+                  </div>
+
+                  {/* Correct Answer (always show for wrong/unanswered) */}
+                  {!answer.isCorrect && (
+                    <div className="mb-4 p-3 bg-green-100/20 dark:bg-green-900/20 rounded border border-green-300/30 dark:border-green-700/30">
+                      <p className="text-xs font-medium text-muted-foreground mb-2">Correct Answer:</p>
+                      <p className="text-sm text-green-600 dark:text-green-400 font-medium">
+                        {String.fromCharCode(65 + answer.correct)}) {question.options[answer.correct]}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Explanation */}
+                  {question.explanation && (
+                    <div className="p-3 bg-muted/20 rounded">
+                      <p className="text-xs font-medium text-muted-foreground mb-2">Explanation:</p>
+                      <p className="text-xs sm:text-sm text-foreground leading-relaxed">
+                        {question.explanation}
+                      </p>
+                    </div>
+                  )}
                 </div>
               )
             })}

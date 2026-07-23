@@ -8,7 +8,7 @@ interface ExamTimerProps {
   onTimeUp: () => void
 }
 
-const TOTAL_TIME_MINUTES = 75
+const TOTAL_TIME_MINUTES = 60
 const TOTAL_TIME_SECONDS = TOTAL_TIME_MINUTES * 60
 
 export function ExamTimer({ startedAt, onTimeUp }: ExamTimerProps) {

@@ -1,13 +1,15 @@
 'use client'
 
-import React, { createContext, useContext, useReducer, useCallback, ReactNode } from 'react'
+import { createContext, useContext, useReducer, useCallback, ReactNode } from 'react'
 import { ExamQuestion, ExamSession, ExamResult } from './types'
-import { getBalancedExamQuestions } from './questions'
+import { getUniqueExamSet } from './questions'
 
 interface ExamContextType {
   questions: ExamQuestion[]
   session: ExamSession | null
   result: ExamResult | null
+  selectedSet: number | null
+  setSelectedSet: (setNumber: number) => void
   startExam: () => void
   selectAnswer: (questionId: string, answerIndex: number) => void
   toggleFlag: (questionId: string) => void
@@ -22,6 +24,7 @@ interface ExamState {
   questions: ExamQuestion[]
   session: ExamSession | null
   result: ExamResult | null
+  selectedSet: number | null
 }
 
 type ExamAction =
@@ -31,6 +34,7 @@ type ExamAction =
   | { type: 'GO_TO_QUESTION'; index: number }
   | { type: 'SUBMIT_EXAM'; result: ExamResult }
   | { type: 'RESET_EXAM' }
+  | { type: 'SET_SELECTED_SET'; setNumber: number }
 
 function examReducer(state: ExamState, action: ExamAction): ExamState {
   switch (action.type) {
@@ -100,6 +104,13 @@ function examReducer(state: ExamState, action: ExamAction): ExamState {
         questions: [],
         session: null,
         result: null,
+        selectedSet: null,
+      }
+    }
+    case 'SET_SELECTED_SET': {
+      return {
+        ...state,
+        selectedSet: action.setNumber,
       }
     }
     default:
@@ -112,12 +123,17 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     questions: [],
     session: null,
     result: null,
+    selectedSet: null,
   })
 
   const startExam = useCallback(() => {
-    const questions = getBalancedExamQuestions(50) // 50 questions balanced across ALL topics
+    if (state.selectedSet === null) {
+      console.warn('No set selected')
+      return
+    }
+    const questions = getUniqueExamSet(state.selectedSet)
     dispatch({ type: 'START_EXAM', questions })
-  }, [])
+  }, [state.selectedSet])
 
   const selectAnswer = useCallback((questionId: string, answerIndex: number) => {
     dispatch({ type: 'SELECT_ANSWER', questionId, answerIndex })
@@ -209,10 +225,16 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'RESET_EXAM' })
   }, [])
 
+  const setSelectedSet = useCallback((setNumber: number) => {
+    dispatch({ type: 'SET_SELECTED_SET', setNumber })
+  }, [])
+
   const value: ExamContextType = {
     questions: state.questions,
     session: state.session,
     result: state.result,
+    selectedSet: state.selectedSet,
+    setSelectedSet,
     startExam,
     selectAnswer,
     toggleFlag,
