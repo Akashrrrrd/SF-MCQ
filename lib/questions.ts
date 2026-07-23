@@ -3872,7 +3872,7 @@ const QUESTIONS: ExamQuestion[] = [
       'A Lookup Action',
       'A DataRaptor Post Action'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 4],
     difficulty: 'moderate',
     explanation: 'DataRaptor Extract Actions and Lookup Actions are specifically built to pull data directly from Salesforce objects[cite: 3].'
   },
@@ -4026,7 +4026,7 @@ const QUESTIONS: ExamQuestion[] = [
       'They can represent ranges.',
       'They must be unique'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2, 3],
     difficulty: 'hard',
     explanation: 'Calculation matrices can handle value combinations, support range boundaries, and evaluate matrix routing rules[cite: 3].'
   },
@@ -4040,7 +4040,7 @@ const QUESTIONS: ExamQuestion[] = [
       'In the DataRaptor Extract Action, the Input Parameters Data Source is misspelled.',
       'There is no active version of the OmniScript.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 3],
     difficulty: 'hard',
     explanation: 'Failing to pass the correct RecordId through card state action configurations prevents pre-populated records from loading[cite: 3].'
   },
@@ -4068,7 +4068,7 @@ const QUESTIONS: ExamQuestion[] = [
       'In the DataRaptor Load, in the preview tab, the RecordId is from the wrong record type.',
       'The fields that are not updated are read only in Salesforce.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Mismatched JSON paths between OmniScript structures and DataRaptor Load definitions lead to partial or missing field updates[cite: 3].'
   },
@@ -4082,7 +4082,7 @@ const QUESTIONS: ExamQuestion[] = [
       'The missing data is trimmed in the Integration Procedure Action Response JSON Path.',
       'The JSON sent from the Integration Procedure Action does not match any of the Original Input.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Key naming discrepancies between integration procedure responses and OmniScript element bindings result in dropped field values[cite: 3].'
   },
@@ -4096,7 +4096,7 @@ const QUESTIONS: ExamQuestion[] = [
       'The RecordId in the layout\'s Test Data Source Settings is for the wrong record type.',
       'There is no Salesforce record for the card based on the RecordId in the layout\'s Test Data Source Settings.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [2, 3],
     difficulty: 'hard',
     explanation: 'Invalid test record IDs configured at layout data source settings break design-time card previews[cite: 3].'
   },
@@ -4138,7 +4138,7 @@ const QUESTIONS: ExamQuestion[] = [
       'AVG',
       'ABS'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'moderate',
     explanation: 'Aggregation steps support statistical and mathematical functions such as MAX and AVG to summarize datasets[cite: 3].'
   },
@@ -4152,7 +4152,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Review Action',
       'Done Action'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 3],
     difficulty: 'hard',
     explanation: 'Navigate Actions and Done Actions explicitly route user sessions away from the current OmniScript container[cite: 3].'
   },
@@ -4222,7 +4222,7 @@ const QUESTIONS: ExamQuestion[] = [
       'It can read and write data to Salesforce and external APIs in a single transaction.',
       'It can only be invoked from within an OmniScript.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Integration Procedures execute entirely on the server-side for high performance and can handle multiple data sources and writes in a single unified transaction.'
   },
@@ -4418,7 +4418,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Apex Remote',
       'Hardcoded CSV file'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'FlexCards support multiple data sources natively, including Integration Procedures and Apex Remote methods.'
   },
@@ -4600,7 +4600,7 @@ const QUESTIONS: ExamQuestion[] = [
       'DataRaptor Extract Action',
       'HTTP Action'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 1],
     difficulty: 'hard',
     explanation: 'Calculation Actions and Matrix Actions are the dedicated integration procedure elements used to execute calculation procedures and matrices.'
   },
