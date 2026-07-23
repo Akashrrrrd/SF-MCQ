@@ -129,57 +129,78 @@ export function ExamResults({ result, onReset }: ExamResultsProps) {
                     </p>
                   </div>
 
-                  {/* All Options */}
-                  <div className="mb-4 space-y-2">
-                    <p className="text-xs font-medium text-muted-foreground mb-3">Options:</p>
-                    {question.options.map((option, optIndex) => (
-                      <div
-                        key={optIndex}
-                        className={`p-2 rounded text-xs sm:text-sm ${
-                          optIndex === answer.selected
-                            ? 'bg-red-100/50 dark:bg-red-900/20 border border-red-300 dark:border-red-700'
-                            : optIndex === answer.correct
-                            ? 'bg-green-100/50 dark:bg-green-900/20 border border-green-300 dark:border-green-700'
-                            : 'bg-muted/20'
-                        }`}
-                      >
-                        <span className="font-medium">{String.fromCharCode(65 + optIndex)})</span> {option}
-                        {optIndex === answer.selected && answer.selected !== answer.correct && (
-                          <span className="ml-2 text-red-600 dark:text-red-400 font-medium">(Your Answer)</span>
-                        )}
-                        {optIndex === answer.correct && (
-                          <span className="ml-2 text-green-600 dark:text-green-400 font-medium">(Correct Answer)</span>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+                  {/* Helper to check if correct answer is array */}
+                  {(() => {
+                    const correctAnswers = Array.isArray(answer.correct) ? answer.correct : [answer.correct]
+                    const selectedAnswers = Array.isArray(answer.selected) ? answer.selected : (answer.selected !== null ? [answer.selected] : [])
+                    const isMultiAnswer = Array.isArray(answer.correct)
+                    
+                    return (
+                      <>
+                        {/* All Options */}
+                        <div className="mb-4 space-y-2">
+                          <p className="text-xs font-medium text-muted-foreground mb-3">Options:</p>
+                          {question.options.map((option, optIndex) => {
+                            const isYourAnswer = selectedAnswers.includes(optIndex)
+                            const isCorrectAnswer = correctAnswers.includes(optIndex)
+                            
+                            return (
+                              <div
+                                key={optIndex}
+                                className={`p-2 rounded text-xs sm:text-sm ${
+                                  isYourAnswer && !isCorrectAnswer
+                                    ? 'bg-red-100/50 dark:bg-red-900/20 border border-red-300 dark:border-red-700'
+                                    : isCorrectAnswer
+                                    ? 'bg-green-100/50 dark:bg-green-900/20 border border-green-300 dark:border-green-700'
+                                    : 'bg-muted/20'
+                                }`}
+                              >
+                                <span className="font-medium">{String.fromCharCode(65 + optIndex)})</span> {option}
+                                {isYourAnswer && !isCorrectAnswer && (
+                                  <span className="ml-2 text-red-600 dark:text-red-400 font-medium">(Your Answer)</span>
+                                )}
+                                {isCorrectAnswer && (
+                                  <span className="ml-2 text-green-600 dark:text-green-400 font-medium">(Correct Answer{isMultiAnswer ? 's' : ''})</span>
+                                )}
+                              </div>
+                            )
+                          })}
+                        </div>
 
-                  {/* Your Answer Summary */}
-                  <div className="mb-4 p-3 bg-muted/20 rounded">
-                    <p className="text-xs font-medium text-muted-foreground mb-2">Your Answer:</p>
-                    <p className={`text-sm ${
-                      answer.isCorrect 
-                        ? 'text-green-600 dark:text-green-400' 
-                        : isUnanswered
-                        ? 'text-red-600 dark:text-red-400 font-medium'
-                        : 'text-red-600 dark:text-red-400'
-                    }`}>
-                      {answer.selected !== null 
-                        ? `${String.fromCharCode(65 + answer.selected)}) ${question.options[answer.selected]}`
-                        : '(Not Answered - Counted as Wrong)'
-                      }
-                    </p>
-                  </div>
+                        {/* Your Answer Summary */}
+                        <div className="mb-4 p-3 bg-muted/20 rounded">
+                          <p className="text-xs font-medium text-muted-foreground mb-2">Your Answer:</p>
+                          <p className={`text-sm ${
+                            answer.isCorrect 
+                              ? 'text-green-600 dark:text-green-400' 
+                              : isUnanswered
+                              ? 'text-red-600 dark:text-red-400 font-medium'
+                              : 'text-red-600 dark:text-red-400'
+                          }`}>
+                            {answer.selected !== null 
+                              ? isMultiAnswer
+                                ? selectedAnswers.map(idx => `${String.fromCharCode(65 + idx)}) ${question.options[idx]}`).join(', ')
+                                : `${String.fromCharCode(65 + answer.selected)}) ${question.options[answer.selected]}`
+                              : '(Not Answered - Counted as Wrong)'
+                            }
+                          </p>
+                        </div>
 
-                  {/* Correct Answer (always show for wrong/unanswered) */}
-                  {!answer.isCorrect && (
-                    <div className="mb-4 p-3 bg-green-100/20 dark:bg-green-900/20 rounded border border-green-300/30 dark:border-green-700/30">
-                      <p className="text-xs font-medium text-muted-foreground mb-2">Correct Answer:</p>
-                      <p className="text-sm text-green-600 dark:text-green-400 font-medium">
-                        {String.fromCharCode(65 + answer.correct)}) {question.options[answer.correct]}
-                      </p>
-                    </div>
-                  )}
+                        {/* Correct Answer (always show for wrong/unanswered) */}
+                        {!answer.isCorrect && (
+                          <div className="mb-4 p-3 bg-green-100/20 dark:bg-green-900/20 rounded border border-green-300/30 dark:border-green-700/30">
+                            <p className="text-xs font-medium text-muted-foreground mb-2">Correct Answer{isMultiAnswer ? 's' : ''}:</p>
+                            <p className="text-sm text-green-600 dark:text-green-400 font-medium">
+                              {isMultiAnswer
+                                ? correctAnswers.map(idx => `${String.fromCharCode(65 + idx)}) ${question.options[idx]}`).join(', ')
+                                : `${String.fromCharCode(65 + answer.correct)}) ${question.options[answer.correct]}`
+                              }
+                            </p>
+                          </div>
+                        )}
+                      </>
+                    )
+                  })()}
 
                   {/* Explanation */}
                   {question.explanation && (

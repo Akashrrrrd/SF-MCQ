@@ -1,0 +1,765 @@
+[
+  {
+    "index": 1,
+    "id": "dumps-1",
+    "text": "Which two objects could a discount schedule be applied to and take precedence ov",
+    "currentAnswer": 1,
+    "currentOption": "Product Option",
+    "explanation": "Discount schedules applied at the Product Option and Contracted Price levels take precedence over schedules defined on features[cite: 1, 2].",
+    "options": [
+      "Product",
+      "Product Option",
+      "Contracted Price",
+      "Segmented Product"
+    ]
+  },
+  {
+    "index": 2,
+    "id": "dumps-20",
+    "text": "A User at Universal Containers has created a Quote with two Products. Product A ",
+    "currentAnswer": 1,
+    "currentOption": "One Subscription record and two Asset records will be created.",
+    "explanation": "Depending on whether asset conversion is bundled per quote line or per unit, contract generation results in specific corresponding asset and subscript",
+    "options": [
+      "Two Subscription records and two Assets records will be created.",
+      "One Subscription record and two Asset records will be created.",
+      "One Subscription record and an Asset record will be created.",
+      "Two Subscription records and an Asset record will be created."
+    ]
+  },
+  {
+    "index": 3,
+    "id": "dumps-25",
+    "text": "Universal Containers wants its users to be able to apply Additional Discounts in",
+    "currentAnswer": 1,
+    "currentOption": "Add Additional Disc. (%) to the Line Editor Field Set on the Quote object.",
+    "explanation": "To surface additional discounts at both quote and group levels, the fields must be added to the respective Line Editor field sets on the Quote and Quo",
+    "options": [
+      "Add Additional Disc. to the Line Editor Field set on the Quote Line object.",
+      "Add Additional Disc. (%) to the Line Editor Field Set on the Quote object.",
+      "Add Additional Disc. (%) to the Line Editor Field Set on the Quote Line Group object.",
+      "Add Additional Disc. to the Segmented Line Editor Field Set on the Quote Line object."
+    ]
+  },
+  {
+    "index": 4,
+    "id": "dumps-28",
+    "text": "Which three CPQ pricing functionalities contribute to Regular Price during the p",
+    "currentAnswer": 0,
+    "currentOption": "Additional Discount Fields",
+    "explanation": "Contracted pricing, proration multipliers, and discount schedules form the core calculation path leading up to the Regular Price tier[cite: 2].",
+    "options": [
+      "Additional Discount Fields",
+      "Prorate Multiplier",
+      "Contracted Price",
+      "Target Customer Amount",
+      "Discount Schedules"
+    ]
+  },
+  {
+    "index": 5,
+    "id": "dumps-41",
+    "text": "Universal Containers requires an output document that has Quote Terms localized ",
+    "currentAnswer": 1,
+    "currentOption": "Create Localization records for individual Quote Terms for all three languages.",
+    "explanation": "Enabling multi-language support in package settings and supplying corresponding localization records enables multi-language quote output documents[cit",
+    "options": [
+      "Create a Quote picklist field named output Language, With language codes as values.",
+      "Create Localization records for individual Quote Terms for all three languages.",
+      "Enable \"Allow Output in Different Languages\" In the managed package settings.",
+      "Set the Quote Term field Language to the desired output language for each Quote Term."
+    ]
+  },
+  {
+    "index": 6,
+    "id": "dumps-58",
+    "text": "An Admin has created a validation product rule that must display an error messag",
+    "currentAnswer": 0,
+    "currentOption": "Change the configuration attribute field Apply Immediately to False.",
+    "explanation": "Disabling \"Apply Immediately\" on configuration attributes and setting rule evaluation events to save defers rule execution until save actions occur[ci",
+    "options": [
+      "Change the configuration attribute field Apply Immediately to False.",
+      "Change the product rule field Evaluation Event to Save.",
+      "Change the product option field Apply Immediately to True.",
+      "Add a product rule Condition to check if Evaluation Action = Save."
+    ]
+  },
+  {
+    "index": 7,
+    "id": "dumps-61",
+    "text": "Universal Containers (UC) sells a product that uses Percent of Total to determin",
+    "currentAnswer": 2,
+    "currentOption": "Set the product\\",
+    "explanation": "Setting the price book entry to the minimum threshold and specifying the constraint flag as list price minimum enforces price boundaries[cite: 1, 2].",
+    "options": [
+      "Create a Price Book Entry of $100 for the product",
+      "Set the Price Book Entry custom field Percent_of_Total_Target__c to $100.",
+      "Set the product\\",
+      ",\r\n      "
+    ]
+  },
+  {
+    "index": 8,
+    "id": "dumps-67",
+    "text": "An Admin has set up a Quantity Editable Product. The user can add the product to",
+    "currentAnswer": 2,
+    "currentOption": ",\r\n      ",
+    "explanation": "Block-priced items evaluate quantity through block definitions rather than linear line quantities, locking opportunity product output counts according",
+    "options": [
+      "The Product has an associated Slab Discount Schedule.",
+      "The Product\\",
+      ",\r\n      ",
+      "s Pricing Method field value is equal to Block.",
+      "The Product is associated to a Product Option with the Type field value equal to Component."
+    ]
+  },
+  {
+    "index": 9,
+    "id": "dumps-72",
+    "text": "Universal Containers wants line items to be organized into pre-defined groups on",
+    "currentAnswer": 0,
+    "currentOption": "Set the Group field on the Line Items type of Template Content record.",
+    "explanation": "Configuring group fields on template sections or content structures line items into labeled visual categories on generated PDFs[cite: 2].",
+    "options": [
+      "Set the Group field on the Line Items type of Template Content record.",
+      "Create Solution Groups, allowing users to group products on the Quote Line Editor.",
+      "Set the Group Field field on the Quote Template or Template Section records.",
+      "Set the New Quote Group field on each Product record with the associated group name."
+    ]
+  },
+  {
+    "index": 10,
+    "id": "dumps-85",
+    "text": "What are the three major features that SBAA offers over standard salesforce appr",
+    "currentAnswer": 0,
+    "currentOption": "Parallel Approvals",
+    "explanation": "Salesforce CPQ Advanced Approvals (SBAA) introduces parallel, dynamic, and smart approval capabilities beyond standard native approval processes[cite:",
+    "options": [
+      "Parallel Approvals",
+      "Dynamic Approvals",
+      "Smart Approvals",
+      "Hierarchical Approvals",
+      "Email Approvals",
+      "Group Approvers"
+    ]
+  },
+  {
+    "index": 11,
+    "id": "dumps-87",
+    "text": "A sales rep notices on Opportunity that only some Opportunity Products are synch",
+    "currentAnswer": 1,
+    "currentOption": ",\r\n      ",
+    "explanation": "Line synchronization requires quotes to be marked primary and properly linked to opportunities and accounts[cite: 2].",
+    "options": [
+      "Ensure the Quote\\",
+      ",\r\n      ",
+      "s Primary Quote lookup is populated.",
+      "Check the Quote\\",
+      ",\r\n      ",
+      "s Opportunity lookup is populated.",
+      "Check the Quote\\"
+    ]
+  },
+  {
+    "index": 12,
+    "id": "dumps-88",
+    "text": "The Admin at Universal Containers would like all optional products to be display",
+    "currentAnswer": 1,
+    "currentOption": "For the Required Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: False",
+    "explanation": "Filtering template sections based on the Optional checkbox field separates required and optional quote lines into distinct tables[cite: 2].",
+    "options": [
+      "For the Required Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: True",
+      "For the Required Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: False",
+      "For the Optional Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: False",
+      "For the Optional Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: True"
+    ]
+  },
+  {
+    "index": 13,
+    "id": "dumps-89",
+    "text": "Universal Containers sells a bundle with multiple options. An Admin wants to all",
+    "currentAnswer": 1,
+    "currentOption": "Configurable",
+    "explanation": "Configuration types like Allowed and Configurable permit users to adjust and pick options during bundle configuration[cite: 2].",
+    "options": [
+      "None",
+      "Configurable",
+      "Allowed",
+      "Disabled",
+      "Required"
+    ]
+  },
+  {
+    "index": 14,
+    "id": "dumps-95",
+    "text": "Universal Containers wants to show a Monthly Price column on the Quote Document ",
+    "currentAnswer": 2,
+    "currentOption": "Create a custom formula indicating if the Payment Terms are Net 30.",
+    "explanation": "Conditional print fields paired with formula logic checking payment terms determine column visibility on PDF quote documents[cite: 2].",
+    "options": [
+      "Set the Conditional Print Field on the Line Column record.",
+      "Include Monthly Price in the Quote Line Editor Field set.",
+      "Create a custom formula indicating if the Payment Terms are Net 30.",
+      "Create an additional Line Items section without the Monthly Price field."
+    ]
+  },
+  {
+    "index": 15,
+    "id": "dumps-98",
+    "text": "Universal Containers has Terms and Conditions it wants to include in documents s",
+    "currentAnswer": 1,
+    "currentOption": "Summary Variables",
+    "explanation": "Quote term conditions can evaluate quote-level fields and summary variables to determine conditional printing[cite: 2].",
+    "options": [
+      "Quote Line fields",
+      "Summary Variables",
+      "Quote fields",
+      "Product fields"
+    ]
+  },
+  {
+    "index": 16,
+    "id": "dumps-104",
+    "text": "UC has a requirement that, on any individual Quote, the quantity of Product Fami",
+    "currentAnswer": 2,
+    "currentOption": "Summary Variable A goes in the Tested Variable field, Summary Variable B goes in the Filter Variable field, Operator is Greater than.",
+    "explanation": "Error conditions compare tested variables against filter variables using operators like Greater than to detect constraint violations[cite: 2].",
+    "options": [
+      "Summary Variable A goes in the Filter Variable field, Summary Variable B goes in the Tested Variable field, Operator is Less or Equals.",
+      "Summary Variable A goes in the Filter Variable field, Summary Variable B goes in the Tested Variable field, Operator is Less than.",
+      "Summary Variable A goes in the Tested Variable field, Summary Variable B goes in the Filter Variable field, Operator is Greater than.",
+      "Summary Variable A goes in the Filter Variable field, Summary Variable B goes in the Tested Variable field, Operator is Greater than."
+    ]
+  },
+  {
+    "index": 17,
+    "id": "dumps-118",
+    "text": "Universal Containers (UC) wants to set up four separate Template Sections. UC al",
+    "currentAnswer": 0,
+    "currentOption": "Under the Page Break picklist, select the After option on each of the first three Template Sections.",
+    "explanation": "Setting page breaks to \"After\" on preceding sections or \"Before\" on succeeding sections forces discrete page layout breaks on generated document templ",
+    "options": [
+      "Under the Page Break picklist, select the After option on each of the first three Template Sections.",
+      "Under the Keep with Previous picklist, select the Always option on each of the Template Sections.",
+      "Under the Keep Separate picklist, select the Always option on each of the Template Sections.",
+      "Under the Page Break picklist, select the Before option on each of the last three Template Sections."
+    ]
+  },
+  {
+    "index": 18,
+    "id": "dumps-122",
+    "text": "At Universal Containers, each storage container is configured as a bundle. An im",
+    "currentAnswer": 3,
+    "currentOption": "Create a bundle level Configuration Attribute.",
+    "explanation": "Bundle-level configuration attributes configured to apply to product options propagate parent attribute values down to child components[cite: 2].",
+    "options": [
+      "Set up a Lookup Price Rule referencing a custom object.",
+      "Create a Feature level Configuration Attribute.",
+      "Set the Configuration Attribute with Apply to Product Options to True.",
+      "Create a bundle level Configuration Attribute."
+    ]
+  },
+  {
+    "index": 19,
+    "id": "dumps-129",
+    "text": "A Quote Template has Template Sections related to these types of Template Conten",
+    "currentAnswer": 0,
+    "currentOption": "Template Top and HTML are fully code-customizable",
+    "explanation": "HTML sections and template headers support customized code layout structures, line items support standard and MDQ dimensions, and quote terms support ",
+    "options": [
+      "Template Top and HTML are fully code-customizable",
+      "Line Items are either displayed as Standard or with Price Dimensions.",
+      "Template Top is the only Section that can show Billing/Shipping info.",
+      "Quote Terms can be dynamic if Term Conditions are defined.",
+      "Line Items can be coded into an HTML section."
+    ]
+  },
+  {
+    "index": 20,
+    "id": "dumps-137",
+    "text": "Universal Containers allows clients to negotiate a discount for Product A until ",
+    "currentAnswer": 0,
+    "currentOption": "Product",
+    "explanation": "Contracted prices require product association, contract linking, and explicit expiration or effective date boundaries[cite: 2].",
+    "options": [
+      "Product",
+      "Contract",
+      "Expiration Date",
+      "Discount",
+      "Effective Date"
+    ]
+  },
+  {
+    "index": 21,
+    "id": "dumps-140",
+    "text": "An Admin at Universal Containers has observed that the value in the Quantity fie",
+    "currentAnswer": 3,
+    "currentOption": "s Product has Pricing Method set to Block.",
+    "explanation": "Block pricing models and unit-level asset conversions can decouple quote line quantity representations from synchronized opportunity product rows[cite",
+    "options": [
+      "The Quote Line is on an amendment Quote and has a different Quantity from its original Quote Line.",
+      "There is a Price Rule that changes the Quote line\\",
+      ",\r\n      ",
+      "s Product has Pricing Method set to Block.",
+      "The Quote Line\\"
+    ]
+  },
+  {
+    "index": 22,
+    "id": "dumps-151",
+    "text": "An Admin at Universal Containers wants to set up a product bundle that dynamical",
+    "currentAnswer": 0,
+    "currentOption": "Component Code Position",
+    "explanation": "Configuring dynamic bundle SKU generation requires component code position configurations, component codes, and configured code patterns[cite: 2].",
+    "options": [
+      "Component Code Position",
+      "Custom Configuration Page",
+      "Component Description Pattern",
+      "Component Code",
+      "Configured Code Pattern"
+    ]
+  },
+  {
+    "index": 23,
+    "id": "dumps-152",
+    "text": "Universal Containers needs to set up a bundle so that the sales rep can set some",
+    "currentAnswer": 0,
+    "currentOption": "Use custom product option fields for option-level values.",
+    "explanation": "Configuration attributes capture parent-level inputs while custom option fields manage distinct option-level attribute settings[cite: 2].",
+    "options": [
+      "Use custom product option fields for option-level values.",
+      "Use configuration attributes for option-level values.",
+      "Use custom product option fields for bundle-level values.",
+      "Use configuration attributes for parent-level values."
+    ]
+  },
+  {
+    "index": 24,
+    "id": "dumps-161",
+    "text": "Universal Containers would like to show the Monthly price column on the Quote Do",
+    "currentAnswer": 1,
+    "currentOption": "Fill the Conditional Print Field on the Column Lines object.",
+    "explanation": "Conditional print fields driven by custom formulas control line column visibility on template output documents[cite: 2].",
+    "options": [
+      "Create a new field set on the Quote Line editor without Monthly Price.",
+      "Fill the Conditional Print Field on the Column Lines object.",
+      "Create a custom Formula indicating if the Payment Terms Are Net 30.",
+      "Create an additional Lines Section without the Monthly Price field."
+    ]
+  },
+  {
+    "index": 25,
+    "id": "dumps-167",
+    "text": "At Universal containers, the fulfillment team requires that Order Item dates ref",
+    "currentAnswer": 1,
+    "currentOption": "Set package Default Order Start Date to Today.",
+    "explanation": "Configuring default order start dates to today and setting single contract methods at the package level standardizes order generation behavior[cite: 2",
+    "options": [
+      "Set Order Product Date to Today when the record is created using Process Builder.",
+      "Set package Default Order Start Date to Today.",
+      "Set Contracting Method on the Order to single Contract.",
+      "Set package Contracting Method to Single Contract."
+    ]
+  },
+  {
+    "index": 26,
+    "id": "dumps-171",
+    "text": "A customer is implementing CPQ to support two languages. Which two portions of t",
+    "currentAnswer": 2,
+    "currentOption": "The Feature Name field on the Configure Products page",
+    "explanation": "Salesforce CPQ localization objects support translating feature names and template content items into multiple languages[cite: 2].",
+    "options": [
+      "Picklist values in the Product Family field on the Product object",
+      "Configuration Attribute picklist values",
+      "The Feature Name field on the Configure Products page",
+      "HTML Template Content in the Quote document"
+    ]
+  },
+  {
+    "index": 27,
+    "id": "dumps-174",
+    "text": "Universal Containers uses Contracted Pricing to set pricing for specific distrib",
+    "currentAnswer": 1,
+    "currentOption": "Create a new contracted price for Product A on the business unit account with a price of $300.",
+    "explanation": "Child accounts can override inherited parent contracted prices by defining explicit child contracted price records or bypassing hierarchy flags[cite: ",
+    "options": [
+      "Set Ignore Parent Contracted Prices to true on the parent contracted price.",
+      "Create a new contracted price for Product A on the business unit account with a price of $300.",
+      "Create a new contracted price record for Product A on the business unit account and set its Ignore Parent Contracted prices to true.",
+      "Set Ignore Parent Contracted Prices to true on the business unit account record."
+    ]
+  },
+  {
+    "index": 28,
+    "id": "dumps-178",
+    "text": "Universal Containers licenses shipping software sold for a fixed price based on ",
+    "currentAnswer": 1,
+    "currentOption": "Set Non-Discountable to True on the Product record.",
+    "explanation": "Configuring block pricing methods, creating block price tier records, and marking items non-discountable fulfills tier-based fixed pricing[cite: 2].",
+    "options": [
+      "Set Pricing Method to Fixed Price on the Product record.",
+      "Set Non-Discountable to True on the Product record.",
+      "Create a Slab Discount Schedule for the Product for each quantity tier.",
+      "Set Pricing Method to Block on the Product record.",
+      "Create Block Pricing records on the Product for each quantity tier with a different price for each tier."
+    ]
+  },
+  {
+    "index": 29,
+    "id": "dumps-179",
+    "text": "Universal Containers requires its bundle configuration agreement for future pric",
+    "currentAnswer": 1,
+    "currentOption": "Renew the existing Contract, amend the Quote Start Date to today, and modify the Quote Lines to reflect a new 12-month term. Process the Renewal using the normal Quote > Order > Contract flow.",
+    "explanation": "Processing contract term changes through standard amendment and renewal pipelines keeps order generations aligned with agreements[cite: 2].",
+    "options": [
+      "Use the Evergreen Contract feature to permit existing Contracts to be extended beyond the original term.",
+      "Renew the existing Contract, amend the Quote Start Date to today, and modify the Quote Lines to reflect a new 12-month term. Process the Renewal using the normal Quote > Order > Contract flow.",
+      "Amend the existing Contract, updating all Quote Line Quantities to zero, effectively cancelling the Contract. Process the Amendment using the normal Quote > Order > Contract flow.",
+      "Amend the existing Contract and extend the End Date to 12 month from today. Process the Amendment using the normal Quote > Order > Contract flow."
+    ]
+  },
+  {
+    "index": 30,
+    "id": "dumps-187",
+    "text": "Universal Containers sells a bundle Product which contains many Features and Opt",
+    "currentAnswer": 1,
+    "currentOption": "Set Option Selection Method to Add on the Product Features.",
+    "explanation": "Setting option selection methods to Add, using tab layouts, and organizing feature categories streamline large configuration screens[cite: 2].",
+    "options": [
+      "Set System to True on the Product Options to be excluded from the configurator.",
+      "Set Option Selection Method to Add on the Product Features.",
+      "Group the Product Features of the bundle into tabs using the category field.",
+      "Change Option layout to Tabs on the bundle Product.",
+      "Change Enable Large Configuration to True on the bundle Product."
+    ]
+  },
+  {
+    "index": 31,
+    "id": "dumps-189",
+    "text": "Universal Containers wants customers to commit to a new 12-month Contract Term. ",
+    "currentAnswer": 0,
+    "currentOption": "Change quantities of existing Products; apply different discounts than original Quote",
+    "explanation": "Contract amendments and renewals support adjusting quantities, modifying discount structures, or co-terminating new items[cite: 2].",
+    "options": [
+      "Change quantities of existing Products; apply different discounts than original Quote",
+      "Change quantities of existing Products; maintain same discounts as original Quote",
+      "Add new Products; co-terminate to existing Contract",
+      "Add new products; use different End Date from existing Contract"
+    ]
+  },
+  {
+    "index": 32,
+    "id": "dumps-200",
+    "text": "What two items can you include on a card flyout? Choose 2 answers",
+    "currentAnswer": 0,
+    "currentOption": "Another flyout",
+    "explanation": "Card flyouts can support nested components such as another flyout or standard action tools like an OmniScript (OS) action.",
+    "options": [
+      "Another flyout",
+      "Account name",
+      "An OS Action",
+      "A link to a DataRaptor"
+    ]
+  },
+  {
+    "index": 33,
+    "id": "dumps-249",
+    "text": "Which two statements about a Card Layout are true? Choose 2 answers",
+    "currentAnswer": 1,
+    "currentOption": "A Card Layout requires a template to be assigned to it",
+    "explanation": "A card layout requires an assigned template structure and is capable of containing multiple individual cards organized into zones.",
+    "options": [
+      "A Card Layout requires its own data source",
+      "A Card Layout requires a template to be assigned to it",
+      "A Card Layout requires test data source settings",
+      "A Card Layout can contain multiple cards"
+    ]
+  },
+  {
+    "index": 34,
+    "id": "dumps-250",
+    "text": "What two OmniScript Action elements redirect the user outside the OmniScript? Ch",
+    "currentAnswer": 1,
+    "currentOption": "Navigate Action",
+    "explanation": "Navigate Actions and Done Actions explicitly direct user flows out of the running OmniScript runtime container.",
+    "options": [
+      "Response Action",
+      "Navigate Action",
+      "Post to Object Action",
+      "Done Action"
+    ]
+  },
+  {
+    "index": 35,
+    "id": "dumps-255",
+    "text": "Which two of the items below must be defined before you can create a new OmniScr",
+    "currentAnswer": 0,
+    "currentOption": "Sub Type",
+    "explanation": "Omniscripts require defining a unique Type and Sub Type combination upon creation.",
+    "options": [
+      "Sub Type",
+      "Description",
+      "Type",
+      "Template"
+    ]
+  },
+  {
+    "index": 36,
+    "id": "dumps-256",
+    "text": "For testing an OmniScript, the ContextId is the only key in a Set Values element",
+    "currentAnswer": 1,
+    "currentOption": "Deactivate the Set Values element.",
+    "explanation": "Test-specific hardcoded set values elements should be deactivated or deleted before migrating OmniScripts to production environments.",
+    "options": [
+      "Do nothing. It will be ignored at runtime.",
+      "Deactivate the Set Values element.",
+      "Delete the Set Values element.",
+      "Add the correct ContextId to the {Data} modal."
+    ]
+  },
+  {
+    "index": 37,
+    "id": "dumps-257",
+    "text": "What two settings are required for a Set Errors element? Choose 2 answers",
+    "currentAnswer": 0,
+    "currentOption": "A Validation Expression",
+    "explanation": "Set Errors components require validation expression rules and active error text messaging to function correctly.",
+    "options": [
+      "A Validation Expression",
+      "An Element Error map",
+      "An Active Message",
+      "A Conditional View"
+    ]
+  },
+  {
+    "index": 38,
+    "id": "dumps-261",
+    "text": "An OmniScript gets data from Salesforce and from an on-premises billing database",
+    "currentAnswer": 0,
+    "currentOption": "HTTP Action",
+    "explanation": "DataRaptor Extract actions query Salesforce data, while HTTP actions connect out to external on-premises or web service endpoints.",
+    "options": [
+      "HTTP Action",
+      "Navigate Action",
+      "DataRaptor Extract Action",
+      "Response Action"
+    ]
+  },
+  {
+    "index": 39,
+    "id": "dumps-263",
+    "text": "In an Integration Procedure, you need to perform a multi-step calculation on eve",
+    "currentAnswer": 2,
+    "currentOption": "Use a Set Values Element inside a Loop Block",
+    "explanation": "Loop blocks combined with set values or calculation actions handle iterative array processing efficiently in Integration Procedures.",
+    "options": [
+      "Use a List Action to merge the array elements together",
+      "Use a Matrix Action to call a Calculation Matrix",
+      "Use a Set Values Element inside a Loop Block",
+      "Use a Calculation Action to call a Calculation Procedure"
+    ]
+  },
+  {
+    "index": 40,
+    "id": "dumps-268",
+    "text": "You need an integration procedure that gets data from Salesforce, uses a Vlocity",
+    "currentAnswer": 3,
+    "currentOption": "Remote Action",
+    "explanation": "DataRaptor Extract fetches the data, a Remote Action invokes the custom Apex class, and a Response Action returns the final output.",
+    "options": [
+      "Response Action",
+      "Batch Action",
+      "Http Action",
+      "Remote Action",
+      "DataRaptor Extract Action",
+      "Calculation Action",
+      "DataRaptor Post Action"
+    ]
+  },
+  {
+    "index": 41,
+    "id": "dumps-269",
+    "text": "In which fields in an Integration Procedure or DataRaptor can you use a function",
+    "currentAnswer": 2,
+    "currentOption": "In a Set Values Action in a Value field",
+    "explanation": "Formula functions like CONCAT and DATEDIFF are fully supported inside DataRaptor formula tabs and Set Values action value expressions.",
+    "options": [
+      "In a DataRaptor in an Output Tab Output JSON Path",
+      "In a DataRaptor Action in an Input Parameters value field",
+      "In a Set Values Action in a Value field",
+      "In a Remote Action in an Additional Output value field"
+    ]
+  },
+  {
+    "index": 42,
+    "id": "dumps-272",
+    "text": "Of the questions listed below, which two are ones you need to answer when you cr",
+    "currentAnswer": 1,
+    "currentOption": "Which sObject or sObjects contain the data I need?",
+    "explanation": "When creating a DataRaptor Extract, you must define the target sObjects containing the data and establish the extraction paths[cite: 3].",
+    "options": [
+      "What should I name the JSON node where the data will be sent?",
+      "Which sObject or sObjects contain the data I need?",
+      "Which OmniScript template will I be using?",
+      "Which card will be using this DataRaptor?"
+    ]
+  },
+  {
+    "index": 43,
+    "id": "dumps-275",
+    "text": "Which two of these options can retrieve data from a Salesforce Object? Choose 2 ",
+    "currentAnswer": 0,
+    "currentOption": "A DataRaptor Extract Action",
+    "explanation": "DataRaptor Extract Actions and Lookup Actions are specifically built to pull data directly from Salesforce objects[cite: 3].",
+    "options": [
+      "A DataRaptor Extract Action",
+      "An HTTP Action",
+      "A DataRaptor Transform Action",
+      "A DataRaptor Load Action",
+      "A Lookup Action",
+      "A DataRaptor Post Action"
+    ]
+  },
+  {
+    "index": 44,
+    "id": "dumps-277",
+    "text": "Which three statements are true about Calculation Matrices? Choose 3 answers",
+    "currentAnswer": 1,
+    "currentOption": "They can be a combination of values.",
+    "explanation": "Calculation matrices can handle value combinations, support range boundaries, and evaluate matrix routing rules[cite: 3].",
+    "options": [
+      "They must contain numerical data.",
+      "They can be a combination of values.",
+      "They can represent ranges.",
+      "They must be unique"
+    ]
+  },
+  {
+    "index": 45,
+    "id": "dumps-288",
+    "text": "When an OmniScript is launched from an OS Action on a card, the OmniScript displ",
+    "currentAnswer": 0,
+    "currentOption": "The Id Field for Actions in the card state is not configured with the correct RecordId.",
+    "explanation": "Failing to pass the correct RecordId through card state action configurations prevents pre-populated records from loading[cite: 3].",
+    "options": [
+      "The Id Field for Actions in the card state is not configured with the correct RecordId.",
+      "There is no active version of the DataRaptor Extract.",
+      "In the DataRaptor Extract Action, the Input Parameters Data Source is misspelled.",
+      "There is no active version of the OmniScript."
+    ]
+  },
+  {
+    "index": 46,
+    "id": "dumps-289",
+    "text": "An OmniScript updates data from one Salesforce record, but when it completes, on",
+    "currentAnswer": 1,
+    "currentOption": "The Input JSON paths in the DataRaptor Load do not match the JSON sent from the OmniScript.",
+    "explanation": "Mismatched JSON paths between OmniScript structures and DataRaptor Load definitions lead to partial or missing field updates[cite: 3].",
+    "options": [
+      "ContextId is misspelled in the merge code that passes the RecordId to the DataRaptor.",
+      "The Input JSON paths in the DataRaptor Load do not match the JSON sent from the OmniScript.",
+      "In the DataRaptor Load, in the preview tab, the RecordId is from the wrong record type.",
+      "The fields that are not updated are read only in Salesforce."
+    ]
+  },
+  {
+    "index": 47,
+    "id": "dumps-291",
+    "text": "An OmniScript displays data from an API using an Integration Procedure, but some",
+    "currentAnswer": 0,
+    "currentOption": "The element name for the missing data does not match the JSON node key in the Integration Procedure Response.",
+    "explanation": "Key naming discrepancies between integration procedure responses and OmniScript element bindings result in dropped field values[cite: 3].",
+    "options": [
+      "The element name for the missing data does not match the JSON node key in the Integration Procedure Response.",
+      "The Integration Procedure Preview Input Parameters do not match the JSON sent from the OmniScript.",
+      "The missing data is trimmed in the Integration Procedure Action Response JSON Path.",
+      "The JSON sent from the Integration Procedure Action does not match any of the Original Input."
+    ]
+  },
+  {
+    "index": 48,
+    "id": "dumps-292",
+    "text": "You configured a card and card state. The card data source is a DataRaptor which",
+    "currentAnswer": 2,
+    "currentOption": "s Test Data Source Settings is for the wrong record type.",
+    "explanation": "Invalid test record IDs configured at layout data source settings break design-time card previews[cite: 3].",
+    "options": [
+      "There is no Salesforce record for the card based on the RecordId in the card\\",
+      ",\r\n      ",
+      "s Test Data Source Settings is for the wrong record type.",
+      "The RecordId in the layout\\",
+      ",\r\n      ",
+      "s Test Data Source Settings."
+    ]
+  },
+  {
+    "index": 49,
+    "id": "dumps-293",
+    "text": "A Vlocity Calculation Procedure Aggregation step can be defined to consolidate m",
+    "currentAnswer": 0,
+    "currentOption": "MAX",
+    "explanation": "Aggregation steps support statistical and mathematical functions such as MAX and AVG to summarize datasets[cite: 3].",
+    "options": [
+      "MAX",
+      "AND",
+      "AVG",
+      "ABS"
+    ]
+  },
+  {
+    "index": 50,
+    "id": "dumps-296",
+    "text": "What two actions force a user to navigate away from an OmniScript? Choose 2 answ",
+    "currentAnswer": 0,
+    "currentOption": "Navigate Action",
+    "explanation": "Navigate Actions and Done Actions explicitly route user sessions away from the current OmniScript container[cite: 3].",
+    "options": [
+      "Navigate Action",
+      "Submit Action",
+      "Review Action",
+      "Done Action"
+    ]
+  },
+  {
+    "index": 51,
+    "id": "dumps-297",
+    "text": "What are two characteristics of an Integration Procedure? Choose 2 answers",
+    "currentAnswer": 0,
+    "currentOption": "It executes transactions on the server-side for faster processing.",
+    "explanation": "Integration Procedures execute entirely on the server-side for high performance and can handle multiple data sources and writes in a single unified tr",
+    "options": [
+      "It executes transactions on the server-side for faster processing.",
+      "It is designed to handle user interactions via front-end UI components.",
+      "It can read and write data to Salesforce and external APIs in a single transaction.",
+      "It can only be invoked from within an OmniScript."
+    ]
+  },
+  {
+    "index": 52,
+    "id": "dumps-302",
+    "text": "Which data source types are natively supported by FlexCards? Choose 2 answers",
+    "currentAnswer": 0,
+    "currentOption": "Integration Procedure",
+    "explanation": "FlexCards support multiple data sources natively, including Integration Procedures and Apex Remote methods.",
+    "options": [
+      "Integration Procedure",
+      "SOQL Query",
+      "Apex Remote",
+      "Hardcoded CSV file"
+    ]
+  },
+  {
+    "index": 53,
+    "id": "dumps-316",
+    "text": "Which elements can be used to invoke a Calculation Procedure from within an Inte",
+    "currentAnswer": 0,
+    "currentOption": "Calculation Action",
+    "explanation": "Calculation Actions and Matrix Actions are the dedicated integration procedure elements used to execute calculation procedures and matrices.",
+    "options": [
+      "Calculation Action",
+      "Matrix Action",
+      "DataRaptor Extract Action",
+      "HTTP Action"
+    ]
+  }
+]

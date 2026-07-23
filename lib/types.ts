@@ -3,7 +3,7 @@ export interface ExamQuestion {
   text: string
   topic: 'Salesforce CPQ' | 'Vlocity Platform' | 'Salesforce Industries' | 'Project Summary' |'Advanced Apex Architecture & Transaction Controls' | 'Experience Cloud' | 'Salesforce Data Cloud' | 'Lightning Web Components' | 'LWC Performance & Deep DOM Handling' | 'Data Cloud Harmonization & Identity Engineering' | 'Salesforce Fundamentals' | 'Salesforce Automation' | 'Apex Development' | 'Data Modeling' | 'Process Automation' | 'Security and Access' | 'User Interface' | 'Reports and Dashboards' | 'Integration' | 'Apex Testing' | 'Org Development' | 'OmniStudio Development Tools' | 'Agentforce & AI' | 'Creating a Customer Community Site' | 'Prompt Engineering' | 'Experience Cloud Basics' | 'Security and Authentication' | 'Creating a Build Your Own LWR' | 'Creating a Partner Community Site'
   options: string[]
-  correctAnswer: number
+  correctAnswer: number | number[]
   difficulty: 'moderate' | 'hard'
   explanation?: string
 }
@@ -11,7 +11,7 @@ export interface ExamQuestion {
 export interface ExamSession {
   id: string
   startedAt: Date
-  answers: Record<string, number | null>
+  answers: Record<string, number | number[] | null>
   currentQuestionIndex: number
   flaggedQuestions: Set<string>
 }
@@ -25,8 +25,8 @@ export interface ExamResult {
   topicBreakdown: Record<string, { correct: number; total: number }>
   answers: Array<{
     questionId: string
-    selected: number | null
-    correct: number
+    selected: number | number[] | null
+    correct: number | number[]
     isCorrect: boolean
     question: ExamQuestion
   }>

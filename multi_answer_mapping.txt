@@ -1,0 +1,29 @@
+MULTI-ANSWER QUESTIONS MAPPING
+================================
+
+Based on explanations, map correct answers:
+
+1. dumps-19: "Product Option and Contracted Price" 
+   Options: [Product(0), Product Option(1), Contracted Price(2), Segmented Product(3)]
+   CORRECT: [1, 2] ✓ (Already updated)
+
+2. dumps-24: "Depending on whether asset conversion is bundled per quote line or per unit"
+   Options: [Two Sub + Two Assets(0), One Sub + Two Assets(1), One Sub + One Asset(2), Two Sub + One Asset(3)]
+   CORRECT: [1, 3] ✓ (Already updated)
+
+3. dumps-27: "Quote and Quote Line Group objects"
+   Options: [Quote Line Field(0), Quote object(1), Quote Line Group(2), Segmented(3)]
+   CORRECT: [1, 2] ✓ (Already updated)
+
+4. dumps-33: "regional price books...sharing them with corresponding sales reps"
+   Options: [Search Filter(0), Single Price Book(1), Price Book per region + Share(2), Product rules(3)]
+   CORRECT: [2] (but question says Choose 2 - need to reconsider)
+   LIKELY: [2, 0] or just [2]
+
+5. dumps-40: "Contracted pricing, proration multipliers, and discount schedules"
+   Need to read full options
+
+6. dumps-57: "Enabling multi-language support...supplying corresponding localization records"
+   Need to read full options
+
+CONTINUE WITH REMAINING...

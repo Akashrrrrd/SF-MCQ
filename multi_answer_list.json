@@ -1,0 +1,380 @@
+[
+  {
+    "id": "dumps-19",
+    "text": "    text: 'Which two objects could a discount schedule be applied to and take pr...",
+    "correctCount": 2,
+    "explanation": "Discount schedules applied at the Product Option and Contracted Price levels take precedence over schedules defined on f...",
+    "line": 270
+  },
+  {
+    "id": "dumps-24",
+    "text": "    text: 'A User at Universal Containers has created a Quote with two Products....",
+    "correctCount": 2,
+    "explanation": "Depending on whether asset conversion is bundled per quote line or per unit, contract generation results in specific cor...",
+    "line": 338
+  },
+  {
+    "id": "dumps-27",
+    "text": "    text: 'Universal Containers wants its users to be able to apply Additional D...",
+    "correctCount": 2,
+    "explanation": "To surface additional discounts at both quote and group levels, the fields must be added to the respective Line Editor f...",
+    "line": 380
+  },
+  {
+    "id": "dumps-33",
+    "text": "    text: 'Universal Containers offers the same Products in different regions of...",
+    "correctCount": 2,
+    "explanation": "Creating regional price books and sharing them with the corresponding sales reps controls product availability by region...",
+    "line": 462
+  },
+  {
+    "id": "dumps-40",
+    "text": "    text: 'Which three CPQ pricing functionalities contribute to Regular Price d...",
+    "correctCount": 3,
+    "explanation": "Contracted pricing, proration multipliers, and discount schedules form the core calculation path leading up to the Regul...",
+    "line": 560
+  },
+  {
+    "id": "dumps-57",
+    "text": "    text: 'Universal Containers requires an output document that has Quote Terms...",
+    "correctCount": 2,
+    "explanation": "Enabling multi-language support in package settings and supplying corresponding localization records enables multi-langu...",
+    "line": 797
+  },
+  {
+    "id": "dumps-60",
+    "text": "    text: 'An Admin has created a validation product rule that must display an e...",
+    "correctCount": 2,
+    "explanation": "Disabling \"Apply Immediately\" on configuration attributes and setting rule evaluation events to save defers rule executi...",
+    "line": 839
+  },
+  {
+    "id": "dumps-66",
+    "text": "    text: 'Universal Containers (UC) sells a product that uses Percent of Total ...",
+    "correctCount": 2,
+    "explanation": "Setting the price book entry to the minimum threshold and specifying the constraint flag as list price minimum enforces ...",
+    "line": 923
+  },
+  {
+    "id": "dumps-71",
+    "text": "    text: 'An Admin has set up a Quantity Editable Product. The user can add the...",
+    "correctCount": 2,
+    "explanation": "Block-priced items evaluate quantity through block definitions rather than linear line quantities, locking opportunity p...",
+    "line": 993
+  },
+  {
+    "id": "dumps-84",
+    "text": "    text: 'Universal Containers wants line items to be organized into pre-define...",
+    "correctCount": 2,
+    "explanation": "Configuring group fields on template sections or content structures line items into labeled visual categories on generat...",
+    "line": 1175
+  },
+  {
+    "id": "dumps-87",
+    "text": "    text: 'A sales rep notices on Opportunity that only some Opportunity Product...",
+    "correctCount": 3,
+    "explanation": "Line synchronization requires quotes to be marked primary and properly linked to opportunities and accounts[cite: 2]....",
+    "line": 1219
+  },
+  {
+    "id": "dumps-88",
+    "text": "    text: 'The Admin at Universal Containers would like all optional products to...",
+    "correctCount": 2,
+    "explanation": "Filtering template sections based on the Optional checkbox field separates required and optional quote lines into distin...",
+    "line": 1234
+  },
+  {
+    "id": "dumps-94",
+    "text": "    text: 'Universal Containers sells a bundle with multiple options. An Admin w...",
+    "correctCount": 3,
+    "explanation": "Configuration types like Allowed and Configurable permit users to adjust and pick options during bundle configuration[ci...",
+    "line": 1318
+  },
+  {
+    "id": "dumps-97",
+    "text": "    text: 'Universal Containers wants to show a Monthly Price column on the Quot...",
+    "correctCount": 2,
+    "explanation": "Conditional print fields paired with formula logic checking payment terms determine column visibility on PDF quote docum...",
+    "line": 1361
+  },
+  {
+    "id": "dumps-103",
+    "text": "    text: 'Universal Containers has Terms and Conditions it wants to include in ...",
+    "correctCount": 2,
+    "explanation": "Quote term conditions can evaluate quote-level fields and summary variables to determine conditional printing[cite: 2]....",
+    "line": 1445
+  },
+  {
+    "id": "dumps-117",
+    "text": "    text: 'UC has a requirement that, on any individual Quote, the quantity of P...",
+    "correctCount": 2,
+    "explanation": "Error conditions compare tested variables against filter variables using operators like Greater than to detect constrain...",
+    "line": 1641
+  },
+  {
+    "id": "dumps-121",
+    "text": "    text: 'Universal Containers (UC) wants to set up four separate Template Sect...",
+    "correctCount": 2,
+    "explanation": "Setting page breaks to \"After\" on preceding sections or \"Before\" on succeeding sections forces discrete page layout brea...",
+    "line": 1697
+  },
+  {
+    "id": "dumps-128",
+    "text": "    text: 'At Universal Containers, each storage container is configured as a bu...",
+    "correctCount": 2,
+    "explanation": "Bundle-level configuration attributes configured to apply to product options propagate parent attribute values down to c...",
+    "line": 1793
+  },
+  {
+    "id": "dumps-132",
+    "text": "    text: 'A user is quoting four subscription Products: Product A, Product B, P...",
+    "correctCount": 2,
+    "explanation": "Adjusting group-level end dates or individual quote line end dates allows separate quote line groups to maintain indepen...",
+    "line": 1849
+  },
+  {
+    "id": "dumps-136",
+    "text": "    text: 'A Quote Template has Template Sections related to these types of Temp...",
+    "correctCount": 3,
+    "explanation": "HTML sections and template headers support customized code layout structures, line items support standard and MDQ dimens...",
+    "line": 1901
+  },
+  {
+    "id": "dumps-139",
+    "text": "    text: 'Universal Containers allows clients to negotiate a discount for Produ...",
+    "correctCount": 3,
+    "explanation": "Contracted prices require product association, contract linking, and explicit expiration or effective date boundaries[ci...",
+    "line": 1944
+  },
+  {
+    "id": "dumps-150",
+    "text": "    text: 'An Admin at Universal Containers has observed that the value in the Q...",
+    "correctCount": 2,
+    "explanation": "Block pricing models and unit-level asset conversions can decouple quote line quantity representations from synchronized...",
+    "line": 2099
+  },
+  {
+    "id": "dumps-151",
+    "text": "    text: 'An Admin at Universal Containers wants to set up a product bundle tha...",
+    "correctCount": 3,
+    "explanation": "Configuring dynamic bundle SKU generation requires component code position configurations, component codes, and configur...",
+    "line": 2113
+  },
+  {
+    "id": "dumps-160",
+    "text": "    text: 'Universal Containers needs to set up a bundle so that the sales rep c...",
+    "correctCount": 2,
+    "explanation": "Configuration attributes capture parent-level inputs while custom option fields manage distinct option-level attribute s...",
+    "line": 2240
+  },
+  {
+    "id": "dumps-166",
+    "text": "    text: 'Universal Containers would like to show the Monthly price column on t...",
+    "correctCount": 2,
+    "explanation": "Conditional print fields driven by custom formulas control line column visibility on template output documents[cite: 2]....",
+    "line": 2324
+  },
+  {
+    "id": "dumps-170",
+    "text": "    text: 'At Universal containers, the fulfillment team requires that Order Ite...",
+    "correctCount": 2,
+    "explanation": "Configuring default order start dates to today and setting single contract methods at the package level standardizes ord...",
+    "line": 2380
+  },
+  {
+    "id": "dumps-173",
+    "text": "    text: 'A customer is implementing CPQ to support two languages. Which two po...",
+    "correctCount": 2,
+    "explanation": "Salesforce CPQ localization objects support translating feature names and template content items into multiple languages...",
+    "line": 2422
+  },
+  {
+    "id": "dumps-177",
+    "text": "    text: 'Universal Containers uses Contracted Pricing to set pricing for speci...",
+    "correctCount": 2,
+    "explanation": "Child accounts can override inherited parent contracted prices by defining explicit child contracted price records or by...",
+    "line": 2476
+  },
+  {
+    "id": "dumps-178",
+    "text": "    text: 'Universal Containers licenses shipping software sold for a fixed pric...",
+    "correctCount": 3,
+    "explanation": "Configuring block pricing methods, creating block price tier records, and marking items non-discountable fulfills tier-b...",
+    "line": 2490
+  },
+  {
+    "id": "dumps-186",
+    "text": "    text: 'Universal Containers requires its bundle configuration agreement for ...",
+    "correctCount": 2,
+    "explanation": "Processing contract term changes through standard amendment and renewal pipelines keeps order generations aligned with a...",
+    "line": 2603
+  },
+  {
+    "id": "dumps-188",
+    "text": "    text: 'Universal Containers sells a bundle Product which contains many Featu...",
+    "correctCount": 3,
+    "explanation": "Setting option selection methods to Add, using tab layouts, and organizing feature categories streamline large configura...",
+    "line": 2631
+  },
+  {
+    "id": "dumps-199",
+    "text": "    text: 'Universal Containers wants customers to commit to a new 12-month Cont...",
+    "correctCount": 2,
+    "explanation": "Contract amendments and renewals support adjusting quantities, modifying discount structures, or co-terminating new item...",
+    "line": 2784
+  },
+  {
+    "id": "dumps-248",
+    "text": "    text: 'What two items can you include on a card flyout? Choose 2 answers',\r...",
+    "correctCount": 2,
+    "explanation": "Card flyouts can support nested components such as another flyout or standard action tools like an OmniScript (OS) actio...",
+    "line": 3470
+  },
+  {
+    "id": "dumps-249",
+    "text": "    text: 'Which two statements about a Card Layout are true? Choose 2 answers',...",
+    "correctCount": 2,
+    "explanation": "A card layout requires an assigned template structure and is capable of containing multiple individual cards organized i...",
+    "line": 3484
+  },
+  {
+    "id": "dumps-254",
+    "text": "    text: 'What two OmniScript Action elements redirect the user outside the Omn...",
+    "correctCount": 2,
+    "explanation": "Navigate Actions and Done Actions explicitly direct user flows out of the running OmniScript runtime container....",
+    "line": 3554
+  },
+  {
+    "id": "dumps-255",
+    "text": "    text: 'Which two of the items below must be defined before you can create a ...",
+    "correctCount": 2,
+    "explanation": "Omniscripts require defining a unique Type and Sub Type combination upon creation....",
+    "line": 3568
+  },
+  {
+    "id": "dumps-256",
+    "text": "    text: 'For testing an OmniScript, the ContextId is the only key in a Set Val...",
+    "correctCount": 2,
+    "explanation": "Test-specific hardcoded set values elements should be deactivated or deleted before migrating OmniScripts to production ...",
+    "line": 3582
+  },
+  {
+    "id": "dumps-260",
+    "text": "    text: 'What two settings are required for a Set Errors element? Choose 2 ans...",
+    "correctCount": 2,
+    "explanation": "Set Errors components require validation expression rules and active error text messaging to function correctly....",
+    "line": 3638
+  },
+  {
+    "id": "dumps-262",
+    "text": "    text: 'An OmniScript gets data from Salesforce and from an on-premises billi...",
+    "correctCount": 2,
+    "explanation": "DataRaptor Extract actions query Salesforce data, while HTTP actions connect out to external on-premises or web service ...",
+    "line": 3666
+  },
+  {
+    "id": "dumps-267",
+    "text": "    text: 'In an Integration Procedure, you need to perform a multi-step calcula...",
+    "correctCount": 2,
+    "explanation": "Loop blocks combined with set values or calculation actions handle iterative array processing efficiently in Integration...",
+    "line": 3736
+  },
+  {
+    "id": "dumps-268",
+    "text": "    text: 'You need an integration procedure that gets data from Salesforce, use...",
+    "correctCount": 3,
+    "explanation": "DataRaptor Extract fetches the data, a Remote Action invokes the custom Apex class, and a Response Action returns the fi...",
+    "line": 3750
+  },
+  {
+    "id": "dumps-271",
+    "text": "    text: 'In which fields in an Integration Procedure or DataRaptor can you use...",
+    "correctCount": 2,
+    "explanation": "Formula functions like CONCAT and DATEDIFF are fully supported inside DataRaptor formula tabs and Set Values action valu...",
+    "line": 3795
+  },
+  {
+    "id": "dumps-274",
+    "text": "    text: 'Of the questions listed below, which two are ones you need to answer ...",
+    "correctCount": 2,
+    "explanation": "When creating a DataRaptor Extract, you must define the target sObjects containing the data and establish the extraction...",
+    "line": 3837
+  },
+  {
+    "id": "dumps-276",
+    "text": "    text: 'Which two of these options can retrieve data from a Salesforce Object...",
+    "correctCount": 2,
+    "explanation": "DataRaptor Extract Actions and Lookup Actions are specifically built to pull data directly from Salesforce objects[cite:...",
+    "line": 3865
+  },
+  {
+    "id": "dumps-287",
+    "text": "    text: 'Which three statements are true about Calculation Matrices? Choose 3 ...",
+    "correctCount": 3,
+    "explanation": "Calculation matrices can handle value combinations, support range boundaries, and evaluate matrix routing rules[cite: 3]...",
+    "line": 4021
+  },
+  {
+    "id": "dumps-288",
+    "text": "    text: 'When an OmniScript is launched from an OS Action on a card, the OmniS...",
+    "correctCount": 2,
+    "explanation": "Failing to pass the correct RecordId through card state action configurations prevents pre-populated records from loadin...",
+    "line": 4035
+  },
+  {
+    "id": "dumps-290",
+    "text": "    text: 'An OmniScript updates data from one Salesforce record, but when it co...",
+    "correctCount": 2,
+    "explanation": "Mismatched JSON paths between OmniScript structures and DataRaptor Load definitions lead to partial or missing field upd...",
+    "line": 4063
+  },
+  {
+    "id": "dumps-291",
+    "text": "    text: 'An OmniScript displays data from an API using an Integration Procedur...",
+    "correctCount": 2,
+    "explanation": "Key naming discrepancies between integration procedure responses and OmniScript element bindings result in dropped field...",
+    "line": 4077
+  },
+  {
+    "id": "dumps-292",
+    "text": "    text: 'You configured a card and card state. The card data source is a DataR...",
+    "correctCount": 2,
+    "explanation": "Invalid test record IDs configured at layout data source settings break design-time card previews[cite: 3]....",
+    "line": 4091
+  },
+  {
+    "id": "dumps-295",
+    "text": "    text: 'A Vlocity Calculation Procedure Aggregation step can be defined to co...",
+    "correctCount": 2,
+    "explanation": "Aggregation steps support statistical and mathematical functions such as MAX and AVG to summarize datasets[cite: 3]....",
+    "line": 4133
+  },
+  {
+    "id": "dumps-296",
+    "text": "    text: 'What two actions force a user to navigate away from an OmniScript? Ch...",
+    "correctCount": 2,
+    "explanation": "Navigate Actions and Done Actions explicitly route user sessions away from the current OmniScript container[cite: 3]....",
+    "line": 4147
+  },
+  {
+    "id": "dumps-301",
+    "text": "    text: 'What are two characteristics of an Integration Procedure? Choose 2 an...",
+    "correctCount": 2,
+    "explanation": "Integration Procedures execute entirely on the server-side for high performance and can handle multiple data sources and...",
+    "line": 4217
+  },
+  {
+    "id": "dumps-315",
+    "text": "    text: 'Which data source types are natively supported by FlexCards? Choose 2...",
+    "correctCount": 2,
+    "explanation": "FlexCards support multiple data sources natively, including Integration Procedures and Apex Remote methods....",
+    "line": 4413
+  },
+  {
+    "id": "dumps-328",
+    "text": "    text: 'Which elements can be used to invoke a Calculation Procedure from wit...",
+    "correctCount": 2,
+    "explanation": "Calculation Actions and Matrix Actions are the dedicated integration procedure elements used to execute calculation proc...",
+    "line": 4595
+  }
+]

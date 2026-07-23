@@ -11,7 +11,7 @@ interface ExamContextType {
   selectedSet: number | null
   setSelectedSet: (setNumber: number) => void
   startExam: () => void
-  selectAnswer: (questionId: string, answerIndex: number) => void
+  selectAnswer: (questionId: string, answerIndex: number, isMultiSelect?: boolean) => void
   toggleFlag: (questionId: string) => void
   goToQuestion: (index: number) => void
   submitExam: () => void
@@ -29,7 +29,7 @@ interface ExamState {
 
 type ExamAction =
   | { type: 'START_EXAM'; questions: ExamQuestion[] }
-  | { type: 'SELECT_ANSWER'; questionId: string; answerIndex: number }
+  | { type: 'SELECT_ANSWER'; questionId: string; answerIndex: number; isMultiSelect?: boolean }
   | { type: 'TOGGLE_FLAG'; questionId: string }
   | { type: 'GO_TO_QUESTION'; index: number }
   | { type: 'SUBMIT_EXAM'; result: ExamResult }
@@ -55,6 +55,32 @@ function examReducer(state: ExamState, action: ExamAction): ExamState {
     }
     case 'SELECT_ANSWER': {
       if (!state.session) return state
+      
+      // For multi-select questions, toggle the answer
+      if (action.isMultiSelect) {
+        const current = state.session.answers[action.questionId]
+        const currentArray = Array.isArray(current) ? current : []
+        
+        let newAnswers: number[]
+        if (currentArray.includes(action.answerIndex)) {
+          newAnswers = currentArray.filter(a => a !== action.answerIndex)
+        } else {
+          newAnswers = [...currentArray, action.answerIndex].sort((a, b) => a - b)
+        }
+        
+        return {
+          ...state,
+          session: {
+            ...state.session,
+            answers: {
+              ...state.session.answers,
+              [action.questionId]: newAnswers.length > 0 ? newAnswers : null,
+            },
+          },
+        }
+      }
+      
+      // For single-select questions, replace the answer
       return {
         ...state,
         session: {
@@ -135,8 +161,8 @@ export function ExamProvider({ children }: { children: ReactNode }) {
     dispatch({ type: 'START_EXAM', questions })
   }, [state.selectedSet])
 
-  const selectAnswer = useCallback((questionId: string, answerIndex: number) => {
-    dispatch({ type: 'SELECT_ANSWER', questionId, answerIndex })
+  const selectAnswer = useCallback((questionId: string, answerIndex: number, isMultiSelect?: boolean) => {
+    dispatch({ type: 'SELECT_ANSWER', questionId, answerIndex, isMultiSelect })
   }, [])
 
   const toggleFlag = useCallback((questionId: string) => {
@@ -150,10 +176,27 @@ export function ExamProvider({ children }: { children: ReactNode }) {
   const submitExam = useCallback(() => {
     if (!state.session) return
 
+    // Helper function to check if answer is correct (handles both single and multi-answer)
+    const isAnswerCorrect = (selected: number | number[] | null, correct: number | number[]): boolean => {
+      if (selected === null) return false
+      
+      const correctArray = Array.isArray(correct) ? correct : [correct]
+      const selectedArray = Array.isArray(selected) ? selected : [selected]
+      
+      // For multi-answer questions, all selected must be correct and all correct must be selected
+      if (correctArray.length > 1) {
+        return selectedArray.length === correctArray.length &&
+               selectedArray.every(s => correctArray.includes(s))
+      }
+      
+      // For single-answer questions, just check equality
+      return selected === correct
+    }
+
     const answers = state.questions.map(question => {
       const selected = state.session!.answers[question.id] ?? null
-      // Only correct if answered AND answer is correct (unanswered = wrong)
-      const isCorrect = selected !== null && selected === question.correctAnswer
+      const isCorrect = isAnswerCorrect(selected, question.correctAnswer)
+      
       return {
         questionId: question.id,
         selected,

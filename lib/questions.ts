@@ -275,7 +275,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Contracted Price',
       'Segmented Product'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Discount schedules applied at the Product Option and Contracted Price levels take precedence over schedules defined on features[cite: 1, 2].'
   },
@@ -343,7 +343,7 @@ const QUESTIONS: ExamQuestion[] = [
       'One Subscription record and an Asset record will be created.',
       'Two Subscription records and an Asset record will be created.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Depending on whether asset conversion is bundled per quote line or per unit, contract generation results in specific corresponding asset and subscription rows[cite: 2].'
   },
@@ -385,7 +385,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Add Additional Disc. (%) to the Line Editor Field Set on the Quote Line Group object.',
       'Add Additional Disc. to the Segmented Line Editor Field Set on the Quote Line object.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'moderate',
     explanation: 'To surface additional discounts at both quote and group levels, the fields must be added to the respective Line Editor field sets on the Quote and Quote Line Group objects[cite: 2].'
   },
@@ -467,7 +467,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Create a Price Book per region for sales reps. Share the regional Price Book with appropriate sales reps.',
       'Use Product rules to hide Products from some sales reps.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Creating regional price books and sharing them with the corresponding sales reps controls product availability by region while allowing managers broader access[cite: 2].'
   },
@@ -566,7 +566,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Target Customer Amount',
       'Discount Schedules'
     ],
-    correctAnswer: 0,
+    correctAnswer: [1, 2, 4],
     difficulty: 'hard',
     explanation: 'Contracted pricing, proration multipliers, and discount schedules form the core calculation path leading up to the Regular Price tier[cite: 2].'
   },
@@ -802,7 +802,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Enable "Allow Output in Different Languages" In the managed package settings.',
       'Set the Quote Term field Language to the desired output language for each Quote Term.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Enabling multi-language support in package settings and supplying corresponding localization records enables multi-language quote output documents[cite: 2].'
   },
@@ -844,7 +844,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Change the product option field Apply Immediately to True.',
       'Add a product rule Condition to check if Evaluation Action = Save.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 1],
     difficulty: 'hard',
     explanation: 'Disabling "Apply Immediately" on configuration attributes and setting rule evaluation events to save defers rule execution until save actions occur[cite: 2].'
   },
@@ -928,7 +928,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Set the product\'s Percent of Total Constraint field to List price is minimum.',
       'Create a Price Book Entry of $0 for the product.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Setting the price book entry to the minimum threshold and specifying the constraint flag as list price minimum enforces price boundaries[cite: 1, 2].'
   },
@@ -998,7 +998,7 @@ const QUESTIONS: ExamQuestion[] = [
       'The Product\'s Pricing Method field value is equal to Block.',
       'The Product is associated to a Product Option with the Type field value equal to Component.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Block-priced items evaluate quantity through block definitions rather than linear line quantities, locking opportunity product output counts accordingly[cite: 2].'
   },
@@ -1180,7 +1180,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Set the Group Field field on the Quote Template or Template Section records.',
       'Set the New Quote Group field on each Product record with the associated group name.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Configuring group fields on template sections or content structures line items into labeled visual categories on generated PDFs[cite: 2].'
   },
@@ -1225,7 +1225,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Ensure the Quote\'s Opportunity lookup is populated.',
       'Check the Quote\'s Primary checkbox for a value of False.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [0, 2, 3],
     difficulty: 'hard',
     explanation: 'Line synchronization requires quotes to be marked primary and properly linked to opportunities and accounts[cite: 2].'
   },
@@ -1239,7 +1239,7 @@ const QUESTIONS: ExamQuestion[] = [
       'For the Optional Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: False',
       'For the Optional Section: Filter Field: Optional, Filter Operator: Equals, Filter Value: True'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Filtering template sections based on the Optional checkbox field separates required and optional quote lines into distinct tables[cite: 2].'
   },
@@ -1324,7 +1324,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Disabled',
       'Required'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2, 4],
     difficulty: 'hard',
     explanation: 'Configuration types like Allowed and Configurable permit users to adjust and pick options during bundle configuration[cite: 2].'
   },
@@ -1366,7 +1366,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Create a custom formula indicating if the Payment Terms are Net 30.',
       'Create an additional Line Items section without the Monthly Price field.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Conditional print fields paired with formula logic checking payment terms determine column visibility on PDF quote documents[cite: 2].'
   },
@@ -1450,7 +1450,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Quote fields',
       'Product fields'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Quote term conditions can evaluate quote-level fields and summary variables to determine conditional printing[cite: 2].'
   },
@@ -1646,7 +1646,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Summary Variable A goes in the Tested Variable field, Summary Variable B goes in the Filter Variable field, Operator is Greater than.',
       'Summary Variable A goes in the Filter Variable field, Summary Variable B goes in the Tested Variable field, Operator is Greater than.'
     ],
-    correctAnswer: 2,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Error conditions compare tested variables against filter variables using operators like Greater than to detect constraint violations[cite: 2].'
   },
@@ -1702,7 +1702,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Under the Keep Separate picklist, select the Always option on each of the Template Sections.',
       'Under the Page Break picklist, select the Before option on each of the last three Template Sections.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 3],
     difficulty: 'hard',
     explanation: 'Setting page breaks to "After" on preceding sections or "Before" on succeeding sections forces discrete page layout breaks on generated document templates[cite: 2].'
   },
@@ -1798,7 +1798,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Set the Configuration Attribute with Apply to Product Options to True.',
       'Create a bundle level Configuration Attribute.'
     ],
-    correctAnswer: 3,
+    correctAnswer: [2, 3],
     difficulty: 'hard',
     explanation: 'Bundle-level configuration attributes configured to apply to product options propagate parent attribute values down to child components[cite: 2].'
   },
@@ -1854,7 +1854,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Change the End Date on the Quote Lines for C and D to December 3, 2021.',
       'Change the Subscription Term on Quote Line Group 2 to the value 18.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Adjusting group-level end dates or individual quote line end dates allows separate quote line groups to maintain independent subscription end schedules[cite: 2].'
   },
@@ -1907,7 +1907,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Quote Terms can be dynamic if Term Conditions are defined.',
       'Line Items can be coded into an HTML section.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 1, 3],
     difficulty: 'hard',
     explanation: 'HTML sections and template headers support customized code layout structures, line items support standard and MDQ dimensions, and quote terms support dynamic term conditions[cite: 2].'
   },
@@ -1950,7 +1950,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Discount',
       'Effective Date'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 1, 2],
     difficulty: 'hard',
     explanation: 'Contracted prices require product association, contract linking, and explicit expiration or effective date boundaries[cite: 2].'
   },
@@ -2104,7 +2104,7 @@ const QUESTIONS: ExamQuestion[] = [
       'The Quote Line\'s Product has Pricing Method set to Block.',
       'The Quote Line\'s Product has Asset Conversion set to One Per Unit.'
     ],
-    correctAnswer: 3,
+    correctAnswer: [2, 3],
     difficulty: 'hard',
     explanation: 'Block pricing models and unit-level asset conversions can decouple quote line quantity representations from synchronized opportunity product rows[cite: 2].'
   },
@@ -2119,7 +2119,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Component Code',
       'Configured Code Pattern'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 3, 4],
     difficulty: 'hard',
     explanation: 'Configuring dynamic bundle SKU generation requires component code position configurations, component codes, and configured code patterns[cite: 2].'
   },
@@ -2245,7 +2245,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Use custom product option fields for bundle-level values.',
       'Use configuration attributes for parent-level values.'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 3],
     difficulty: 'hard',
     explanation: 'Configuration attributes capture parent-level inputs while custom option fields manage distinct option-level attribute settings[cite: 2].'
   },
@@ -2329,7 +2329,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Create a custom Formula indicating if the Payment Terms Are Net 30.',
       'Create an additional Lines Section without the Monthly Price field.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Conditional print fields driven by custom formulas control line column visibility on template output documents[cite: 2].'
   },
@@ -2385,7 +2385,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Set Contracting Method on the Order to single Contract.',
       'Set package Contracting Method to Single Contract.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Configuring default order start dates to today and setting single contract methods at the package level standardizes order generation behavior[cite: 2].'
   },
@@ -2427,7 +2427,7 @@ const QUESTIONS: ExamQuestion[] = [
       'The Feature Name field on the Configure Products page',
       'HTML Template Content in the Quote document'
     ],
-    correctAnswer: 2,
+    correctAnswer: [2, 3],
     difficulty: 'hard',
     explanation: 'Salesforce CPQ localization objects support translating feature names and template content items into multiple languages[cite: 2].'
   },
@@ -2481,7 +2481,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Create a new contracted price record for Product A on the business unit account and set its Ignore Parent Contracted prices to true.',
       'Set Ignore Parent Contracted Prices to true on the business unit account record.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Child accounts can override inherited parent contracted prices by defining explicit child contracted price records or bypassing hierarchy flags[cite: 1, 2].'
   },
@@ -2496,7 +2496,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Set Pricing Method to Block on the Product record.',
       'Create Block Pricing records on the Product for each quantity tier with a different price for each tier.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3, 4],
     difficulty: 'hard',
     explanation: 'Configuring block pricing methods, creating block price tier records, and marking items non-discountable fulfills tier-based fixed pricing[cite: 2].'
   },
@@ -2608,7 +2608,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Amend the existing Contract, updating all Quote Line Quantities to zero, effectively cancelling the Contract. Process the Amendment using the normal Quote > Order > Contract flow.',
       'Amend the existing Contract and extend the End Date to 12 month from today. Process the Amendment using the normal Quote > Order > Contract flow.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Processing contract term changes through standard amendment and renewal pipelines keeps order generations aligned with agreements[cite: 2].'
   },
@@ -2637,7 +2637,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Change Option layout to Tabs on the bundle Product.',
       'Change Enable Large Configuration to True on the bundle Product.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2, 3],
     difficulty: 'hard',
     explanation: 'Setting option selection methods to Add, using tab layouts, and organizing feature categories streamline large configuration screens[cite: 2].'
   },
@@ -2789,7 +2789,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Add new Products; co-terminate to existing Contract',
       'Add new products; use different End Date from existing Contract'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Contract amendments and renewals support adjusting quantities, modifying discount structures, or co-terminating new items[cite: 2].'
   },
@@ -3475,7 +3475,7 @@ const QUESTIONS: ExamQuestion[] = [
       'An OS Action',
       'A link to a DataRaptor'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Card flyouts can support nested components such as another flyout or standard action tools like an OmniScript (OS) action.'
   },
@@ -3489,7 +3489,7 @@ const QUESTIONS: ExamQuestion[] = [
       'A Card Layout requires test data source settings',
       'A Card Layout can contain multiple cards'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'A card layout requires an assigned template structure and is capable of containing multiple individual cards organized into zones.'
   },
@@ -3559,7 +3559,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Post to Object Action',
       'Done Action'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 3],
     difficulty: 'hard',
     explanation: 'Navigate Actions and Done Actions explicitly direct user flows out of the running OmniScript runtime container.'
   },
@@ -3573,7 +3573,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Type',
       'Template'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Omniscripts require defining a unique Type and Sub Type combination upon creation.'
   },
@@ -3587,7 +3587,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Delete the Set Values element.',
       'Add the correct ContextId to the {Data} modal.'
     ],
-    correctAnswer: 1,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Test-specific hardcoded set values elements should be deactivated or deleted before migrating OmniScripts to production environments.'
   },
@@ -3643,7 +3643,7 @@ const QUESTIONS: ExamQuestion[] = [
       'An Active Message',
       'A Conditional View'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'Set Errors components require validation expression rules and active error text messaging to function correctly.'
   },
@@ -3671,7 +3671,7 @@ const QUESTIONS: ExamQuestion[] = [
       'DataRaptor Extract Action',
       'Response Action'
     ],
-    correctAnswer: 0,
+    correctAnswer: [0, 2],
     difficulty: 'hard',
     explanation: 'DataRaptor Extract actions query Salesforce data, while HTTP actions connect out to external on-premises or web service endpoints.'
   },
@@ -3741,7 +3741,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Use a Set Values Element inside a Loop Block',
       'Use a Calculation Action to call a Calculation Procedure'
     ],
-    correctAnswer: 2,
+    correctAnswer: [2, 3],
     difficulty: 'hard',
     explanation: 'Loop blocks combined with set values or calculation actions handle iterative array processing efficiently in Integration Procedures.'
   },
@@ -3758,7 +3758,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Calculation Action',
       'DataRaptor Post Action'
     ],
-    correctAnswer: 3,
+    correctAnswer: [0, 3, 4],
     difficulty: 'hard',
     explanation: 'DataRaptor Extract fetches the data, a Remote Action invokes the custom Apex class, and a Response Action returns the final output.'
   },
@@ -3800,7 +3800,7 @@ const QUESTIONS: ExamQuestion[] = [
       'In a Set Values Action in a Value field',
       'In a Remote Action in an Additional Output value field'
     ],
-    correctAnswer: 2,
+    correctAnswer: [1, 2],
     difficulty: 'hard',
     explanation: 'Formula functions like CONCAT and DATEDIFF are fully supported inside DataRaptor formula tabs and Set Values action value expressions.'
   },
@@ -3842,7 +3842,7 @@ const QUESTIONS: ExamQuestion[] = [
       'Which OmniScript template will I be using?',
       'Which card will be using this DataRaptor?'
     ],
-    correctAnswer: 1,
+    correctAnswer: [0, 1],
     difficulty: 'moderate',
     explanation: 'When creating a DataRaptor Extract, you must define the target sObjects containing the data and establish the extraction paths[cite: 3].'
   },
